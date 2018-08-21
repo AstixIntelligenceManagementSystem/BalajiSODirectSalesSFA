@@ -1,0 +1,271 @@
+<!-- <ScrollView
+       xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       
+       
+       > -->
+
+
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:weightSum="10"
+ >
+<RelativeLayout 
+    android:layout_height="0dp" 
+    android:layout_width="fill_parent" 
+    android:background="@drawable/custom_header_color"
+    android:paddingLeft="16dp"
+  
+    
+   android:layout_weight="0.9"
+    android:id="@+id/rtv_hdr">
+    
+    <ImageView 
+    android:id="@+id/btn_bck"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_back"
+    android:layout_alignParentLeft="true"
+    android:layout_centerVertical="true"/>
+<TextView 
+   android:id="@+id/order_detail"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="#FFFFFF"
+    android:layout_toRightOf="@+id/backbutton"
+   android:paddingLeft="10dp"
+ 	android:layout_centerInParent="true"
+    android:gravity="center_horizontal|left"
+      android:shadowRadius="7" 
+    android:shadowDy="4" 
+    android:paddingBottom="2dp"
+    android:shadowDx="4" 
+	android:textStyle="bold"
+    android:shadowColor="#80FFFFFF" 
+    android:textSize="18sp"
+    android:text="POS Detail"/>
+
+ 
+
+</RelativeLayout>
+
+
+
+<LinearLayout 
+    android:id="@+id/ll_header"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:paddingLeft="2dp"
+    android:paddingRight="5dp"
+   android:paddingTop="1dp"
+   android:paddingBottom="0dp"
+    android:gravity="center_vertical"
+    android:weightSum="7"
+    android:layout_below="@+id/ll_schm_applcbl"
+    android:background="#f1f1f1"
+    android:layout_weight="0.6"
+    android:orientation="horizontal">
+
+    <TextView 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2.35"
+        android:text="POS Material"
+        android:layout_marginLeft="0dp"
+        android:textSize="10sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="#201359"/>
+     
+     
+        <LinearLayout 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.45"
+            android:weightSum="2"
+            android:orientation="vertical">
+            
+             <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Existing Stand"
+         android:gravity="center"
+         android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#000000"/>
+       
+                <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Fresh Invoice"
+         android:gravity="center"
+         android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#D42625"/>
+      
+        </LinearLayout>
+      
+        <LinearLayout 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2.05"
+            android:weightSum="3"
+            android:orientation="vertical">
+            
+             <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+         android:gravity="center"
+        android:text="Return to Distributor"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#000000"/> 
+          
+       <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Discard/Damage"
+         android:gravity="center"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#D42625"/> 
+        </LinearLayout>
+        
+        <TextView 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.15"
+        android:text="Take Photo"
+        android:gravity="center"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#201359"/>
+       
+  
+    
+</LinearLayout>
+
+ <ScrollView 
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+  	android:clipToPadding="false"
+    android:layout_marginTop="1dp"
+    android:layout_weight="5.2"
+  	android:scrollbarStyle="outsideOverlay"
+    
+  >
+    <LinearLayout 
+        android:id="@+id/ll_prdct_detal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         android:orientation="vertical">
+       
+         </LinearLayout>
+         
+     
+</ScrollView>
+
+ 
+  <TextView 
+      android:id="@+id/textView_LastVisit"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+       android:layout_marginTop="10dp"
+        android:text="POS Material Last Visit Details"
+        android:layout_marginLeft="5dp"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_weight=".4"
+        android:textColor="#201359"/>
+
+  <HorizontalScrollView 
+        
+          android:layout_width="match_parent"
+          android:layout_height="0dp"
+          android:layout_marginTop="2dp"
+          android:padding="10dp" 
+          android:layout_weight="2.3"
+          >
+
+          <LinearLayout
+              android:id="@+id/recycler_view_images"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingLeft="10dp"
+       	      android:paddingRight="10dp"
+              android:orientation="horizontal"  >
+
+         </LinearLayout>
+         
+      </HorizontalScrollView>
+
+<!-- <GridView
+         android:id="@+id/recycler_view_images"
+        android:layout_width="match_parent"
+        
+    android:layout_height="200dp"
+    android:numColumns="auto_fit"
+    android:columnWidth="90dp"
+    android:horizontalSpacing="10dp"
+    android:verticalSpacing="10dp"
+    android:gravity="center"
+    android:stretchMode="columnWidth"/> -->
+<LinearLayout 
+    android:id="@+id/ll_buttons"
+     android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:layout_alignParentBottom="true"
+    android:gravity="center"
+    android:layout_weight=".5"
+   
+    android:weightSum="2"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="25dp"
+    android:layout_marginRight="25dp" 
+     android:layout_marginBottom="5dp" >
+ 
+    
+     
+  
+    
+      <Button 
+           android:id="@+id/btn_saveExit"
+        android:layout_height="wrap_content"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:background="@drawable/custom_button"
+        android:textColor="#ffffff"
+       android:text="Save &amp; Exit"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"/>
+      
+      
+        <Button 
+             android:id="@+id/btn_continue"
+       android:layout_height="wrap_content"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:background="@drawable/custom_button"
+         android:textColor="#ffffff"
+         android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+         android:layout_marginLeft="10dp"
+        android:text="Continue" />
+</LinearLayout>
+
+</LinearLayout>
+ <!-- </ScrollView> -->

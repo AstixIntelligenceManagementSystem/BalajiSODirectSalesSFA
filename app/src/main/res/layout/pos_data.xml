@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+     android:id="@+id/posdata1"
+     android:background="@android:color/transparent"
+    android:layout_height="wrap_content"
+   
+    android:orientation="vertical" >
+     <View android:layout_width="match_parent"
+         android:layout_height="1dp"
+         android:background="#000"/>
+       <LinearLayout android:layout_width="match_parent"
+         android:background="@android:color/transparent"
+       android:layout_marginTop="0dp"
+       android:paddingTop="1.5dp"
+       android:paddingBottom="1.5dp"
+         android:orientation="horizontal"
+    android:layout_height="wrap_content">
+          
+            <LinearLayout  android:layout_width="0dp"
+                android:orientation="vertical"
+              android:layout_weight="1.4"
+               android:layout_height="match_parent" >
+             <TextView android:layout_width="match_parent"
+              
+               android:layout_height="wrap_content"
+               android:gravity="center"
+               android:text="product Name"
+                android:id="@+id/txtVProductname"
+                 android:focusable="true"
+    android:focusableInTouchMode="true"
+              
+              android:layout_marginLeft="1dp"
+          android:layout_marginRight="1dp"
+          android:layout_marginTop="2dp"
+          android:layout_marginBottom="2dp"
+           
+               android:textSize="10sp"
+           android:textColor="#000"
+               />
+             <LinearLayout  android:layout_width="match_parent"
+              android:layout_weight="1"
+               android:layout_height="0dp"
+               android:orientation="horizontal"
+               android:gravity="center" >
+                 <TextView android:layout_width="0dp"
+              android:layout_weight="1"
+               android:layout_height="match_parent"
+               android:gravity="center"
+               android:text="190"
+                android:id="@+id/st_Rate"
+                 android:focusable="true"
+    android:focusableInTouchMode="true"
+               android:background="@drawable/outside_boundry"
+              android:layout_marginLeft="1dp"
+          android:layout_marginRight="1dp"
+          android:layout_marginTop="1dp"
+          android:layout_marginBottom="1dp"
+            android:padding="1dp"
+               android:textSize="9sp"
+           android:textColor="#000"
+               />
+              <TextView android:layout_width="0dp"
+              android:layout_weight="1"
+               android:layout_height="match_parent"
+               android:gravity="center"
+               android:text="2000"
+                
+                 android:focusable="true"
+    android:focusableInTouchMode="true"
+                android:background="@drawable/outside_boundry"
+              android:layout_marginLeft="1dp"
+          android:layout_marginRight="1dp"
+          android:layout_marginTop="1dp"
+          android:layout_marginBottom="1dp"
+            android:padding="1dp"
+            android:id="@+id/last_transRate"
+               android:textSize="9sp"
+           android:textColor="#EB252B"
+               />
+             </LinearLayout>
+              
+             </LinearLayout>
+            <LinearLayout  android:layout_width="0dp"
+                android:orientation="vertical"
+              android:layout_weight="1"
+               android:layout_height="match_parent" >
+            <EditText android:layout_width="match_parent"
+              android:layout_weight="1"
+               android:layout_height="0dp"
+               android:gravity="center"
+               android:text=""
+                android:maxLength="6"
+                 
+                 
+                 android:id="@+id/RateOffer"
+    
+               android:background="@drawable/edittex_with_white_background"
+              android:layout_marginLeft="1dp"
+          android:layout_marginRight="1dp"
+          android:layout_marginTop="1dp"
+          android:layout_marginBottom="1dp"
+           android:padding="1dp"
+           android:inputType="numberDecimal"
+           
+               android:textSize="9sp"
+           android:textColor="#000"
+               />
+
+            <EditText
+                android:id="@+id/minDlv_qty"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="1dp"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_weight="1"
+                android:background="@drawable/edittex_with_white_background"
+               
+               
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="6"
+                android:padding="1dp"
+                android:textColor="#000"
+                android:textSize="9sp" >
+
+               
+            </EditText>
+
+             </LinearLayout>
+              <LinearLayout  android:layout_width="0dp"
+                android:orientation="vertical"
+              android:layout_weight="1"
+               android:layout_height="match_parent" >
+            <LinearLayout
+                  android:layout_width="match_parent"
+              android:layout_weight="1"
+               android:layout_height="0dp"
+               android:gravity="center"
+               android:text="20.44"
+                 android:visibility="gone"
+                 android:focusable="true"
+    android:focusableInTouchMode="true"
+               android:background="@drawable/outside_boundry"
+              android:layout_marginLeft="1dp"
+          android:layout_marginRight="1dp"
+          android:layout_marginTop="1dp"
+          android:layout_marginBottom="1dp"
+            android:padding="1dp"
+               android:textSize="10sp"
+           android:textColor="#EB252B" >
+              <CheckBox android:layout_width="wrap_content"
+                  android:layout_margin="1dp"
+                  android:id="@+id/includingTaxCheckbox"
+                 
+                  android:layout_height="wrap_content"/>
+              
+              
+              </LinearLayout>
+            
+            <TextView android:layout_width="match_parent"
+              android:layout_weight="0.5"
+               android:layout_height="0dp"
+               android:gravity="center"
+               android:text=""
+                android:id="@+id/st_ProductTax"
+                 android:focusable="true"
+    			android:focusableInTouchMode="true"
+               android:background="@drawable/outside_boundry"
+              android:layout_marginLeft="1dp"
+          android:layout_marginRight="1dp"
+          android:layout_marginTop="1dp"
+          android:layout_marginBottom="1dp"
+            android:padding="1dp"
+               android:textSize="9sp"
+           android:textColor="#000"
+               />
+            
+             <TextView android:layout_width="match_parent"
+              android:layout_weight="0.5"
+               android:layout_height="0dp"
+               android:gravity="center"
+               android:text="select"
+                android:id="@+id/UOM"
+                
+                android:background="@drawable/spinner_quotation"
+              android:layout_marginLeft="1dp"
+          android:layout_marginRight="1dp"
+          android:layout_marginTop="1dp"
+          android:layout_marginBottom="1dp"
+            android:padding="1dp"
+               android:textSize="10sp"
+           android:textColor="#000"
+               />
+            
+             </LinearLayout>
+              <LinearLayout  android:layout_width="0dp"
+                android:orientation="vertical"
+              android:layout_weight="1"
+               android:layout_height="match_parent" >
+             <TextView android:layout_width="match_parent"
+              android:layout_weight="1.1"
+               android:layout_height="0dp"
+               android:gravity="center"
+               android:text="21-mar-16"
+                android:drawableRight="@drawable/calander_quotation"
+                
+                 android:id="@+id/fromDate"
+    
+              android:background="@drawable/outside_boundry"
+              android:layout_marginLeft="1dp"
+          android:layout_marginRight="1dp"
+          android:layout_marginTop="1dp"
+          android:layout_marginBottom="1dp"
+            
+               android:textSize="9sp"
+           android:textColor="#000"
+               />
+              <TextView android:layout_width="match_parent"
+              android:layout_weight="1.1"
+               android:layout_height="0dp"
+               android:gravity="center"
+               android:text="12-april-16"
+                
+               
+    
+              android:background="@drawable/outside_boundry"
+              android:layout_marginLeft="1dp"
+          android:layout_marginRight="1dp"
+          android:id="@+id/todate"
+          android:layout_marginTop="1dp"
+          android:layout_marginBottom="1dp"
+           android:drawableRight="@drawable/calander_quotation"
+               android:textSize="9sp"
+           android:textColor="#000"
+               />
+             </LinearLayout>
+              
+              <EditText android:layout_width="0dp"
+              android:layout_weight="2"
+               android:layout_height="match_parent"
+               android:gravity="center"
+               android:hint="Remark"
+                android:id="@+id/remarktext"
+              
+               android:background="@drawable/edittex_with_white_background"
+              android:layout_marginLeft="1dp"
+          android:layout_marginRight="1dp"
+          android:layout_marginTop="3dp"
+          android:layout_marginBottom="3dp"
+           android:digits="@string/remarks"
+               android:textSize="10sp"
+           android:textColor="#000"
+               />
+            <ImageView android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:layout_margin="1dp"
+                  android:visibility="gone"
+                  android:id="@+id/delete_icon_quotation"
+                  android:src="@drawable/delete_quotation"/>
+         
+         
+         
+     </LinearLayout>
+         
+     
+    
+
+</LinearLayout>

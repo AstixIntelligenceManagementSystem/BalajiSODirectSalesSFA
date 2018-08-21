@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<LinearLayout
+    android:id="@+id/activity_distributor_map"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    >
+
+   <!-- <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="#a25611"
+
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextAppearance="@style/Toolbar.TitleText" >
+
+        <ImageView
+            android:id="@+id/img_back_Btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:paddingRight="10dp"
+            android:src="@drawable/ic_back"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:visibility="visible"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:text="Map Distributor"/>
+
+        <ImageView
+            android:id="@+id/logoutIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:paddingRight="10dp"
+            android:visibility="invisible"
+            android:src="@drawable/logout30"
+            android:textSize="15sp" />
+
+    </android.support.v7.widget.Toolbar>
+-->
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:orientation="horizontal"
+        android:background="@drawable/custom_header_color"
+        >
+
+        <ImageView
+            android:id="@+id/img_back_Btn"
+            android:layout_width="0dp"
+            android:layout_weight="0.20"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/ic_back" />
+
+        <TextView   android:id="@+id/bardd"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.60"
+            android:text="@string/Warehouse"
+            android:textStyle="bold"
+
+            android:textColor="#ffffff"
+            android:typeface="normal"
+            android:paddingLeft="10dp"
+            android:gravity="center"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/imgVw_logout"
+            android:layout_width="0dp"
+            android:layout_weight="0.20"
+            android:visibility="invisible"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="5dp"
+            android:src="@drawable/logout_new" />
+
+    </LinearLayout>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="5dp"
+        android:id="@+id/spinner_for_filter"
+        android:visibility="gone"
+        android:background="@drawable/spinner_distribtr_bckgrnd"
+        />
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="visible"
+        android:id="@+id/ll_parentLayout"
+        android:orientation="vertical">
+
+        <!--<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="vertical">-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:id="@+id/ll_gstDetails"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="2dp"
+                android:visibility="gone"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.20"
+                    android:text="GST"
+                    android:id="@+id/txt_gst"
+                    android:gravity="left"
+                    android:paddingTop="6dp"
+                    android:paddingLeft="9dp"
+                    android:textColor="@color/blue"
+                    android:textSize="14sp"
+                    />
+
+                <RadioGroup
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.70"
+                    android:gravity="center"
+
+                    android:orientation="horizontal"
+                    >
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="0.80"
+                        android:gravity="left"
+                        android:layout_height="match_parent"
+                        android:text="Yes"
+                        android:paddingTop="6dp"
+                        android:paddingLeft="10dp"
+                        android:id="@+id/rb_gstYes"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="0.80"
+                        android:layout_height="match_parent"
+                        android:text="No"
+                        android:paddingTop="6dp"
+                        android:paddingLeft="10dp"
+                        android:gravity="left"
+                        android:id="@+id/rb_gstNo"
+                        android:textSize="14sp" />
+
+                    <RadioButton
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:text="Pending"
+                        android:paddingTop="6dp"
+                        android:paddingLeft="10dp"
+                        android:gravity="left"
+                        android:textSize="14sp"
+                        android:id="@+id/rb_gstPending" />
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
+                android:id="@+id/edit_gstYesVal"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:gravity="left"
+                android:maxLength="15"
+                android:digits="0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:background="@drawable/et_boundary"
+                android:visibility="gone"
+                android:textSize="12sp"
+                android:hint="Enter Gst No."/>
+
+        </LinearLayout>
+
+
+
+
+            <!--<LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.95"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/shadow_with_5dp"
+                android:orientation="vertical">-->
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+            android:background="@drawable/center_boundary"
+                android:orientation="vertical"
+            android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ll_locationDetails"
+                    android:layout_margin="8dp"
+                    android:orientation="vertical"
+                    >
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.80"
+            android:id="@+id/ll_showMap"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:orientation="vertical">
+           <!-- <LinearLayout
+                android:id="@+id/fragmentForm"
+             android:orientation="vertical"
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+
+                android:layout_height="0dp"
+                android:layout_weight="1"/>-->
+            <LinearLayout
+                android:id="@+id/ll_map"
+                android:layout_width="match_parent"
+                android:visibility="visible"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.MapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_height="350dp"
+
+
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:id="@+id/tv_MapLocationCorrectText"
+                    android:text="Location on map is correct according to you?"/>
+                <RadioGroup
+                    android:id="@+id/rg_yes_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/rb_yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yes"/>
+                    <RadioButton
+                        android:id="@+id/rb_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No"/>
+                </RadioGroup>
+                <LinearLayout
+                    android:id="@+id/ll_refresh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:visibility="gone"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/txt_rfrshCmnt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.7"
+                        android:layout_gravity="fill"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:paddingBottom="10dp"
+                        android:textColor="@android:color/black"
+                        android:text="If you are inside store then please go out of the store and then click refresh button to update you location"/>
+                    <Button android:layout_width="0dp"
+                        android:layout_weight="0.2"
+                        android:background="@drawable/logo_background"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+
+                        android:textColor="#FFFF4424"
+
+                        android:id="@+id/btn_refresh"
+                        android:textStyle="bold"
+                        android:text="Refresh"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.10"
+        android:padding="4dp"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Exit"
+            android:id="@+id/btn_exit"
+            android:layout_weight="0.5"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:background="@drawable/custom_button"
+            android:visibility="gone"
+            android:textSize="14sp"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txtNext"
+            android:id="@+id/btn_submit"
+            android:layout_weight="0.5"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:background="@drawable/custom_button"
+            android:textSize="14sp"/>
+        </LinearLayout>
+
+</LinearLayout>
+</ScrollView>

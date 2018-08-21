@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+   android:weightSum="1"
+   android:background="#ffffff"
+   
+    >
+    
+    <TextView
+        android:id="@+id/tv_prdct_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+       android:layout_alignParentTop="true"
+        android:layout_weight=".75"
+       android:paddingRight="10dp"
+    		android:paddingTop="10dp"
+    			android:paddingBottom="10dp"
+    		android:textColor="#000000"
+    	android:gravity="center_vertical"
+        android:text="Buttwer_Milk" />
+    <Spinner 
+        android:id="@+id/spnr_Qty"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tv_prdct_name"
+        android:layout_alignParentRight="true"
+        android:layout_weight="0.25"
+        android:layout_alignParentTop="true"
+     android:background="@drawable/spinner_bckground_alert"
+      android:layout_alignBottom="@+id/tv_prdct_name"
+      
+        
+        />
+    <EditText 
+        android:id="@+id/editText_Qty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tv_prdct_name"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:layout_marginLeft="5dp"
+           android:layout_alignBottom="@+id/tv_prdct_name"
+          android:visibility="gone"
+        
+        />
+</LinearLayout>

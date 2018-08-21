@@ -1,0 +1,155 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+
+    </style>
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">18sp</item>
+    </style>
+    <style name="AlertDialogDayEndTheme" parent="android:Theme.Dialog">
+        <item name="android:textSize">16sp</item>
+        <item name="android:maxHeight">200dp</item>
+    </style>
+
+    <style name="marketVisitTheme" parent="Theme.AppCompat.Light.Dialog">
+        <item name="windowNoTitle">true</item>
+        <item name="android:textColor">#000</item>
+    </style>
+
+    <style name="MyThemewithdarkText.ActionBar.TabText" parent="android:style/Widget.Holo.ActionBar.TabText">
+        <!-- This is a WHITE tab color -->
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingLeft">1dp</item>
+        <item name="android:divider">@android:color/black</item>
+        <item name="android:paddingRight">1dp</item>
+ </style>
+
+    <style name="MyTheme.ActionBar.TabText" parent="android:style/Widget.Holo.ActionBar.TabText">
+        <!-- This is a WHITE tab color -->
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingLeft">1dp</item>
+        <item name="android:divider">@android:color/white</item>
+        <item name="android:paddingRight">1dp</item>
+
+
+
+    </style>
+
+    <style name="MyTheme.MyActionBar.TitleTextStyle"
+           parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Subtitle">
+        <!-- This is a WHITE tab color -->
+        <item name="android:shadowRadius">0</item>
+        <item name="android:shadowDy">0</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">#80FFFFFF</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">18sp</item>
+
+
+    </style>
+
+    <style name="MyTheme.MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:titleTextStyle">@style/MyTheme.MyActionBar.TitleTextStyle</item>
+        <item name="android:divider">@android:color/white</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <style name="MyThemeTabWithdarktext" parent="@android:style/Theme.Holo.Light">
+
+        <item name="android:actionBarTabTextStyle">@style/MyThemewithdarkText.ActionBar.TabText</item>
+        <item name="android:actionBarStyle">@style/MyTheme.MyActionBar</item>
+
+
+    </style>
+
+    <style name="MyThemeTab"
+           parent="@android:style/Theme.Holo.Light.DarkActionBar">
+
+        <item name="android:actionBarTabTextStyle">@style/MyTheme.ActionBar.TabText</item>
+        <item name="android:actionBarStyle">@style/MyTheme.MyActionBar</item>
+
+
+    </style>
+
+    <style name="Dialog">
+        <item name="android:textColorPrimary">@color/primary_text</item>
+        <item name="android:textColor">@color/primary_color</item>
+    </style>
+
+
+    <style name="detailActivityTheme" parent="AppT"></style>
+    <style name="AppT" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimaryDark">@color/primaryDarkColor</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorPrimary">@color/black</item>
+        <!--  <item name="colorPrimary">@color/primaryColor</item>
+
+
+        <item name="colorAccent">@color/accentColor</item> -->
+    </style>
+
+
+
+
+    <style name="side_dialog_animation">
+
+        <item name="android:windowEnterAnimation">@anim/left_in</item>
+
+        <item name="android:windowExitAnimation">@anim/left_out</item>
+
+    </style>
+
+    <style name="AlertDialogTheme" parent="android:Theme.Dialog">
+        <item name="android:textSize">12sp</item>
+
+    </style>
+
+    <style name="MyTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">#000</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="CustomFontStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
+    <style name="CustomEditStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:background">@drawable/et_boundary</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <style name="CustomEditTextStyle">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#000</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+    </style>
+    <style name="StorelistTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="colorPrimaryDark">@color/storelisttopcolor</item>
+        <item name="colorAccent">@color/radiocolor</item>
+        <item name="colorControlNormal">@color/radiocolor</item>
+        <item name="colorControlActivated">@color/radiocolor</item>
+        <!--  <item name="android:windowTranslucentStatus">true</item>  -->
+        <!--  <item name="colorPrimary">@color/primaryColor</item>
+
+
+        <item name="colorAccent">@color/accentColor</item> -->
+    </style>
+
+</resources>

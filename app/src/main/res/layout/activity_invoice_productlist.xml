@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+   android:background="#ffffff"
+    android:orientation="vertical"
+  
+    android:weightSum="1"
+    tools:context=".StoreSelection" >
+
+    <RelativeLayout 
+   
+    android:layout_height="46dp" 
+    android:layout_width="fill_parent" 
+    android:background="@drawable/custom_header_color"
+    android:paddingLeft="16dp"
+    
+   android:id="@+id/rtv_hdr">
+    
+    <ImageView 
+    android:id="@+id/btn_bck"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_back"
+   
+    android:layout_centerVertical="true"
+    android:layout_alignParentLeft="true"/>
+<TextView 
+   android:id="@+id/order_detail"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="#FFFFFF"
+    android:layout_toRightOf="@+id/btn_bck"
+   android:paddingLeft="10dp"
+   android:layout_centerVertical="true"
+      android:shadowRadius="7" 
+    android:shadowDy="4" 
+    android:shadowDx="4" 
+	android:textStyle="bold"
+    android:shadowColor="#80FFFFFF" 
+    android:textSize="18sp"
+    android:text="@string/DelDetails"/>
+
+
+
+</RelativeLayout>
+
+     <LinearLayout
+        android:id="@+id/ll_second"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rtv_hdr"
+     
+        android:visibility="gone">
+        
+     
+
+                <TextView
+                    android:id="@+id/textView1_battstat2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="0dp"
+                    android:text="@string/prodlstCategoryName"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                
+                
+                <Spinner  android:id="@+id/competition_spinner"
+                          android:layout_width="match_parent"
+                          android:layout_height="40dp"
+                          android:layout_marginLeft="1dp"
+                          android:textSize="12dp"
+                          android:background="@drawable/invoice_spinner_bckground"
+                          android:layout_toRightOf="@id/textView1_battstat2"/>
+                   
+                
+                
+                
+            
+    </LinearLayout>
+
+    <LinearLayout
+       
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+      android:layout_above="@+id/ll_buttons"
+      android:layout_below="@+id/ll_second"
+        
+        >
+       
+        
+        
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            
+            >
+
+            <TextView
+                android:id="@+id/textView1_scheme1111"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="@string/DistbtrName"
+                android:textSize="@dimen/ProductClassHeadingTextSize"
+                android:textStyle="bold" 
+               />
+
+            <TextView
+                android:id="@+id/textView1_schemeVAL1111"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textView1_scheme"
+                android:paddingBottom="10dp"
+                android:text="Sunil"
+                android:layout_marginLeft="30dp"
+                 
+                android:textSize="@dimen/ProductClassHeadingTextSize" />
+
+            <TextView
+                android:id="@+id/textView1_scheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/StoreName"
+                android:textSize="@dimen/ProductClassHeadingTextSize"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView1_schemeVAL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@+id/textView1_scheme"
+                android:paddingBottom="10dp"
+                android:text="Anand Store"
+                
+                android:textSize="@dimen/ProductClassHeadingTextSize" />
+            </RelativeLayout>
+            
+        <RelativeLayout
+            android:id="@+id/Rl1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            >
+             <TableLayout
+                android:id="@+id/tabLayoutHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="#000000"
+               android:stretchColumns="*" >
+
+                <TableRow 
+                    android:id="@+id/trHeader"
+                    android:layout_margin="0.2dp"
+                     >
+
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                        android:layout_width="0dip"
+                        android:layout_weight="2.8"
+                        android:text="@string/productlist_tblproduct"
+                        android:gravity="center_horizontal"
+                        android:layout_height="fill_parent"
+                        android:textSize="@dimen/ProductClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+
+                    
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                         android:layout_width="0dip"
+                        android:layout_weight="1.5"
+                        android:text="@string/prodlstRate"
+                         android:gravity="center_horizontal"
+                        android:layout_height="fill_parent"
+                        android:textSize="@dimen/ProductClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+
+                    
+
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                        android:layout_height="fill_parent"
+                         android:layout_width="0dip"
+                        android:layout_weight="1.3"
+                         android:gravity="center_horizontal"
+                        android:text="@string/prodlstOQty"
+                        android:textSize="@dimen/ProductClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                         android:layout_width="0dip"
+                        android:layout_weight="1.3"
+                        android:layout_height="fill_parent"
+                        android:text="@string/DelQty"
+                         android:gravity="center_horizontal"
+                        android:textSize="@dimen/ProductClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                         android:layout_width="0dip"
+                         android:layout_height="fill_parent"
+                        android:layout_weight="1.3"
+                        android:text="@string/productlist_tblfqty"
+                         android:gravity="center_horizontal"
+                        android:textSize="@dimen/ProductClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                         android:layout_width="0dip"
+                         android:layout_height="fill_parent"
+                        android:layout_weight="1.3"
+                         android:gravity="center_horizontal"
+                        android:text="@string/prodlstDvalue"
+                        android:textSize="@dimen/ProductClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+                    
+                </TableRow>
+            </TableLayout>
+            
+            </RelativeLayout>
+        <ScrollView
+                android:id="@+id/View134"
+                android:layout_width="wrap_content"
+              	android:layout_height="wrap_content"
+                 >
+        <LinearLayout
+            android:id="@+id/relativeLayout2345"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        
+                     
+            <ScrollView
+                android:id="@+id/verticalScrollView1"
+                android:layout_width="match_parent"
+              	android:layout_below="@id/tabLayoutHeader"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content"
+              
+                 >
+
+                <TableLayout
+                    android:id="@+id/dynprodtable"
+                  	android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                   	android:stretchColumns="*" 
+                   	android:background="#000000" >
+
+                </TableLayout>
+           </ScrollView>
+           
+         
+    
+            
+            <LinearLayout 
+                 android:id="@+id/additionalDiscount"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:layout_marginTop="20dp"
+    
+     >
+ 
+    <TextView
+                    android:id="@+id/tvadditionalDiscount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   
+                    
+                    android:layout_marginLeft="50dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/prodlstAdditionalDiscount"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+                
+                <EditText
+                            android:id="@+id/tvadditionalDiscountValue"
+                            android:background="#d8e2ee"
+                            android:textSize="14dp"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                             android:layout_width="wrap_content"
+                     		android:layout_marginLeft="65dp"
+                    		
+                            android:scrollHorizontally="true"
+                            android:hint="000"
+                            android:inputType="number"
+                            android:digits="0123456789"
+                            android:maxLength="10"
+                           android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true" />
+    
+    </LinearLayout>
+            
+                
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:id="@+id/relativeINvoice"
+                android:layout_height="wrap_content"
+            
+                android:layout_below="@id/verticalScrollView1"
+                android:paddingTop="1dp"
+                android:background="@drawable/my_main_border"
+                android:visibility="gone" >
+                  
+                 <TextView
+                    android:id="@+id/textView1_CredAmtblankheader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="1dp"
+                    android:text=""
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                     android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/textView1_CredAmtVALheader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_CredAmtblankheader"
+                    android:layout_marginLeft="145dp"
+                    android:layout_toRightOf="@id/textView1_CredAmtblankheader"
+                    android:text="@string/productlist_cramt"
+                    android:textStyle="bold"
+                    android:textSize="8sp"
+                    android:visibility="gone" />
+    
+    <TextView
+                    android:id="@+id/textView1_CredAmtVALheader22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_CredAmtVALheader"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/textView1_CredAmtVALheader"
+                    android:text="@string/productlist_cradj"
+                    android:textStyle="bold"
+                    android:textSize="8sp"
+                    android:visibility="gone" />
+     
+   <TextView
+                    android:id="@+id/textView1_INafterCredVALheader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_CredAmtVALheader22"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/textView1_CredAmtVALheader22"
+                    android:text="@string/productlist_crbal"
+                    android:textStyle="bold"
+                    android:textSize="8sp"
+                     android:visibility="gone" />
+                
+                <TextView
+                    android:id="@+id/textView1_CredAmt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="1dp"
+                    android:layout_below="@id/textView1_CredAmtblankheader"
+                    android:text="@string/productlist_creditamount"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/textView1_CredAmtVAL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_CredAmt"
+                    android:layout_alignLeft="@id/textView1_CredAmtVALheader"
+                    android:layout_toRightOf="@id/textView1_CredAmt"
+                    android:text="0.00"
+                    android:textSize="12sp"
+                     android:visibility="gone" />
+    
+    <TextView
+                            android:id="@+id/textView1_CredAmtVAL_new"
+                            android:textSize="12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/textView1_CredAmtVAL"
+                            android:layout_alignBaseline="@id/textView1_CredAmt"
+                            android:layout_alignLeft="@id/textView1_CredAmtVALheader22"
+                            android:text="0.00"
+                            android:visibility="gone" />
+     
+   <TextView
+                    android:id="@+id/textView1_INafterCredVAL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_CredAmtVAL_new"
+                    android:layout_toRightOf="@id/textView1_CredAmtVAL_new"
+                    android:layout_alignLeft="@id/textView1_INafterCredVALheader"
+                    android:text="0.00"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                 <TextView
+                    android:id="@+id/textView1_discount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:layout_below="@id/textView1_CredAmt"
+                    android:text="@string/productlist_productleveldiscount"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" 
+                     />
+
+                <TextView
+                    android:id="@+id/textView1_v3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_discount"
+                    
+                    android:layout_toRightOf="@id/textView1_discount"
+                    android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                    android:text="0.00"
+                    android:textSize="12sp"
+                    android:visibility="gone"  />
+                
+                <TextView
+                    android:id="@+id/textView1_freeTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView1_discount"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="1dp"
+                    android:text="@string/productlist_freeqtytotal"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView1_v5"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_alignBaseline="@id/textView1_freeTotal"
+                    android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                    android:layout_toRightOf="@id/textView1_freeTotal"
+                    android:text="0"
+                    android:textSize="12sp" />
+                
+                
+                <TextView
+                    android:id="@+id/textView1_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="1dp"
+                    android:layout_below="@id/textView1_freeTotal"
+                    android:text="@string/productlist_netinvoicevalue"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView1_v1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                     android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                    android:layout_alignBaseline="@id/textView1_total"
+                    
+                    android:layout_toRightOf="@id/textView1_total"
+                    android:text="0.00"
+                    android:textSize="12sp" />
+                
+                <TextView
+                    android:id="@+id/textView1_AdditionalDiscount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="1dp"
+					 android:layout_below="@id/textView1_total"
+                    android:text="@string/productlist_nadditionaldiscount"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"  />
+
+                <TextView
+                    android:id="@+id/textView1_AdditionalDiscountVAL"
+                   
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_AdditionalDiscount"
+                     android:layout_width="match_parent"
+                     android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                    android:layout_toRightOf="@id/textView1_AdditionalDiscount"
+                    android:text="0.00"
+                    android:textSize="12sp"
+                    android:visibility="gone"  />
+                
+                <TextView
+                    android:id="@+id/textView1_INvalOFtaDIS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="1dp"
+					android:layout_below="@id/textView1_AdditionalDiscount"
+                    android:text="@string/productlist_invoiceaftdiscount"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"  />
+
+                <TextView
+                    android:id="@+id/textView1_INvalOFtaDISVAL"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_INvalOFtaDIS"
+                     android:layout_width="match_parent"
+                     android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                    android:layout_toRightOf="@id/textView1_INvalOFtaDIS"
+                    android:text="0.00"
+                    android:textSize="12sp"
+                    android:visibility="gone"  />
+                
+
+                <TextView
+                    android:id="@+id/textView1_tax"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView1_INvalOFtaDIS"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="1dp"
+                    android:text="@string/productlist_taxamount"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView1_v2"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_tax"
+                     android:layout_width="match_parent"
+                     android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                    android:layout_toRightOf="@id/textView1_tax"
+                    android:text="0.00"
+                    android:textSize="12sp" />
+
+                
+
+                <TextView
+                    android:id="@+id/textView1_invoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView1_tax"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="1dp"
+                    android:text="@string/productlist_grossinvoicevalue"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView1_v4"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_invoice"
+                     android:layout_width="match_parent"
+                     android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                    android:layout_toRightOf="@id/textView1_invoice"
+                    android:text="0.00"
+                    android:textSize="12sp" />
+                
+                
+                <RelativeLayout 
+                              android:id="@+id/coupon_layout"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_below="@id/textView1_invoice"
+                              android:visibility="gone">
+                
+                
+                
+                
+                
+                
+                
+                <TextView
+                    android:id="@+id/tvNoOfCoupon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   
+                     android:layout_marginLeft="5dp"
+                    
+                    android:paddingTop="5dp"
+                    android:text="@string/productlist_noofcoupons"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+                
+                <EditText
+                            android:id="@+id/tvNoOfCouponValue"
+                            android:background="#d8e2ee"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                             android:layout_width="match_parent"
+                     		android:layout_marginLeft="65dp"
+                    			android:gravity="right"
+                            android:layout_toRightOf="@id/tvNoOfCoupon"
+                            android:layout_alignBaseline="@id/tvNoOfCoupon"
+                            android:scrollHorizontally="true"
+                            android:hint="0"
+                            android:inputType="number"
+                            android:digits="0123456789"
+                            android:maxLength="5"
+                           android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true" />
+                
+                <TextView
+                    android:id="@+id/tvCouponAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvNoOfCoupon"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/productlist_totalcouponamount"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+                
+                <EditText
+                            android:id="@+id/tvCouponAmountValue"
+                            android:background="#d8e2ee"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                             android:layout_width="match_parent"
+                     android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                            android:layout_toRightOf="@id/tvCouponAmount"
+                            android:layout_alignBaseline="@id/tvCouponAmount"
+                            android:scrollHorizontally="true"
+                            android:hint="0.00"
+                            android:inputType="number"
+                            android:digits="0123456789"
+                            android:maxLength="6"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true" />
+                
+                
+                 
+                
+                </RelativeLayout>
+                
+                
+                
+                <TextView
+                    android:id="@+id/tvAmtPrevDue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/coupon_layout"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/AmountPrevDue"
+                    android:textSize="@dimen/ProductClassHeadingTextSize"
+                    android:textStyle="bold" 
+                     android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/tvAmtPrevDueVAL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/tvAmtPrevDue"
+                 android:layout_alignLeft="@id/textView1_CredAmtVALheader22"
+                    android:layout_toRightOf="@id/tvAmtPrevDue"
+                    android:text="0.00"
+                     android:visibility="gone"
+                    android:textSize="@dimen/ProductClassHeadingTextSize" />
+                
+                  <TextView
+                    android:id="@+id/tvAmtColl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_below="@id/tvAmtPrevDue"
+                    android:paddingTop="1dp"
+                    android:text="@string/AmtCollctd"
+                    android:visibility="gone"
+                    android:textSize="@dimen/ProductClassHeadingTextSize"
+                    android:textStyle="bold" />
+ 
+                <EditText
+                            android:id="@+id/etAmtCollVAL"
+                            android:background="#d8e2ee"
+                            android:textSize="@dimen/ProductClassHeadingTextSize"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                           android:visibility="gone"
+                            android:singleLine="true"
+                            android:layout_alignLeft="@id/textView1_CredAmtVALheader22"
+                            android:layout_toRightOf="@id/tvAmtColl"
+                            android:layout_alignBaseline="@id/tvAmtColl"
+                            android:scrollHorizontally="true"
+                            android:hint="0.00"
+                            android:inputType="number"
+                            android:digits="0123456789"
+                            android:maxLength="6"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true" />
+                
+                
+                <TextView
+                    android:id="@+id/tvAmtOutstanding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvAmtColl"
+                    android:layout_marginLeft="5dp"
+                   android:visibility="gone"
+                    android:paddingTop="1dp"
+                    android:text="@string/AmtOutStnding"
+                    android:textSize="@dimen/ProductClassHeadingTextSize"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvAmtOutstandingVAL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/tvAmtOutstanding"
+                  android:layout_alignLeft="@id/textView1_CredAmtVALheader22"
+                    android:layout_toRightOf="@id/tvAmtOutstanding"
+                    android:text="0.00"
+                    android:visibility="gone"
+                    android:textSize="@dimen/ProductClassHeadingTextSize" />
+
+                
+            </RelativeLayout>
+                   
+
+              </LinearLayout> 
+        
+         </ScrollView>
+             
+   
+    </LinearLayout>
+    
+    
+     
+       
+   
+   <LinearLayout 
+    android:id="@+id/ll_buttons"
+    
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:gravity="center"
+    android:weightSum="2"
+    android:layout_alignParentBottom="true"
+ 	android:paddingLeft="16dp"
+ 	android:paddingRight="16dp"
+    android:layout_marginBottom="10dp"
+    
+    >
+    
+    
+    <Button  
+    android:id="@+id/But_Conform_Select_Invoice"  
+   android:layout_height="wrap_content"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:background="@drawable/custom_button"
+         android:textColor="#ffffff"
+         android:gravity="center"
+         android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+         
+        android:text="@string/ExecuteOrder" >
+</Button> 
+
+    <Button  
+    android:id="@+id/But_Cancel_Select"  
+     android:layout_height="match_parent"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:background="@drawable/custom_button"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:layout_marginLeft="5dp"
+        android:text="@string/txtCancelOrder"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">  
+</Button> 
+ 
+
+    
+    
+</LinearLayout>
+    
+</RelativeLayout>

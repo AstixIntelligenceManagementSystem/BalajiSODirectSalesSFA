@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="15dp"
+    android:paddingTop="5dp"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_report_scope"
+        android:background="@drawable/logo_background"
+        android:padding="5dp"
+        android:textColor="#FFFF4424"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="6dp"
+        android:gravity="center"/>
+
+    <RadioButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Own Working"
+        android:padding="4dp"
+        android:id="@+id/rb_myReport"
+        android:visibility="visible"/>
+
+    <RadioButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/individual_dsr"
+        android:padding="4dp"
+        android:id="@+id/rb_dsrReport"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:visibility="gone"
+        android:background="@drawable/spinner_boundary"
+        android:id="@+id/spinner_dsrVisit"
+        android:layout_height="wrap_content">
+    </Spinner>
+
+    <RadioButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/full_territory"
+        android:padding="4dp"
+        android:id="@+id/rb_WholeReport"/>
+
+    <RadioButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/distributor_scope"
+        android:padding="4dp"
+        android:id="@+id/rb_distrbtrScope"
+        android:visibility="gone"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:visibility="gone"
+        android:background="@drawable/spinner_boundary"
+        android:id="@+id/spinner_distrbtrScope"
+        android:layout_height="wrap_content">
+    </Spinner>
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_attendance_scope"
+        android:background="@drawable/logo_background"
+        android:padding="5dp"
+        android:layout_marginTop="10dp"
+        android:textColor="#FFFF4424"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="6dp"
+        android:gravity="center"
+        android:visibility="visible"/>
+
+    <RadioButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_attendance_report"
+        android:padding="4dp"
+        android:id="@+id/rb_dsrAttendance"
+        android:visibility="visible"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:visibility="visible"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:text="@string/txtProceed"
+            android:textSize="14sp"
+            android:id="@+id/btn_proceed"
+            android:background="@drawable/btn_background"
+            style="?android:attr/borderlessButtonStyle"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:text="@string/txtCancle"
+            android:textSize="14sp"
+            android:id="@+id/btn_cancel"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/btn_background"
+            style="?android:attr/borderlessButtonStyle"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="project.astix.com.balajisosfadirectsales.StoreClosedActivity">
+
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@drawable/custom_header_color"
+        android:padding="12dp"
+        android:id="@+id/rtv_hdr">
+
+        <ImageView
+            android:id="@+id/btn_bck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back_new"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/order_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:paddingLeft="10dp"
+            android:shadowRadius="7"
+            android:shadowDy="4"
+            android:shadowDx="4"
+            android:textStyle="bold"
+            android:shadowColor="#80FFFFFF"
+            android:textSize="18sp"
+            android:text="@string/StrClosedHeader"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:src="@drawable/ic_back_new"
+            android:layout_alignParentRight="true" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/ll_spinner"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_below="@+id/rtv_hdr">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/StrClosedReason"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            android:gravity="left|center"
+            android:paddingLeft="4dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            />
+
+        <TextView
+            android:id="@+id/drpdwn_closeReason"
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_height="match_parent"
+            android:background="@drawable/spinner_bckground"
+            android:text="@string/txtSelect"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            android:paddingLeft="4dp"
+            android:gravity="left|center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            />
+
+    </LinearLayout>
+
+
+
+    <EditText
+        android:id="@+id/et_OtherReason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top|left"
+        android:minLines="3"
+        android:padding="8dp"
+        android:textStyle="normal"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_below="@+id/ll_spinner"
+        android:background="@drawable/et_boundary_retrun"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/clkStrClosePic"
+        android:textAllCaps="false"
+        android:visibility="visible"
+        android:id="@+id/btn_clickPic"
+        android:drawableRight="@drawable/camera_clkd"
+        android:drawablePadding="8dp"
+        android:textSize="14sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:background="@drawable/trial_custom_display_photo"
+        android:layout_below="@+id/et_OtherReason"
+        android:layout_alignRight="@+id/et_OtherReason"
+        android:layout_alignEnd="@+id/et_OtherReason" />
+
+    <project.astix.com.balajisosfadirectsales.ExpandableHeightGridView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_clickPic"
+        android:layout_above="@+id/btn_save"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="2dp"
+        android:visibility="visible"
+        android:layout_marginTop="5dp"
+        android:numColumns="3"
+        android:background="@drawable/blue_brder_trsnprnt_bck"
+        android:id="@+id/expnd_GridView">
+
+    </project.astix.com.balajisosfadirectsales.ExpandableHeightGridView>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:text="@string/Save"
+        android:textSize="13sp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="4dp"
+        android:background="@drawable/custom_button"/>
+
+</RelativeLayout>

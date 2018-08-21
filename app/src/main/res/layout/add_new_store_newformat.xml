@@ -1,0 +1,576 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<ScrollView  
+    xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:id="@+id/ScrollView01"  
+    android:layout_width="match_parent"  
+    android:layout_height="match_parent" 
+    android:scrollbars="vertical"
+   >
+    
+    <LinearLayout  
+        android:layout_width="fill_parent"  
+        android:orientation="vertical"  
+        android:layout_height="fill_parent">  
+        
+        
+        
+        
+        <RelativeLayout 
+    android:layout_height="46dp" 
+    android:layout_width="fill_parent" 
+    android:background="#0070AF"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:id="@+id/rtv_hdr">
+    
+    <Button 
+    android:id="@+id/btn_bck"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+   android:background="@drawable/ic_back"
+    android:layout_alignParentLeft="true"/>
+  <TextView 
+   android:id="@+id/order_detail"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="#FFFFFF"
+    android:layout_toRightOf="@+id/backbutton"
+    android:paddingLeft="10dp"
+ 	android:layout_centerInParent="true"
+    android:gravity="center_horizontal|left"
+    
+	android:textStyle="bold"
+    android:shadowColor="#80FFFFFF" 
+    android:textSize="18sp"
+    android:text="New Store Details"/>
+
+ 
+</RelativeLayout>
+    
+    
+    <LinearLayout  
+         android:id="@+id/one"
+        android:layout_width="fill_parent"  
+        android:orientation="vertical"  
+        android:layout_height="fill_parent">
+				
+				   
+				    <TextView 
+					        android:id="@+id/textView_Route"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:text="Route Name"
+					        android:textStyle="bold"
+					        android:textColor="#2F1D85"
+					        android:layout_marginLeft="12dp" />
+				        	
+				    <Spinner  
+				    		android:id="@+id/SpinnerRoute"  
+				    		android:layout_height="wrap_content"  
+				    		android:prompt="@string/spinner_route"  
+				    		android:layout_width="fill_parent" 
+				    		android:background="@drawable/new_spiner_background" 
+				    		
+				    		android:layout_marginLeft="10dp"
+			                android:layout_marginRight="10dp"
+			            
+			                /> 	    
+					    
+					    
+
+				 </LinearLayout> 
+				 
+    
+    
+    
+    
+    <LinearLayout  
+        android:id="@+id/three"
+        android:layout_width="fill_parent"  
+        android:orientation="vertical"  
+        android:layout_height="fill_parent">  
+ 
+
+					<TextView 
+					        android:id="@+id/textView_store_name"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:text="Store Name"
+					        android:textStyle="bold"
+					        android:textColor="#2F1D85"
+					        android:layout_marginLeft="12dp" />
+
+					<EditText
+					    android:id="@+id/store_name"
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+					    android:layout_marginLeft="10dp"
+					    android:layout_marginRight="10dp"
+					    android:digits="@string/only_alpha_numeric"
+					    android:ems="10"
+					    android:hint="Store Name"
+					    android:inputType="textFilter"
+					    android:maxLength="50" 
+					    >
+                        
+					    <requestFocus />
+					</EditText>
+					
+					
+					
+					<TextView 
+					        android:id="@+id/textView_retailer_name"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:text="Owner Name"
+					        android:textStyle="bold"
+					        android:maxLength="100"
+					        android:textColor="#2F1D85"
+					        android:layout_marginLeft="12dp" />        
+					    
+					 <EditText  
+					        android:id="@+id/retailer_name"  
+					        android:layout_height="wrap_content"  
+					        android:hint="Owner Name" 
+					        android:inputType="textFilter"
+					        android:maxLength="100"
+					       android:digits="@string/only_alpha_numeric"
+					        android:layout_marginLeft="10dp"
+			                android:layout_marginRight="10dp"
+					        android:layout_width="fill_parent" />  
+					        
+					 <TextView 
+					        android:id="@+id/textView_email_id"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:text="Email Id"
+					        android:textStyle="bold"
+					        android:maxLength="100"
+					        android:textColor="#2F1D85"
+					        android:layout_marginLeft="12dp" />        
+					    
+					 <EditText  
+					        android:id="@+id/email_id"  
+					        android:layout_height="wrap_content"  
+					        android:hint="Email Id" 
+					        android:inputType="textFilter"
+					        android:maxLength="100"
+					       
+					        android:layout_marginLeft="10dp"
+			                android:layout_marginRight="10dp"
+					        android:layout_width="fill_parent" /> 
+					        
+					 <TextView 
+					        android:id="@+id/textView_tin_no"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:text="TIN No."
+					        android:textStyle="bold"
+					        android:maxLength="100"
+					        android:textColor="#2F1D85"
+					        android:layout_marginLeft="12dp" />        
+					    
+					 <EditText  
+					        android:id="@+id/tin_no"  
+					        android:layout_height="wrap_content"  
+					        android:hint="Tin No." 
+					        android:inputType="textFilter"
+					        android:maxLength="100"
+					       android:digits="@string/only_alpha_numeric"
+					        android:layout_marginLeft="10dp"
+			                android:layout_marginRight="10dp"
+					        android:layout_width="fill_parent" /> 
+					        
+					  
+					  
+
+				    <TextView 
+				            android:id="@+id/textView_store_telephone"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:text="Store Contact No."
+				            android:layout_marginLeft="12dp"
+				            android:textColor="#2F1D85"
+				            android:textStyle="bold" />        
+				   
+				    
+				
+				  <EditText  
+				            android:id="@+id/store_telephone"  
+				            android:layout_height="wrap_content"  
+				            android:hint="Contact No."  
+				            android:maxLength="12"
+				            android:inputType="number"
+				            android:layout_marginLeft="10dp"
+			                android:layout_marginRight="10dp"
+				    		android:layout_width="fill_parent"
+				    		android:digits="0123456789" />  
+				    		
+				  
+				  
+				  <TextView 
+				            android:id="@+id/textView_address"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:text="Store Address"
+				            android:textColor="#2F1D85"
+				            android:layout_marginLeft="12dp"
+				            android:textStyle="bold" 
+				            />        
+				   
+				    
+				
+				  <EditText  
+				            android:id="@+id/store_address"  
+				            android:layout_height="wrap_content"  
+				            android:hint="Store Address"  
+				            android:maxLines="4"
+				            android:layout_marginLeft="10dp"
+			                android:layout_marginRight="10dp"
+				    		android:layout_width="match_parent"
+				    		 android:maxLength="200"
+				    		 android:minHeight="70dp"
+				    		 android:singleLine="false"
+				    		  android:inputType="textFilter"
+					       android:digits="@string/only_alpha_numeric_new"
+					       android:gravity="top"
+					      
+				    		/>
+				  
+				   <LinearLayout  
+        android:layout_width="match_parent"  
+        android:orientation="horizontal"  
+        android:layout_height="wrap_content"
+        android:weightSum="2"
+        > 
+        
+				       
+				       <LinearLayout  
+				           android:id="@+id/first_part"
+        android:layout_width="wrap_content"  
+        android:orientation="vertical"  
+        android:layout_height="wrap_content"
+        android:layout_weight="1"> 
+        
+				            <TextView 
+				            android:id="@+id/textView_city"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:text="City"
+				            android:layout_marginLeft="12dp"
+				            android:textColor="#2F1D85"
+				            android:textStyle="bold" 
+				           />        
+				   
+				    
+				
+				  <EditText  
+				            android:id="@+id/store_city"  
+				            android:layout_height="wrap_content"  
+				            android:hint="City Name"  
+				            android:layout_marginLeft="10dp"
+			                android:inputType="textFilter"
+					        android:maxLength="100"
+					       android:digits="@string/only_alpha_numeric"
+				    		android:layout_width="match_parent"
+				    		/>
+        
+				       
+        </LinearLayout> 
+        
+				       <LinearLayout  
+				           android:id="@+id/second_part"
+        android:layout_width="wrap_content"  
+        android:orientation="vertical"  
+        android:layout_height="wrap_content"
+         android:layout_weight="1"> 
+        
+				            <TextView 
+				            android:id="@+id/textView_store_pincode"
+				            android:layout_width="wrap_content"
+				            android:layout_height="wrap_content"
+				            android:text="Store Pincode"
+				            android:layout_marginLeft="12dp"
+				            android:textColor="#2F1D85"
+				            android:textStyle="bold" 
+				           />        
+				   
+				    
+				
+				  <EditText  
+				            android:id="@+id/store_pincode"  
+				            android:layout_height="wrap_content"  
+				            android:hint="Store pincode"  
+				            android:maxLength="7"
+				            android:inputType="number"
+				            android:layout_marginLeft="10dp"
+			                android:layout_marginRight="10dp"
+				    		android:layout_width="match_parent"
+				    		
+				    		/>
+        
+				       
+        </LinearLayout> 
+        
+				       
+        </LinearLayout> 
+				  
+				 
+				  
+				 
+				  
+				    	
+				    	<TextView 
+				        	android:id="@+id/textView_Key_Account"
+				        	android:layout_width="wrap_content"
+				        	android:layout_height="wrap_content"
+				        	android:text="Key Account"
+				        	android:textStyle="bold"
+				        	 android:textColor="#2F1D85"
+				        	android:layout_marginLeft="12dp"
+				        	 />	
+				  
+				  
+				  <RadioGroup
+                android:id="@+id/radioGroup1_Key_Account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               android:layout_centerHorizontal="true"
+              
+                android:orientation="horizontal" 
+               >
+
+                <RadioButton
+                    android:id="@+id/radio0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="Yes"
+                    android:textSize="13sp" />
+
+                <RadioButton
+                    android:id="@+id/radio1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/radio0"
+                    android:text="No"
+                    android:checked="true"
+                    android:textSize="13sp" />
+            </RadioGroup>
+            
+				  
+				   <TextView 
+				        	android:id="@+id/textView_Spinner_Trade_Channel"
+				        	android:layout_width="wrap_content"
+				        	android:layout_height="wrap_content"
+				        	android:text="Trade Channel"
+				        	android:textStyle="bold"
+				        	android:layout_marginLeft="12dp"
+				        	android:textColor="#2F1D85"
+				        	 />
+				    
+				
+				<Spinner  
+				    		android:id="@+id/SpinnerTradeChannel"  
+				    		android:layout_height="wrap_content"  
+				    		android:prompt="@string/spinner_trade_channel"  
+				    		android:layout_width="fill_parent" 
+				    		android:background="@drawable/new_spiner_background" 
+				    		android:layout_marginLeft="10dp"
+			                android:layout_marginRight="10dp"
+			            
+			                /> 
+    
+				  <TextView 
+				        	android:id="@+id/textView_Spinner_Store_Type"
+				        	android:layout_width="wrap_content"
+				        	android:layout_height="wrap_content"
+				        	android:text="Store Type"
+				        	android:textStyle="bold"
+				        	android:layout_marginLeft="12dp"
+				        	android:textColor="#2F1D85"
+				        	 />
+				    
+				
+				<Spinner  
+				    		android:id="@+id/SpinnerStoreType"  
+				    		android:layout_height="wrap_content"  
+				    		android:prompt="@string/spinner_store_type"  
+				    		android:layout_width="fill_parent" 
+				    		android:background="@drawable/new_spiner_background" 
+				    		android:layout_marginLeft="10dp"
+			                android:layout_marginRight="10dp"
+			            
+			                /> 
+			                
+				 <TextView 
+				        	android:id="@+id/textView_Spinner_StoreCategory"
+				        	android:layout_width="wrap_content"
+				        	android:layout_height="wrap_content"
+				        	android:text="Store Category"
+				        	android:textStyle="bold"
+				        	android:layout_marginLeft="12dp" 
+				        	android:textColor="#2F1D85"
+				        	android:visibility="gone"
+				        	
+				        	/>
+				    
+				
+				<Spinner  
+				    		android:id="@+id/SpinnerStoreCategory"  
+				    		android:layout_height="wrap_content"  
+				    		android:prompt="@string/spinner_store_Category"  
+				    		android:layout_width="fill_parent" 
+				    		android:background="@drawable/spiner_background" 
+				    		android:layout_marginLeft="10dp"
+			                android:layout_marginRight="10dp" 
+			                android:visibility="gone"
+			                
+			                />  
+			                
+				<TextView 
+				        	android:id="@+id/textView_Spinner_RetailSalesType"
+				        	android:layout_width="wrap_content"
+				        	android:layout_height="wrap_content"
+				        	android:text="Retail Sales Type"
+				        	android:textStyle="bold"
+				        	android:layout_marginLeft="12dp" 
+				        	android:textColor="#2F1D85"
+				        	android:visibility="gone"
+				        	/>
+				    
+				
+				<Spinner  
+				    		android:id="@+id/SpinnerRetailSalesType"  
+				    		android:layout_height="wrap_content"  
+				    		android:prompt="@string/spinner_retailer_sales_type"  
+				    		android:layout_width="fill_parent" 
+				    		android:background="@drawable/spiner_background" 
+				    		android:layout_marginLeft="10dp"
+			                android:layout_marginRight="10dp" 
+			                android:visibility="gone"
+			                
+			                />  
+			                
+				<TextView 
+					        android:id="@+id/textView_StorePotentialType"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:text="Store Potential"
+					        android:textStyle="bold"
+					        android:textColor="#2F1D85"
+					        android:layout_marginLeft="12dp"
+					        android:visibility="gone" />
+
+					<Spinner  
+				    		android:id="@+id/SpinnerStorePotentialType"  
+				    		android:layout_height="wrap_content"  
+				    		android:prompt="@string/spinner_store_potential_type"  
+				    		android:layout_width="fill_parent" 
+				    		android:background="@drawable/spiner_background" 
+				    		android:layout_marginLeft="10dp"
+			                android:layout_marginRight="10dp" 
+			                android:visibility="gone"
+			                
+			                />  
+					
+					
+					
+					<TextView 
+					        android:id="@+id/textView_StoreProductClassificationType"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:text="Product Class – Distribution"
+					        android:textStyle="bold"
+					        android:maxLength="100"
+					        android:textColor="#2F1D85"
+					        android:layout_marginLeft="12dp" />        
+					    
+					 <Button 
+				    		android:id="@+id/SpinnerStoreProductClassificationType"  
+				    		android:layout_height="wrap_content"  
+				    		android:layout_width="fill_parent" 
+				    		android:background="@drawable/new_spiner_background" 
+				    		android:layout_marginLeft="10dp"
+			                android:layout_marginRight="10dp" 
+			                
+			                /> 
+			                
+					 
+					
+				
+  </LinearLayout>
+  
+     <LinearLayout
+					     android:id="@+id/ParentViewDynamic"
+					      android:layout_width="match_parent"
+                          android:layout_height="wrap_content" 
+                          android:layout_marginTop="10dp"
+                          android:orientation="vertical">
+					 
+        
+					 
+				</LinearLayout>
+  
+    
+            
+    <TextView android:id="@+id/acc_textview787"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+         android:textColor="#2F1D85"
+         android:visibility="invisible"
+        android:text="Accuracy in Meter">
+        
+    </TextView>
+    
+    
+		
+		<LinearLayout
+    
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:layout_below="@+id/tv_Route"
+    android:gravity="center"
+    android:weightSum="2"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="25dp"
+    android:layout_marginRight="25dp"
+    android:layout_marginBottom="10dp"
+    >
+					 
+		   
+    <Button
+        android:id="@+id/ButtonSubmit"
+        android:layout_height="match_parent"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+         android:layout_marginLeft="10dp"
+        android:background="@drawable/custom_button"
+         android:textColor="#fff"
+        android:text="Submit"
+        android:textStyle="bold"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp" />
+    <Button
+        android:id="@+id/ButtonCancel"
+        android:layout_height="match_parent"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:background="@drawable/custom_button"
+         android:textColor="#fff"
+         android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textStyle="bold"
+         android:layout_marginLeft="10dp"
+        android:text="Cancel" />
+    </LinearLayout>
+   
+ </LinearLayout>  
+</ScrollView> 

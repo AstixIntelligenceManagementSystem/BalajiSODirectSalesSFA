@@ -1,0 +1,41 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    
+     <dimen name="textSizeNormal">10dp</dimen>
+    
+    <dimen name="LauncherClassHeadingTextSize">16dp</dimen>
+    <dimen name="LauncherClassButtonTextSize">16dp</dimen>
+    
+    
+    
+    <dimen name="StoreSelectionClassHeadingTextSize">11dp</dimen>
+    <dimen name="StoreSelectionClassButtonTextSize">13dp</dimen>
+    
+    <dimen name="LastVisitDetailsClassHeadingTextSize">10dp</dimen>
+    <dimen name="LastVisitDetailsClassTableHeadingTextSize">8dp</dimen>
+    
+    <dimen name="StockSubmitClassHeadingTextSize">10dp</dimen>
+    <dimen name="StockSubmitClassTableHeadingTextSize">8dp</dimen>
+    <dimen name="StockSubmitClassButtonTextSize">10dp</dimen>
+    
+    <dimen name="PictureClassHeadingTextSize">10dp</dimen>
+    <dimen name="PictureClassButtonTextSize">11dp</dimen>
+    
+    <dimen name="ProductClassHeadingTextSize">10dp</dimen>
+    <dimen name="ProductClassBalanceAmountHeadingTextSize">10dp</dimen>
+    <dimen name="ProductClassTableHeadingTextSize">12dp</dimen>
+    <dimen name="ProductClassButtonTextSize">10dp</dimen>
+    
+    
+    <dimen name="SummaryTextSize">22dp</dimen>
+      <dimen name="SummaryHeadingTextSize">24dp</dimen>
+      <dimen name="SummaryTableTextSize">12dp</dimen>
+      
+      
+
+    
+
+</resources>

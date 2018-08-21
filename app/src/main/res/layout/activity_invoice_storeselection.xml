@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<!-- <ScrollView  
+    xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:id="@+id/ScrollView01"  
+    android:layout_width="match_parent"  
+    android:layout_height="wrap_content"  
+    android:scrollbars="vertical">   -->
+    <RelativeLayout  
+         xmlns:android="http://schemas.android.com/apk/res/android"  
+        android:layout_width="fill_parent"  
+        android:orientation="vertical"  
+        android:layout_height="fill_parent"
+        android:background="#FFFFFF" >  
+
+<RelativeLayout 
+   
+    android:layout_height="46dp" 
+    android:layout_width="fill_parent" 
+    android:background="@drawable/custom_header_color"
+    android:paddingLeft="16dp"
+    
+   android:id="@+id/rtv_hdr">
+    
+    <ImageView 
+    android:id="@+id/btn_bck"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_back"
+   
+    android:layout_centerVertical="true"
+    android:layout_alignParentLeft="true"/>
+<TextView 
+   android:id="@+id/order_detail"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="#FFFFFF"
+    android:layout_toRightOf="@+id/btn_bck"
+   android:paddingLeft="10dp"
+   android:layout_centerVertical="true"
+      android:shadowRadius="7" 
+    android:shadowDy="4" 
+    android:shadowDx="4" 
+	android:textStyle="bold"
+    android:shadowColor="#80FFFFFF" 
+    android:textSize="18sp"
+    android:text="@string/InvoiceHeader"/>
+
+
+
+</RelativeLayout>
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_below="@+id/rtv_hdr"
+    android:layout_above="@+id/ll_buttons">
+    
+    <TextView android:id="@+id/txt_distributor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/SelDistrbtr"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_marginLeft="12dp">
+        
+    </TextView>"
+
+<Spinner  
+    android:id="@+id/Spin_Distributor"  
+    android:layout_height="wrap_content"  
+    android:prompt="@string/spinnerloc"  
+    android:layout_width="fill_parent"  
+       android:background="@drawable/invoice_spinner_bckground"
+   > 
+</Spinner>
+
+<TextView android:id="@+id/txt_route"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:text="@string/launcActiSelectRut">
+        
+    </TextView>
+
+<Spinner  
+    android:id="@+id/Spin_Route"  
+    android:layout_height="wrap_content"  
+    android:prompt="@string/spinnerarea"  
+    android:layout_width="fill_parent"  
+    android:background="@drawable/invoice_spinner_bckground"
+    >
+</Spinner>
+
+
+<RelativeLayout
+               
+                android:id="@+id/rl_lv_outlet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" >
+
+                <EditText
+                    android:id="@+id/inputSearch"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:hint="@string/SearchStore"
+                    android:visibility="gone"
+                    android:inputType="textPersonName" />
+
+                <ListView
+                    android:id="@+id/list_view"
+                    android:layout_width="fill_parent"
+                    android:layout_height="300dp"
+                 
+                    android:layout_below="@id/inputSearch"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="top"
+                    android:fillViewport="true"
+                
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"/>
+            </RelativeLayout>
+
+</LinearLayout>
+
+<LinearLayout 
+    android:id="@+id/ll_buttons"
+    
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:gravity="center"
+    android:weightSum="3"
+    android:layout_alignParentBottom="true"
+ 	android:paddingLeft="16dp"
+ 	android:paddingRight="16dp"
+    android:layout_marginBottom="10dp"
+    
+    >
+    
+    
+    <Button  
+    android:id="@+id/But_Conform_Select_Invoice"  
+   android:layout_height="wrap_content"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:background="@drawable/custom_button"
+         android:textColor="#ffffff"
+         android:gravity="center"
+         android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+         
+        android:text="@string/ExecuteOrders" >
+</Button> 
+
+    <Button  
+    android:id="@+id/But_Cancel_Select"  
+     android:layout_height="match_parent"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:background="@drawable/custom_button"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:layout_marginLeft="5dp"
+        android:text="@string/CancelOrders"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">  
+</Button> 
+    
+    <Button  
+    android:id="@+id/But_Submit"  
+     android:layout_height="match_parent"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:background="@drawable/custom_button"
+        android:textColor="#ffffff"
+        android:layout_marginLeft="5dp"
+        android:text="@string/Submit"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp">  
+</Button> 
+
+    
+    
+</LinearLayout>
+
+    </RelativeLayout>  
+<!-- </ScrollView>  -->

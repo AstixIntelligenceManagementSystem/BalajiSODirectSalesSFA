@@ -1,0 +1,129 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/rl_main"
+    android:background="@drawable/boundary_new"
+     android:weightSum="10" >
+
+	    <RelativeLayout 
+	        android:id="@+id/rel"
+	        android:layout_alignParentTop="true"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/custom_header_color"   >
+	    
+	    
+					<TextView
+					    android:id="@+id/txt_header"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:drawablePadding="10dp"
+					    android:gravity="center"
+					    android:drawableLeft="@drawable/info_icon"
+					    android:padding="6dp"
+					   
+					    android:textColor="#ffffff"
+					    android:textSize="16sp"
+					    android:textStyle="bold" />
+		</RelativeLayout>
+
+<RelativeLayout
+    android:id="@+id/rl_new"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/rl"
+    android:layout_centerVertical="true"
+    android:layout_marginTop="10dp"
+    android:weightSum="2" >
+
+			<View
+		       android:layout_width="fill_parent"
+		       android:layout_height="1dp"
+		       android:layout_marginLeft="5dp"
+		       android:layout_marginRight="5dp"
+		       android:background="#FF4A4F"/>
+
+			<LinearLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="wrap_content"
+			    android:layout_centerVertical="true"
+			    android:layout_centerInParent="true"
+			    android:gravity="center_horizontal"
+			    android:orientation="horizontal"
+			    android:layout_marginLeft="5dp"
+			    android:layout_marginRight="5dp"  >
+			
+			     <Button
+			         android:id="@+id/but_yes"
+			         android:layout_width="0dp"
+			         android:layout_height="40dp"
+			         android:layout_gravity="center"
+			         android:layout_marginTop="10dp"
+			         android:background="@drawable/custom_button"
+			         android:gravity="center"
+			         android:text="@string/AlertDialogYesButton"
+			         android:layout_marginBottom="2dp"
+			         android:layout_weight="0.5"
+			         android:textColor="#ECF0F4"
+			         android:textSize="12sp" />
+			
+			
+			     <Button
+			         android:id="@+id/but_no"
+			         android:layout_width="0dp"
+			         android:layout_height="40dp"
+			         android:layout_gravity="center"
+			         android:layout_marginTop="10dp"
+			         android:background="@drawable/custom_button"
+			         android:gravity="center"
+			         android:text="@string/AlertDialogNoButton"
+			         android:layout_weight="0.5"
+			         android:layout_marginLeft="5dp"
+			         android:layout_marginBottom="2dp"
+			         android:textColor="#ECF0F4"
+			         android:textSize="12sp" />
+			 
+			 
+			 </LinearLayout>
+  </RelativeLayout>
+
+		<RelativeLayout
+		    android:id="@+id/rl"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_below="@+id/rel"
+		    android:layout_centerHorizontal="true"
+		    android:layout_marginLeft="10dp"
+		    android:layout_marginRight="10dp"
+		    android:layout_marginTop="10dp"
+		   
+		    android:gravity="center_vertical" >
+			
+		     <ScrollView
+                
+                android:id="@+id/verticalScrollView1"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_below="@id/tabLayoutHeader"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp" >
+		
+		    <TextView
+		        android:id="@+id/msg"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_marginLeft="10dp"
+		        android:paddingBottom="5dp"
+		        android:paddingTop="5dp"
+		        android:layout_centerInParent="true"
+		        android:textColor="#000000"
+		        android:textSize="14sp" />
+		    
+		    </ScrollView>
+		    
+		</RelativeLayout>
+
+
+
+</RelativeLayout>

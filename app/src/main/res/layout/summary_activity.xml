@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bckg"
+    android:orientation="vertical" >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:background="#a25611"
+
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:titleTextAppearance="@style/Toolbar.TitleText" >
+        <TextView
+            android:id="@+id/tv_SOName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="17sp"
+            android:visibility="visible"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:text="SO Name"/>
+
+        <ImageView
+            android:id="@+id/logoutIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+android:visibility="gone"
+            android:paddingRight="10dp"
+            android:src="@drawable/logout30"
+
+
+            android:textSize="15sp" />
+
+        <!-- app:titleTextAppearance using for custom title size -->
+
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#99EF6C00"
+        android:orientation="horizontal"
+        >
+        <TextView
+
+        android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:textSize="15sp"
+            android:layout_margin="2dp"
+            android:text="Last Refresh Time :"
+            android:visibility="visible"
+            android:textStyle="bold"
+        android:layout_height="match_parent" />
+        <TextView
+            android:id="@+id/tv_ServerLastRefreshTime"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_margin="2dp"
+            android:textColor="#fff"
+            android:textSize="15sp"
+            android:text=""
+            android:visibility="visible"
+            android:textStyle="bold"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <ImageView android:layout_width="match_parent"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_height="70dp"
+        android:src="@drawable/logo_lnt"
+        />
+
+    <LinearLayout android:layout_width="match_parent"
+       android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="10"
+        android:orientation="vertical"
+        android:background="@drawable/shadow_5dp_oreng"
+        android:layout_height="0dp">
+        <TextView
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:gravity="center"
+
+
+            android:text="Total Status"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:padding="5dp"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#ffcc6f1f"
+            />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_margin="7dp"
+    android:background="#ffcc8137"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_margin="2dp"
+        android:layout_gravity="top"
+        android:textSize="10sp"
+        android:text="DSM"
+        android:padding="2dp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:id="@+id/tv_PersonRole"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="0dp"
+        android:textSize="10sp"
+        android:layout_weight="1"
+        android:layout_margin="2dp"
+        android:layout_gravity="top"
+        android:text="Total Stores"
+        android:padding="2dp"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="0dp"
+        android:textSize="10sp"
+        android:layout_weight="1"
+        android:layout_margin="2dp"
+        android:text="Approved"
+        android:layout_gravity="top"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:padding="2dp"
+        android:gravity="center"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="0dp"
+        android:textSize="10sp"
+        android:layout_weight="1"
+        android:layout_margin="2dp"
+        android:text="Rejected"
+        android:layout_gravity="top"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:padding="2dp"
+        android:gravity="center"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="0dp"
+        android:textSize="10sp"
+        android:layout_weight="1"
+        android:layout_margin="2dp"
+        android:text="ReMap"
+        android:layout_gravity="top"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:padding="2dp"
+        android:gravity="center"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="0dp"
+        android:textSize="10sp"
+        android:layout_weight="1"
+        android:layout_margin="2dp"
+        android:text="Pending"
+        android:layout_gravity="top"
+        android:textColor="#fff"
+        android:textStyle="bold"
+        android:padding="2dp"
+        android:gravity="center"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
+
+
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+
+            android:layout_height="0dp"
+            android:layout_weight="10">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                android:id="@+id/parentOfAllDynamicData">
+
+
+
+            </LinearLayout>
+        </ScrollView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:id="@+id/erreorSectionParent"
+            android:background="#99EF6C00"
+
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/erroricon"/>
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:padding="5dp"
+                android:layout_marginLeft="20dp"
+                android:paddingBottom="10dp"
+                android:layout_marginRight="10dp"
+
+                android:id="@+id/errorMessageTextView"
+
+                android:textStyle="bold"
+                android:textSize="17sp"
+
+                android:text=""/>
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:background="#ffcc6221"
+            android:layout_height="2dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:orientation="horizontal"
+            android:id="@+id/TodayStoreAddedParent"
+            android:background="#99EF6C00"
+            android:layout_height="wrap_content">
+            <TextView android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:layout_weight="1"
+                android:padding="5dp"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:layout_margin="10dp"
+                android:text="Total Stores Added By Me"/>
+            <TextView android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_weight=".5"
+                android:id="@+id/tv_ToadyStoreSOCount"
+                android:background="@drawable/custom_textview_bndry"
+                android:layout_margin="10dp"
+                android:text="0"/>
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        android:id="@+id/ln_InfoSection"
+        android:background="#99EF6C00"
+        android:visibility="visible"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/erroricon"/>
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:padding="4dp"
+            android:layout_marginLeft="20dp"
+            android:paddingBottom="10dp"
+            android:layout_marginRight="10dp"
+
+            android:id="@+id/txt_ln_InfoSectionDetails"
+
+            android:textStyle="bold"
+            android:textSize="11sp"
+
+            android:text=""/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/logo_background"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+
+            android:layout_marginBottom="5dp"
+            android:textColor="#FFFF4424"
+            android:visibility="visible"
+            android:id="@+id/btn_Proceed"
+            android:textStyle="bold"
+            android:text="Proceed"
+            />
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

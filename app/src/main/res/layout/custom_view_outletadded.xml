@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    android:paddingTop="3dp"
+    android:paddingBottom="3dp" >
+    
+  <RelativeLayout
+                android:id="@+id/rlOutltActivity"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+               android:padding="2dp"
+                android:layout_marginLeft="5dip"
+                android:layout_marginRight="5dip"
+             
+                android:background="@drawable/rounded_corner"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+                <ImageView 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/store_icon"/>
+
+                <TextView
+                    android:id="@+id/tvOutletName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="56dp"
+                
+                    android:text="BTL Activity"
+                    android:textColor="#1A5D66"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/imgVw_dtlOutlet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+
+                    android:layout_marginRight="10dp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/arrow" />
+            </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   android:padding="5dp"
+  android:background="@drawable/card_background_alert_dayend"
+     >
+    
+    <TextView 
+        android:id="@+id/txtVw_product_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:textSize="12sp"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/ll_submit_cancel"
+       android:text="@string/txtProductName"/>
+    
+    <LinearLayout 
+        android:id="@+id/ll_submit_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+       
+        android:gravity="center">
+        
+        <ImageView  
+             android:id="@+id/img_to_be_submit"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="10dp"
+            
+            android:src="@drawable/select_hover"/>
+        
+         <ImageView  
+             android:id="@+id/img_to_be_cancel"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            
+            android:src="@drawable/cancel_normal"/>
+    </LinearLayout>
+    
+        
+  
+</RelativeLayout>

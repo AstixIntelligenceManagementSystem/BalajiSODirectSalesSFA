@@ -1,0 +1,47 @@
+
+                    <TableRow xmlns:android="http://schemas.android.com/apk/res/android" 
+                        android:id="@+id/tblDynPg2Row"
+                        android:layout_margin="0.2dp" 
+                        android:weightSum="10">
+                        
+                        <TextView
+                            android:id="@+id/tvSalesQuoteCode"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:textSize="9sp"
+                            android:layout_width="0dp"
+                            android:singleLine="true" 
+                            android:layout_weight="6"
+                            android:layout_marginLeft="10dp"/>
+
+                        
+                        
+                        <TextView
+                            android:id="@+id/tvSalesQuotePrcs"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:layout_width="0dp"
+                            android:textSize="9sp"
+                            android:gravity="center_horizontal"
+                            android:singleLine="true" 
+                            android:layout_weight="2"/>
+
+                        <TextView
+                            android:id="@+id/tvSalesQuoteDate"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:layout_width="0dp"
+                            android:textSize="9sp"
+                            android:gravity="center_horizontal"
+                            android:singleLine="true" 
+                            android:layout_weight="2"/>
+                        <!-- <TextView
+                            android:id="@+id/tvPG2FQTY"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:layout_width="1dp"
+                            android:gravity="center_horizontal"
+                            android:textSize="9sp"
+                            android:singleLine="true" /> -->
+                        
+                    </TableRow>

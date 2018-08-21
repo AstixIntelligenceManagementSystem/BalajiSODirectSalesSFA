@@ -1,0 +1,83 @@
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android" 
+                        android:id="@+id/tblDyn2Pg2Row"
+                       android:layout_height="wrap_content"
+                       android:background="#000"
+                        android:weightSum="6" >
+
+                        <TextView
+                            android:id="@+id/tvProductName"
+                            android:layout_margin="0.2dp"
+                            android:background="@drawable/table_row_bg"
+		       				android:textSize="11sp"
+                            android:layout_width="0dp"
+                            android:singleLine="false" 
+                            android:gravity="center"
+                            android:layout_weight="1.2"
+                            android:layout_height="match_parent"/>
+                        
+                        <TextView
+                            android:id="@+id/tvTodayTarget"
+                            android:layout_margin="0.2dp"
+                           android:background="#144955"
+                            android:textSize="11sp"
+                            android:layout_width="0dp"
+                            android:gravity="center"
+                            android:singleLine="false" 
+                            android:layout_weight="0.8"
+                            android:layout_height="match_parent" />
+                        
+                         <TextView
+                            android:id="@+id/tvTodayAchieved"
+                            android:layout_margin="0.2dp"
+                            android:background="#144955"
+                            android:textSize="11sp"
+                            android:layout_width="0dp"
+                            android:gravity="center"
+                            android:singleLine="false" 
+                            android:layout_weight="0.8"
+                            android:layout_height="match_parent" />
+                            <TextView
+                            android:id="@+id/tvTodayBal"
+                            android:layout_margin="0.2dp"
+                            android:background="#144955"
+                            android:textSize="11sp"
+                            android:layout_width="0dp"
+                            android:gravity="center"
+                            android:singleLine="false" 
+                            android:layout_weight="0.8"
+                            android:layout_height="match_parent" />
+                         
+                          <TextView
+                            android:id="@+id/tvMTDTarget"
+                            android:layout_margin="0.2dp"
+                           android:background="#7F95B5"
+                            android:textSize="11sp"
+                            android:layout_width="0dp"
+                            android:singleLine="false" 
+                            android:gravity="center"
+                            android:layout_weight="0.8"
+                            android:layout_height="match_parent" />
+                          
+                           <TextView
+                            android:id="@+id/tvMTDAchieved"
+                            android:layout_margin="0.2dp"
+                            android:background="#7F95B5"
+                            android:textSize="11sp"
+                            android:layout_width="0dp"
+                            android:singleLine="false" 
+                            android:gravity="center"
+                            android:layout_weight="0.8"
+                            android:layout_height="match_parent" />
+                             <TextView
+                            android:id="@+id/tvMTDBal"
+                            android:layout_margin="0.2dp"
+                            android:background="#7F95B5"
+                            android:textSize="11sp"
+                            android:layout_width="0dp"
+                            android:singleLine="false" 
+                            android:gravity="center"
+                            android:layout_weight="0.8"
+                            android:layout_height="match_parent" />
+
+                        
+                    </TableRow>

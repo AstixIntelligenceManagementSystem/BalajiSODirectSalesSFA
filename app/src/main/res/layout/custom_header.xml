@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/rl_header"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/custom_header_color">
+
+        <TextView
+            android:id="@+id/tv_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Heading"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:typeface="normal"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/imgVw_next"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/arrow_button_image"
+            />
+        <ImageView
+            android:id="@+id/imgVw_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/ic_back"
+            />
+
+    </RelativeLayout>
+

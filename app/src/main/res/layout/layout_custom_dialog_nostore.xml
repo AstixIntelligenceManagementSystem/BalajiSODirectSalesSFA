@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="1dp"
+    android:background="#ffffff" >
+    
+   
+		<!-- <TextView
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="Reason :" /> -->
+		    
+		    <RelativeLayout 
+    android:id="@+id/ll_ctgry"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+	android:layout_marginTop="10dp"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:gravity="center_vertical"
+    android:layout_below="@+id/rtv_hdr"
+    android:background="#f1f1f1"
+    android:orientation="horizontal">
+
+    <TextView 
+        android:id="@+id/txt_reason"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtReason"
+        android:gravity="center_vertical"
+        android:layout_marginTop="1dp"
+        android:textSize="14sp"
+         android:textStyle="bold"
+        android:textColor="#201359"/>
+    
+    <Spinner 
+    android:id="@+id/spinner_reason"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   android:layout_marginLeft="5dp"
+    android:layout_alignParentRight="true"
+    android:background="@drawable/spinner_bckground"
+    android:layout_toRightOf="@+id/txt_reason"
+   
+    android:layout_alignParentTop="true"
+    android:prompt="@string/reason_prompt"/>
+    
+</RelativeLayout>
+		
+		<EditText
+		    android:id="@+id/et_Reason"
+		    android:layout_width="match_parent"
+		    android:layout_height="100dp"
+		    android:gravity="top|left"
+		    android:background="@drawable/et_boundary_retrun"
+		     />
+	</LinearLayout>
+ 
+	

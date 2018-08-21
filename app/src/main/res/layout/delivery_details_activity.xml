@@ -1,0 +1,911 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    android:id="@+id/Parent_of_Whole"
+  
+   >
+
+
+   <!-- <LinearLayout
+        android:id="@+id/ll_header"
+        android:layout_width="match_parent"
+        android:layout_height="48sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:background="@drawable/custom_header"
+        android:gravity="left|center"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:weightSum="1">-->
+
+        <LinearLayout
+            android:id="@+id/ll_header"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/custom_header_color"
+            android:paddingLeft="5dp">
+
+        <!-- <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:src="@drawable/ic_back"/>-->
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="6dp"
+            android:src="@drawable/ic_back"/>
+
+        <TextView
+            android:id="@+id/txtVw_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@+id/backbutton"
+            android:gravity="center_horizontal|left"
+            android:paddingLeft="10dp"
+            android:shadowColor="#80FFFFFF"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:layout_marginTop="6dp"
+            android:shadowRadius="7"
+            android:text="Order Delivery Details"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+
+        <!--<TextView
+            android:id="@+id/txtVw_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.55"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:text="Order Delivery Details"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="visible"/>-->
+
+        <!-- <TextView
+            android:id="@+id/txtVw_contact"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="0.35"
+            android:background="@null"
+            android:gravity="right"
+            android:text="95557876846"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:visibility="gone"/>-->
+
+
+    </LinearLayout>
+  <ScrollView android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+             <RelativeLayout android:layout_width="match_parent"
+                 android:layout_marginBottom="10dp"
+                 android:layout_height="wrap_content">
+             <RelativeLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/DeliveryDetailsHeader"
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginTop="10dp"
+                   android:background="@drawable/custom_arrow_header"
+              		 android:padding="5dp"
+              		 android:layout_marginRight="10dp"
+                  >
+                  <CheckBox android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_alignParentLeft="true"
+                      android:text="Delivery Details"
+                      android:textColor="#fff"
+                      android:textSize="15sp"
+                      
+                      android:id="@+id/arrowOfDeleveryInfo"
+                      />
+                  
+             
+               <TextView android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_toRightOf="@id/arrowOfDeleveryInfo"
+               android:text="Outlet Information"
+               android:textColor="#fff"
+               android:textStyle="bold"
+              android:visibility="gone"
+               android:gravity="center_vertical"
+               
+               android:layout_marginTop="10dp"
+              
+               android:textSize="13sp"
+               android:id="@+id/OutletInformation"/>
+               </RelativeLayout>
+               
+                <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:id="@+id/view2"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/DeliveryDetailsHeader"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#23519C"/>
+                
+               <RelativeLayout android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:visibility="gone"
+                    android:background="@drawable/shadow_with_5dp"
+                    android:layout_marginTop="5dp"
+                   android:layout_below="@id/DeliveryDetailsHeader"
+                   android:id="@+id/delivey_details_parent"
+                   >
+                   
+                   <LinearLayout 
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:id="@+id/Delivery_Detail_Layout"
+                       android:visibility="visible"
+                       android:orientation="vertical">
+                       
+                       
+                       <TextView 
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:padding="5dp"
+                           android:background="@drawable/custom_header_color"
+                     		android:layout_marginLeft="10dp"
+                     		android:layout_marginRight="10dp"
+                     	android:textColor="#fff"
+                     		android:layout_marginTop="7dp"
+                           android:text="Delivery Details"/>
+                       <TextView 
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:padding="5dp"
+                          style="@style/MyTextViewStyle"
+                     		android:layout_marginLeft="20dp"
+                     		android:layout_marginRight="20dp"
+                     	
+                     		android:layout_marginTop="7dp"
+                           android:text="Select Delivery Location"/>
+                       
+                       <TextView 
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:id="@+id/Delivery_Location_Spinner"
+               android:text="Select"
+               android:paddingLeft="5dp"
+               android:textSize="14sp"
+               android:textColor="#000"
+              
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/spinner_backgrnd_quotation"/>
+                       
+                       <TextView 
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:padding="5dp"
+                           android:visibility="gone"
+                     		android:layout_marginLeft="20dp"
+                     		style="@style/MyTextViewStyle"
+                     		android:layout_marginTop="7dp"
+                           android:text="Delivery Address"/>
+                       
+                       <TextView 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Delivery_Location_Address"
+              android:gravity="center"
+               android:padding="3dp"
+               android:layout_marginTop="2dp"
+               android:textSize="14sp"
+               android:textColor="#000"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+               
+                />
+                       
+                      <TextView 
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:padding="5dp"
+                     		android:layout_marginLeft="20dp"
+                     		style="@style/MyTextViewStyle"
+                     		android:layout_marginTop="5dp"
+                           android:text="Preffered Delivery Time"/>
+                      
+                      <LinearLayout 
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal">
+                          
+                          <TextView
+                              android:layout_width="0dp"
+                              android:layout_weight="1"
+                              android:layout_height="wrap_content"
+                              android:gravity="center"
+                              android:background="@drawable/edittext_with_nocolor_change"
+                              android:id="@+id/Delivery_Time_From"
+               android:padding="3dp"
+               android:textSize="14sp"
+               android:textColor="#000"
+                android:layout_marginLeft="20dp"
+                android:clickable="false"
+                              />
+                          
+                          <ImageView 
+                              android:layout_height="wrap_content"
+                              android:layout_width="wrap_content"
+                              
+                              android:id="@+id/DeliveryTimeImg_From"
+                              android:background="@drawable/clocksmall"
+                              />
+                          
+                          <TextView 
+                              android:layout_width="0dp"
+                              android:layout_weight="1"
+                              android:layout_height="wrap_content"
+                              android:gravity="center"
+                              android:text="Till"
+               android:padding="3dp"
+               android:textSize="14sp"
+               android:textColor="#000"
+                
+                android:clickable="false"/>
+                          
+                        
+                          <TextView
+                              android:layout_width="0dp"
+                              android:layout_weight="1"
+                              android:layout_height="wrap_content"
+                              android:gravity="center"
+                              android:background="@drawable/edittext_with_nocolor_change"
+                              android:id="@+id/Delivery_Time_To"
+               android:padding="3dp"
+               android:textSize="14sp"
+               android:textColor="#000"
+                android:clickable="false"
+                              />
+                          
+                          <ImageView 
+                              android:layout_height="wrap_content"
+                              android:layout_width="wrap_content"
+                             android:id="@+id/DeliveryTimeImg_To"
+                             android:layout_marginRight="20dp"
+                              android:background="@drawable/clocksmall"
+                              />
+                      </LinearLayout>
+                      
+                      
+                      <TextView 
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:padding="5dp"
+                     		android:layout_marginLeft="20dp"
+                     		style="@style/MyTextViewStyle"
+                     		android:layout_marginTop="7dp"
+                           android:text="Do Not Deliver Between"/>
+                        
+                    <LinearLayout 
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal">
+                          
+                          <TextView
+                              android:layout_width="0dp"
+                              android:layout_weight="1"
+                              android:layout_height="wrap_content"
+                              android:gravity="center"
+                              android:background="@drawable/edittext_with_nocolor_change"
+                              android:id="@+id/DoNotDeliverTime_From"
+               android:padding="3dp"
+               android:textSize="14sp"
+               android:textColor="#000"
+                android:layout_marginLeft="20dp"
+                android:clickable="false"
+                              />
+                          
+                          <ImageView 
+                              android:layout_height="wrap_content"
+                              android:layout_width="wrap_content"
+                            android:id="@+id/DoNotDeliverTimeImg_From"
+                              android:background="@drawable/clocksmall"
+                              />
+                          
+                          <TextView 
+                              android:layout_width="0dp"
+                              android:layout_weight="1"
+                              android:layout_height="wrap_content"
+                              android:gravity="center"
+                              android:text="Till"
+               android:padding="3dp"
+               android:textSize="14sp"
+               android:textColor="#000"
+               
+                android:clickable="false"/>
+                          
+                        
+                          <TextView
+                              android:layout_width="0dp"
+                              android:layout_weight="1"
+                              android:layout_height="wrap_content"
+                              android:gravity="center"
+                              android:background="@drawable/edittext_with_nocolor_change"
+                              android:id="@+id/DoNotDeliverTime_To"
+               android:padding="3dp"
+               android:textSize="14sp"
+               android:textColor="#000"
+                android:clickable="false"
+                              />
+                          
+                          <ImageView 
+                              android:layout_height="wrap_content"
+                              android:layout_width="wrap_content"
+                              android:id="@+id/DoNotDeliverTimeImg_To"
+                              android:background="@drawable/clocksmall"
+                              android:layout_marginRight="20dp"
+                              />
+                      </LinearLayout>
+                        
+                    <TextView 
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:padding="5dp"
+                     		android:layout_marginLeft="20dp"
+                     		style="@style/MyTextViewStyle"
+                     		android:layout_marginTop="7dp"
+                           android:text="Required Delivery Date"/>  
+                           
+                    <LinearLayout 
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        
+            <TextView
+                              android:layout_width="0dp"
+                              android:layout_weight="1"
+                              android:layout_height="wrap_content"
+                              android:gravity="center"
+                              android:background="@drawable/edittext_with_nocolor_change"
+                              android:id="@+id/RequiredDeliveryDate"
+               android:padding="3dp"
+               android:textSize="14sp"
+               android:layout_marginLeft="20dp"
+               android:textColor="#000" 
+               android:text=""
+               android:layout_marginRight="20dp"
+                android:clickable="false"
+                              />
+                        
+                    <ImageView 
+                android:layout_width="wrap_content"
+		        android:id="@+id/CalenderValTo"
+		        android:layout_marginRight="20dp"
+		       
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/newcalender"/>
+		           
+                    
+            </LinearLayout>
+            
+                   </LinearLayout>
+                   
+                   <View 
+                       android:layout_width="match_parent"
+                       android:layout_height="1dp"
+                       android:background="#90544f88"
+                       android:layout_marginTop="10dp" 
+                       android:layout_marginLeft="20dp" 
+                       android:layout_marginRight="20dp"
+                       android:layout_marginBottom="10dp"
+                       android:layout_below="@id/Delivery_Detail_Layout"
+                       android:id="@+id/viewBelowDeliveryDetail"/>
+                   
+                    <TextView 
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:padding="5dp"
+                          android:background="#90544f88"
+                          android:id="@+id/stringheaderInvoice"
+                     		android:layout_marginLeft="10dp"
+                     		android:layout_marginRight="10dp"
+                     	android:textColor="#fff"
+                     		
+                     		android:layout_below="@id/viewBelowDeliveryDetail"
+                           android:text="Invoice Details"/>
+                    
+                    
+                    
+                    
+                    
+                   
+                   <LinearLayout 
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:id="@+id/Invoice_Detail_Layout"
+                       android:layout_below="@id/stringheaderInvoice"
+                       android:orientation="vertical">
+                     <TextView 
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:padding="5dp"
+                          style="@style/MyTextViewStyle"
+                     		android:layout_marginLeft="20dp"
+                     		android:layout_marginRight="20dp"
+                     	
+                     		android:layout_marginTop="7dp"
+                           android:text="Select Bill To Customer Name"/>
+                     <TextView 
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:id="@+id/biltocustomernameSpinner"
+               android:text="Select"
+               android:paddingLeft="5dp"
+              
+               android:textSize="14sp"
+               android:textColor="#000"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/spinner_backgrnd_quotation"/>
+                       
+                       <TextView 
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:padding="5dp"
+                           android:visibility="gone"
+                           
+                     		android:layout_marginLeft="20dp"
+                     		style="@style/MyTextViewStyle"
+                     		android:layout_marginTop="7dp"
+                           android:text="Billing Address"/>
+                       
+                       <TextView 
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/Billing_AddressText"
+              android:gravity="center"
+               android:padding="3dp"
+               android:textSize="14sp"
+               android:textColor="#000"
+               android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+               
+                />
+                    
+                       
+                    
+                       
+                       
+                       
+                   </LinearLayout>
+                   
+                   
+               </RelativeLayout>
+               
+               
+               <RelativeLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:id="@+id/PaymentDetailsHeader"
+                   android:layout_marginLeft="10dp"
+                   android:layout_marginTop="10dp"
+                   android:visibility="gone"
+                   android:layout_below="@id/delivey_details_parent"
+                   android:background="@drawable/custom_arrow_header"
+               android:padding="5dp"
+               android:layout_marginRight="10dp"
+               android:layout_marginBottom="5dp"
+                  >
+                  <CheckBox android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_alignParentLeft="true"
+                      android:text="Payment Details"
+                      android:textColor="#fff"
+                      android:textSize="15sp"
+                      android:id="@+id/arrowOfPaymentDetails"
+                      />
+                  
+              
+               <TextView android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_toRightOf="@id/arrowOfPaymentDetails"
+               android:text="Outlet Information"
+               android:textColor="#fff"
+               android:textStyle="bold"
+              android:visibility="gone"
+               android:gravity="center_vertical"
+               
+               android:layout_marginTop="10dp"
+              
+               android:textSize="13sp"
+               android:id="@+id/OutletInformation2"/>
+               </RelativeLayout>
+               
+                <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:id="@+id/view3"
+                android:visibility="gone"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/PaymentDetailsHeader"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#23519C"/>
+                
+               <RelativeLayout android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                    android:background="@drawable/shadow_with_5dp"
+                    
+                    android:visibility="gone"
+                    android:layout_marginBottom="10dp"
+                   android:layout_below="@id/view3"
+                   android:id="@+id/Payment_Details_Parent"
+                   >
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                   
+                    android:layout_marginLeft="2dp" 
+                    android:layout_marginRight="2dp"
+                    android:id="@+id/parentOfAllPaymentStructure">
+                    
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                         android:background="#90544f88" 
+                       android:gravity="center"
+                       
+                        android:orientation="horizontal">
+                        <TextView android:layout_width="0dp"
+                            android:text="Payment Stage"
+                            android:gravity="center"
+                            android:id="@+id/paymentstagetextviewNew"
+                             android:focusable="true"
+    			android:focusableInTouchMode="true"
+                            android:textColor="#fff"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"/>
+                        <View android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                         <TextView android:layout_width="0dp"
+                             android:text=" % age"
+                             android:textColor="#fff"
+                              android:focusable="true"
+                              android:visibility="gone"
+    			android:focusableInTouchMode="true"
+                             android:id="@+id/percentageTextviewNew"
+                             android:gravity="center"
+                              android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                        <View android:layout_width="1dp"
+                            android:background="#000"
+                            android:visibility="gone"
+                            android:layout_height="match_parent"/>
+                         <TextView android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Payment Mode"
+                             android:focusable="true"
+    			android:focusableInTouchMode="true"
+                            android:id="@+id/paymentModeTextviewNew"
+                            android:textColor="#fff"
+                            android:layout_weight="2"/>
+                        <View android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                         <TextView android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Credit Days"
+                            android:textColor="#fff"
+                             android:focusable="true"
+    			android:focusableInTouchMode="true"
+                            android:id="@+id/creditdaysTextboxNew"
+                            android:gravity="center"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_weight="1"/>
+                        <View android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                         <TextView android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:id="@+id/CreditlimitTextboxNew"
+                            android:textColor="#fff"
+                             android:focusable="true"
+    			android:focusableInTouchMode="true"
+                             android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:text="Credit Limit"
+                            android:layout_weight="1"/>
+                       
+                        
+                    </LinearLayout>
+                    <View android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#000"/>
+                     <LinearLayout android:layout_width="match_parent"
+                         android:orientation="horizontal"
+                          android:gravity="center"
+                        android:layout_height="wrap_content">
+                         <CheckBox android:layout_width="0dp"
+                        android:text="Advance Before Delivery"
+                        android:textSize="10dp"
+                        android:layout_height="wrap_content"
+                       android:id="@+id/AdvanceBeforeDeliveryCheckBoxNew"
+                        android:layout_gravity="center"
+                        android:layout_weight="2"/>
+                        <View android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                         <EditText android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                            android:textSize="14sp"
+                            android:visibility="gone"
+                            android:id="@+id/percentageOfAdvanceBeforeDelivery"
+                            android:background="@drawable/edittext_with_nocolor_change"
+                             android:gravity="center"
+                              android:inputType="number"
+                    android:layout_margin="1dp"
+                            android:layout_weight="1"/>
+                        <View android:layout_width="1dp"
+                            android:visibility="gone"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                         <LinearLayout
+                             android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            
+                            android:id="@+id/parentOfAdvanceBeforeDeliveryPayMentMode"
+                           android:orientation="vertical"
+                            android:layout_weight="2" >
+                           
+                             
+                         </LinearLayout>
+                        <View android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                         <EditText android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@android:color/transparent"
+                             android:gravity="center"
+                             android:hint="N/A"
+                             android:textColorHint="#7c7c7c"
+                             android:enabled="false"
+                              android:textSize="14sp"
+                              android:inputType="number"
+                                               android:layout_margin="1dp"
+                            android:layout_weight="1"/>
+                        <View android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                          <EditText android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                             android:textSize="14sp"
+                            android:background="@android:color/transparent"
+                             android:gravity="center"
+                             android:enabled="false"
+                              android:hint="N/A"
+                             android:textColorHint="#7c7c7c"
+                              android:inputType="number"
+                                        android:layout_margin="1dp"
+                            android:layout_weight="1"/>
+                     </LinearLayout>
+                      <View android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#000"/>
+                      <LinearLayout android:layout_width="match_parent"
+                          android:orientation="horizontal"
+                           android:gravity="center"
+                        android:layout_height="wrap_content">
+                           <CheckBox android:layout_width="0dp"
+                        android:text="On Delivery"
+                        android:textSize="10dp"
+                        android:layout_height="wrap_content"
+                       android:id="@+id/OnDeliveryCheckBoxNew"
+                        android:layout_gravity="center"
+                        android:layout_weight="2"/>
+                        <View android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                         <EditText android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edittext_with_nocolor_change"
+                             android:gravity="center"
+                              android:inputType="number"
+                              android:textSize="14sp"
+                              android:id="@+id/percentageOfOnDelivery"
+                              android:visibility="gone"
+                                        android:layout_margin="1dp"
+                                        android:enabled="false"
+                            android:layout_weight="1"/>
+                        <View android:layout_width="1dp"
+                            android:background="#000"
+                            android:visibility="gone"
+                            android:layout_height="match_parent"/>
+                         <LinearLayout
+                             android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            
+                            android:id="@+id/parentOfOnDeliveryPayMentMode"
+                           android:orientation="vertical"
+                            android:layout_weight="2" >
+                           
+                             
+                         </LinearLayout>
+                        <View android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                         <EditText android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edittext_with_nocolor_change"
+                             android:gravity="center"
+                             android:enabled="false"
+                              android:textSize="14sp"
+                              android:inputType="number"
+                              android:id="@+id/creditDaysOfOnDelivery"
+                                               android:layout_margin="1dp"
+                            android:layout_weight="1"/>
+                        <View android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                         <EditText android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:enabled="false"
+                             android:hint="N/A"
+                             android:textColorHint="#7c7c7c"
+                             android:textSize="14sp"
+                            android:background="@android:color/transparent"
+                                                android:layout_margin="1dp"
+                              android:inputType="number"
+                            android:gravity="center"
+                            android:layout_weight="1"/>
+                      </LinearLayout>
+                       <View android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#000"/>
+                     <LinearLayout android:layout_width="match_parent"
+                         android:orientation="horizontal"
+                          android:gravity="center"
+                        android:layout_height="wrap_content">
+                          <CheckBox android:layout_width="0dp"
+                        android:text="Credit"
+                        android:textSize="10dp"
+                        android:layout_height="wrap_content"
+                       android:id="@+id/CreditCheckBoxNew"
+                        android:layout_gravity="center"
+                        android:layout_weight="2"/>
+                        <View android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                         <EditText android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edittext_with_nocolor_change"
+                             android:gravity="center"
+                              android:inputType="number"
+                              android:visibility="gone"
+                              android:textSize="14sp"
+                              android:enabled="false"
+                              android:id="@+id/PercentageOfCredit"
+                                        android:layout_margin="1dp"
+                            android:layout_weight="1"/>
+                        <View android:layout_width="1dp"
+                            android:background="#000"
+                            android:visibility="gone"
+                            android:layout_height="match_parent"/>
+                         <LinearLayout
+                             android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            
+                            android:id="@+id/parentOfCreditPayMentMode"
+                           android:orientation="vertical"
+                            android:layout_weight="2" >
+                           
+                             
+                         </LinearLayout>
+                        <View android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                         <EditText android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edittext_with_nocolor_change"
+                             android:gravity="center"
+                            android:textSize="14sp"
+                              android:inputType="number"
+                              android:enabled="false"
+                              android:id="@+id/creditDaysOfCredit"
+                                                android:layout_margin="1dp"
+                            android:layout_weight="1"/>
+                        <View android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                         <EditText android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/edittext_with_nocolor_change"
+                             android:gravity="center"
+                             android:textSize="14sp"
+                             android:enabled="false"
+                             android:id="@+id/creditLimitOfCredit"
+                                                 android:layout_margin="1dp"
+                              android:inputType="number"
+                          
+                            android:layout_weight="1"/>
+                     </LinearLayout>
+                      <View android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#000"/>
+                </LinearLayout>
+                   
+                   
+                   
+               </RelativeLayout>
+               
+                <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="33dp"
+        android:layout_marginTop="10dp"
+         android:layout_below="@id/Payment_Details_Parent"
+       android:visibility="visible"
+       android:id="@+id/buttonParent"
+             android:layout_marginBottom="2dp"
+             android:orientation="horizontal" >
+   
+             <Button android:layout_width="0dp"
+                  android:layout_marginRight="20dp"
+                  android:textStyle="bold"
+                  android:text="Done"
+                  
+                  android:id="@+id/Done_btn"
+                  android:textSize="11sp"
+                  android:textColor="#fff"
+                 android:layout_height="match_parent"
+                  android:background="@drawable/custom_button"
+                 android:layout_marginLeft="20dp"
+                 android:layout_weight="1"/>
+              <Button android:layout_width="0dp"
+                    android:layout_marginLeft="20dp"
+                     android:background="@drawable/custom_button"
+                    android:text="Cancel"
+                     android:id="@+id/cancleBtn"
+                     android:visibility="gone"
+                     android:textColor="#fff"
+                      android:textStyle="bold"
+                   android:textSize="11sp"
+                  android:layout_marginRight="20dp"
+                 android:layout_height="match_parent"
+                 android:layout_weight="1"/>
+         
+    
+    
+
+</LinearLayout>
+               
+                <View android:layout_width="wrap_content"
+                   android:layout_height="10dp"
+                 android:layout_below="@id/buttonParent"
+                   android:background="@android:color/transparent"/>
+                
+                </RelativeLayout>
+             
+              </ScrollView>
+              
+             
+ </LinearLayout>

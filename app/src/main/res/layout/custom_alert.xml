@@ -1,0 +1,40 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="250dp"
+    android:orientation="vertical"
+  android:layout_gravity="center"
+    android:background="#ffffff"
+
+     >
+
+    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      >
+ 	
+<LinearLayout 
+    android:id="@+id/ll_radio_spinner"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
+    
+   
+    
+</LinearLayout>
+ </ScrollView>
+
+   
+    <Button
+        android:id="@+id/btnDisplay"
+     
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+       android:background="@drawable/custom_button"
+       android:gravity="center"
+       android:layout_alignParentBottom="true"
+        android:text="@string/AlertDialogOkButton" />
+</RelativeLayout>
+  

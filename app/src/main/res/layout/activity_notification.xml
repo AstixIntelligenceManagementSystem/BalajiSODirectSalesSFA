@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#ffffff" >
+    
+    
+     <TextView
+                       android:text="@string/txtLatestNotification"
+                        android:textSize="15dp"
+                      android:layout_marginTop="10dp"
+                       android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:textStyle="bold" 
+                         android:layout_height="wrap_content"/>
+    
+     <RelativeLayout
+            android:id="@+id/relativeLayoutPG2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:layout_marginTop="20dp"
+            android:background="@drawable/my_border" 
+            android:layout_gravity="right"
+                    android:gravity="right">
+            
+                <TableLayout
+                android:id="@+id/tabLayoutHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:stretchColumns="0,1" 
+                 android:layout_alignParentRight="true"
+               >
+
+                <TableRow 
+                    android:id="@+id/trHeader"
+                    android:layout_margin="0.2dp"
+                    android:layout_gravity="top"
+                  >
+                   
+                     <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:text="@string/txtDate"
+                        android:textSize="10sp"
+                        android:layout_width="10dp"
+                        android:gravity="center_horizontal"
+                        android:textStyle="bold" 
+                         android:layout_weight="3"
+                        android:layout_height="fill_parent"/>
+                     
+                      <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:text="@string/txtMessage"
+                        android:layout_width="100dp"
+                        android:gravity="center_horizontal"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:layout_weight="7"
+                        android:layout_height="fill_parent"
+                         />
+
+                  
+                   
+                </TableRow>
+            </TableLayout>
+
+            <ScrollView
+                
+                android:id="@+id/verticalScrollView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tabLayoutHeader"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp" >
+
+                <TableLayout
+                    android:id="@+id/dyntable_For_Notification"
+                  	android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   	android:background="#000000"
+                   	android:stretchColumns="*" >
+
+                </TableLayout>
+           </ScrollView>
+    </RelativeLayout>
+    
+     <LinearLayout
+                android:id="@+id/sixth"
+                 android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:layout_below="@+id/tv_Route"
+    android:gravity="center"
+    android:weightSum="2"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="25dp"
+    android:layout_marginRight="25dp" 
+     android:layout_marginBottom="10dp">
+                
+                
+                <Button
+                    android:id="@+id/detailReport"
+                   android:layout_height="match_parent"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:background="@drawable/custom_button"
+        android:textColor="#ffffff"
+        android:text="@string/txtReport"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:visibility="gone"
+                     />
+
+                <Button
+                    android:id="@+id/backbutton"
+                    android:layout_height="match_parent"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:background="@drawable/custom_button"
+         android:textColor="#ffffff"
+         android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+         android:layout_marginLeft="10dp"
+        android:text="@string/txtBack" />
+            </LinearLayout>
+    
+
+</LinearLayout>

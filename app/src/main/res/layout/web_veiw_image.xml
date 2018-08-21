@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <WebView
+        android:id="@+id/web_view_imageStore"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/button_exit"
+        android:layout_height="match_parent"></WebView>
+    <Button
+        android:id="@+id/button_exit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:textColor="#FFF"
+        android:text="Exit"
+        android:textSize="16sp"
+        android:background="@drawable/btn_background"/>
+</RelativeLayout>

@@ -1,0 +1,400 @@
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#E6E6E6" >
+     
+       <TextView 
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:layout_marginTop="5dp"
+                android:id="@+id/Manufacture_rateSpinner"
+                android:text="Select Manufacturer"
+                android:paddingLeft="5dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/spinner_backgrnd_quotation"/>
+       
+       <LinearLayout
+                 android:layout_width="match_parent"
+		         android:orientation="horizontal"
+		         android:background="@drawable/shadow_with_5dp"
+		         android:layout_height="44dp">
+
+                 <EditText 
+	                     android:id="@+id/txt_Search"
+	                     android:layout_width="0dp"
+	                     android:layout_height="match_parent"
+	                     android:drawableLeft="@drawable/search"
+	                     android:maxLines="1"
+	                     android:layout_weight="1"
+	                     android:hint="Search Product"
+	                     android:textSize="11sp"
+	                     android:layout_marginTop="2dp"
+	                     android:layout_marginLeft="5dp"
+	                     android:layout_marginBottom="2dp"
+	                     android:paddingTop="8dp"
+	                     android:drawablePadding="10dp"
+	                     android:background="@drawable/custom_edittext"
+	                     android:paddingBottom="8dp"
+	                     android:maxLength="30" />
+                 
+				  <Button 
+				        android:layout_width="wrap_content"
+				        android:layout_height="match_parent"
+				        android:text="GO"
+				        android:background="@drawable/custom_button"
+				        android:layout_margin="1dp"
+				        android:textColor="#fff"
+				        android:textSize="10sp"
+				        android:id="@+id/btnGo"
+				        android:layout_toRightOf="@id/txt_Search"/>
+				  
+    </LinearLayout>
+    
+    <LinearLayout 
+		        android:layout_width="match_parent"
+		        android:layout_height="0dp"
+		        android:id="@+id/parentofScrollview"
+		        android:background="@drawable/shadow_with_5dp"
+		        android:orientation="vertical"
+		        android:layout_weight="10">
+				  
+			     <View 
+			            android:layout_width="match_parent"
+			            android:background="#949494"
+			            android:visibility="gone"
+			            android:layout_height="1dp"/>
+			     
+			    <LinearLayout 
+			         android:layout_width="match_parent"
+			         android:background="#25c"
+			         android:orientation="horizontal"
+			         android:visibility="gone"
+			         android:layout_height="30dp">
+			         
+			          <TextView 
+			              android:layout_width="0dp"
+			              android:layout_weight="1"
+			              android:gravity="center"
+			              android:layout_height="match_parent"
+			              android:text="RT.OFFER"
+			              android:focusable="true"
+			    		  android:focusableInTouchMode="true"
+			              android:textSize="10sp"
+			              android:textColor="#fff" />
+          
+			          <View 
+			              android:layout_width="1dp"
+			              android:background="#949494"
+			              android:layout_height="match_parent"/>
+			          
+			         <TextView 
+			              android:layout_width="0dp"
+			              android:layout_weight="1"
+			              android:layout_height="match_parent"
+			              android:gravity="center"
+			              android:text="RATE"
+			              android:focusable="true"
+			    		  android:focusableInTouchMode="true"
+			              android:textSize="10sp"
+			              android:textColor="#fff"  />
+			         
+			         
+			          <View 
+			              android:layout_width="1dp"
+			              android:background="#949494"
+			              android:layout_height="match_parent"/>
+			          
+			          <TextView 
+			               android:layout_width="0dp"
+			               android:layout_weight="1"
+			               android:layout_height="match_parent"
+			               android:gravity="center"
+			               android:text="QTY"
+			               android:focusable="true"
+			      		   android:focusableInTouchMode="true"
+			               android:layout_marginLeft="1dp"
+			          	   android:layout_marginRight="1dp"
+			          	   android:layout_marginTop="2dp"
+			               android:layout_marginBottom="2dp"
+			           	   android:textSize="10sp"
+			               android:textColor="#fff"  />
+			          
+			          <View 
+				            android:layout_width="1dp"
+				            android:background="#949494"
+				            android:layout_height="match_parent"/>
+			          <TextView 
+			               android:layout_width="0dp"
+			               android:layout_weight="1"
+			               android:layout_height="match_parent"
+			               android:gravity="center"
+			               android:text="QUOTATION"
+			               android:focusable="true"
+			    		   android:focusableInTouchMode="true"
+			               android:layout_marginLeft="1dp"
+			          	   android:layout_marginRight="1dp"
+			               android:layout_marginTop="2dp"
+			               android:layout_marginBottom="2dp"
+			               android:textSize="10sp"
+			               android:textColor="#fff" />
+          
+			           <View 
+			               android:layout_width="1dp"
+			               android:background="#949494"
+			               android:layout_height="match_parent"/>
+           
+			          <TextView 
+			               android:layout_width="0dp"
+			               android:layout_weight="2"
+			               android:layout_height="match_parent"
+			               android:gravity="center"
+			               android:text="REMARKS"
+			               android:focusable="true"
+			    		   android:focusableInTouchMode="true"
+			               android:layout_marginLeft="1dp"
+			          	   android:layout_marginRight="1dp"
+			               android:layout_marginTop="2dp"
+			               android:layout_marginBottom="2dp"
+			               android:textSize="10sp"
+			               android:textColor="#fff"  />
+         
+            </LinearLayout>
+    
+			    
+      <LinearLayout 
+		          android:layout_width="match_parent"
+		          android:background="#a25611"
+		          android:orientation="horizontal"
+		          android:layout_height="wrap_content">
+          
+	            <TextView 
+		               android:layout_width="0dp"
+		               android:layout_weight=".7"
+		               android:layout_height="match_parent"
+		               android:gravity="center"
+		               android:text="St.Rate"
+		               android:focusable="true"
+		    		   android:focusableInTouchMode="true"
+		               android:layout_marginLeft="1dp"
+		          	   android:layout_marginRight="1dp"
+		               android:layout_marginTop="1dp"
+		               android:layout_marginBottom="1dp"
+		               android:textSize="10sp"
+		               android:textColor="#fff" />
+	            
+                <TextView 
+		               android:layout_width="0dp"
+		               android:layout_weight=".7"
+		               android:layout_height="match_parent"
+		               android:gravity="center"
+		               android:text="Last Trans Rt."
+		               android:focusable="true"
+		    		   android:focusableInTouchMode="true"
+		               android:layout_marginLeft="1dp"
+		               android:layout_marginRight="1dp"
+		               android:layout_marginTop="1dp"
+		               android:layout_marginBottom="1dp"
+		               android:textSize="10sp"
+		               android:textColor="#fff"  />
+                
+                
+            <LinearLayout  
+                android:layout_width="0dp"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_height="match_parent" >
+                
+		         <TextView 
+		               android:layout_width="match_parent"
+		               android:layout_weight="1"
+		               android:layout_height="0dp"
+		               android:gravity="center"
+		               android:text="Rt.Offer " 
+		               android:focusable="true"
+		               android:focusableInTouchMode="true"
+		               android:layout_marginLeft="1dp"
+		          	   android:layout_marginRight="1dp"
+		               android:layout_marginTop="2dp"
+		               android:layout_marginBottom="2dp"
+		           	   android:textSize="10sp"
+		               android:textColor="#fff" />
+		         
+		       <TextView 
+		               android:layout_width="match_parent"
+		               android:layout_weight="1"
+		               android:layout_height="0dp"
+		               android:gravity="center"
+		               android:text="Min Dlv Qty"
+		               android:focusable="true"
+		               android:focusableInTouchMode="true"
+		               android:layout_marginLeft="1dp"
+			           android:layout_marginRight="1dp"
+			           android:layout_marginTop="1dp"
+			           android:layout_marginBottom="1dp"
+		           	   android:textSize="10sp"
+		               android:textColor="#fff" />
+              
+             </LinearLayout>
+             
+              <LinearLayout  
+                  android:layout_width="0dp"
+                  android:orientation="vertical"
+                  android:layout_weight="1"
+                  android:layout_height="match_parent" >
+		       
+	             <TextView 
+		               android:layout_width="match_parent"
+		               android:layout_weight="0.5"
+		               android:layout_height="0dp"
+		               android:gravity="center"
+		               android:text="Tax %"
+		               android:focusable="true"
+		    		   android:focusableInTouchMode="true"
+		               android:layout_marginLeft="1dp"
+			           android:layout_marginRight="1dp"
+			           android:layout_marginTop="1dp"
+			           android:layout_marginBottom="1dp"
+		               android:textSize="10sp"
+		               android:textColor="#fff"  />
+	             
+	              <TextView 
+	                  android:layout_width="match_parent"
+	              	  android:layout_height="0dp"
+	                  android:gravity="center"
+	                  android:text="UOM"
+	                  android:focusable="true"
+	                  android:focusableInTouchMode="true"
+	                  android:layout_marginLeft="1dp"
+			          android:layout_marginRight="1dp"
+			          android:layout_marginTop="1dp"
+			          android:layout_marginBottom="1dp"
+			          android:layout_weight="0.5"
+			          android:textSize="10sp"
+			          android:textColor="#fff"  />
+	              
+             </LinearLayout>
+             
+              <TextView 
+	                  android:layout_width="0dp"
+	                  android:layout_weight="1"
+	                  android:layout_height="match_parent"
+	                  android:gravity="center"
+	                  android:text="Change Validty"
+	                  android:focusable="true"
+	    			  android:focusableInTouchMode="true"
+	              	  android:layout_marginLeft="1dp"
+			          android:layout_marginRight="1dp"
+			          android:layout_marginTop="1dp"
+			          android:layout_marginBottom="1dp"
+	           		  android:textSize="10sp"
+	           		  android:textColor="#fff"  />
+              
+              <TextView 
+	                   android:layout_width="0dp"
+	                   android:layout_weight="2"
+		               android:layout_height="match_parent"
+		               android:gravity="center"
+		               android:text="Remark"
+	                   android:focusable="true"
+	    			   android:focusableInTouchMode="true"
+	              	   android:layout_marginLeft="1dp"
+			           android:layout_marginRight="1dp"
+			           android:layout_marginTop="1dp"
+			           android:layout_marginBottom="1dp"
+	                   android:textSize="10sp"
+	                   android:textColor="#fff"  />
+           
+         
+       </LinearLayout>
+       
+      
+        <ImageView 
+		         android:visibility="gone"
+		         android:id="@+id/gifView"
+		         android:src="@drawable/aaaaa"
+		         android:layout_gravity="center"
+		         android:layout_margin="20dp"
+		         android:layout_height="100dp"
+		         android:layout_width="100dp" />
+    <!-- 
+      <ProgressBar android:indeterminateDrawable="@drawable/my_progress_indeterminate"
+              style="?android:attr/progressBarStyleLarge"
+               android:visibility="gone"
+         android:id="@+id/gifView"
+              android:layout_marginLeft="50dp"
+              android:layout_marginRight="10dp"
+              android:layout_height="100dp" android:layout_width="100dp"></ProgressBar> -->
+    
+         
+         
+   
+     
+     
+     <ScrollView  
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical"
+         android:id="@+id/dynamcDtaContnrScrollview">
+         
+     </ScrollView>
+     </LinearLayout>
+     
+    
+     <LinearLayout 
+    		 android:layout_width="match_parent"
+    		 android:layout_height="33dp"
+        	 android:layout_marginBottom="2dp"
+             android:orientation="horizontal" >
+   
+         	<Button 
+         	      android:layout_width="0dp"
+                  android:layout_marginRight="20dp"
+                  android:textStyle="bold"
+                  android:text="Previous"
+                  android:id="@+id/btnPrevious"
+                  android:textSize="11sp"
+                  android:textColor="#fff"
+                  android:layout_height="match_parent"
+                  android:background="@drawable/custom_button"
+                  android:layout_marginLeft="20dp"
+                  android:layout_weight="1"/>
+         
+             <Button 
+                  android:layout_width="0dp"
+                  android:layout_marginRight="20dp"
+                  android:textStyle="bold"
+                  android:text="Next"
+                  android:id="@+id/Done_btn"
+                  android:textSize="11sp"
+                  android:textColor="#fff"
+                  android:layout_height="match_parent"
+                  android:background="@drawable/custom_button"
+                  android:layout_marginLeft="20dp"
+                  android:layout_weight="1"/>
+             
+              <Button
+                    android:layout_width="0dp"
+                    android:layout_marginLeft="20dp"
+                    android:background="@drawable/custom_button"
+                    android:text="Cancel"
+                    android:id="@+id/cancleBtn"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    android:textSize="11sp"
+                    android:visibility="gone"
+                    android:layout_marginRight="20dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"/>
+         
+    
+    
+
+</LinearLayout>
+
+</LinearLayout>

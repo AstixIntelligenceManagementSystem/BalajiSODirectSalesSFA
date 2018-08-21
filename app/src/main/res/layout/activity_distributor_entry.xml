@@ -1,0 +1,389 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+     >
+
+<!--     <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Opening Stock : \nPhysical Stock Verification Data Entry : Today"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:padding="6dp"/>
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#37474F"/>
+     -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+        android:background="@drawable/custom_header_color"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/img_back_Btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.30"
+android:visibility="visible"
+            android:src="@drawable/back_button_image" />
+        <ImageView
+            android:id="@+id/img_side_popUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="0dp"
+            android:visibility="gone"
+            android:src="@drawable/ic_action" />
+
+        <TextView
+            android:id="@+id/bardd"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="@string/DistrbtrENtryHeader"
+            android:textColor="#ffff"
+            android:textSize="16sp"
+
+            android:textStyle="bold"
+            android:typeface="normal" />
+
+        <ImageView
+
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.30"
+            android:visibility="invisible" />
+
+
+    </LinearLayout>
+   <!-- <include layout="@layout/custom_header" />
+-->
+    <Spinner 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="5dp"
+        android:id="@+id/spinner_for_filter"
+        android:visibility="visible"
+        android:background="@drawable/spinner_distribtr_bckgrnd"
+        />
+
+
+    <TextView
+    android:id="@+id/txt_stockDate"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="3dp"
+    android:layout_marginRight="2dp"
+    android:paddingBottom="3dp"
+    android:paddingTop="3dp"
+    android:text="Stock Date: "
+    android:textSize="13sp"
+    android:textStyle="bold"
+    android:visibility="visible" />
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:id="@+id/ll_forSearchBox">
+        
+        <EditText 
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_marginTop="1dp"
+            android:layout_marginLeft="2dp"
+            android:id="@+id/edittext"
+            android:hint="Enter text to search"/>
+        
+        
+        <ImageView 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.40"
+            android:src="@drawable/search_img"
+            android:id="@+id/btn_search"/>
+        
+    </LinearLayout>
+     <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:id="@+id/LLparentOfInPcsCs"
+       android:gravity="center"
+         android:visibility="gone"
+        
+        android:orientation="horizontal">
+            <TextView 
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+       android:layout_weight="1.5"
+       android:gravity="center"
+        android:textSize="12sp"
+        android:visibility="visible"
+        android:textColor="#FF4A4F"
+        android:textStyle="bold"
+        
+        android:id="@+id/txt_stockEntry_Cases"
+        android:text="Stock Entry(In Pieces)"
+        />
+        <RadioButton android:layout_width="0dp"
+             android:layout_weight="1"
+           android:textSize="12sp"
+            
+            android:layout_height="match_parent"
+            android:id="@+id/RB_inpieces"
+            android:text="In Pieces"
+            />
+         <RadioButton android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="In Cases"
+            android:textSize="12sp"
+            android:id="@+id/RB_InCases"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    
+    
+    
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ll_forTableHeaderName"
+        android:visibility="visible"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="1dp"
+        android:orientation="vertical">
+        
+       
+    <TableLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           >
+
+            
+            <!-- #E1F5FE -->
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:paddingBottom="4dp"
+                android:paddingLeft="6dp"
+                android:paddingRight="6dp"
+                android:paddingTop="4dp"
+                android:text="@string/txtProductName"
+                android:background="@drawable/shadow_border_row_header"
+
+                android:textSize="10dp" />
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="2.85"
+                android:background="@drawable/shadow_border_row_header"
+                android:orientation="vertical"
+                android:visibility="gone"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                   android:padding="3dp"
+                   android:textStyle="bold"
+                    android:text="PKD Month" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                   
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.8"
+                        android:gravity="center"
+                       android:textSize="10sp"
+                        android:padding="2dp"
+                        android:id="@+id/txt_mnth1"
+                       android:background="@drawable/shadow_border_row_header"
+                        />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.8"
+                        android:gravity="center"
+                        android:textSize="10sp"
+                         android:padding="2dp"
+                         android:id="@+id/txt_mnth2"
+                        android:background="@drawable/shadow_border_row_header"
+                        android:text="Dec-16" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.8"
+                        android:background="@drawable/shadow_border_row_header"
+                        android:gravity="center"
+                        android:textSize="10sp"
+                        android:id="@+id/txt_mnth3"
+                         android:padding="2dp"
+                        android:text="Jan-17" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.8"
+                        android:gravity="center"
+                        android:background="@drawable/shadow_border_row_header"
+                        android:textSize="10sp"
+                        android:id="@+id/txt_mnth4"
+                         android:padding="2dp"
+                        android:text="Feb-17" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.8"
+                        android:gravity="center"
+                        android:id="@+id/txt_mnth5"
+                        android:background="@drawable/shadow_border_row_header"
+                        android:textSize="10sp"
+                        android:padding="2dp"
+                        android:text="Mar-17" />
+                    
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:id="@+id/txt_oldStock"
+                        android:background="@drawable/shadow_border_row_header"
+                        android:textSize="11sp"
+                        android:padding="2dp"
+                        android:text="Old STK" />
+                    
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.55"
+                android:padding="1dp"
+                android:textSize="11sp"
+                android:background="@drawable/shadow_border_row_header"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="Free Stock"
+                android:visibility="gone"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight=".4"
+                android:padding="1dp"
+                android:gravity="center"
+                android:textSize="11sp"
+                android:background="@drawable/shadow_border_row_header"
+                android:layout_marginRight="1dp"
+                android:textStyle="bold"
+                android:text="@string/txtQuantity" />
+                        </TableRow>        
+
+    </TableLayout>
+    
+    </LinearLayout>
+    
+    
+    
+    
+    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        android:id="@+id/scroll_view"
+        android:layout_weight="3">
+        
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="1dp"
+        android:id="@+id/lLayout_main">
+        
+             
+    <RelativeLayout 
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:visibility="gone"
+    android:layout_weight="4"
+    android:id="@+id/relLayout_img"
+    >
+    
+<ImageView 
+    android:layout_width="200dp"
+    android:layout_height="200dp"
+    android:background="@drawable/sad1600"
+    android:layout_centerInParent="true"
+    android:id="@+id/imgView"/>
+
+<TextView 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Sorry!! \n No Results Found"
+    android:textSize="20sp"
+    android:textStyle="bold"
+    android:gravity="center"
+    android:layout_below="@+id/imgView"/>
+
+</RelativeLayout>
+     
+        
+    </LinearLayout>
+    
+     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4"
+        android:layout_gravity="bottom|center_vertical"
+        android:orientation="horizontal"
+        >
+        
+        <Button 
+            android:layout_width="match_parent"
+          android:layout_marginLeft="3dp"
+          android:layout_marginRight="3dp"
+            android:layout_height="match_parent"    
+            android:id="@+id/btn_save"
+            android:layout_marginBottom="5dp"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/custom_button"
+            android:text="@string/txtSubmit"/>
+        
+    </LinearLayout>
+        
+         </LinearLayout>
+   

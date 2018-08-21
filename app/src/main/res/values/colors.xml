@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#182E58</color>
+    <color name="colorPrimaryDark">#182E58</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="green">#689F38</color>
+    <color name="red">#D32F2F</color>
+    <color name="colorGreen">#0d7e3d</color>
+    <color name="colorGray">#95a5a6</color>
+
+
+
+
+
+
+    <color name="my_color">#fff</color>
+   <!-- <color name="primaryColorDark">#0738a9</color>
+    <color name="primaryDarkColor">#0a4dca</color>
+    <color name="storelisttopcolor">#143660</color>
+    <color name="radiocolor">#1e45d2</color>
+    <color name="blue">#0000ff</color>
+-->
+
+    <color name="primaryColorDark">#182E58</color>
+    <color name="primaryDarkColor">#182E58</color>
+    <color name="storelisttopcolor">#182E58</color>
+    <color name="radiocolor">#de0264</color>
+    <color name="blue">#cd005b</color>
+
+    <color
+        name="graycolor">#D7D7D7</color>
+
+
+
+    <color name="transparent">#000000</color>
+    <color name="tab_highlight">#de0264</color>
+
+    <color name="bg_gradient_start">#A6004E</color>
+    <color name="bg_gradient_end">#A6004E</color>
+    <color name="bg_button_login">#1D394C</color>
+
+
+    <color name="primary_text">#212121</color>
+    <color name="primary_color">#de0264</color>
+
+    <color
+        name="white">#FFFFFF</color>
+    <color
+        name="black">#000000</color>
+    <color
+        name="prt_color">#74C543</color>
+    <color
+        name="prt_color_border">#68B638</color>
+    <color
+        name="tablecolor">#ea0c6f</color>
+
+
+    <color
+        name="green_submitted">#2E7D32</color>
+    <color
+        name="sky_color">#ea0c6f</color>
+
+    <!--<color name="my_color">#000</color>-->
+
+    <color
+        name="symptom_color_selected">#A6004E</color>
+
+    <color
+        name="reaction_color_selected">#A6004E</color>
+    <color name="static_text_color">#A6004E</color>
+    <color name="journal_entry_listitem_text_color">#A6004E</color>
+    <color name="note_text_disabled">#333333</color>
+
+
+
+
+
+
+</resources>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/LinearLayout01"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent" 
+    android:orientation="vertical"
+      android:background="#ffffff"
+    >
+    
+    
+    <TextView
+                       android:id="@+id/lastExecution"
+                        android:text="Last POS Summary"
+                        android:layout_width="match_parent"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="10dp"
+                        android:textStyle="bold"
+                        android:background="#ffffff"
+                        android:layout_height="wrap_content"/>
+    
+    <ScrollView
+               
+                android:id="@+id/verticalScrollNew"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true" 
+               >
+    
+    <RelativeLayout
+            android:id="@+id/relativeNew"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+             >
+
+    <RelativeLayout
+            android:id="@+id/relativeLayoutPG2"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+           android:layout_marginTop="20dp"
+            android:background="@drawable/my_border" 
+            android:layout_gravity="right"
+                    android:gravity="right">
+            
+                <TableLayout
+                android:id="@+id/tabLayoutHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#000000"
+                android:stretchColumns="*" 
+                 android:layout_alignParentLeft="true"
+                 
+               >
+
+                <TableRow 
+                    android:id="@+id/trHeader"
+                    android:layout_margin="0.2dp"
+                    android:layout_gravity="top"
+                  >
+                   
+                     <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:text="SKU"
+                      android:layout_weight="5.2"
+                        android:layout_width="0dip"
+                        android:textSize="10dp"
+                        android:textStyle="bold" 
+                         android:layout_height="fill_parent"/>
+                     
+                      <TextView
+                          android:id="@+id/FirstDate"
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:text="NA"
+                        android:layout_weight="1.6"
+                        android:layout_width="0dip"
+                        android:textSize="10dp"
+                        android:gravity="center_horizontal"
+                        android:textStyle="bold"
+                         android:layout_height="fill_parent"
+                         />
+
+                   <TextView
+                        android:id="@+id/SecondDate"
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:text="NA"
+                         android:layout_weight="1.6"
+                        android:layout_width="0dip"
+                        android:textSize="10dp"
+                        android:gravity="center_horizontal"
+                        android:layout_height="fill_parent"
+                        android:textStyle="bold" />
+                   
+                       <TextView
+                           android:id="@+id/ThirdDate"
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:text="NA"
+                        android:layout_weight="1.6"
+                        android:layout_width="0dip"
+                         android:gravity="center_horizontal"
+                        
+                         android:textSize="10dp"
+                         android:layout_height="fill_parent"
+                        android:textStyle="bold" />
+                   
+                </TableRow>
+                
+            </TableLayout>
+
+            <ScrollView
+                
+                android:id="@+id/verticalScrollView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tabLayoutHeader"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp" >
+
+                <TableLayout
+                    android:id="@+id/dyntable_For_ExecutionDetails"
+                  	android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                   	android:background="#000000"
+                   	android:stretchColumns="*" >
+
+                </TableLayout>
+           </ScrollView>
+    </RelativeLayout>
+     </RelativeLayout>
+     </ScrollView>
+</LinearLayout>

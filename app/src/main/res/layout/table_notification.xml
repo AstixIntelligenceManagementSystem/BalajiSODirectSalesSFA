@@ -1,0 +1,36 @@
+
+                    <TableRow xmlns:android="http://schemas.android.com/apk/res/android" 
+                        android:id="@+id/tblDynSummaryRow"
+                        android:layout_margin="0.2dp" 
+                        >
+
+                        
+                        
+                        <TextView
+                            android:id="@+id/tvDate"
+                            android:layout_margin="0.2dp"
+                            android:background="#d8e2ee"
+                            android:textSize="8sp"
+                             android:layout_weight="3"
+                            android:layout_width="10dp"
+                           
+                            android:singleLine="true"
+                            />
+                        
+                      
+                        
+                        <TextView
+                            android:id="@+id/tvMessage"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:textSize="8sp"
+                            android:layout_weight="7"
+                            android:layout_width="100dp"
+                            
+                            android:singleLine="true"
+                            android:lines="5"
+                             />
+                        
+                       
+                      
+                    </TableRow>

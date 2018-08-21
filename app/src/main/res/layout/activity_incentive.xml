@@ -1,0 +1,89 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+   >
+    
+    <RelativeLayout android:layout_width="match_parent"
+                android:layout_height="45dp"
+               
+                 android:background="@drawable/custom_header_color">
+            <TextView   android:id="@+id/bardd"
+				        android:layout_width="wrap_content"
+				        android:layout_height="match_parent"
+				        android:text="@string/txtIncentive"
+				        android:textStyle="bold"
+				        android:textColor="#ffffff"
+				        android:typeface="normal" 
+				       android:layout_centerInParent="true"
+				      	android:gravity="center_vertical"
+				        android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/imgVw_next"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/next_icon" />
+            <ImageView
+                android:id="@+id/imgVw_back"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_back" />
+
+            </RelativeLayout>
+        
+    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingBottom="5dp"
+        android:id="@+id/scroll">
+        
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/ll_Parent"
+        android:orientation="vertical">
+        
+        
+    </LinearLayout>
+    
+    </ScrollView>
+    
+     
+         <TextView 
+             android:layout_width="match_parent"
+             android:layout_height="0dp"
+             android:layout_weight="0.10"
+             android:background="#007684"
+             android:textColor="#FFFFFF"
+             android:textStyle="bold"
+             android:gravity="center"
+             android:textSize="16sp"
+             android:padding="5dp"
+          	 android:id="@+id/txt_total_earned"/>
+         
+       <LinearLayout
+            android:id="@+id/ll_txt_display_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:drawable/alert_light_frame"
+            android:orientation="horizontal">
+            
+            <TextView 
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:padding="5dp"
+                android:id="@+id/txt_display_msg"/>
+            
+        </LinearLayout>
+        
+         
+</LinearLayout>

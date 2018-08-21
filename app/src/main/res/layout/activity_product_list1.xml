@@ -1,0 +1,896 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeMainMainLayout"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:layout_gravity="top"
+  tools:context=".ProductListOld1"
+   
+  >
+	
+ 
+     
+     
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+       android:padding="5dp" 
+        >
+
+        <ImageView
+            android:id="@+id/mainImg1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/neologo1"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/textView1_battstat11112"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="0dp"
+            android:text="@string/productlist_orderbooking"
+            android:textSize="12dp"
+            android:textStyle="bold" />
+        
+        <Button
+        android:id="@+id/return123"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_below="@id/textView1_battstat11112"
+        android:layout_alignParentRight="true"
+        android:text="@string/productlist_returnbutton"
+        android:textSize="10dp"
+         android:visibility="gone"
+        />
+        
+        <Button
+        android:id="@+id/picMgr"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="19dp"
+        android:text="@string/productlist_storebutton"
+        android:layout_alignParentRight="true"
+        android:textSize="10dp" 
+         android:enabled="false"/>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/mainImg1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:background="@drawable/my_border" >
+
+            <RelativeLayout
+                android:id="@+id/relativeLayout1111"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/tableheader" >
+
+                <TextView
+                    android:id="@+id/textView1_battstat2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="0dp"
+                    android:text="Gross"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView1_battstat3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_toRightOf="@id/textView1_battstat2"
+                    android:text="Tax"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView1_battstat4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_toRightOf="@id/textView1_battstat3"
+                    android:text="Net"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView1_battstat5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginLeft="42dp"
+                    android:layout_toRightOf="@id/textView1_battstat4"
+                    android:text="Discount"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:layout_below="@id/relativeLayout1111"
+                android:layout_marginTop="0dp"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/textView1_battstat21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/view2"
+                android:layout_marginBottom="0dp"
+                android:layout_marginLeft="2dp"
+                android:text="600.00"
+                android:textSize="12sp" />
+        </RelativeLayout>
+ <LinearLayout
+        android:id="@+id/second"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relativeLayout1"
+        android:layout_weight="0.08">
+        
+      	<RelativeLayout
+                 android:id="@+id/second1"
+               android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#90A3C1"
+               
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            >
+				
+      	       <TextView
+                    android:id="@+id/textView1_battstat222"
+                    android:layout_width="wrap_content"
+               		 android:layout_height="wrap_content"
+                    android:layout_marginBottom="0dp"
+                    android:text="@string/prodlstCategoryName"
+                    android:textSize="14dp"
+                     
+                    android:textStyle="bold" />
+                <Spinner  android:id="@+id/competition_spinner"
+                          android:layout_width="180dp"
+                			android:layout_height="wrap_content"
+                		   android:textSize="12sp"
+                		    android:layout_marginLeft="5dp"
+                		     android:layout_toRightOf="@id/textView1_battstat222"
+                         />
+               
+
+              
+                		
+                
+                
+                
+            </RelativeLayout>
+    </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/second"
+             >
+
+            <TextView
+                android:id="@+id/textView1_scheme1111"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:text="@string/productlist_currentproduct"
+                android:textSize="12dp"
+                android:layout_alignParentLeft="true"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView1_schemeVAL1111"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/textView1_scheme1111"
+                android:paddingBottom="10dp"
+                android:textSize="12dp" />
+
+            <TextView
+                android:id="@+id/textView1_scheme"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/productlist_schemeapplicable"
+                android:layout_alignParentLeft="true"
+                android:textSize="12dp"
+               android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView1_schemeVAL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_toRightOf="@+id/textView1_scheme"
+                android:paddingBottom="10dp"
+                android:text=""
+                android:textSize="12dp" />
+
+             <TableLayout
+                android:id="@+id/tabLayoutHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_below="@+id/textView1_schemeVAL"
+                android:background="#000000"
+                android:stretchColumns="*" >
+
+                <TableRow 
+                    android:id="@+id/trHeader"
+                    android:layout_margin="0.2dp"
+                     >
+
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                        android:layout_width="0dip"
+                        android:layout_weight="4"
+                        android:text="Product"
+                        android:layout_height="fill_parent"
+                        android:textSize="@dimen/ProductClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                         android:layout_width="0dip"
+                        android:layout_weight="1"
+                        android:text="LOD/Qty"
+                        android:layout_height="fill_parent"
+                        android:textSize="@dimen/ProductClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                         android:layout_width="0dip"
+                        android:layout_weight="1"
+                        android:text="Rate"
+                        android:layout_height="fill_parent"
+                        android:textSize="@dimen/ProductClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                         android:layout_width="0dip"
+                         android:layout_height="fill_parent"
+                        android:layout_weight="1.3"
+                        android:text="Stock"
+                        android:textSize="@dimen/ProductClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                        android:layout_height="fill_parent"
+                         android:layout_width="0dip"
+                        android:layout_weight="1.3"
+                        android:text="O.Qty"
+                        android:textSize="@dimen/ProductClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                         android:layout_width="0dip"
+                        android:layout_weight="1"
+                        android:layout_height="fill_parent"
+                        android:text="O.Val"
+                        android:textSize="@dimen/ProductClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                         android:layout_width="0dip"
+                         android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:text="F.Qty"
+                        android:textSize="@dimen/ProductClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                         android:layout_width="0dip"
+                         android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:text="D.Val"
+                        android:textSize="@dimen/ProductClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+                </TableRow>
+            </TableLayout>
+
+            <ScrollView
+                android:id="@+id/verticalScrollView1"
+                android:layout_width="match_parent"
+              	android:layout_centerInParent="true"
+                android:layout_height="wrap_content"
+               
+                android:layout_below="@id/tabLayoutHeader"
+                 >
+			 <RelativeLayout
+                android:id="@+id/justrelative"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:smoothScrollbar="true"
+                 android:scrollingCache="true"
+                  android:animationCache="true"
+                android:paddingTop="0dp"
+                android:gravity="top" >
+                 <TableLayout
+                    android:id="@+id/dynprodtable"
+                  	android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                   	android:background="#000000"
+                
+                   	android:stretchColumns="*" >
+
+                </TableLayout>
+           
+
+            <RelativeLayout
+                android:id="@+id/relativeSampleQTY"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 android:layout_below="@id/dynprodtable"
+                android:paddingTop="0dp" >
+  <TextView
+                    android:id="@+id/tvSampleQTY"
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                        android:text="@string/productlist_sampleqty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+                
+                <EditText
+                            android:id="@+id/etSampleQTY"
+                            android:layout_margin="0.2dp"
+                            android:background="#d8e2ee"
+                            android:textSize="10sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:layout_toRightOf="@id/tvSampleQTY"
+                            android:scrollHorizontally="true"
+                            android:hint="@string/productlist_samplehint"
+                            android:inputType="number"
+                            android:digits="0123456789"
+                            android:maxLength="2"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true" />
+                  <TextView
+                    android:id="@+id/tvSimpleTextSampleQTY"
+                        android:layout_margin="0.2dp"
+                       android:text="@string/productlist_sampletotalhint"
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/etSampleQTY"
+                        android:textSize="10sp"
+                        android:singleLine="true"
+                        android:textStyle="bold" />              
+                
+                </RelativeLayout>
+            
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:id="@+id/relativeINvoice"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relativeSampleQTY"
+                android:paddingTop="1dp"
+                android:background="@drawable/my_main_border" >
+                  
+                 <TextView
+                    android:id="@+id/textView1_CredAmtblankheader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="1dp"
+                    android:text=""
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                     android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/textView1_CredAmtVALheader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_CredAmtblankheader"
+                    android:layout_marginLeft="145dp"
+                    android:layout_toRightOf="@id/textView1_CredAmtblankheader"
+                    android:text="@string/productlist_cramt"
+                    android:textStyle="bold"
+                    android:textSize="8sp"
+                    android:visibility="gone" />
+    
+    <TextView
+                    android:id="@+id/textView1_CredAmtVALheader22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_CredAmtVALheader"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/textView1_CredAmtVALheader"
+                    android:text="@string/productlist_cradj"
+                    android:textStyle="bold"
+                    android:textSize="8sp"
+                    android:visibility="gone" />
+     
+   <TextView
+                    android:id="@+id/textView1_INafterCredVALheader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_CredAmtVALheader22"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@id/textView1_CredAmtVALheader22"
+                    android:text="@string/productlist_crbal"
+                    android:textStyle="bold"
+                    android:textSize="8sp"
+                     android:visibility="gone" />
+                
+                <TextView
+                    android:id="@+id/textView1_CredAmt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="1dp"
+                    android:layout_below="@id/textView1_CredAmtblankheader"
+                    android:text="@string/productlist_creditamount"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/textView1_CredAmtVAL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_CredAmt"
+                    android:layout_alignLeft="@id/textView1_CredAmtVALheader"
+                    android:layout_toRightOf="@id/textView1_CredAmt"
+                    android:text="0.00"
+                    android:textSize="12sp"
+                     android:visibility="gone" />
+    
+    <TextView
+                            android:id="@+id/textView1_CredAmtVAL_new"
+                            android:textSize="12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/textView1_CredAmtVAL"
+                            android:layout_alignBaseline="@id/textView1_CredAmt"
+                            android:layout_alignLeft="@id/textView1_CredAmtVALheader22"
+                            android:text="0.00"
+                            android:visibility="gone" />
+     
+   <TextView
+                    android:id="@+id/textView1_INafterCredVAL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_CredAmtVAL_new"
+                    android:layout_toRightOf="@id/textView1_CredAmtVAL_new"
+                    android:layout_alignLeft="@id/textView1_INafterCredVALheader"
+                    android:text="0.00"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/textView1_discount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:layout_below="@id/textView1_CredAmt"
+                    android:text="@string/productlist_productleveldiscount"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView1_v3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_discount"
+                    
+                    android:layout_toRightOf="@id/textView1_discount"
+                    android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                    android:text="0.00"
+                    android:textSize="12sp" />
+                
+                <TextView
+                    android:id="@+id/textView1_freeTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView1_discount"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="1dp"
+                    android:text="@string/productlist_freeqtytotal"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView1_v5"
+                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_alignBaseline="@id/textView1_freeTotal"
+                    android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                    android:layout_toRightOf="@id/textView1_freeTotal"
+                    android:text="0"
+                    android:textSize="12sp" />
+                
+                
+                <TextView
+                    android:id="@+id/textView1_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="1dp"
+                    android:layout_below="@id/textView1_freeTotal"
+                    android:text="@string/productlist_netinvoicevalue"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView1_v1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                     android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                    android:layout_alignBaseline="@id/textView1_total"
+                    
+                    android:layout_toRightOf="@id/textView1_total"
+                    android:text="0.00"
+                    android:textSize="12sp" />
+                
+                <TextView
+                    android:id="@+id/textView1_AdditionalDiscount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="1dp"
+					 android:layout_below="@id/textView1_total"
+                    android:text="@string/productlist_nadditionaldiscount"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView1_AdditionalDiscountVAL"
+                   
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_AdditionalDiscount"
+                     android:layout_width="match_parent"
+                     android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                    android:layout_toRightOf="@id/textView1_AdditionalDiscount"
+                    android:text="0.00"
+                    android:textSize="12sp" />
+                
+                <TextView
+                    android:id="@+id/textView1_INvalOFtaDIS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="1dp"
+					android:layout_below="@id/textView1_AdditionalDiscount"
+                    android:text="@string/productlist_invoiceaftdiscount"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView1_INvalOFtaDISVAL"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_INvalOFtaDIS"
+                     android:layout_width="match_parent"
+                     android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                    android:layout_toRightOf="@id/textView1_INvalOFtaDIS"
+                    android:text="0.00"
+                    android:textSize="12sp" />
+                
+
+                <TextView
+                    android:id="@+id/textView1_tax"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView1_INvalOFtaDIS"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="1dp"
+                    android:text="@string/productlist_taxamount"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView1_v2"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_tax"
+                     android:layout_width="match_parent"
+                     android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                    android:layout_toRightOf="@id/textView1_tax"
+                    android:text="0.00"
+                    android:textSize="12sp" />
+
+                
+
+                <TextView
+                    android:id="@+id/textView1_invoice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/textView1_tax"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="1dp"
+                    android:text="@string/productlist_grossinvoicevalue"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView1_v4"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/textView1_invoice"
+                     android:layout_width="match_parent"
+                     android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                    android:layout_toRightOf="@id/textView1_invoice"
+                    android:text="0.00"
+                    android:textSize="12sp" />
+                
+                
+                <RelativeLayout 
+                              android:id="@+id/coupon_layout"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_below="@id/textView1_invoice">
+                
+                
+                
+                
+                
+                
+                
+                <TextView
+                    android:id="@+id/tvNoOfCoupon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   
+                     android:layout_marginLeft="5dp"
+                    
+                    android:paddingTop="5dp"
+                    android:text="@string/productlist_noofcoupons"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+                
+                <EditText
+                            android:id="@+id/tvNoOfCouponValue"
+                            android:background="#d8e2ee"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                             android:layout_width="match_parent"
+                     		android:layout_marginLeft="65dp"
+                    			android:gravity="right"
+                            android:layout_toRightOf="@id/tvNoOfCoupon"
+                            android:layout_alignBaseline="@id/tvNoOfCoupon"
+                            android:scrollHorizontally="true"
+                            android:hint="0"
+                            android:inputType="number"
+                            android:digits="0123456789"
+                            android:maxLength="5"
+                           android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true" />
+                
+                <TextView
+                    android:id="@+id/tvCouponAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvNoOfCoupon"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/productlist_totalcouponamount"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+                
+                <EditText
+                            android:id="@+id/tvCouponAmountValue"
+                            android:background="#d8e2ee"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                             android:layout_width="match_parent"
+                     android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                            android:layout_toRightOf="@id/tvCouponAmount"
+                            android:layout_alignBaseline="@id/tvCouponAmount"
+                            android:scrollHorizontally="true"
+                            android:hint="0.00"
+                            android:inputType="number"
+                            android:digits="0123456789"
+                            android:maxLength="6"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true" />
+                
+                
+                 
+                
+                </RelativeLayout>
+                
+                
+                
+<TextView
+                    android:id="@+id/tvAmtPrevDue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/coupon_layout"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/productlist_amountprevdue"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvAmtPrevDueVAL"
+                    
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/tvAmtPrevDue"
+                     android:layout_width="match_parent"
+                     android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                    android:layout_toRightOf="@id/tvAmtPrevDue"
+                    android:text="0.00"
+                    android:textSize="12sp" />
+                
+                  <TextView
+                    android:id="@+id/tvAmtColl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_below="@id/tvAmtPrevDue"
+                    android:paddingTop="1dp"
+                    android:text="@string/prodlstAmtCollected"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+ 
+                <EditText
+                            android:id="@+id/etAmtCollVAL"
+                            android:background="#d8e2ee"
+                            android:textSize="12sp"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                             android:layout_width="match_parent"
+                     android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                            android:layout_toRightOf="@id/tvAmtColl"
+                            android:layout_alignBaseline="@id/tvAmtColl"
+                            android:scrollHorizontally="true"
+                            android:hint="0.00"
+                            android:inputType="number"
+                            android:digits="0123456789"
+                            android:maxLength="6"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true" />
+                
+                
+                <TextView
+                    android:id="@+id/tvAmtOutstanding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvAmtColl"
+                    android:layout_marginLeft="5dp"
+                    
+                    android:paddingTop="1dp"
+                    android:text="@string/productlist_amountoutstanding"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvAmtOutstandingVAL"
+                    
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/tvAmtOutstanding"
+                     android:layout_width="match_parent"
+                     android:layout_marginLeft="65dp"
+                    android:gravity="right"
+                    android:layout_toRightOf="@id/tvAmtOutstanding"
+                    android:text="0.00"
+                    android:textSize="12sp" />
+                
+            </RelativeLayout>
+             <Button
+     	android:id="@+id/button44"
+     	android:layout_width="wrap_content"
+     	android:layout_height="wrap_content"
+     	android:text="Back"
+     	android:background="@drawable/custom_button"
+        android:textColor="#ffffff"
+        
+     	android:textSize="@dimen/ProductClassButtonTextSize"
+     	android:layout_below="@+id/relativeINvoice"
+     	 />
+             
+              <Button
+        android:id="@+id/button33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:text="Save"
+      android:background="@drawable/custom_button"
+        android:textColor="#ffffff"
+       android:textSize="@dimen/ProductClassButtonTextSize"
+       android:layout_below="@+id/relativeINvoice" 
+       android:layout_toRightOf="@id/button44" 
+       android:layout_marginLeft="3dp"/>
+              
+               <Button
+        android:id="@+id/button22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:text="Save &amp; Exit"
+       android:background="@drawable/custom_button"
+        android:textColor="#ffffff"
+       android:textSize="@dimen/ProductClassButtonTextSize"
+       android:layout_below="@+id/relativeINvoice" 
+       android:layout_toRightOf="@id/button33" 
+       android:layout_marginLeft="3dp" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:background="@drawable/custom_button"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/ProductClassButtonTextSize"
+        android:layout_below="@+id/relativeINvoice" 
+        android:layout_toRightOf="@id/button22" 
+        android:layout_marginLeft="3dp" />
+    
+            </RelativeLayout>
+                </ScrollView>
+        </RelativeLayout>
+
+           
+    </RelativeLayout>
+   
+
+</RelativeLayout>

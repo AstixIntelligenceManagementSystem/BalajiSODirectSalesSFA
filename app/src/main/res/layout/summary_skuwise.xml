@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+      >
+
+    <ScrollView
+       android:id="@+id/verticalScrollViewMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+             >
+             
+            
+             <LinearLayout
+                android:id="@+id/secondnew"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                 >
+
+                <TextView
+                    android:id="@+id/skuid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SKU Wise Summary"
+                    android:textStyle="bold"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/skuvalue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+          
+
+            <LinearLayout
+                android:id="@+id/second"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:orientation="horizontal" 
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/mysummaryid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Today&apos;s Summary"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/store_name_fill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+           
+            
+            
+          <LinearLayout 
+    android:id="@+id/ll_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+   android:paddingTop="1dp"
+   android:paddingBottom="1dp"
+   
+    android:weightSum="10"
+    android:layout_marginTop="5dp"
+   
+    android:background="#9E9E9E"
+    android:orientation="horizontal">
+
+   
+        
+     <TextView 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.4"
+        android:gravity="center"
+        android:text="Product"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#000000"/> 
+          
+     
+         
+             <TextView 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".8"
+         android:gravity="center"
+        android:text="MRP"
+        android:textSize="10sp"
+        android:textStyle="bold"
+       
+        android:textColor="#000000"/> 
+          
+      
+   
+       
+            
+             <TextView 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".8"
+         android:gravity="center"
+        android:text="Rate"
+        android:textSize="10sp"
+        android:textStyle="bold"
+       
+        android:textColor="#000000"/> 
+          
+     
+        
+        
+             <TextView 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Stock"
+         android:gravity="center"
+         android:textSize="10sp"
+        android:textStyle="bold"
+       
+        android:textColor="#000000"/>
+       
+             
+       
+            
+             <TextView 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+         android:gravity="center"
+        android:text="O.Qty"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        
+        android:textColor="#000000"/> 
+          
+     
+       
+            
+             <TextView 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="F.Qty"
+         android:gravity="center"
+         android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#000000"/>
+             
+               <TextView 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="D.Val"
+         android:gravity="center"
+         android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#000000"/>
+               
+                 <TextView 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Gross"
+         android:gravity="center"
+         android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#000000"/>
+                 
+                   <TextView 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Tax"
+         android:gravity="center"
+         android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#000000"/>
+                 
+                   <TextView 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Net"
+         android:gravity="center"
+         android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#000000"/>
+      
+  
+    
+</LinearLayout>
+
+           
+</LinearLayout>
+           
+    </ScrollView>
+
+</LinearLayout>

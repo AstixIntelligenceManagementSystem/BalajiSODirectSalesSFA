@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
+     >
+
+   
+   <TableLayout 
+   
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent" 
+    android:shrinkColumns="*"  android:stretchColumns="*" 
+    android:layout_alignParentTop="true"> 
+    
+       
+ 
+    
+           <TableRow 
+        android:id="@+id/tableRowCrdt" 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:weightSum="6">  
+        <TextView 
+            android:id="@+id/txt_crdt_amnt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="@string/prodlstCreditAmount"
+            android:layout_weight="3" 
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
+           android:textSize="12sp"
+           android:textColor="#000000"
+            android:paddingLeft="5dp" />  
+        <TextView 
+           android:id="@+id/textView1_CredAmtVAL"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+             android:text="0.0"
+            android:layout_weight="1" 
+           
+            android:textColor="#000000"
+            android:textSize="12sp"
+            
+            android:padding="1dp" android:gravity="center"/>
+        <TextView 
+            android:id="@+id/textView1_CredAmtVAL_new" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="0.00"
+            android:layout_weight="1" 
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+           <TextView 
+            android:id="@+id/textView1_INafterCredVAL" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="0.00"
+            android:layout_weight="1" 
+         	android:textSize="12sp"
+           android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+    </TableRow> 
+      
+    
+   <View 
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="#80B0BEC5"/>
+           <TableRow 
+        android:id="@+id/table_row_prdct" 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:weightSum="6">  
+        <TextView 
+            android:id="@+id/txt_prdct_lvl_dscnt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="@string/prodlstProductLevelDiscount"
+            android:layout_weight="3" 
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
+           android:textSize="12sp"
+           android:textColor="#000000"
+            android:paddingLeft="5dp" />  
+        <TextView 
+            android:id="@+id/txt_prdct_lvl_amnt"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+          
+            android:layout_weight="1" 
+           
+            android:textColor="#000000"
+            android:textSize="12sp"
+            
+            android:padding="1dp" android:gravity="center"/>
+        <TextView 
+            android:id="@+id/textView1_v3" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="0.00"
+            android:layout_weight="1" 
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+           <TextView 
+            android:id="@+id/txt_prdct_lvl_bal" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+           
+            android:layout_weight="1" 
+         	android:textSize="12sp"
+           android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+    </TableRow> 
+      <View 
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="#80B0BEC5"/>
+           <TableRow 
+        android:id="@+id/table_free_qty" 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:weightSum="6">
+
+               <TextView
+                   android:id="@+id/txt_free_qty"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="3"
+                   android:paddingBottom="1dp"
+                   android:paddingLeft="5dp"
+                   android:paddingTop="1dp"
+                   android:text="@string/prodlstFreeQtyTotal"
+                   android:textColor="#000000"
+                   android:textSize="12sp" />
+  
+        <TextView 
+            android:id="@+id/txt_free_qty_amnt"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+           
+            android:layout_weight="1" 
+           
+            android:textColor="#000000"
+            android:textSize="12sp"
+            
+            android:padding="1dp" android:gravity="center"/>
+        <TextView 
+            android:id="@+id/textView1_v5" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="0"
+            android:layout_weight="1" 
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+           <TextView 
+            android:id="@+id/txt_free_qty_bal" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+           
+            android:layout_weight="1" 
+         	android:textSize="12sp"
+           android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+    </TableRow> 
+      <View 
+       android:layout_width="match_parent"
+       android:layout_height="3dp"
+       android:background="#80B0BEC5"/>
+           <TableRow 
+        android:id="@+id/table_net_invoice" 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:weightSum="6">  
+        <TextView 
+            android:id="@+id/txt_net_invoice_value"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="@string/prodlstOValBeforeTax"
+            android:layout_weight="3" 
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
+           android:textSize="12sp"
+           android:textColor="#000000"
+            android:paddingLeft="5dp" />  
+        <TextView 
+            android:id="@+id/txt_net_invoice_amnt"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            
+            android:layout_weight="1" 
+           
+            android:textColor="#000000"
+            android:textSize="12sp"
+            
+            android:padding="1dp" android:gravity="center"/>
+        <TextView 
+            android:id="@+id/tv_NetInvValue" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="0.00"
+            android:layout_weight="1" 
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+           <TextView 
+            android:id="@+id/txt_net_invoice_bal" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            
+            android:layout_weight="1" 
+         	android:textSize="12sp"
+           android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+    </TableRow> 
+      <View 
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="#80B0BEC5"/>
+           <TableRow 
+        android:id="@+id/table_addtnl_dscnt" 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:weightSum="6">  
+        <TextView 
+            android:id="@+id/txtaddtnl_dscnt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="@string/productlist_nadditionaldiscount"
+            android:layout_weight="3" 
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
+           android:textSize="12sp"
+           android:textColor="#000000"
+            android:paddingLeft="5dp" />  
+        <TextView 
+            android:id="@+id/txt_addtnl_dscnt"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+           
+            android:layout_weight="1" 
+           
+            android:textColor="#000000"
+            android:textSize="12sp"
+            
+            android:padding="1dp" android:gravity="center"/>
+        <TextView 
+            android:id="@+id/textView1_AdditionalDiscountVAL" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="0.00"
+            android:layout_weight="1" 
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+           <TextView 
+            android:id="@+id/txt_addtnl_dscnt_bal" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            
+            android:layout_weight="1" 
+         	android:textSize="12sp"
+           android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+    </TableRow> 
+      <View 
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="#80B0BEC5"/>
+           <TableRow 
+        android:id="@+id/table_invc_val_aftr_dscnt" 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:weightSum="6">  
+        <TextView 
+            android:id="@+id/txt_invc_val_aftr_dscnt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="@string/prodlstOValAfterDis"
+            android:layout_weight="3" 
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
+           android:textSize="12sp"
+           android:textColor="#000000"
+            android:paddingLeft="5dp" />  
+        <TextView 
+            android:id="@+id/txt_invc_val_aftr_dscnt_amnt"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+          
+            android:layout_weight="1" 
+           
+            android:textColor="#000000"
+            android:textSize="12sp"
+            
+            android:padding="1dp" android:gravity="center"/>
+        <TextView 
+            android:id="@+id/tv_NetInvAfterDiscount" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="0.00"
+            android:layout_weight="1" 
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+           <TextView 
+            android:id="@+id/txt_invc_val_aftr_dscnt_bal" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+           
+            android:layout_weight="1" 
+         	android:textSize="12sp"
+           android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+    </TableRow> 
+      <View 
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="#80B0BEC5"/>
+           <TableRow 
+        android:id="@+id/table_tax_amnt" 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent"
+        
+        android:weightSum="6">
+
+               <TextView
+                   android:id="@+id/txt_tax_amnt"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="3"
+                   android:paddingBottom="1dp"
+                   android:paddingLeft="5dp"
+                   android:paddingTop="1dp"
+                   android:text="@string/productlist_taxamount"
+                   android:textColor="#000000"
+                   android:textSize="12sp"/>
+        <TextView 
+            android:id="@+id/txt_tax_amnt_amnt"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+          
+            android:layout_weight="1" 
+           
+            android:textColor="#000000"
+            android:textSize="12sp"
+            
+            android:padding="1dp" android:gravity="center"/>
+        <TextView 
+            android:id="@+id/textView1_v2" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="0.00"
+            android:layout_weight="1" 
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+           <TextView 
+            android:id="@+id/txt_tax_amnt_bal" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            
+            android:layout_weight="1" 
+         	android:textSize="12sp"
+           android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+    </TableRow> 
+      <View 
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="#80B0BEC5"/>
+           <TableRow 
+        android:id="@+id/table_gross_invc_val" 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent"
+        
+        android:weightSum="6">
+
+               <TextView
+                   android:id="@+id/txt_gross_invc_val"
+                   android:layout_width="0dp"
+                   android:layout_height="wrap_content"
+                   android:layout_weight="3"
+                   android:paddingBottom="1dp"
+                   android:paddingLeft="5dp"
+                   android:paddingTop="1dp"
+                   android:text="@string/prodOValAfterTax"
+                   android:textColor="#000000"
+                   android:textSize="12sp"/>
+        <TextView 
+            android:id="@+id/txt_gross_invc_val_amnt"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+           
+            android:layout_weight="1" 
+           
+            android:textColor="#000000"
+            android:textSize="12sp"
+            
+            android:padding="1dp" android:gravity="center"/>
+        <TextView 
+            android:id="@+id/tv_GrossInvVal" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="0.00"
+            android:layout_weight="1" 
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+           <TextView 
+            android:id="@+id/txt_gross_invc_val_bal" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            
+            android:layout_weight="1" 
+         	android:textSize="12sp"
+           android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+    </TableRow> 
+      
+           <TableRow 
+        android:id="@+id/table_num_of_cpns" 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:weightSum="6">  
+        <TextView 
+            android:id="@+id/txt_num_of_cpns"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="@string/Coupons"
+            android:layout_weight="3" 
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
+           android:textSize="12sp"
+           android:textColor="#000000"
+            android:paddingLeft="5dp" />  
+        <TextView 
+            android:id="@+id/txt_num_of_cpns_amnt"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+           
+            android:layout_weight="1" 
+           
+            android:textColor="#000000"
+            android:textSize="12sp"
+            
+            android:padding="1dp" android:gravity="center"/>
+        <EditText 
+            android:id="@+id/tvNoOfCouponValue" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:hint="0.00"
+            android:layout_weight="1" 
+            android:enabled="false"
+            android:singleLine="true"
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+           <TextView 
+            android:id="@+id/txt_num_of_cpns_bal" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            
+            android:layout_weight="1" 
+         	android:textSize="12sp"
+           android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+    </TableRow> 
+      
+           <TableRow 
+        android:id="@+id/table_ttl_cpns_amnt" 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent"
+         android:visibility="gone"
+        android:weightSum="6">  
+        <TextView 
+            android:id="@+id/txt_ttl_cpns_amnt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="@string/TotalCouponsAmt"
+            android:layout_weight="3" 
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
+           android:textSize="12sp"
+           android:textColor="#000000"
+            android:paddingLeft="5dp" />  
+        <TextView 
+            android:id="@+id/txt_ttl_cpns_amnt_amnt"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+           
+            android:layout_weight="1" 
+           
+            android:textColor="#000000"
+            android:textSize="12sp"
+            
+            android:padding="1dp" android:gravity="center"/>
+        <EditText 
+            android:id="@+id/tvCouponAmountValue" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:hint="0.00"
+            android:singleLine="true"
+            android:layout_weight="1" 
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+           <TextView 
+            android:id="@+id/txt_ttl_cpns_amntl_bal" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            
+            android:layout_weight="1" 
+         	android:textSize="12sp"
+           android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+    </TableRow> 
+      
+            <View 
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="#80B0BEC5"/>
+           <TableRow 
+        android:id="@+id/table_amnt_prv_due" 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent"
+        android:weightSum="6"
+        android:visibility="gone">  
+        <TextView 
+            android:id="@+id/txt_amnt_prv_due"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="@string/AmtPrevDue"
+            android:layout_weight="3" 
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
+           android:textSize="12sp"
+           android:textColor="#000000"
+            android:paddingLeft="5dp" />  
+        <TextView 
+            android:id="@+id/txt_amnt_prv_due_amnt"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+           
+            android:layout_weight="1" 
+           
+            android:textColor="#000000"
+            android:textSize="12sp"
+            
+            android:padding="1dp" android:gravity="center"/>
+        <TextView 
+            android:id="@+id/tvAmtPrevDueVAL" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="0.00"
+            android:layout_weight="1" 
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+           <TextView 
+            android:id="@+id/txt_amnt_prv_due_bal" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+          
+            android:layout_weight="1" 
+         	android:textSize="12sp"
+           android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+    </TableRow> 
+    
+            
+           <TableRow 
+        android:id="@+id/table_tvAmtColl" 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent"
+         android:visibility="gone"
+        android:weightSum="6">  
+        <TextView 
+            android:id="@+id/tvAmtColl"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="@string/AmtCollctd"
+            android:layout_weight="3" 
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
+           android:textSize="12sp"
+           android:textColor="#000000"
+            android:paddingLeft="5dp" />  
+        <TextView 
+            android:id="@+id/txt_tvAmtColl_amnt"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+           
+            android:layout_weight="1" 
+           
+            android:textColor="#000000"
+            android:textSize="12sp"
+            
+            android:padding="1dp" android:gravity="center"/>
+        <EditText 
+            android:id="@+id/etAmtCollVAL" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:hint="0.00"
+            android:layout_weight="1" 
+            android:textSize="12sp"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+           <TextView 
+            android:id="@+id/txt_tvAmtColl_bal" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+           
+            android:layout_weight="1" 
+         	android:textSize="12sp"
+           android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+    </TableRow> 
+     <View 
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="#80B0BEC5"/>
+            
+           <TableRow 
+        android:id="@+id/table_tvAmtOutstanding_due" 
+        android:layout_height="wrap_content" 
+        android:layout_width="match_parent"
+         android:visibility="gone"
+        android:weightSum="6">  
+        <TextView 
+            android:id="@+id/tvAmtOutstanding"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="@string/AmtOutStnding"
+            android:layout_weight="3" 
+            android:paddingTop="1dp"
+            android:paddingBottom="1dp"
+           android:textSize="12sp"
+           android:textColor="#000000"
+            android:paddingLeft="5dp" />  
+        <TextView 
+            android:id="@+id/txt_tvAmtOutstanding_amnt"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+          
+            android:layout_weight="1" 
+           
+            android:textColor="#000000"
+            android:textSize="12sp"
+            
+            android:padding="1dp" android:gravity="center"/>
+        <TextView 
+            android:id="@+id/tvAmtOutstandingVAL" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+            android:text="0.00"
+            android:layout_weight="1" 
+            android:textSize="12sp"
+            android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+           <TextView 
+            android:id="@+id/txt_tvAmtOutstanding_bal" 
+              android:layout_width="0dp"
+            android:layout_height="wrap_content" 
+           
+            android:layout_weight="1" 
+         	android:textSize="12sp"
+           android:textColor="#000000"
+            android:padding="1dp" android:gravity="center"/>
+    </TableRow>
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:background="#80B0BEC5"/>
+
+       <TableRow
+           android:id="@+id/table_trPreviousOutStanding"
+           android:layout_height="wrap_content"
+           android:layout_width="match_parent"
+           android:visibility="visible"
+           android:weightSum="6">
+           <TextView
+               android:id="@+id/tvPrvAmtOutstandingNew"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:text="Previous Outstanding Amount"
+               android:layout_weight="3"
+               android:paddingTop="1dp"
+               android:paddingBottom="1dp"
+               android:textSize="12sp"
+               android:textColor="#000000"
+               android:paddingLeft="5dp" />
+           <TextView
+               android:id="@+id/txt_amt1"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+
+               android:layout_weight="1"
+
+               android:textColor="#000000"
+               android:textSize="12sp"
+
+               android:padding="1dp" android:gravity="center"/>
+           <TextView
+               android:id="@+id/tvPreAmtOutstandingVALNew"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:text="0.00"
+               android:layout_weight="1"
+               android:textSize="12sp"
+               android:textColor="#000000"
+               android:padding="1dp" android:gravity="center"/>
+           <TextView
+               android:id="@+id/txt_amt2"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+
+               android:layout_weight="1"
+               android:textSize="12sp"
+               android:textColor="#000000"
+               android:padding="1dp" android:gravity="center"/>
+       </TableRow>
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:background="#80B0BEC5"/>
+       <TableRow
+           android:id="@+id/table_trTotalAmtCollected"
+           android:layout_height="wrap_content"
+           android:layout_width="match_parent"
+           android:visibility="visible"
+           android:weightSum="6">
+           <TextView
+               android:id="@+id/tvTotalAmtCollectedNew"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:text="Collection Amount"
+               android:layout_weight="3"
+               android:paddingTop="1dp"
+               android:paddingBottom="1dp"
+               android:textSize="12sp"
+               android:textColor="#000000"
+               android:paddingLeft="5dp" />
+           <TextView
+               android:id="@+id/txt_TotalAmtCollected1"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+
+               android:layout_weight="1"
+
+               android:textColor="#000000"
+               android:textSize="12sp"
+
+               android:padding="1dp" android:gravity="center"/>
+           <TextView
+               android:id="@+id/tvTotalAmtCollected"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:text="0.00"
+               android:layout_weight="1"
+               android:textSize="12sp"
+               android:textColor="#000000"
+               android:padding="1dp" android:gravity="center"/>
+           <TextView
+               android:id="@+id/txt_TotalAmtCollected2"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+
+               android:layout_weight="1"
+               android:textSize="12sp"
+               android:textColor="#000000"
+               android:padding="1dp" android:gravity="center"/>
+       </TableRow>
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:background="#80B0BEC5"/>
+       <View
+           android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:background="#80B0BEC5"/>
+   </TableLayout>
+                
+           
+               
+</RelativeLayout>

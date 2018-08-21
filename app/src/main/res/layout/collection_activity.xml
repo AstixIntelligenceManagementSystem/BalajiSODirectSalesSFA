@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#eeeeee"
+    android:orientation="vertical" >
+    <RelativeLayout 
+    android:layout_height="46dp" 
+    android:layout_width="fill_parent" 
+    android:background="@drawable/custom_header_color"
+    android:paddingLeft="16dp"
+  
+    
+   
+    android:id="@+id/rtv_hdr">
+    
+    <ImageView 
+    android:id="@+id/btn_bck"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_back"
+    android:layout_alignParentLeft="true"
+    android:layout_centerVertical="true"/>
+<TextView 
+   android:id="@+id/order_detail"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="#FFFFFF"
+    android:layout_toRightOf="@+id/backbutton"
+   android:paddingLeft="10dp"
+ 	android:layout_centerInParent="true"
+    android:gravity="center_horizontal|left"
+     
+	android:textStyle="bold"
+    android:shadowColor="#80FFFFFF" 
+    android:textSize="18sp"
+    android:text="Payment Collection"/>
+
+ <ImageView
+     android:id="@+id/img_return"
+     
+     android:layout_toRightOf="@+id/order_detail"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:layout_alignParentRight="true"
+     android:layout_alignParentTop="true"
+     android:src="@drawable/return_order"
+     android:layout_marginLeft="30dp"
+     android:visibility="gone" />
+
+</RelativeLayout>
+
+	<LinearLayout android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:layout_marginTop="4dp"
+		android:background="@drawable/shadow_with_5dp"
+		android:visibility="visible"
+		android:id="@+id/ll_outstanding">
+
+		<LinearLayout android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+
+			android:gravity="center"
+
+
+			android:orientation="horizontal">
+			<TextView android:layout_width="0dp"
+				android:text="Previous Outstanding Amt. "
+				android:gravity="left|center"
+
+				android:id="@+id/tv_outstandingtext"
+				android:focusable="true"
+				android:focusableInTouchMode="true"
+				android:textColor="#000000"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"/>
+			<TextView android:layout_width="0dp"
+				android:text="Outstanding Value"
+				android:gravity="left|center"
+				android:id="@+id/tv_outstandingvalue"
+				android:focusable="true"
+				android:focusableInTouchMode="true"
+				android:textColor="#000000"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"/>
+		</LinearLayout>
+	</LinearLayout>
+
+	<LinearLayout android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:layout_marginTop="4dp"
+		android:background="@drawable/shadow_with_5dp"
+		android:visibility="visible"
+		android:id="@+id/ll_crntInvoiceVal">
+
+		<LinearLayout android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+
+			android:gravity="center"
+
+
+			android:orientation="horizontal">
+			<TextView android:layout_width="0dp"
+				android:text="Current Invoice Value "
+				android:gravity="left|center"
+				android:id="@+id/tv_crntInvoiceText"
+				android:focusable="true"
+				android:focusableInTouchMode="true"
+				android:textColor="#000000"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"/>
+			<TextView android:layout_width="0dp"
+				android:text="Invoice Value"
+				android:gravity="left|center"
+				android:id="@+id/tv_cntInvoceValue"
+				android:focusable="true"
+				android:focusableInTouchMode="true"
+				android:textColor="#000000"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"/>
+		</LinearLayout>
+	</LinearLayout>
+	<LinearLayout android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:layout_marginTop="4dp"
+		android:background="@drawable/shadow_with_5dp"
+		android:visibility="visible"
+		android:id="@+id/ll_TotOutStanding">
+
+		<LinearLayout android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+
+			android:gravity="center"
+
+
+			android:orientation="horizontal">
+			<TextView android:layout_width="0dp"
+				android:text="Total Outstanding "
+				android:gravity="left|center"
+				android:id="@+id/tv_totOutstandingText"
+				android:focusable="true"
+				android:focusableInTouchMode="true"
+				android:textColor="#000000"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"/>
+			<TextView android:layout_width="0dp"
+				android:text="Final Outstanding Value"
+				android:gravity="left|center"
+				android:id="@+id/tv_totOutstandingValue"
+				android:focusable="true"
+				android:focusableInTouchMode="true"
+				android:textColor="#000000"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"/>
+		</LinearLayout>
+	</LinearLayout>
+
+
+
+	<LinearLayout android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:layout_marginTop="4dp"
+		android:background="@drawable/shadow_with_5dp"
+		android:visibility="visible"
+		android:id="@+id/ll_outstandingnew">
+
+		<LinearLayout android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+
+			android:gravity="center"
+
+
+			android:orientation="vertical">
+			<TextView android:layout_width="wrap_content"
+				android:text="Minimum amount to be collected for invoice submission:"
+				android:gravity="left|center"
+				android:id="@+id/tv_minCollectiontext"
+				android:focusable="true"
+				android:focusableInTouchMode="true"
+				android:textColor="#000000"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"/>
+			<TextView android:layout_width="wrap_content"
+				android:text="Outstanding Value"
+				android:gravity="center"
+				android:id="@+id/tv_MinCollectionvalue"
+				android:focusable="true"
+				android:focusableInTouchMode="true"
+				android:textColor="#ffffff"
+				android:layout_height="wrap_content"
+				android:layout_weight="2"
+				android:textStyle="bold"
+				android:background="@color/blue"/>
+		</LinearLayout>
+
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="20dp"
+     android:background="@drawable/shadow_with_5dp"
+     android:gravity="center"
+     android:orientation="horizontal"
+		android:id="@+id/ll_collectionMandatory"
+		>
+
+     <CheckBox
+		 android:id="@+id/cb_collection"
+		 android:layout_width="wrap_content"
+		 android:layout_height="wrap_content"
+		 android:layout_margin="4dp"
+		 android:text="No Collection Today"
+		 android:textColor="#A6004E"
+		 android:textSize="15sp"
+		 android:textStyle="bold" />
+
+	</LinearLayout>
+
+	<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/shadow_with_5dp"
+		android:visibility="visible"
+	android:id="@+id/lnCollection">
+   <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                         android:background="#9E9E9E"
+                       android:gravity="center"
+                       
+                        android:orientation="horizontal">
+                        <TextView android:layout_width="0dp"
+                            android:text="Payment Mode"
+                            android:textSize="10sp"
+                            android:gravity="center"
+                            android:textStyle="bold"
+                            android:id="@+id/pymtModeTextView"
+                             android:focusable="true"
+    			android:focusableInTouchMode="true"
+    			android:layout_margin="2dp"
+                            android:textColor="#fff"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                        <View android:layout_width="1dp"
+                            android:background="#868686"
+                            android:layout_height="match_parent"/>
+                         <TextView android:layout_width="0dp"
+                             android:text="Amount"
+                             android:textColor="#fff"
+                             android:textStyle="bold"
+                             android:textSize="10sp"
+                              android:focusable="true"
+    			android:focusableInTouchMode="true"
+                             android:id="@+id/AmountTextview"
+                             android:gravity="center"
+                              android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"/>
+                        <View android:layout_width="1dp"
+                            android:background="#868686"
+                            android:layout_height="match_parent"/>
+                         <TextView android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:gravity="center"
+                            android:text="RefNo/chequeNo/TrnNo"
+                             android:focusable="true"
+    			android:focusableInTouchMode="true"
+    			android:layout_margin="1dp"
+                            android:id="@+id/chequeNoTextview"
+                            android:textColor="#fff"
+                            android:layout_weight="1.3"/>
+                        <View android:layout_width="1dp"
+                            android:background="#868686"
+                            android:layout_height="match_parent"/>
+                         <TextView android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Date"
+                            android:textColor="#fff"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                             android:focusable="true"
+    			android:focusableInTouchMode="true"
+                            android:id="@+id/DateLabelTextview"
+                            android:gravity="center"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_weight="1"/>
+                        <View android:layout_width="1dp"
+                            android:background="#868686"
+                            android:layout_height="match_parent"/>
+                         <TextView android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:id="@+id/BankLabelTextview"
+                            android:textColor="#fff"
+                             android:focusable="true"
+                             android:textStyle="bold"
+                             android:textSize="10sp"
+    			android:focusableInTouchMode="true"
+                            android:layout_margin="2dp"
+                            android:text="Bank"
+                            android:layout_weight="1.5"/>
+                       
+                        
+                    </LinearLayout>
+                       <View android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#868686"/>
+                     <LinearLayout android:layout_width="match_parent"
+                         android:orientation="horizontal"
+                          android:gravity="center"
+						 android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content">
+                        <TextView android:layout_width="0dp"
+		                        android:text="Select"
+		                       android:layout_margin="2dp"
+		                       android:textColor="#000"
+		                       android:padding="5dp"
+		                        android:background="@drawable/spinner_background_with_rectangle"
+		                        android:textSize="10dp"
+		                        android:layout_height="wrap_content"
+		                       android:id="@+id/paymentModeSpinnerFirst"
+		                        android:layout_gravity="center"
+                        android:layout_weight="1"/>
+                        <View android:layout_width="1dp"
+                            android:background="#868686"
+                            android:layout_height="match_parent"/>
+                         <EditText android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                             android:textColor="#000"
+                            android:textSize="10sp"
+                            android:maxLength="10"
+                            android:textColorHint="#a4a4a4"
+                            android:id="@+id/amountEdittextFirst"
+                            android:background="@drawable/edittex_with_white_background"
+                             android:gravity="center"
+                              android:paddingBottom="5dp"
+                            android:paddingTop="5dp"
+                              android:inputType="numberDecimal"
+                    android:layout_margin="1dp"
+                            android:layout_weight="1"/>
+                        <View android:layout_width="1dp"
+                            android:background="#868686"
+                            android:layout_height="match_parent"/>
+                         <EditText android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
+                            android:paddingTop="5dp"
+                            android:textSize="10sp"
+                            android:maxLength="15"
+                            android:id="@+id/checqueNoEdittextFirst"
+                            android:background="@drawable/edittext_with_gray_background"
+                             android:gravity="center"
+                              android:textColor="#000"
+                              android:inputType="number"
+                    android:layout_margin="1dp"
+                            android:layout_weight="1.3"
+                             android:enabled="false"/>
+                        <View android:layout_width="1dp"
+                            android:background="#868686"
+                            android:layout_height="match_parent"/>
+                         <TextView android:layout_width="0dp"
+                             android:textSize="9sp"
+	                                   android:layout_height="match_parent"
+	                                    android:background="@drawable/outside_boundry_gray"
+	                                    android:gravity="center"
+	                                    android:text=""
+	                                    android:id="@+id/dateTextViewFirst"
+	                                     android:textColor="#000"
+	                                              android:layout_margin="2dp"
+                            android:layout_weight="1"/>
+                        <View android:layout_width="1dp"
+                            android:background="#868686"
+                            android:layout_height="match_parent"/>
+                          <TextView android:layout_width="0dp"
+			    		                        android:text=""
+			    		                       android:layout_margin="2dp"
+			    		                       android:padding="5dp"
+			    		                        android:textColor="#000"
+			    		                        android:background="@drawable/edittext_with_gray_background"
+			    		                        android:textSize="10dp"
+			    		                        android:layout_height="wrap_content"
+			    		                       android:id="@+id/BankSpinnerFirst"
+			    		                        android:layout_gravity="center"
+							  android:enabled="false"
+                        android:layout_weight="1.5"/>
+                     </LinearLayout>
+                    <View android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#868686"/>
+                     
+                         <LinearLayout android:layout_width="match_parent"
+                         android:orientation="horizontal"
+                          android:gravity="center"
+							 android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content">
+                        <TextView android:layout_width="0dp"
+		                        android:text="Select"
+		                       android:layout_margin="2dp"
+		                        android:textColor="#000"
+		                        android:background="@drawable/edittex_with_white_background"
+		                        android:textSize="10dp"
+		                        android:padding="5dp"
+		                        android:layout_height="wrap_content"
+		                       android:id="@+id/paymentModeSpinnerSecond"
+		                        android:layout_gravity="center"
+                        android:layout_weight="1"/>
+                        <View android:layout_width="1dp"
+                            android:background="#868686"
+                            android:layout_height="match_parent"/>
+                         <EditText android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
+                            android:paddingTop="5dp"
+                            android:textSize="10sp"
+                            android:inputType="numberDecimal"
+                            android:id="@+id/amountEdittextSecond"
+                            android:background="@drawable/edittex_with_white_background"
+                             android:gravity="center"
+                              android:textColor="#000"
+                              android:maxLength="10"
+                             
+                    android:layout_margin="1dp"
+                            android:layout_weight="1"/>
+                        <View android:layout_width="1dp"
+                            android:background="#868686"
+                            android:layout_height="match_parent"/>
+                         <EditText android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:paddingBottom="5dp"
+                            android:paddingTop="5dp"
+                            android:textSize="10sp"
+                            android:id="@+id/checqueNoEdittextSecond"
+                            android:background="@drawable/edittex_with_white_background"
+                             android:gravity="center"
+                             android:maxLength="15"
+                              android:textColor="#000"
+                              android:inputType="number"
+                    android:layout_margin="1dp"
+                            android:layout_weight="1.3"/>
+                        <View android:layout_width="1dp"
+                            android:background="#868686"
+                            android:layout_height="match_parent"/>
+                         <TextView android:layout_width="0dp"
+                             android:textSize="9sp"
+	                                   android:layout_height="wrap_content"
+	                                    android:background="@drawable/outside_boundry_gray"
+	                                    android:gravity="center"
+	                                    android:text=""
+	                                     android:textColor="#000"
+	                                     android:id="@+id/dateTextViewSecond"
+	                                    android:drawableRight="@drawable/calander_quotation"
+	                                                      android:layout_margin="1dp"
+                            android:layout_weight="1"/>
+                        <View android:layout_width="1dp"
+                            android:background="#868686"
+                            android:layout_height="match_parent"/>
+                          <TextView android:layout_width="0dp"
+			    		                        android:text="Select"
+			    		                       android:layout_margin="2dp"
+			    		                      android:padding="5dp"
+			    		                       android:textColor="#000"
+			    		                        android:background="@drawable/spinner_gray_background"
+			    		                        android:textSize="10dp"
+			    		                        android:layout_height="wrap_content"
+			    		                       android:id="@+id/BankSpinnerSecond"
+			    		                        android:layout_gravity="center"
+                        android:layout_weight="1.5"/>
+                     </LinearLayout>
+
+
+
+	<View android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:background="#868686"/>
+
+	<LinearLayout android:layout_width="match_parent"
+		android:orientation="horizontal"
+		android:gravity="center"
+		android:layout_marginTop="10dp"
+		android:layout_height="wrap_content">
+		<TextView android:layout_width="0dp"
+			android:text="Select"
+			android:layout_margin="2dp"
+			android:textColor="#000"
+			android:background="@drawable/edittex_with_white_background"
+			android:textSize="10dp"
+			android:padding="5dp"
+			android:layout_height="wrap_content"
+			android:id="@+id/paymentModeSpinnerThird"
+			android:layout_gravity="center"
+			android:layout_weight="1"/>
+		<View android:layout_width="1dp"
+			android:background="#868686"
+			android:layout_height="match_parent"/>
+		<EditText android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:paddingBottom="5dp"
+			android:paddingTop="5dp"
+			android:textSize="10sp"
+			android:inputType="numberDecimal"
+			android:id="@+id/amountEdittextThird"
+			android:background="@drawable/edittex_with_white_background"
+			android:gravity="center"
+			android:textColor="#000"
+			android:maxLength="10"
+
+			android:layout_margin="1dp"
+			android:layout_weight="1"/>
+		<View android:layout_width="1dp"
+			android:background="#868686"
+			android:layout_height="match_parent"/>
+		<EditText android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:paddingBottom="5dp"
+			android:paddingTop="5dp"
+			android:textSize="10sp"
+			android:id="@+id/checqueNoEdittextThird"
+			android:background="@drawable/edittext_with_gray_background"
+			android:gravity="center"
+			android:maxLength="15"
+			android:textColor="#000"
+			android:inputType="number"
+			android:layout_margin="1dp"
+			android:layout_weight="1.3"
+			android:enabled="false"/>
+		<View android:layout_width="1dp"
+			android:background="#868686"
+			android:layout_height="match_parent"/>
+
+		<TextView
+			android:id="@+id/dateTextViewThird"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_margin="1dp"
+			android:layout_weight="1"
+			android:enabled="false"
+			android:background="@drawable/outside_boundry_gray"
+			android:drawableRight="@drawable/calander_quotation"
+			android:gravity="center"
+			android:text=""
+			android:textColor="#000"
+			android:textSize="9sp" />
+
+		<View android:layout_width="1dp"
+			android:background="#868686"
+			android:layout_height="match_parent"/>
+		<TextView android:layout_width="0dp"
+			android:text="Select"
+			android:layout_margin="2dp"
+			android:padding="5dp"
+			android:textColor="#000"
+			android:background="@drawable/spinner_gray_background"
+			android:textSize="10dp"
+			android:layout_height="wrap_content"
+			android:id="@+id/BankSpinnerThird"
+			android:layout_gravity="center"
+			android:enabled="false"
+			android:layout_weight="1.5"/>
+	</LinearLayout>
+                      <View android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="#868686"/>
+                      <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal">
+                          <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textColor="#000"
+                              android:textSize="11sp"
+                              android:layout_margin="5dp"
+                              android:text="Total Amount:-"/>
+                           <TextView android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textColor="#000"
+                              android:textSize="11sp"
+                              android:id="@+id/totaltextview"
+                              android:layout_marginBottom="5dp"
+                              android:layout_marginTop="5dp"
+                              android:text="0.00"/>
+                      </LinearLayout>
+                      
+
+   
+</LinearLayout>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="33dp"
+		android:layout_marginTop="10dp"
+		android:visibility="visible"
+		android:layout_marginBottom="20dp"
+		android:orientation="horizontal" >
+		<Button
+			android:id="@+id/btn_print"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="20dp"
+			android:layout_weight="1"
+			android:background="@drawable/custom_button"
+			android:gravity="center"
+			android:text="Print"
+			android:visibility="gone"
+			android:textColor="#ffffff"
+			android:textSize="11sp"/>
+
+		<Button android:layout_width="0dp"
+			android:layout_marginRight="20dp"
+			android:textStyle="bold"
+			android:text="@string/Submit"
+
+			android:id="@+id/Done_btn"
+			android:textSize="11sp"
+			android:textColor="#fff"
+			android:layout_height="match_parent"
+			android:background="@drawable/custom_button"
+			android:layout_marginLeft="20dp"
+			android:layout_weight="1"/>
+		<Button android:layout_width="0dp"
+			android:layout_marginLeft="20dp"
+			android:background="@drawable/custom_button"
+			android:text="Cancel"
+			android:id="@+id/cancleBtn"
+			android:visibility="gone"
+			android:textColor="#fff"
+			android:textStyle="bold"
+			android:textSize="11sp"
+			android:layout_marginRight="20dp"
+			android:layout_height="match_parent"
+			android:layout_weight="1"/>
+
+
+
+
+	</LinearLayout>
+
+</LinearLayout>

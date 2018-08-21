@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"  
+    xmlns:tools="http://schemas.android.com/tools"  
+    android:layout_width="match_parent"  
+    android:layout_height="wrap_content"
+    android:minHeight="16dp" 
+    android:padding="5dp" 
+   
+     >  
+    
+    
+     <CheckBox
+      android:id="@+id/checkBoxExecution"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+     android:layout_alignParentLeft="true"
+     
+      
+      android:layout_marginTop="5dp"
+      android:button="@drawable/unchecked"
+      
+      />
+     
+    <!--  android:button="@drawable/checkbox_button_image" -->
+  
+    <TextView  
+        android:id="@+id/childTextView"  
+        android:layout_width="wrap_content"  
+        android:layout_height="wrap_content"  
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+         android:layout_toRightOf="@+id/checkBoxExecution"  
+        android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        android:layout_marginRight="65dp" />  
+  
+    
+        
+    <Button  
+        android:id="@+id/butInvoice"  
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentRight="true"  
+        android:layout_marginRight="10dp"
+         android:layout_marginTop="6dp"
+         android:background="@drawable/invoice_button_image"
+        /> 
+        
+     <!-- <Button  
+        android:id="@+id/butCancel"  
+        android:layout_width="30dp"  
+        android:layout_height="30dp"  
+        android:layout_toLeftOf="@+id/butInvoice"  
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/delete_button_unselected"
+        /> --> 
+       <!--  android:background="@drawable/cancel_button_image" -->
+  
+</RelativeLayout> 

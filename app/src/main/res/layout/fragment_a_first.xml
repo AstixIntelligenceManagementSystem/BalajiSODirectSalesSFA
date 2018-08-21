@@ -1,0 +1,1065 @@
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#E6E6E6" >
+    
+      <TextView 
+          	   android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Sales Quotation Status;"
+               android:textColor="#fff"
+               android:layout_marginBottom="5dp"
+               android:gravity="center_horizontal"
+			   android:textSize="15sp"
+               android:background="#a25611"
+               android:id="@+id/headerstring"/>
+     
+    <ScrollView 
+        android:layout_weight="10"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+      
+             <RelativeLayout 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    android:id="@+id/Mainlayout" >
+                     
+                    <TextView 
+                        android:layout_width="wrap_content"
+               			android:layout_height="wrap_content"
+               			android:text="Quotation Date :"
+               			android:textColor="#000"
+               			android:layout_marginLeft="20dp"
+               			android:layout_marginTop="10dp"
+              			android:textSize="15sp"
+               			android:id="@+id/selectDate"/>
+                    
+             		<TextView 
+             		    android:layout_width="wrap_content"
+               			android:layout_height="wrap_content"
+               			android:text="11/jan/2016"
+                		android:textColor="#000"
+	             	    android:layout_marginTop="10dp"
+               		    android:layout_alignParentRight="true"
+               			android:layout_marginRight="20dp"
+               			android:textSize="15sp"
+               			android:id="@+id/Date"/>
+             		
+		            <View 
+		                android:layout_width="match_parent"
+		                android:layout_height="1dp"
+		                android:id="@+id/view1"
+		                android:layout_marginTop="5dp"
+		                android:layout_below="@id/Date"
+		                android:layout_marginLeft="20dp"
+		                android:layout_marginRight="20dp"
+		                android:background="#23519C"/>
+                    
+		           <TextView 
+		               android:layout_width="wrap_content"
+		               android:layout_height="wrap_content"
+		               android:text="Quat Name"
+		               android:layout_below="@id/view1"
+		               android:layout_marginLeft="20dp"
+		               android:layout_marginTop="10dp"
+		               style="@style/MyTextViewStyle"
+		               android:visibility="gone"
+		               android:id="@+id/QuatName"/>
+           
+				   <EditText
+				        android:id="@+id/QuatNameEdit"
+				        android:layout_below="@id/QuatName"
+				        android:textColor="#000"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:hint="Type here"
+				        android:visibility="gone"
+				        android:paddingLeft="5dp"
+				        android:textSize="15sp"
+				        android:digits="@string/only_character_Space_no_slash"
+				        android:textColorHint="#000"
+				        android:maxLength="200"
+				        android:paddingBottom="5dp"
+				        android:layout_marginLeft="20dp"
+				        android:layout_marginRight="20dp"
+				        android:background="@drawable/custom_edittext2"  /> 
+        
+		        <TextView 
+		               android:layout_width="wrap_content"
+		               android:layout_height="wrap_content"
+		               android:text="Customer Name"
+		               android:layout_marginLeft="20dp"
+		               android:layout_marginTop="10dp"
+		               android:layout_below="@id/QuatNameEdit"
+		               style="@style/MyTextViewStyle"
+		               android:id="@+id/CustName"/>
+           
+			    <EditText
+			        android:id="@+id/CustNameEdit"
+			        android:layout_below="@id/CustName"
+			        android:textColor="#000"
+			        android:layout_width="match_parent"
+			        android:layout_height="wrap_content"
+			        android:hint="Type here"
+			        android:paddingLeft="5dp"
+			        android:enabled="false"
+			        android:textSize="15sp"
+			        android:digits="@string/only_character_Space_no_slash"
+			        android:textColorHint="#000"
+			        android:maxLength="200"
+			        android:paddingBottom="5dp"
+			        android:layout_marginLeft="20dp"
+			        android:layout_marginRight="20dp"
+			        android:background="@drawable/custom_edittext2" /> 
+        
+                
+	        <TextView 
+	               android:layout_width="wrap_content"
+	               android:layout_height="wrap_content"
+	               android:text="Contact Person"
+	               android:layout_marginLeft="20dp"
+	               android:layout_marginTop="10dp"
+	               android:layout_below="@id/CustNameEdit"
+	               style="@style/MyTextViewStyle"
+	               android:id="@+id/ContactPer"/>
+           
+		   <EditText
+		        android:id="@+id/ContactPerEdit"
+		        android:layout_below="@id/ContactPer"
+		        android:textColor="#000"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:hint="Type here"
+		        android:paddingLeft="5dp"
+		        android:textSize="15sp"
+		        android:inputType="textCapWords"
+		        android:digits="@string/nameValidation"
+		        android:textColorHint="#a4a4a4"
+		        android:maxLength="200"
+		        android:paddingBottom="5dp"
+		        android:layout_marginLeft="20dp"
+		        android:layout_marginRight="20dp"
+		        android:background="@drawable/custom_edittext2"  />
+                
+            <TextView 
+           	   android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Contact Person Mobile"
+               android:layout_marginLeft="20dp"
+               android:layout_marginTop="10dp"
+               android:layout_below="@id/ContactPerEdit"
+               style="@style/MyTextViewStyle"
+               android:id="@+id/ContactPerMob"/>
+           
+		 <EditText
+		        android:id="@+id/ContactPerMobEdit"
+		        android:layout_below="@id/ContactPerMob"
+		        android:textColor="#000"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:hint="Type here"
+		        android:paddingLeft="5dp"
+		        android:textSize="15sp"
+		        android:inputType="number"
+		        android:textColorHint="#a4a4a4"
+		        android:maxLength="10"
+		        android:paddingBottom="5dp"
+		        android:layout_marginLeft="20dp"
+		        android:layout_marginRight="20dp"
+		        android:background="@drawable/custom_edittext2"  />
+                
+          <TextView 
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Contact Person Email"
+               android:layout_marginLeft="20dp"
+               android:layout_marginTop="10dp"
+               android:layout_below="@id/ContactPerMobEdit"
+               style="@style/MyTextViewStyle"
+               android:id="@+id/ContactPerEmail"/>
+           
+		    <EditText
+		        android:id="@+id/ContactPerEmailEdit"
+		        android:layout_below="@id/ContactPerEmail"
+		        android:textColor="#000"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:hint="Type here"
+		        android:paddingLeft="5dp"
+		        android:textSize="15sp"
+		        android:textColorHint="#a4a4a4"
+		        android:maxLength="200"
+		        android:paddingBottom="5dp"
+		        android:layout_marginLeft="20dp"
+		        android:layout_marginRight="20dp"
+		        android:background="@drawable/custom_edittext2"  />
+		    
+          <TextView 
+     		   android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Sales Quote Type"
+               android:focusable="true"
+    		   android:focusableInTouchMode="true"
+               android:layout_marginLeft="20dp"
+               android:layout_marginTop="10dp"
+               android:layout_below="@id/ContactPerEmailEdit"
+               style="@style/MyTextViewStyle"
+               android:id="@+id/SalesQuoteType"/>
+          
+          <TextView 
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:id="@+id/SalesQuoteTypeSpinner"
+                android:layout_below="@id/SalesQuoteType"
+                android:text="Select"
+                android:paddingLeft="5dp"
+                android:textSize="14sp"
+                android:textColor="#000"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/spinner_backgrnd_quotation"/>
+           
+                
+           <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Valid From"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@id/SalesQuoteTypeSpinner"
+                style="@style/MyTextViewStyle"
+                android:id="@+id/ValidityFrom"/>
+                 
+            <ImageView 
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+		        android:id="@+id/CalenderValFrom"
+		        android:layout_below="@id/SalesQuoteTypeSpinner"
+		        android:layout_marginRight="20dp"
+		        android:layout_alignParentRight="true"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/calendar32"/>
+            
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_below="@id/SalesQuoteTypeSpinner"
+               	android:layout_height="wrap_content"
+               	android:text=""
+               	android:focusable="true"
+    			android:focusableInTouchMode="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/ValidityFrom"
+                style="@style/MyTextViewStyle"
+                android:id="@+id/ValFrom"/>
+            
+            <View 
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:id="@+id/view6"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/CalenderValFrom"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#23519C"/> 
+            
+              
+            <TextView 
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Valid Up To"
+               android:layout_marginLeft="20dp"
+               android:layout_marginTop="10dp"
+               android:layout_below="@id/view6"
+               style="@style/MyTextViewStyle"
+               android:id="@+id/ValidityTo"/>
+                 
+            <ImageView 
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+		        android:id="@+id/CalenderValTo"
+		        android:layout_below="@id/view6"
+		        android:layout_marginRight="20dp"
+		        android:layout_alignParentRight="true"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/calendar32"/>
+		            
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_below="@id/view6"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:focusable="true"
+    			android:focusableInTouchMode="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/ValidityTo"
+                style="@style/MyTextViewStyle"
+                android:id="@+id/ValTo"/>
+            
+            <View 
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:id="@+id/view7"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/CalenderValTo"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#23519C"/>
+            
+           <TextView 
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Expected Business Value"
+               android:layout_marginLeft="20dp"
+               android:visibility="gone"
+               android:layout_marginTop="10dp"
+               android:layout_below="@id/view7"
+               style="@style/MyTextViewStyle"
+               android:id="@+id/ExpBusValue"/>
+           
+		   <EditText
+		        android:id="@+id/ExpBusValueEdit"
+		        android:layout_below="@id/ExpBusValue"
+		        android:textColor="#000"
+		        android:visibility="gone"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:hint="Type here"
+		        android:paddingLeft="5dp"
+		        android:inputType="number"
+		        android:textSize="15sp"
+		        android:textColorHint="#a4a4a4"
+		        android:maxLength="6"
+		        android:paddingBottom="5dp"
+		        android:layout_marginLeft="20dp"
+		        android:layout_marginRight="20dp"
+		        android:background="@drawable/custom_edittext2" />
+		   
+		   
+                <LinearLayout 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    android:layout_below="@id/ExpBusValueEdit"
+                    android:id="@+id/parentOfAllPaymentStructure">
+                    
+                    <LinearLayout 
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#90544f88" 
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        
+                        <TextView 
+                            android:layout_width="0dp"
+                            android:text="Payment Stage"
+                            android:gravity="center"
+                            android:id="@+id/paymentstagetextviewNew"
+                            android:focusable="true"
+    						android:focusableInTouchMode="true"
+                            android:textColor="#fff"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"/>
+                        
+                        <View 
+                            android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                        
+                         <TextView 
+                             android:layout_width="0dp"
+                             android:text=" % age"
+                             android:textColor="#fff"
+                             android:focusable="true"
+                             android:visibility="gone"
+    						 android:focusableInTouchMode="true"
+                             android:id="@+id/percentageTextviewNew"
+                             android:gravity="center"
+                             android:layout_marginLeft="1dp"
+                             android:layout_marginRight="1dp"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"/>
+                         
+                        <View 
+                            android:layout_width="1dp"
+                            android:background="#000"
+                            android:visibility="gone"
+                            android:layout_height="match_parent"/>
+                        
+                         <TextView 
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="Payment Mode"
+                            android:focusable="true"
+    						android:focusableInTouchMode="true"
+                            android:id="@+id/paymentModeTextviewNew"
+                            android:textColor="#fff"
+                            android:layout_weight="2"/>
+                         
+                        <View 
+                            android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                        
+                         <TextView 
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Credit Days"
+                            android:textColor="#fff"
+                            android:focusable="true"
+    						android:focusableInTouchMode="true"
+                            android:id="@+id/creditdaysTextboxNew"
+                            android:gravity="center"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:layout_weight="1"/>
+                         
+                        <View 
+                            android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                        
+                        <TextView 
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:id="@+id/CreditlimitTextboxNew"
+                            android:textColor="#fff"
+                            android:focusable="true"
+    						android:focusableInTouchMode="true"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginRight="1dp"
+                            android:text="Credit Limit"
+                            android:layout_weight="1"/>
+                       
+                        
+                    </LinearLayout>
+                    
+                    
+                    <View 
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#000"/>
+                    
+                     <LinearLayout 
+                         android:layout_width="match_parent"
+                         android:orientation="horizontal"
+                         android:gravity="center"
+                         android:layout_height="wrap_content">
+                        
+                         <CheckBox 
+		                        android:layout_width="0dp"
+		                        android:text="Advance Before Delivery"
+		                        android:textSize="10dp"
+		                        android:layout_height="wrap_content"
+		                        android:id="@+id/AdvanceBeforeDeliveryCheckBoxNew"
+		                        android:layout_gravity="center"
+		                        android:layout_weight="2"/>
+	                       <View 
+	                            android:layout_width="1dp"
+	                            android:background="#000"
+	                            android:layout_height="match_parent"/>
+	                       
+                         <EditText 
+	                            android:layout_width="0dp"
+	                            android:layout_height="wrap_content"
+	                            android:enabled="false"
+	                            android:textSize="14sp"
+	                            android:visibility="gone"
+	                            android:id="@+id/percentageOfAdvanceBeforeDelivery"
+	                            android:background="@drawable/edittext_with_nocolor_change"
+	                            android:gravity="center"
+	                            android:inputType="number"
+	                   			android:layout_margin="1dp"
+	                            android:layout_weight="1"/>
+                         
+                         
+                        vv<View android:layout_width="1dp"
+	                            android:visibility="gone"
+	                            android:background="#000"
+	                            android:layout_height="match_parent"/>
+                        
+                         <LinearLayout
+	                             android:layout_width="0dp"
+	                             android:layout_height="wrap_content"
+	                             android:id="@+id/parentOfAdvanceBeforeDeliveryPayMentMode"
+	                             android:orientation="vertical"
+	                             android:layout_weight="2" >
+                           
+                             
+                         </LinearLayout>
+                         
+                         
+                        <View 
+                            android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                        
+                         <EditText 
+                             android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:background="@android:color/transparent"
+                             android:gravity="center"
+                             android:hint="N/A"
+                             android:textColorHint="#7c7c7c"
+                             android:enabled="false"
+                             android:textSize="14sp"
+                             android:inputType="number"
+                             android:layout_margin="1dp"
+                             android:layout_weight="1"/>
+                         
+                        <View 
+                            android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                        
+                        <EditText 
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="14sp"
+                            android:background="@android:color/transparent"
+                            android:gravity="center"
+                            android:enabled="false"
+                            android:hint="N/A"
+                            android:textColorHint="#7c7c7c"
+                            android:inputType="number"
+                            android:layout_margin="1dp"
+                            android:layout_weight="1"/>
+                        
+                     </LinearLayout>
+                     
+                      <View 
+	                        android:layout_width="match_parent"
+	                        android:layout_height="1dp"
+	                        android:background="#000"/>
+                      
+                      <LinearLayout 
+                          android:layout_width="match_parent"
+                          android:orientation="horizontal"
+                          android:gravity="center"
+                          android:layout_height="wrap_content">
+                        
+                           <CheckBox 
+		                        android:layout_width="0dp"
+		                        android:text="On Delivery"
+		                        android:textSize="10dp"
+		                        android:layout_height="wrap_content"
+		                        android:id="@+id/OnDeliveryCheckBoxNew"
+		                        android:layout_gravity="center"
+		                        android:layout_weight="2"/>
+                           
+	                        <View 
+	                            android:layout_width="1dp"
+	                            android:background="#000"
+	                            android:layout_height="match_parent"/>
+	                        
+	                         <EditText 
+	                             android:layout_width="0dp"
+	                             android:layout_height="wrap_content"
+	                             android:background="@drawable/edittext_with_nocolor_change"
+	                             android:gravity="center"
+	                             android:inputType="number"
+	                             android:textSize="14sp"
+	                             android:id="@+id/percentageOfOnDelivery"
+	                             android:visibility="gone"
+	                             android:layout_margin="1dp"
+	                             android:enabled="false"
+	                             android:layout_weight="1"/>
+	                         
+	                         
+                        <View 
+                            android:layout_width="1dp"
+                            android:background="#000"
+                            android:visibility="gone"
+                            android:layout_height="match_parent"/>
+                        
+                         <LinearLayout
+                             android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:id="@+id/parentOfOnDeliveryPayMentMode"
+                             android:orientation="vertical"
+                             android:layout_weight="2" >
+                           
+                             
+                         </LinearLayout>
+                         
+                        <View 
+                            android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                        
+                         <EditText 
+                             android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:background="@drawable/edittext_with_nocolor_change"
+                             android:gravity="center"
+                             android:enabled="false"
+                             android:textSize="14sp"
+                             android:inputType="number"
+                             android:id="@+id/creditDaysOfOnDelivery"
+                             android:layout_margin="1dp"
+                             android:layout_weight="1"/>
+                         
+                        <View
+                             android:layout_width="1dp"
+                             android:background="#000"
+                             android:layout_height="match_parent"/>
+                        
+                         <EditText 
+                             android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:enabled="false"
+                             android:hint="N/A"
+                             android:textColorHint="#7c7c7c"
+                             android:textSize="14sp"
+                             android:background="@android:color/transparent"
+                             android:layout_margin="1dp"
+                             android:inputType="number"
+                             android:gravity="center"
+                             android:layout_weight="1"/>
+                         
+                      </LinearLayout>
+                      
+                       <View 
+                            android:layout_width="match_parent"
+                        	android:layout_height="1dp"
+                            android:background="#000"/>
+                       
+                     <LinearLayout 
+                         android:layout_width="match_parent"
+                         android:orientation="horizontal"
+                         android:gravity="center"
+                         android:layout_height="wrap_content">
+                         
+                          <CheckBox 
+                              android:layout_width="0dp"
+                        	  android:text="Credit"
+                        	  android:textSize="10dp"
+                        	  android:layout_height="wrap_content"
+                       		  android:id="@+id/CreditCheckBoxNew"
+                              android:layout_gravity="center"
+                              android:layout_weight="2"/>
+                          
+                        <View
+                              android:layout_width="1dp"
+                              android:background="#000"
+                              android:layout_height="match_parent"/>
+                        
+                         <EditText 
+                             android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:background="@drawable/edittext_with_nocolor_change"
+                             android:gravity="center"
+                             android:inputType="number"
+                             android:visibility="gone"
+                             android:textSize="14sp"
+                             android:enabled="false"
+                             android:id="@+id/PercentageOfCredit"
+                             android:layout_margin="1dp"
+                             android:layout_weight="1"/>
+                         
+                        <View 
+                            android:layout_width="1dp"
+                            android:background="#000"
+                            android:visibility="gone"
+                            android:layout_height="match_parent"/>
+                        
+                         <LinearLayout
+                             android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:id="@+id/parentOfCreditPayMentMode"
+                             android:orientation="vertical"
+                             android:layout_weight="2" >
+                           
+                             
+                         </LinearLayout>
+                         
+                        <View 
+                            android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                        
+                         <EditText 
+                             android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:background="@drawable/edittext_with_nocolor_change"
+                             android:gravity="center"
+                             android:textSize="14sp"
+                             android:inputType="number"
+                             android:enabled="false"
+                             android:id="@+id/creditDaysOfCredit"
+                             android:layout_margin="1dp"
+                             android:layout_weight="1"/>
+                         
+                        <View 
+                            android:layout_width="1dp"
+                            android:background="#000"
+                            android:layout_height="match_parent"/>
+                        
+                         <EditText 
+                             android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:background="@drawable/edittext_with_nocolor_change"
+                             android:gravity="center"
+                             android:textSize="14sp"
+                             android:enabled="false"
+                             android:id="@+id/creditLimitOfCredit"
+                             android:layout_margin="1dp"
+                             android:inputType="number"
+                          	 android:layout_weight="1"/>
+                     </LinearLayout>
+                     
+                      <View 
+                          android:layout_width="match_parent"
+                          android:layout_height="1dp"
+                          android:background="#000"/>
+                      
+                </LinearLayout>
+                
+                 <TextView 
+		               android:layout_below="@id/parentOfAllPaymentStructure"
+		               android:layout_width="wrap_content"
+		               android:layout_height="wrap_content"
+		               android:text="Payment Stage"
+		               android:layout_marginLeft="20dp"
+		               android:visibility="gone"
+		               android:layout_marginTop="10dp"
+		               android:focusable="true"
+		    		   android:focusableInTouchMode="true"
+		               style="@style/MyTextViewStyle"
+		               android:id="@+id/PaymentStageTextView"/>
+                 
+                 
+                <LinearLayout 
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:id="@+id/parentOfPaymentStage"
+                    android:layout_below="@id/PaymentStageTextView">
+                      
+                    <CheckBox 
+                        android:layout_width="0dp"
+                        android:text="Advance Before Delivery"
+                        android:textSize="10dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/AdvanceBeforeDelivery"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"/>
+                    
+                     <CheckBox 
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="On Delivery"
+                        android:textSize="10dp"
+                        android:id="@+id/OnDelivery"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"/>
+                     
+                      <CheckBox 
+                          android:layout_width="0dp"
+                          android:text="Credit"
+                          android:id="@+id/Credit"
+                          android:textSize="10dp"
+                          android:layout_gravity="center"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"/>
+                      
+                </LinearLayout>
+                
+                <View 
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:visibility="gone"
+                    android:background="#23519C"
+                    android:layout_below="@id/parentOfPaymentStage"
+                    android:id="@+id/veiwBelowpaymentstage"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"/>
+                
+                <TextView 
+	                android:layout_below="@id/veiwBelowpaymentstage"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:text="Percentage"
+	                android:layout_marginLeft="20dp"
+	                android:layout_marginTop="10dp"
+	                android:visibility="gone"
+	                android:focusable="true"
+	                android:layout_marginBottom="10dp"
+	     			android:focusableInTouchMode="true"
+	                style="@style/MyTextViewStyle"
+	                android:id="@+id/PercentageTextView"/>
+                
+                
+                  <LinearLayout 
+		                    android:layout_width="match_parent"
+		                    android:layout_height="wrap_content"
+		                    android:orientation="horizontal"
+		                    android:layout_marginTop="10dp"
+		                    android:visibility="gone"
+		                    android:layout_marginLeft="3dp"
+		                    android:layout_marginRight="3dp"
+		                    android:id="@+id/parentOfPecentage"
+		                    android:layout_below="@id/PercentageTextView">
+                      
+                      
+                    <EditText 
+	                        android:layout_width="0dp"
+	                        android:background="@drawable/custom_edittext2"
+	                        android:textSize="10dp"
+	                        android:layout_height="wrap_content"
+	                        android:id="@+id/AdvanceBeforeDeliveryPercentage"
+	                        android:layout_gravity="center"
+	                        android:layout_weight="1"/>
+                    
+                    <EditText 
+	                        android:layout_width="0dp"
+	                        android:layout_height="wrap_content"
+	                        android:text="On Delivery"
+	                        android:background="@drawable/custom_edittext2"
+	                        android:textSize="10dp"
+	                        android:id="@+id/OnDeliveryPercentage"
+	                        android:layout_gravity="center"
+	                        android:layout_weight="1"/>
+                     
+                     <EditText 
+	                          android:layout_width="0dp"
+	                          android:background="@drawable/custom_edittext2"
+	                          android:text="Credit"
+	                          android:id="@+id/CreditPercentage"
+	                          android:textSize="10dp"
+	                          android:layout_gravity="center"
+	                          android:layout_height="wrap_content"
+	                          android:layout_weight="1"/>
+                      
+                </LinearLayout>
+                 
+                
+                
+                <TextView 
+		                android:layout_below="@id/parentOfPecentage"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:text="Payment Mode"
+		                android:layout_marginLeft="20dp"
+		                android:layout_marginTop="10dp"
+		                android:visibility="gone"
+		                android:focusable="true"
+		                android:layout_marginBottom="10dp"
+		     			android:focusableInTouchMode="true"
+		                style="@style/MyTextViewStyle"
+		                android:id="@+id/PaymentModeTextView"/>
+                
+              <!--  <TextView 
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="Quotation Date"
+               android:layout_marginLeft="20dp"
+               android:layout_marginTop="10dp"
+              android:layout_below="@id/ExpBusValueEdit"
+              style="@style/MyTextViewStyle"
+               android:id="@+id/QuotDate"/>
+                 
+            <ImageView 
+                android:layout_width="wrap_content"
+                android:layout_marginTop="10dp"
+		        android:id="@+id/QuotdateCal"
+		        android:layout_below="@id/ExpBusValueEdit"
+		        android:layout_marginRight="20dp"
+		        android:layout_alignParentRight="true"
+		        android:layout_height="wrap_content"
+		        android:src="@drawable/calendar32"/>
+		            
+            <TextView 
+                android:layout_width="wrap_content"
+                android:layout_below="@id/ExpBusValueEdit"
+               android:layout_height="wrap_content"
+               android:text="21-10-2015"
+               android:focusable="true"
+    			android:focusableInTouchMode="true"
+               android:layout_marginLeft="5dp"
+               android:layout_marginTop="10dp"
+               android:layout_toRightOf="@id/QuotDate"
+               style="@style/MyTextViewStyle"
+               android:id="@+id/QuotationDate"/>
+            
+            <View android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:id="@+id/view8"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/QuotdateCal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#23519C"/> -->
+               
+                <LinearLayout 
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical"
+                  android:paddingLeft="20dp"
+                  android:visibility="gone"
+    			  android:id="@+id/ss"
+    			  android:background="@android:color/transparent"
+                  android:layout_below="@id/PaymentModeTextView">
+                 
+             </LinearLayout>
+             
+              <View 
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#23519C"
+                    android:layout_below="@id/ss"
+                    android:visibility="gone"
+                    android:id="@+id/veiwBelow"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"/>
+              
+             <LinearLayout 
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:visibility="gone"
+                 android:orientation="horizontal"
+                 android:id="@+id/creditLimtTextBoxParent"
+                 android:layout_marginBottom="10dp"
+                 android:layout_below="@id/veiwBelow">
+                     
+		           <TextView 
+				        android:layout_width="0dp"
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+				        android:text="CreditLimit"
+				        android:layout_marginLeft="20dp"
+				        android:layout_marginRight="7dp"
+				        android:visibility="gone"
+				        android:focusable="true"
+				    	android:focusableInTouchMode="true"
+				        android:layout_marginTop="10dp"
+				        style="@style/MyTextViewStyle"
+				        android:id="@+id/PaymentTerms"/>
+		            
+		           <TextView 
+		            	android:layout_width="0dp"
+		        		android:layout_height="wrap_content"
+		        		android:layout_weight="1"
+		         		android:visibility="gone"
+		                android:text="CreditDays"
+		                android:layout_marginLeft="7dp"
+		                android:layout_marginRight="20dp"
+		                android:focusable="true"
+		    			android:focusableInTouchMode="true"
+		                android:layout_marginTop="10dp"
+		                android:id="@+id/CreditDaysTextbox"
+		                style="@style/MyTextViewStyle" />
+           
+          </LinearLayout>
+             
+          <LinearLayout 
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:layout_marginBottom="20dp"
+                 android:visibility="gone"
+                 android:orientation="horizontal"
+                 android:id="@+id/parentOfCreditTextBox"
+                 android:layout_below="@id/creditLimtTextBoxParent">
+                 
+                   <EditText
+					        android:id="@+id/PaymntTermEdit"
+					        android:textColor="#000"
+					        android:layout_width="0dp"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1"
+					        android:visibility="gone"
+					        android:hint="Type here"
+					        android:paddingLeft="5dp"
+					        android:inputType="number"
+					        android:textSize="15sp"
+					        android:textColorHint="#a4a4a4"
+					        android:maxLength="6"
+					        android:paddingBottom="5dp"
+					        android:layout_marginLeft="20dp"
+					        android:layout_marginRight="7dp"
+					        android:background="@drawable/custom_edittext2" />
+                   
+                 <EditText 
+					        android:id="@+id/PaymntTermSpinner"
+						    android:textColor="#000"
+					        android:layout_width="0dp"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1"
+					        android:hint="Type here"
+					        android:visibility="gone"
+					        android:paddingLeft="5dp"
+					        android:inputType="number"
+					        android:textSize="15sp"
+					        android:textColorHint="#a4a4a4"
+					        android:maxLength="6"
+					        android:paddingBottom="5dp"
+					        android:layout_marginLeft="7dp"
+					        android:layout_marginRight="20dp"
+					        android:background="@drawable/custom_edittext2"/>
+                 
+             </LinearLayout>
+             
+            
+           
+            
+       </RelativeLayout>
+    
+       </ScrollView>
+    
+     <LinearLayout 
+    	android:layout_width="match_parent"
+    	android:layout_height="33dp"
+        android:layout_marginTop="10dp"
+        android:visibility="visible"
+        android:layout_marginBottom="2dp"
+        android:orientation="horizontal" >
+   
+             <Button 
+                  android:layout_width="0dp"
+                  android:layout_marginRight="20dp"
+                  android:textStyle="bold"
+                  android:text="Save &amp; Next"
+                  android:id="@+id/Done_btn"
+                  android:textSize="11sp"
+                  android:textColor="#fff"
+                  android:layout_height="match_parent"
+                  android:background="@drawable/custom_button"
+                  android:layout_marginLeft="20dp"
+                  android:layout_weight="1"/>
+             
+              <Button 
+                   android:layout_width="0dp"
+                   android:layout_marginLeft="20dp"
+                   android:background="@drawable/custom_button"
+                   android:text="Cancel"
+                   android:id="@+id/cancleBtn"
+                   android:visibility="gone"
+                   android:textColor="#fff"
+                   android:textStyle="bold"
+                   android:textSize="11sp"
+                   android:layout_marginRight="20dp"
+                   android:layout_height="match_parent"
+                   android:layout_weight="1"/>
+         
+    
+    
+
+         </LinearLayout>
+    
+    
+</LinearLayout>

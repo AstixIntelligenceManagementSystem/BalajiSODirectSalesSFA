@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="300dp"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+   android:background="#ffffff"
+	>
+     
+    <TextView 
+        android:id="@+id/txtVw_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:background="#0070AF"
+        android:layout_alignParentTop="true"
+        android:textColor="#ffffff"
+       android:text="@string/genTermSelectStoresPendingToCompleteDayEnd"/>
+
+    <ScrollView 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+      android:layout_below="@+id/txtVw_header"
+      android:layout_above="@+id/ll_submit_cncl"
+      android:clipToPadding="false"
+      android:scrollbarStyle="insideOverlay"
+      
+      >
+ 	
+<LinearLayout 
+    android:id="@+id/ll_product_not_submitted"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:paddingLeft="16dp"
+     android:paddingRight="16dp"
+    android:orientation="vertical">
+    
+   
+    
+</LinearLayout>
+ </ScrollView>
+
+   <LinearLayout 
+       android:id="@+id/ll_submit_cncl"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="5dp"
+      android:layout_alignParentBottom="true"
+       android:weightSum="2">
+    <Button
+        android:id="@+id/btnSubmit"
+     
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+       android:textSize="14sp"
+        android:textColor="#ffffff"
+       android:background="@drawable/custom_button"
+       android:layout_centerHorizontal="true"
+        android:text="@string/Submit" />
+     <Button
+        android:id="@+id/btn_cancel_Back"
+     
+         android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+         android:textColor="#ffffff"
+          android:textSize="14sp"
+        android:layout_marginLeft="2dp"
+       android:background="@drawable/custom_button"
+       android:layout_centerHorizontal="true"
+        android:text="@string/txtOnChangeRouteDayEndCancel" />
+    </LinearLayout>
+</RelativeLayout>
+  

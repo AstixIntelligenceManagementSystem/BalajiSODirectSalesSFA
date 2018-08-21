@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1052182493658",
+    "firebase_url": "https://balajisosfadirectsales-35cee.firebaseio.com",
+    "project_id": "balajisosfadirectsales-35cee",
+    "storage_bucket": "balajisosfadirectsales-35cee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1052182493658:android:38860b38d9952685",
+        "android_client_info": {
+          "package_name": "project.astix.com.balajisosfadirectsales"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1052182493658-150l20pggk9g4g1p5lf6q3lf6vvrtva4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_VDt6v4qBfC3OhBv7OWEVH11zqOVO7r8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

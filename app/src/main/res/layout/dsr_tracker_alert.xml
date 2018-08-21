@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="15dp"
+    android:paddingTop="5dp"
+    >
+
+    <TextView
+        android:id="@+id/txt_HdrVst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Track Type"
+        android:background="@drawable/logo_background"
+        android:padding="5dp"
+        android:textColor="#FFFF4424"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="6dp"
+        android:gravity="center"/>
+
+    <RadioButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Data Report"
+        android:padding="4dp"
+        android:id="@+id/rb_dataReport"/>
+
+    <RadioButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="On Map"
+        android:padding="4dp"
+        android:id="@+id/rb_onMap"/>
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:visibility="visible"
+        android:layout_marginTop="6dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:text="Proceed"
+            android:textSize="14sp"
+            android:id="@+id/btn_proceed"
+            android:background="@drawable/btn_background"
+            style="?android:attr/borderlessButtonStyle"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:text="Cancel"
+            android:textSize="14sp"
+            android:id="@+id/btn_cancel"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/btn_background"
+            style="?android:attr/borderlessButtonStyle"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

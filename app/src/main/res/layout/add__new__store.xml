@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<ScrollView  
+    xmlns:android="http://schemas.android.com/apk/res/android"  
+    android:id="@+id/ScrollView01"  
+    android:layout_width="match_parent"  
+    android:layout_height="wrap_content"  
+    android:scrollbars="vertical"
+     
+     >
+    <LinearLayout  
+        android:layout_width="fill_parent"  
+        android:orientation="vertical"  
+        android:layout_height="fill_parent">  
+<!--Put form controls here-->  
+
+<TextView android:id="@+id/ddRName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Retailer"
+        android:layout_marginLeft="12dp"
+        android:textStyle="bold"
+        >        
+    </TextView>
+    
+
+<EditText  
+    android:id="@+id/ret_name"  
+    android:layout_height="wrap_content"  
+    android:hint="Retailer Name"  
+   android:maxLength="100"
+    android:layout_width="fill_parent"
+    android:inputType="textFilter"
+         android:digits="@string/only_alpha_numeric">  
+</EditText>
+
+
+<TextView android:id="@+id/ddOName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Owner"
+        android:textStyle="bold"
+        android:layout_marginLeft="12dp">        
+    </TextView>
+<EditText  
+    android:id="@+id/own_name"  
+    android:layout_height="wrap_content"  
+    android:hint="Owner Name"  
+      android:maxLength="100"
+    android:inputType="textFilter"
+         android:digits="@string/only_alpha_numeric"
+    android:layout_width="fill_parent"> 
+    
+</EditText> 
+
+
+<RelativeLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="5dp" >
+<TextView
+                android:id="@+id/textView1_phonenos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+               android:layout_marginLeft="4dp"
+                android:layout_marginTop="3dp"
+                android:text="@string/phone_nos"
+                 android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
+
+           <!--  <EditText
+                android:id="@+id/editText1_phonenos"
+                android:layout_width="45dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_height="35dp"
+                android:layout_below="@id/textView1_phonenos"
+                android:digits="0123456789"
+                android:ems="3"
+                android:inputType="phone"
+                android:maxLength="3"
+                android:textSize="12sp"
+                android:visibility="gone"
+                 /> -->
+
+             <EditText
+                android:id="@+id/editText1_phonenos2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
+                android:layout_below="@id/textView1_phonenos"
+                android:digits="0123456789"
+                
+                android:text="+91"
+                android:inputType="phone"
+                android:maxLength="15"
+                android:textSize="12sp"
+                />
+
+            <!-- <EditText
+                android:id="@+id/editText1_phonenos3"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_alignBaseline="@id/editText1_phonenos2"
+                android:layout_toRightOf="@id/editText1_phonenos2"
+                android:digits="0123456789"
+                android:ems="3"
+                android:inputType="phone"
+                android:maxLength="5"
+                android:textSize="12sp"
+                />
+
+            <EditText
+                android:id="@+id/editText1_phonenos4"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_alignBaseline="@id/editText1_phonenos3"
+                android:layout_toRightOf="@id/editText1_phonenos3"
+                android:digits="0123456789"
+                android:ems="3"
+                android:inputType="phone"
+                android:maxLength="5"
+                android:textSize="12sp"
+                /> -->
+</RelativeLayout>
+<TextView android:id="@+id/ddAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+       android:textStyle="bold"
+          android:maxLength="100"
+        android:layout_marginLeft="12dp">        
+    </TextView>
+    <EditText  
+    android:id="@+id/addres"  
+    android:layout_height="wrap_content"  
+    android:hint="Enter the Address" 
+    android:inputType="textFilter"
+         android:digits="@string/only_alpha_numeric"
+    android:lines="2"  
+    android:layout_width="fill_parent">  
+</EditText>  
+
+    
+    <TextView android:id="@+id/ddPCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pincode"
+         android:visibility="gone"
+        android:textStyle="bold"
+        android:layout_marginLeft="12dp">        
+    </TextView>
+    <EditText  
+    android:id="@+id/pincod"  
+    android:layout_height="wrap_content"  
+    android:hint="Pincode"
+    android:maxLength="6"  
+    android:inputType="number"  
+    android:visibility="gone"
+    android:layout_width="fill_parent"> 
+    
+</EditText> 
+
+    
+    <TextView android:id="@+id/ddSLoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="City"
+        android:textStyle="bold"
+        android:layout_marginLeft="12dp"
+        android:visibility="gone">
+        
+    </TextView>
+
+<Spinner  
+    android:id="@+id/Spinnerlocation"  
+    android:layout_height="wrap_content"  
+    android:prompt="@string/spinnerloc"  
+    android:layout_width="fill_parent" 
+    android:visibility="gone" 
+   > 
+</Spinner>
+
+<TextView android:id="@+id/ddSArea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:textStyle="bold"
+        android:text="Area"
+        android:visibility="gone">
+        
+    </TextView>
+
+<Spinner  
+    android:id="@+id/Spinnerarea"  
+    android:layout_height="wrap_content"  
+    android:prompt="@string/spinnerarea"  
+    android:layout_width="fill_parent"  
+    android:visibility="gone">
+</Spinner>
+
+<TextView android:id="@+id/ddStype"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:textStyle="bold"
+        android:text="Store Type"
+        android:visibility="gone">
+        
+    </TextView>
+
+
+<Spinner  
+    android:id="@+id/Spinnerstoretype"  
+    android:layout_height="wrap_content"  
+    android:prompt="@string/spinnerstore"  
+    android:layout_width="fill_parent"
+    android:visibility="gone"  
+    >  
+</Spinner>
+
+<LinearLayout 
+    android:id="@+id/aass"
+    
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:gravity="center"
+    android:weightSum="2"
+    android:layout_marginLeft="25dp"
+    android:layout_marginRight="25dp"
+    android:layout_marginTop="10dp"
+    
+    >
+    
+    <Button  
+    android:id="@+id/ButtonSave"  
+     android:layout_height="match_parent"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:background="@drawable/custom_button"
+        android:textColor="#ffffff"
+        android:text="Save"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">  
+</Button> 
+
+    <Button  
+    android:id="@+id/ButtonCancel"  
+   android:layout_height="match_parent"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:background="@drawable/custom_button"
+         android:textColor="#ffffff"
+         android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+         android:layout_marginLeft="10dp"
+        android:text="Cancel" >  
+</Button> 
+    
+</LinearLayout>
+
+    </LinearLayout>  
+</ScrollView> 

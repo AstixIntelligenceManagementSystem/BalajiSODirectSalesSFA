@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/mainImg"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+
+        android:background="@drawable/menu_head_img"
+        android:layout_below="@+id/bardd"
+        />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+    <Button android:id="@+id/butHome"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/alert_text_background"
+        android:textColor="#000000"
+        android:text="Home"
+        android:gravity="left|center_vertical"
+        android:drawableRight="@drawable/ic_right2"
+        android:textSize="14sp"/>
+
+    <Button
+        android:id="@+id/butn_refresh_data"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/alert_text_background"
+        android:textColor="#000000"
+        android:gravity="left|center_vertical"
+        android:drawableRight="@drawable/ic_forward"
+        android:textSize="14sp"
+        android:textAllCaps="true"
+        android:text="Refresh Complete Data"
+        />
+
+    <Button android:id="@+id/butMarketVisit"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/alert_text_background"
+        android:textColor="#000000"
+        android:text="Market Visit"
+        android:gravity="left|center_vertical"
+        android:drawableRight="@drawable/ic_right2"
+        android:textSize="14sp"/>
+
+    <Button
+        android:id="@+id/btnSummary"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/alert_text_background"
+        android:textColor="#000000"
+        android:gravity="left|center_vertical"
+        android:visibility="visible"
+        android:drawableRight="@drawable/ic_right2"
+        android:textSize="14sp"
+        android:textAllCaps="true"
+        android:text="@string/AddedStoresSummary"
+        />
+
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/alert_text_background"
+        android:textColor="#000000"
+        android:gravity="left|center_vertical"
+        android:drawableRight="@drawable/ic_forward"
+        android:textSize="13sp"
+        android:textAllCaps="false"
+        android:visibility="gone"
+        android:text="Upload Data" />
+
+            <Button
+                android:id="@+id/btnSalesSummary"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/alert_text_background"
+                android:textColor="#000000"
+                android:gravity="left|center_vertical"
+                android:drawableRight="@drawable/ic_right2"
+                android:textSize="14sp"
+                android:text="@string/txtReport" />
+
+    <!-- <Button
+         android:id="@+id/btnPhoneBill"
+         android:layout_width="220dp"
+         android:layout_height="wrap_content"
+         android:background="@drawable/alert_text_background"
+         android:textColor="#000000"
+         android:gravity="left|center_vertical"
+         android:drawableRight="@drawable/ic_right"
+         android:textSize="13sp"
+         android:text="Upload Phone Bill"
+         android:visibility="gone" />-->
+
+
+
+    <Button
+        android:id="@+id/btnVersion"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/alert_text_background"
+        android:drawableRight="@drawable/ic_forward"
+        android:gravity="left|center_vertical"
+        android:text="Version No."
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btnFaqs"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/alert_text_background"
+        android:textColor="#000000"
+        android:gravity="left|center_vertical"
+        android:drawableRight="@drawable/ic_forward"
+        android:textSize="13sp"
+        android:textAllCaps="false"
+        android:visibility="gone"
+        android:text="FAQs" />
+    <Button
+        android:id="@+id/btnContact"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/alert_text_background"
+        android:textColor="#000000"
+        android:gravity="left|center_vertical"
+        android:drawableRight="@drawable/ic_forward"
+        android:textSize="13sp"
+        android:textAllCaps="false"
+        android:text="Contact Us"
+        android:visibility="gone"/>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -1,0 +1,186 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     android:background="#ffffff"
+      android:orientation="vertical" 
+   >
+   <RelativeLayout
+       
+        android:layout_width="match_parent"
+    
+    android:layout_height="60dp"
+   
+    android:background="@drawable/custom_header_color" >
+
+        <Button 
+    android:id="@+id/btn_bck"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+   android:background="@drawable/ic_back"
+ android:layout_marginTop="7dp"
+    android:layout_alignParentLeft="true"/>
+  <TextView 
+   android:id="@+id/order_detail"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="#FFFFFF"
+    android:layout_toRightOf="@+id/backbutton"
+    android:paddingLeft="10dp"
+ 	android:layout_centerInParent="true"
+    android:gravity="center_horizontal|left"
+    
+	android:textStyle="bold"
+    android:shadowColor="#80FFFFFF" 
+    android:textSize="18sp"
+    android:text="New Store Details"/>
+
+   </RelativeLayout>
+   <ScrollView 
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_alignParentTop="true"
+       android:padding="16dp"
+       android:scrollbars="none"
+       android:layout_above="@+id/btn_submit">
+       
+       <LinearLayout
+           
+    android:layout_width="match_parent"
+    
+    android:layout_height="wrap_content"
+   
+   
+    
+    android:orientation="vertical" >
+       
+<LinearLayout
+    android:id="@+id/ll_dynamicForm"
+    android:layout_width="match_parent"
+    
+    android:layout_height="wrap_content"
+   
+   
+    
+    android:orientation="vertical" >
+    </LinearLayout>
+    
+ <RelativeLayout 
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:paddingLeft="10dp"
+          android:paddingRight="20dp"
+          android:paddingTop="2dp"
+          android:layout_marginTop="10dp"
+          android:paddingBottom="2dp"
+          android:background="#F2F2F2"
+          android:visibility="gone">
+           <TextView 
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Take Photo"
+          android:textSize="15sp"
+          android:layout_centerInParent="true"
+          android:padding="0dp"
+        android:gravity="center"
+       android:layout_alignParentLeft="true"
+          android:textColor="#000"/>
+           <ImageView 
+               android:id="@+id/cam_outlet"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               
+               android:layout_alignParentRight="true"
+               android:src="@drawable/camera_icon1"/>
+      </RelativeLayout>
+    
+    <TextView android:id="@+id/acc_textview787"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+         android:textColor="#000"
+         android:visibility="invisible"
+        android:text="Accuracy in Meter">
+        
+    </TextView>
+    
+    
+    
+<LinearLayout
+    
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:layout_below="@+id/tv_Route"
+    android:gravity="center"
+    android:weightSum="3"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="25dp"
+    android:layout_marginRight="25dp"
+    android:layout_marginBottom="10dp"
+    >
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_height="match_parent"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        
+        android:background="@drawable/custom_button"
+         android:textColor="#fff"
+        android:text="Submit"
+        android:textStyle="bold"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp" />
+    <Button
+        android:id="@+id/ButtonClose"
+        android:layout_height="match_parent"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:background="@drawable/custom_button"
+         android:textColor="#fff"
+         android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textStyle="bold"
+         android:layout_marginLeft="10dp"
+        android:text="Cancel &amp; Exit"
+        android:visibility="gone" />
+    <Button
+        android:id="@+id/ButtonCancel"
+        android:layout_height="match_parent"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:background="@drawable/custom_button"
+         android:textColor="#fff"
+         android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textStyle="bold"
+         android:layout_marginLeft="10dp"
+        android:text="Cancel" />
+   
+</LinearLayout>
+             
+		
+    
+    
+</LinearLayout>
+
+
+ 
+  
+</ScrollView>
+
+    
+    
+<!-- <Button 
+    android:id="@+id/btn_submit"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:text="Submit"/> -->
+
+
+
+</LinearLayout>

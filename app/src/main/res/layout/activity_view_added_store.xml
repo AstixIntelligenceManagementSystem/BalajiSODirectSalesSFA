@@ -1,0 +1,63 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+     >
+<RelativeLayout
+	        android:id="@+id/layout_first"    
+	        android:layout_width="match_parent"
+	        android:layout_height="48dp"
+	        android:gravity="center_vertical" 
+	        android:background="@drawable/custom_header_color"
+	        android:layout_weight="1">
+         
+        
+
+	<ImageView
+		android:id="@+id/img_back"
+		android:layout_width="wrap_content"
+		android:layout_height="25dp"
+		android:layout_alignParentLeft="true"
+		android:layout_marginTop="6dp"
+		android:src="@drawable/ic_back"/>
+          
+          
+           <TextView 
+			         android:id="@+id/butn_refresh_data"
+			         android:layout_width="wrap_content"
+			         android:layout_height="wrap_content"
+			         android:textSize="18sp"
+			         android:layout_toRightOf="@+id/img_back"
+			         android:layout_centerVertical="true"
+			         android:textColor="#ffffff"
+			         android:text="Newely Added Store"
+			        
+			         android:layout_marginTop="5dp"
+			         android:layout_marginLeft="10dp"  />
+
+   
+
+     
+
+    
+			
+ </RelativeLayout>
+   <ScrollView 
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+      android:scrollbarStyle="outsideOverlay"
+      android:layout_below="@+id/layout_first"
+      android:layout_marginTop="5dp"
+      android:paddingLeft="16dp"
+       android:paddingRight="16dp"
+      android:clipToPadding="false" >
+       <LinearLayout 
+           android:id="@+id/ll_addedOutlet"
+           android:layout_width="match_parent" 
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+           
+       </LinearLayout>
+   </ScrollView>
+
+</RelativeLayout>

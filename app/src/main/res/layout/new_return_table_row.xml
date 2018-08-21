@@ -1,0 +1,86 @@
+
+                    <TableRow xmlns:android="http://schemas.android.com/apk/res/android" 
+                  android:id="@+id/tblDynRow"
+                        android:layout_margin="0.2dp" >
+
+                        <TextView
+                            android:id="@+id/tvProd"
+                            android:layout_margin="0.2dp"
+                            android:background="#d8e2ee"
+                            android:textSize="8sp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true" />
+                        
+                      
+                        
+                        <TextView
+                            android:id="@+id/tvRate"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:textSize="8sp"
+                           android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true" />
+
+                        
+
+                        <EditText
+                            android:id="@+id/etReturn1"
+                            android:layout_margin="0.2dp"
+                            android:background="#d8e2ee"
+                            android:textSize="8sp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:inputType="number"
+                            android:digits="0123456789"
+                            android:maxLength="3"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true" />
+                        
+                        <TextView
+                            android:id="@+id/tvReturnValue11"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:textSize="8sp"
+                           android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:scrollHorizontally="false" />
+                       
+                        
+                        <EditText
+                            android:id="@+id/etReturnAdjQty"
+                            android:layout_margin="0.2dp"
+                            android:background="#d8e2ee"
+                            android:textSize="8sp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:inputType="number"
+                            android:digits="0123456789"
+                            android:maxLength="3"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true" />
+                        
+                        <TextView
+                            android:id="@+id/tvReturnAdjAmt"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:textSize="8sp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:scrollHorizontally="false" />
+                        
+
+                            
+                      
+                    </TableRow>

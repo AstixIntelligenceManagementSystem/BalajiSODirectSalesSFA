@@ -1,0 +1,767 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+    >
+
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <RelativeLayout 
+    android:layout_height="48dp"
+    android:layout_width="fill_parent" 
+    android:background="@drawable/custom_header_color"
+    android:paddingLeft="5dp"
+    android:layout_alignParentTop="true"
+   android:id="@+id/rtv_hdr">
+
+        <ImageView
+            android:id="@+id/backbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="6dp"
+            android:src="@drawable/ic_back"/>
+<TextView 
+    
+   android:id="@+id/txtSalessumuryDate"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="#FFFFFF"
+    android:layout_toRightOf="@+id/backbutton"
+   android:paddingLeft="10dp"
+ 	android:layout_centerInParent="true"
+    android:gravity="center_horizontal|left"
+      android:shadowRadius="7" 
+    android:shadowDy="4" 
+    android:shadowDx="4" 
+	android:textStyle="bold"
+    android:shadowColor="#80FFFFFF" 
+    android:textSize="18sp"
+    android:text="Summary as on"/>
+
+>
+
+</RelativeLayout>
+
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+         android:layout_below="@+id/rtv_hdr" 
+         
+        android:padding="2dp">
+    <TableLayout 
+   
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent"
+   android:layout_alignParentTop="true"
+    android:shrinkColumns="*" 
+     android:stretchColumns="*" 
+ 
+      >
+
+        <TableRow 
+        android:layout_height="wrap_content" 
+        android:layout_width="fill_parent" 
+        android:gravity="center_horizontal"
+        android:background="@drawable/table_row_bg"
+        android:weightSum="4">  
+        <TextView 
+            android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14dp"
+             android:text="Measures"  
+              android:padding="2dp"
+               android:layout_weight="2"
+            android:gravity="center"
+            android:background="@drawable/table_cell_header_bg"
+            android:textColor="#ffffff"/>  
+            <TextView 
+            android:layout_width="0dp"
+             android:layout_height="wrap_content"
+            android:textSize="14dp"
+             android:text="Today's Summary"  
+             android:padding="2dp"
+            android:layout_weight="1"
+            android:gravity="center"
+           android:background="@drawable/table_cell_header_bg"
+            android:textColor="#ffffff"/>  
+            <TextView 
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14dp"
+             android:padding="2dp"
+             android:text="MTD\nSummary"  
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@drawable/table_cell_header_bg"
+            android:textColor="#ffffff"/>  
+    </TableRow>
+
+        <TableRow
+            android:layout_height="match_parent"
+            android:layout_width="fill_parent"
+            android:gravity="center_horizontal"
+            android:background="@drawable/table_row_bg"
+            android:padding="2dp"
+            android:weightSum="4">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textSize="14sp"
+                android:text="Tgt Value [%] Achieved"
+                android:padding="2dp"
+                android:layout_weight="2"
+                android:gravity="left|center_vertical"
+                android:background="@drawable/table_cell_bg"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/txtValueAchievedToday"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="0"
+                android:padding="2dp"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:background="@drawable/table_cell_bg"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/txtValueAchievedMTD"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textSize="14dp"
+                android:padding="2dp"
+                android:layout_weight="1"
+                android:text="0"
+                android:gravity="center_horizontal"
+                android:background="@drawable/table_cell_bg"
+                android:textColor="#000"/>
+
+        </TableRow>
+
+
+        <TableRow
+        android:layout_height="match_parent" 
+        android:layout_width="fill_parent" 
+        android:gravity="center_horizontal"
+        android:background="@drawable/table_row_bg"
+        android:padding="2dp"
+        android:weightSum="4">  
+        <TextView 
+            android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14sp"
+             android:text="Target Calls:"  
+              android:padding="2dp"
+              android:layout_weight="2"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                 android:id="@+id/txtTargetCallsValue"
+            android:layout_width="0dp"
+             android:layout_height="wrap_content"
+            android:textSize="14dp"
+           android:text="0"
+             android:padding="2dp"
+             android:layout_weight="1"
+                 android:gravity="center_horizontal"
+           android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                 android:id="@+id/txtTargetCallsValueMTD"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14dp"
+             android:padding="2dp"
+               android:layout_weight="1"
+           android:text="0"
+                 android:gravity="center_horizontal"
+            
+            android:textColor="#000"/>  
+    </TableRow>
+        <TableRow 
+        android:layout_height="match_parent" 
+        android:layout_width="fill_parent" 
+        android:gravity="center_horizontal"
+        android:background="@drawable/table_row_bg"
+        android:padding="2dp"
+        android:weightSum="4">  
+        <TextView 
+            android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14sp"
+             android:text="Actual Calls On-Route:"  
+              android:padding="2dp"
+              android:layout_weight="2"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                 android:id="@+id/actualCallValue"
+            android:layout_width="0dp"
+             android:layout_height="wrap_content"
+            android:textSize="14dp"
+           android:text="0"
+             android:padding="2dp"
+             android:layout_weight="1"
+                 android:gravity="center_horizontal"
+           android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                android:id="@+id/actualCallValueMTD"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14dp"
+             android:padding="2dp"
+               android:layout_weight="1"
+           android:text="0"
+                android:gravity="center_horizontal"
+            
+            android:textColor="#000"/>  
+    </TableRow>    
+    <TableRow 
+        android:layout_height="match_parent" 
+        android:layout_width="fill_parent" 
+        android:gravity="center_horizontal"
+        android:background="@drawable/table_row_bg"
+        android:padding="2dp"
+        android:weightSum="4">    
+        <TextView 
+            android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14sp"
+              android:text="Actual Calls Off-Route:"   
+              android:padding="2dp"
+              android:layout_weight="2"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                 android:id="@+id/actualCallOffRouteValue"
+            android:layout_width="0dp"
+             android:layout_height="wrap_content"
+            android:textSize="14dp"
+           android:text="0"
+             android:padding="2dp"
+             android:layout_weight="1"
+                 android:gravity="center_horizontal"
+           android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                 android:id="@+id/actualCallOffRouteValueMTD"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14dp"
+             android:padding="2dp"
+               android:layout_weight="1"
+           android:text="0"
+                 android:gravity="center_horizontal"
+            
+            android:textColor="#000"/>  
+    </TableRow>    
+     <TableRow 
+        android:layout_height="match_parent" 
+        android:layout_width="fill_parent" 
+        android:gravity="center_horizontal"
+        android:background="@drawable/table_row_bg"
+        android:padding="2dp"
+        android:weightSum="4">  
+        <TextView 
+            android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14sp"
+            android:text="Productive Calls On-Route:"   
+              android:padding="2dp"
+              android:layout_weight="2"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                android:id="@+id/productiveCallValue"
+            android:layout_width="0dp"
+             android:layout_height="wrap_content"
+            android:textSize="14dp"
+           android:text="0"
+             android:padding="2dp"
+             android:layout_weight="1"
+                android:gravity="center_horizontal"
+           android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                android:id="@+id/productiveCallValueMTD"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14dp"
+             android:padding="2dp"
+               android:layout_weight="1"
+           android:text="0"
+                android:gravity="center_horizontal"
+            android:textColor="#000"/>  
+    </TableRow>    
+    <TableRow 
+        android:layout_height="match_parent" 
+        android:layout_width="fill_parent" 
+        android:gravity="center_horizontal"
+        android:background="@drawable/table_row_bg"
+        android:padding="2dp"
+        android:weightSum="4">   
+        <TextView 
+            android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14sp"
+            android:text="Productive Calls Off-Route:"   
+              android:padding="2dp"
+              android:layout_weight="2"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                android:id="@+id/productiveCallOffValue"
+            android:layout_width="0dp"
+             android:layout_height="wrap_content"
+            android:textSize="14dp"
+           android:text="0"
+             android:padding="2dp"
+             android:layout_weight="1"
+                android:gravity="center_horizontal"
+           android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                 android:id="@+id/productiveCallOffValueMTD"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14dp"
+             android:padding="2dp"
+               android:layout_weight="1"
+           android:text="0"
+                 android:gravity="center_horizontal"
+            android:textColor="#000"/>  
+    </TableRow>    <TableRow 
+        android:layout_height="match_parent" 
+        android:layout_width="fill_parent" 
+        android:gravity="center_horizontal"
+        android:background="@drawable/table_row_bg"
+        android:padding="2dp"
+        android:weightSum="4">  
+        <TextView 
+            android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14sp"
+             android:text="Calls Remaining:"  
+              android:padding="2dp"
+              android:layout_weight="2"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                 android:id="@+id/txtCallsRemainingValue"
+            android:layout_width="0dp"
+             android:layout_height="wrap_content"
+            android:textSize="14dp"
+           android:text="0"
+             android:padding="2dp"
+             android:layout_weight="1"
+                 android:gravity="center_horizontal"
+           android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                 android:id="@+id/txtCallsRemainingValueMTD"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14dp"
+             android:padding="2dp"
+               android:layout_weight="1"
+           android:text="0"
+                 android:gravity="center_horizontal"
+            android:textColor="#000"/>  
+    </TableRow>     <TableRow 
+        android:layout_height="match_parent" 
+        android:layout_width="fill_parent" 
+        android:gravity="center_horizontal"
+        android:background="@drawable/table_row_bg"
+        android:padding="2dp"
+        android:weightSum="4">  
+        <TextView 
+            android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14sp"
+             android:text="Average Lines per Bill:"  
+              android:padding="2dp"
+              android:layout_weight="2"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                android:id="@+id/txtAverageLinePerBill"
+            android:layout_width="0dp"
+             android:layout_height="wrap_content"
+            android:textSize="14dp"
+           android:text="0"
+             android:padding="2dp"
+             android:layout_weight="1"
+                android:gravity="center_horizontal"
+           android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                 android:id="@+id/txtAverageLinePerBillMTD"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14dp"
+             android:padding="2dp"
+               android:layout_weight="1"
+           android:text="0"
+                 android:gravity="center_horizontal"
+            android:textColor="#000"/>  
+    </TableRow>     <TableRow 
+        android:layout_height="match_parent" 
+        android:layout_width="fill_parent" 
+        android:gravity="center_horizontal"
+        android:background="@drawable/table_row_bg"
+        android:padding="2dp"
+        android:weightSum="4">  
+         
+        <TextView 
+            android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14sp"
+             android:text="Total Invoice Value:"
+              android:padding="2dp"
+              android:layout_weight="2"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                android:id="@+id/totalsalesValue"
+            android:layout_width="0dp"
+             android:layout_height="wrap_content"
+            android:textSize="14dp"
+           android:text="0"
+             android:padding="2dp"
+             android:layout_weight="1"
+                android:gravity="center_horizontal"
+           android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                android:id="@+id/totalsalesValueMTD"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14dp"
+             android:padding="2dp"
+               android:layout_weight="1"
+           android:text="0"
+                android:gravity="center_horizontal"
+            
+            android:textColor="#000"/>  
+    </TableRow>     <TableRow 
+        android:layout_height="match_parent" 
+        android:layout_width="fill_parent" 
+        android:gravity="center_horizontal"
+        android:background="@drawable/table_row_bg"
+        android:padding="2dp"
+        android:weightSum="4">  
+        <TextView 
+            android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14sp"
+             android:text="Total Sales Value:"  
+              android:padding="2dp"
+              android:layout_weight="2"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                android:id="@+id/txtTgtSalesForDayValue"
+            android:layout_width="0dp"
+             android:layout_height="wrap_content"
+            android:textSize="14dp"
+           android:text="0"
+             android:padding="2dp"
+             android:layout_weight="1"
+                android:gravity="center_horizontal"
+           android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                android:id="@+id/txtTgtSalesForDayValueMTD"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14dp"
+             android:padding="2dp"
+               android:layout_weight="1"
+           android:text="0"
+                android:gravity="center_horizontal"
+            android:textColor="#000"/>  
+    </TableRow>     <TableRow 
+        android:layout_height="match_parent" 
+        android:layout_width="fill_parent" 
+        android:gravity="center_horizontal"
+        android:background="@drawable/table_row_bg"
+        android:padding="2dp"
+        android:weightSum="4">  
+        <TextView 
+            android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14sp"
+             android:text="Total Discount Value:"  
+              android:padding="2dp"
+              android:layout_weight="2"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                android:id="@+id/txtTotalDiscountValue"
+            android:layout_width="0dp"
+             android:layout_height="wrap_content"
+            android:textSize="14dp"
+           android:text="0"
+             android:padding="2dp"
+             android:layout_weight="1"
+                android:gravity="center_horizontal"
+           android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                android:id="@+id/txtTotalDiscountValueMTD"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14dp"
+             android:padding="2dp"
+               android:layout_weight="1"
+           android:text="0"
+                android:gravity="center_horizontal"
+            android:textColor="#000"/>  
+    </TableRow> 
+    
+    <TableRow 
+        android:layout_height="match_parent" 
+        android:layout_width="fill_parent" 
+        android:gravity="center_horizontal"
+        android:background="@drawable/table_row_bg"
+        android:padding="2dp"
+        android:weightSum="4"
+        android:visibility="visible">
+        <TextView 
+            android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14sp"
+             android:text="Placement Outlets:"  
+              android:padding="2dp"
+              android:layout_weight="2"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                android:id="@+id/txtPlacementOutletsValue"
+            android:layout_width="0dp"
+             android:layout_height="wrap_content"
+            android:textSize="14dp"
+           android:text="0"
+             android:padding="2dp"
+             android:layout_weight="1"
+                android:gravity="center_horizontal"
+           android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                android:id="@+id/txtPlacementOutletsValueMTD"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14dp"
+             android:padding="2dp"
+               android:layout_weight="1"
+           android:text="0"
+                android:gravity="center_horizontal"
+            
+            android:textColor="#000"/>  
+    </TableRow> 
+    
+    <TableRow 
+        android:layout_height="match_parent" 
+        android:layout_width="fill_parent" 
+        android:gravity="center_horizontal"
+        android:background="@drawable/table_row_bg"
+        android:padding="2dp"
+        android:weightSum="4">  
+        <TextView 
+            android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14sp"
+             android:text="No of Stores added:"  
+              android:padding="2dp"
+              android:layout_weight="2"
+            android:gravity="left|center_vertical"
+            android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                android:id="@+id/txtNoofStoresaddedValue"
+            android:layout_width="0dp"
+             android:layout_height="wrap_content"
+            android:textSize="14dp"
+           android:text="0"
+             android:padding="2dp"
+             android:layout_weight="1"
+                android:gravity="center_horizontal"
+           android:background="@drawable/table_cell_bg"
+            android:textColor="#000"/>  
+            <TextView 
+                android:id="@+id/txtNoofStoresaddedValueMTD"
+             android:layout_width="0dp"
+             android:layout_height="match_parent"
+            android:textSize="14dp"
+             android:padding="2dp"
+               android:layout_weight="1"
+           android:text="0"
+                android:gravity="center_horizontal"
+            
+            android:textColor="#000"/>  
+    </TableRow>
+        <TableRow
+            android:layout_height="match_parent"
+            android:layout_width="fill_parent"
+            android:gravity="center_horizontal"
+            android:background="@drawable/table_row_last_bg"
+            android:padding="2dp"
+            android:weightSum="4">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textSize="14sp"
+                android:text="Details Report:"
+                android:padding="2dp"
+                android:layout_weight="2.2"
+                android:gravity="left|center_vertical"
+                android:background="@drawable/table_cell_bg"
+                android:textColor="#000"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="2dp"
+                android:layout_weight="1.8"
+                android:gravity="center" >
+
+
+                <Button
+                    android:id="@+id/btn_Target_Achieved_Report"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="#ffffff"
+                    android:text="Target vs Achieved"
+                    android:textSize="13sp"
+                    android:background="@drawable/custom_button"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="2dp"
+                    android:layout_weight="2"  >
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="2dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:background="@drawable/table_cell_bg"  >
+
+                        <Button
+                            android:id="@+id/btn_sku_wise"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:gravity="center"
+                            android:textColor="#ffffff"
+                            android:text="SKU\nWise"
+                            android:textSize="12sp"
+                            android:background="@drawable/custom_button"/>
+                        <Button
+                            android:id="@+id/btn_store_wise"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:gravity="center"
+                            android:textColor="#ffffff"
+                            android:text="Store\nWise"
+                            android:textSize="12sp"
+                            android:background="@drawable/custom_button"/>
+                        <Button
+                            android:id="@+id/btn_str_sku_wise"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:gravity="center"
+                            android:textColor="#ffffff"
+                            android:text="Store-SKU\nWise"
+                            android:textSize="12sp"
+                            android:background="@drawable/custom_button"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="2dp"
+                        android:layout_weight="1"
+                        android:gravity="center" >
+
+                        <Button
+                            android:id="@+id/btn_mtd_sku_wise"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:textColor="#ffffff"
+                            android:text="SKU\nWise"
+                            android:textSize="12sp"
+                            android:background="@drawable/custom_button"/>
+
+                        <Button
+                            android:id="@+id/btn_mtd_store_wise"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:textColor="#ffffff"
+                            android:text="Store\nWise"
+                            android:textSize="12sp"
+                            android:background="@drawable/custom_button"/>
+                        <Button
+                            android:id="@+id/btn_mtd_str_sku_wise"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:gravity="center"
+                            android:textColor="#ffffff"
+                            android:text="Store-SKU\nWise"
+                            android:textSize="12sp"
+                            android:background="@drawable/custom_button" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </TableRow>
+</TableLayout>
+</RelativeLayout>
+
+</RelativeLayout>
+    </ScrollView>

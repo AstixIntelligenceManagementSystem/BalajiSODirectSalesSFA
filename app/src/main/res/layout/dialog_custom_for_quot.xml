@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shadow_with_5dp"
+    android:orientation="vertical" >
+     <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:textColor="#FFF"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+       android:paddingLeft="10dp"
+       android:paddingRight="10dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+       android:layout_alignParentRight="true"
+       android:visibility="visible"
+       android:background="#544f88"
+       android:layout_marginBottom="2dp"
+        android:text="Rate difference cost to be borne by" />
+     <CheckBox android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/CB_multiple"
+        android:text="Multiple"/>
+     <LinearLayout android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical"
+         android:id="@+id/parentOfRateDistribution"
+         ></LinearLayout>
+      <TextView android:layout_width="match_parent"
+             android:layout_height="20dp"/>
+     
+     <LinearLayout
+         
+       
+         android:layout_width="match_parent"
+         android:layout_height="30dp"
+         android:layout_marginTop="4dp"
+       >
+        
+        
+     <Button
+         android:id="@+id/button1"
+         android:layout_width="0dp"
+         android:padding="5dp"
+         android:textSize="15sp"
+         android:layout_weight="1"
+         android:background="@drawable/custom_button"
+         android:layout_height="wrap_content"
+         android:layout_alignParentBottom="true"
+         android:layout_alignParentLeft="true"
+         android:textColor="#FFFFFF"
+         android:text="Ok" />
+     
+
+     <Button
+         android:id="@+id/btncncle"
+         android:padding="5dp"
+         android:textSize="15sp"
+         android:layout_weight="1"
+         android:background="@drawable/custom_button"
+         android:layout_width="0dp"
+         android:layout_height="wrap_content"
+        android:textColor="#FFFFFF"
+         android:layout_alignParentRight="true"
+       
+         android:text="Cancel" />
+     </LinearLayout>
+    
+
+</LinearLayout>

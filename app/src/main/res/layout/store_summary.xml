@@ -1,0 +1,364 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+ >
+<RelativeLayout 
+    android:layout_height="46dp" 
+    android:layout_width="fill_parent" 
+    android:background="#000000"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:id="@+id/rtv_hdr">
+    
+    <ImageView 
+    android:id="@+id/img_back"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_back"
+    android:layout_alignParentLeft="true"/>
+<TextView 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textColor="#FFFFFF"
+    android:textStyle="bold"
+ 	android:layout_centerInParent="true"
+    android:gravity="center_horizontal"
+      android:shadowRadius="7" 
+    android:shadowDy="4" 
+    android:shadowDx="4" 
+   android:visibility="gone"
+    android:shadowColor="#80FFFFFF" 
+    android:textSize="16sp"
+    android:text="@string/OrderDetail"/>
+
+</RelativeLayout>
+
+
+<RelativeLayout 
+    android:id="@+id/ll_schm_applcbl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="1dp"
+    android:paddingBottom="1dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:gravity="center"
+    android:layout_below="@+id/ll_ctgry"
+    android:background="#ffffff"
+    android:orientation="horizontal">
+
+   
+           
+  
+    
+</RelativeLayout>
+
+<LinearLayout 
+    android:id="@+id/ll_header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+   android:paddingTop="1dp"
+   android:paddingBottom="1dp"
+    android:gravity="center_vertical"
+    android:weightSum="8"
+    android:layout_below="@+id/ll_schm_applcbl"
+     android:background="@drawable/table_cell_header_bg"
+    android:orientation="horizontal">
+
+    <TextView 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        android:text="@string/txtStores"
+        android:gravity="center"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"/>
+   
+       <View 
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000"/>
+         <TextView 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+         android:gravity="center"
+        android:text="@string/txtLinesperBill"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"/> 
+        <View 
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000"/>
+       <TextView 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+         android:gravity="center"
+        android:text="@string/txtStockValue"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"/> 
+        <View 
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000"/>
+     
+     
+             <TextView 
+            android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/txtDiscountValue"
+         android:gravity="center"
+         android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"/>
+              <View 
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000"
+                  android:visibility="gone"/>
+       <TextView 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/txtValBeforeTax"
+         android:gravity="center"
+         android:textSize="10sp"
+           android:visibility="gone"
+        android:textStyle="bold"
+        android:textColor="#ffffff"/> 
+         <View 
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000"/>
+        
+          <TextView 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/txtTaxValue"
+         android:gravity="center"
+         android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"/> 
+         <View 
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000"/>
+        
+             <TextView 
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/txtValAfterTax"
+         android:gravity="center"
+         android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"/> 
+       
+       
+  
+    
+</LinearLayout>
+
+<LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_below="@+id/ll_header"
+    android:layout_above="@+id/ll_buttons"
+    android:layout_marginTop="2dp"
+    android:weightSum="1"
+   >
+             
+    <LinearLayout 
+   
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+	android:layout_weight="0.08"
+   android:paddingTop="1dp"
+   android:paddingBottom="1dp"
+    android:gravity="center_vertical"
+    android:weightSum="8"
+  
+     android:background="#A5D1F3"
+    android:orientation="horizontal">
+
+    <TextView 
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:text="@string/txtTotal"
+        android:gravity="left|center_vertical"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        android:paddingLeft="16dp"
+       
+        android:textColor="#000000"/>
+
+      
+         <View 
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000"/>
+            <TextView 
+                android:id="@+id/total_LinesPerBill"
+            android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text=""
+        android:paddingRight="2dp"
+         android:gravity="right|center_vertical"
+         android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#000000"/>
+              <View 
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000"/>
+            <TextView 
+                android:id="@+id/total_StockValue"
+            android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text=""
+        android:paddingRight="2dp"
+         android:gravity="right|center_vertical"
+         android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#000000"/>
+              <View 
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000"/>
+     
+             <TextView 
+                  android:id="@+id/total_discountValue"
+            android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text=""
+        android:paddingRight="2dp"
+         android:gravity="right|center_vertical"
+         android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#000000"/>
+              <View 
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000"
+                  android:visibility="gone"/>
+       <TextView 
+            android:id="@+id/total_ValBeforeTax"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:paddingRight="2dp"
+        android:text=""
+           android:visibility="gone"
+         android:gravity="right|center_vertical"
+         android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#000000"/> 
+        
+        <View 
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000"/>
+          <TextView 
+              android:id="@+id/total_ValTax"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text=""
+         android:gravity="right|center_vertical"
+         android:textSize="10sp"
+        android:textStyle="bold"
+        android:paddingRight="2dp"
+        android:textColor="#000000"/> 
+        
+           <View 
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000000"/>
+             <TextView 
+                 android:id="@+id/total_ValAfterTax"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text=""
+        android:paddingRight="2dp"
+         android:gravity="right|center_vertical"
+         android:textSize="10sp"
+        android:textStyle="bold"
+        android:textColor="#000000"/> 
+       
+       
+  
+    
+</LinearLayout>
+    
+  <ScrollView 
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+   android:clipToPadding="false"
+    android:layout_marginTop="1dp"
+    
+  
+    android:layout_weight="0.92"
+    android:scrollbarStyle="outsideOverlay">
+    <LinearLayout 
+        android:id="@+id/ll_Scroll_product"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         
+        android:orientation="vertical">
+       
+        
+    </LinearLayout>
+</ScrollView>
+
+
+</LinearLayout>
+<LinearLayout 
+    android:id="@+id/ll_buttons"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    android:weightSum="3"
+    android:gravity="center"
+    android:layout_alignParentBottom="true"
+    android:background="#9E9E9E"
+    android:orientation="horizontal">
+ 
+   <Button 
+          android:id="@+id/btnStoreWise"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginLeft="2dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+         android:gravity="center"
+        android:textColor="#ffffff"
+        android:text="@string/lastvisitdetails_back"
+        android:textSize="14sp"
+        android:visibility="gone"
+        android:background="@drawable/button_shadow"/>
+</LinearLayout>
+
+
+</RelativeLayout>

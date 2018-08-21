@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    
+    android:orientation="horizontal" >
+    
+    <TextView 
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:gravity="center"
+        android:id="@+id/txtView_dialog_mnthName"
+        android:layout_height="wrap_content"
+        android:text="July-17"/>
+    
+   					 <EditText 
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                       android:inputType="number"
+                       android:padding="4dp"
+                       android:layout_marginLeft="2dp"
+                       android:textSize="10sp"
+                       android:maxLength="4"
+                       android:id="@+id/editTxt_dialog_mnthData"
+                       android:gravity="center"
+                        android:background="@android:drawable/editbox_background_normal"
+                        android:layout_weight="0.60"
+                        />
+
+</LinearLayout>

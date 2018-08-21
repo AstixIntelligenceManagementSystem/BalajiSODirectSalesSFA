@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+
+    android:orientation="vertical"
+    
+    android:weightSum="1"
+     >
+
+    
+    <!-- First Part -->
+    
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        
+        android:layout_weight="0.09">
+        
+        <RelativeLayout 
+		        android:id="@+id/first"
+		        android:layout_height="wrap_content"
+		        
+		        android:layout_width="match_parent" >
+        
+		        <TextView
+		            android:id="@+id/mainImg1"
+		            android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Return Details"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:gravity="center_horizontal"
+        android:background="#1FB3D4"
+        android:typeface="normal" 
+        android:paddingTop="9dp"
+        android:paddingBottom="9dp"
+        android:textSize="16dp" />
+        
+		       <TextView
+			        android:id="@+id/name"
+			        android:layout_below="@id/mainImg1"
+			        android:layout_height="wrap_content"
+			        android:layout_width="wrap_content"
+			        android:text="Store Name"
+			        android:visibility="invisible"
+			        android:textSize="@dimen/StockSubmitClassHeadingTextSize" />
+        
+		        <TextView 
+			        android:id="@+id/store_name_fill"
+			        android:layout_height="wrap_content"
+			        android:layout_width="match_parent"
+			        android:layout_toRightOf="@id/name"
+			        android:layout_alignBaseline="@id/name"
+			        android:textSize="@dimen/StockSubmitClassHeadingTextSize"
+			        android:layout_marginLeft="40dp"
+			         android:visibility="invisible"
+			        android:textStyle="bold" />
+        
+		       <!--  <TextView
+			         android:id="@+id/textView1_battstat11112"
+			         android:layout_width="wrap_content"
+			         android:layout_height="wrap_content"
+			         android:layout_alignParentTop="true"
+			         android:layout_toRightOf="@+id/mainImg1"
+			         android:layout_alignParentRight="true"
+			         android:text="Stock Returns Form"
+			         android:textSize="@dimen/StockSubmitClassHeadingTextSize"
+			         android:gravity="center_horizontal"
+			         android:textStyle="bold" /> -->
+        
+       </RelativeLayout>
+    </LinearLayout>
+    
+     <LinearLayout
+        android:id="@+id/second"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.08">
+        
+      <RelativeLayout
+                 android:id="@+id/second1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                 android:layout_alignLeft="@+id/mainImg1"
+                 android:layout_below="@+id/mainImg1"
+                 android:background="#90A3C1"
+                 
+                 >
+
+                <TextView
+                    android:id="@+id/textView1_battstat2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginBottom="0dp"
+                    android:text="Category Name :"
+                    android:textSize="14dp"
+                    android:textStyle="bold" />
+
+                
+                
+                <Spinner  android:id="@+id/competition_spinner"
+                          android:layout_width="match_parent"
+                          android:layout_height="40dp"
+                          android:layout_marginLeft="1dp"
+                          android:textSize="12dp"
+                          android:layout_toRightOf="@id/textView1_battstat2"
+                   />
+                
+                
+                
+            </RelativeLayout>
+    </LinearLayout>
+
+    
+    <!-- Second Part -->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4"
+        >
+        
+         <TableLayout
+                android:id="@+id/tabLayoutHeader451"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/name"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="#000000"
+                android:stretchColumns="*" >
+
+                <TableRow 
+                    android:id="@+id/trHeader"
+                    android:layout_margin="0.2dp" >
+
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                        android:text="Prod Name"
+                        android:layout_width="13dp"
+                        android:textSize="@dimen/StockSubmitClassTableHeadingTextSize" 
+                        android:textStyle="bold" />
+                    
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                        android:text="Rate"
+                        android:layout_width="8dp"
+                        android:textSize="@dimen/StockSubmitClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+                    
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                        android:text="Ret Qty"
+                        android:layout_width="8dp"
+                       android:textSize="@dimen/StockSubmitClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+   
+                    
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                        android:text="Ret Value"
+                        android:layout_width="10dp"
+                        android:textSize="@dimen/StockSubmitClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+                    
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                        android:text="Adj. Qty"
+                        android:layout_width="10dp"
+                        android:textSize="@dimen/StockSubmitClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+                    
+                    <TextView
+                        android:layout_margin="0.2dp"
+                        android:background="#d8e2ee"
+                        android:scrollHorizontally="true"
+                        android:text="Adj. Amt"
+                        android:layout_width="10dp"
+                        android:textSize="@dimen/StockSubmitClassTableHeadingTextSize"
+                        android:textStyle="bold" />
+                    
+
+                   
+                </TableRow>
+            </TableLayout>
+            <ScrollView
+                android:id="@+id/verticalScrollView1"
+                android:layout_width="match_parent"
+              	android:layout_below="@id/tabLayoutHeader451"
+                android:layout_centerInParent="true"
+                android:layout_height="wrap_content" >
+
+                <TableLayout
+                     android:id="@+id/dynprodtableReturn"
+                  	android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   	android:background="#000000"
+                   	android:stretchColumns="*" >
+
+                </TableLayout>
+           </ScrollView>
+
+    </LinearLayout>
+    
+    
+    <!-- Third Part -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3">
+            
+         <RelativeLayout
+		        android:layout_width="fill_parent"
+		        android:layout_height="fill_parent">
+                
+             
+	              <TextView
+				         android:id="@+id/comment"
+				         android:layout_width="wrap_content"
+				         android:layout_height="wrap_content"
+				         android:textSize="@dimen/StockSubmitClassHeadingTextSize" 
+				         android:text="Comments" />
+     
+			     <EditText 
+				         android:id="@+id/comment_value"
+				         android:layout_width="match_parent"
+				         android:layout_height="wrap_content" 
+				         android:layout_toRightOf="@id/comment"
+				         android:inputType="textFilter"
+				         android:digits="@string/only_alpha_numeric"
+				         android:textSize="@dimen/StockSubmitClassHeadingTextSize" 
+				         android:lines="4" />
+
+     
+			     <TextView
+				         android:id="@+id/due_val"
+				         android:layout_width="wrap_content"
+				         android:layout_height="wrap_content"
+				         android:layout_below="@id/comment_value"
+				         android:layout_alignParentLeft="true"
+				         android:textSize="@dimen/StockSubmitClassHeadingTextSize" 
+				         android:text="Due Credit Amount" 
+				        />
+     
+			     <TextView 
+				         android:id="@+id/last_due_value"
+				         android:layout_width="59dp"
+				         android:layout_toRightOf="@id/due_val"
+				         android:layout_alignBaseline="@id/due_val"
+				         android:layout_height="wrap_content" 
+				         android:layout_marginTop="3dp"
+				         android:text="0.00"
+				         android:textSize="@dimen/StockSubmitClassHeadingTextSize" 
+				         android:layout_marginLeft="28dp" 
+				         />
+     
+     
+ 
+
+			     <TextView
+				         android:id="@+id/comment123"
+				         android:layout_width="wrap_content"
+				         android:layout_height="wrap_content"
+				         android:layout_below="@id/due_val"
+				         android:layout_alignParentLeft="true"
+				         android:textSize="@dimen/StockSubmitClassHeadingTextSize" 
+				         android:text="Total Credit Amount"
+				          />
+     
+			     <TextView 
+				         android:id="@+id/total_value"
+				         android:layout_width="59dp"
+				         android:layout_toRightOf="@id/comment123"
+				         android:layout_alignBaseline="@id/comment123"
+				         android:layout_height="wrap_content" 
+				         android:layout_marginTop="3dp"
+				         android:textSize="@dimen/StockSubmitClassHeadingTextSize" 
+				         android:layout_marginLeft="20dp"
+				         android:text="0.00"
+				          />
+                
+          </RelativeLayout>
+    </LinearLayout>
+    
+    
+    <!-- Fourth Part -->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center_vertical"
+        android:layout_weight="0.1"
+        android:layout_marginLeft="25dp"
+    android:layout_marginRight="25dp">
+         
+         <Button
+						         android:id="@+id/but_back"
+						          android:layout_height="wrap_content"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        
+        android:background="@drawable/custom_button"
+        android:textColor="#ffffff"
+        android:text="Back"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp" 
+						         />
+         
+          <Button
+						         android:id="@+id/but_submit"
+						         android:layout_height="wrap_content"
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:background="@drawable/custom_button"
+         android:textColor="#ffffff"
+         android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+         android:layout_marginLeft="10dp"
+         android:text="Save" />
+        
+        					
+        
+				        <Button
+						         android:id="@+id/but_submitEXIT"
+						         android:layout_height="wrap_content"
+        android:layout_width="0dip"
+        android:layout_weight="2"
+        android:background="@drawable/custom_button"
+         android:textColor="#ffffff"
+         android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+         android:layout_marginLeft="10dp"
+         android:text="Save &amp; Cont." />
+     
+					    
+ 
+     
+					    
+ 				
+        
+    </LinearLayout>
+    
+</LinearLayout>

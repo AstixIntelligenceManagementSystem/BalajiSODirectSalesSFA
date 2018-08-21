@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+    
+    
+    <LinearLayout 
+        android:id="@+id/StoreNameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    
+    >
+    
+         <TextView
+                        android:id="@+id/StoreName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                         android:gravity="center_horizontal"
+                         android:text="Anand Store"
+                        android:textStyle="bold"  />
+         
+         
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:id="@+id/VisitDetailLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    
+    >
+    
+         <TextView
+                        android:id="@+id/LastVisitHeading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                         android:text="@string/LastVisitDetails"
+                        android:textStyle="bold"  />
+         
+         <TextView
+                        android:id="@+id/VisitDateId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                         android:text="(02-May-2015) "
+                        android:textStyle="bold"  />
+    </LinearLayout>
+    
+    
+    
+    
+    
+    <RelativeLayout
+            android:id="@+id/relativeLayoutLastVisitDate"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+           
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+             android:layout_marginTop="20dp"
+             android:gravity="right" >
+            
+               <TableLayout
+                android:id="@+id/tabLayoutHeaderLastVisitDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="#000000"
+                 android:stretchColumns="0,1,2,3" >
+
+                <TableRow 
+                    android:id="@+id/trHeaderLastVisitDate"
+                    android:layout_gravity="top"
+                    android:layout_margin="0.2dp" >
+                   
+                     <TextView
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="0.2dp"
+                        android:layout_weight="7"
+                        android:background="#d8e2ee"
+                            android:text="@string/lastvisitdetails_skuname"
+                        android:textSize="10dp"
+                         android:textStyle="bold"/>
+                     
+
+                      <TextView
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="0.2dp"
+                          android:layout_weight="3"
+                            android:background="#d8e2ee"
+                        android:gravity="center_horizontal"
+
+                        android:text="@string/lastvisitdetails_oqty"
+                        android:textSize="10dp"
+                        android:textStyle="bold" />
+                   
+
+                   
+                </TableRow>
+            </TableLayout>
+
+            <ScrollView
+                
+                android:id="@+id/verticalScrollViewLastVisitDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tabLayoutHeaderLastVisitDate"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp" >
+
+                <TableLayout
+                    android:id="@+id/dyntable_For_LastVisitDate"
+                  	android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   	android:background="#000000"
+                   	android:stretchColumns="*" >
+
+                </TableLayout>
+           </ScrollView>
+    </RelativeLayout>
+    
+    
+    <LinearLayout 
+        android:id="@+id/OrderDetailLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    >
+    
+         <TextView
+                        
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                         android:text="@string/LastOrderDetails"
+                        android:textStyle="bold"  />
+         
+         <TextView
+                        android:id="@+id/OrderDateId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                         android:text="(01-May-2015)"
+                        android:textStyle="bold"  />
+    </LinearLayout>
+    
+     <RelativeLayout
+            android:id="@+id/relativeLayoutForOrderDetails"
+            android:layout_width="match_parent"
+           android:layout_height="100dp"
+           android:layout_gravity="right"
+           
+            android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                     android:layout_marginTop="20dp"
+             android:gravity="right" >
+            
+                <TableLayout
+                android:id="@+id/tabLayoutHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:background="#000000"
+                 android:stretchColumns="0,1"
+               >
+
+                <TableRow 
+                    android:id="@+id/trHeader"
+                    android:layout_gravity="top"
+                    android:layout_margin="0.2dp"
+                  >
+                   
+                     <TextView
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="0.2dp"
+                        android:layout_weight="7"
+                        android:background="#d8e2ee"
+                            android:text="@string/lastvisitdetails_skuname"
+                        android:textSize="10dp"
+                         android:textStyle="bold"/>
+                     
+                      <TextView
+                        android:layout_width="0dip"
+                        android:layout_height="fill_parent"
+                        android:layout_margin="0.2dp"
+                         android:layout_weight="3"
+                            android:background="#d8e2ee"
+                        android:gravity="center_horizontal"
+                       android:text="@string/lastvisitdetails_oqty"
+                        android:textSize="10dp"
+                         android:textStyle="bold"
+                         />
+
+
+                   
+                </TableRow>
+            </TableLayout>
+
+            <ScrollView
+                
+                android:id="@+id/verticalScrollView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tabLayoutHeader"
+                android:layout_marginLeft="0dp"
+                android:layout_marginTop="0dp" >
+
+                <TableLayout
+                    android:id="@+id/dyntable_For_OrderDetails"
+                  	android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   	android:background="#000000"
+                   	android:stretchColumns="*" >
+
+                </TableLayout>
+           </ScrollView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/TotalDetailLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+
+        >
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:text="@string/OrderVal"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/OrderValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:text="GH. 000"
+            android:textStyle="bold" />
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="@string/ExecutionVal"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/ExecutionValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="12dp"
+            android:gravity="right"
+            android:text="GH. 000"
+            android:textStyle="bold"
+            android:visibility="gone" />
+   </LinearLayout>
+
+    <LinearLayout
+                android:id="@+id/sixth"
+                 android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_below="@id/txt_specialScheme"
+    android:layout_gravity="center_vertical"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="25dp"
+    android:layout_marginRight="25dp"
+    android:layout_marginTop="30dp"
+    android:gravity="center"
+    android:orientation="horizontal"
+     android:weightSum="2">
+                
+                
+                <Button
+                    android:id="@+id/Back_but"
+                   android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/custom_button"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="@string/lastvisitdetails_back"
+        android:textColor="#ffffff"
+       
+                     />
+
+                <Button
+                    android:id="@+id/nxtP4"
+                    android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_weight="1"
+         android:background="@drawable/custom_button"
+         android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:text="@string/lastvisitdetails_next"
+         android:textColor="#ffffff"
+        android:visibility="gone" />
+            </LinearLayout>
+   
+    
+
+</LinearLayout>

@@ -1,0 +1,108 @@
+
+                    <TableRow xmlns:android="http://schemas.android.com/apk/res/android" 
+                        android:id="@+id/tblDynRow"
+                        android:layout_margin="0.2dp"
+                        android:minHeight="18dp" >
+
+                        <TextView
+                            android:id="@+id/tvProd"
+                            android:layout_margin="0.2dp"
+                            android:background="#d8e2ee"
+                            android:textSize="8sp"
+                            android:layout_width="0dip"
+                            android:layout_weight="4"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true" 
+                            android:layout_height="fill_parent"/>
+
+                        <TextView
+                            android:id="@+id/tvLODqty"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:textSize="8sp"
+                           android:layout_width="0dip"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:layout_height="fill_parent" />
+
+                        <TextView
+                            android:id="@+id/tvRate"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:textSize="8sp"
+                           android:layout_width="0dip"
+                            android:layout_weight="1.2"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true" 
+                            android:layout_height="fill_parent"/>
+
+                        <EditText
+                            android:id="@+id/etStock"
+                            android:layout_margin="0.2dp"
+                            android:background="#d8e2ee"
+                            android:textSize="8sp"
+                           android:layout_width="0dip"
+                            android:layout_weight="1.3"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:inputType="number"
+                            android:digits="0123456789"
+                            android:maxLength="3"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:layout_height="fill_parent" />
+
+                            
+                        <!-- <requestFocus /></EditText> -->
+
+                        <EditText
+                            android:id="@+id/etOrderQty"
+                            android:layout_margin="0.2dp"
+                            android:background="#d8e2ee"
+                            android:textSize="8sp"
+                           android:layout_width="0dip"
+                            android:layout_weight="1.3"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:inputType="number"
+                            android:digits="0123456789"
+                            android:maxLength="3"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:layout_height="fill_parent" />
+
+                        <TextView
+                            android:id="@+id/tvOrderval"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:textSize="8sp"
+                           android:layout_width="0dip"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:layout_height="fill_parent" />
+                        <EditText
+                            android:id="@+id/tvFreeQty"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:enabled="false"
+                            android:textSize="8sp"
+                           android:layout_width="0dip"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:layout_height="fill_parent" />
+                        <TextView
+                            android:id="@+id/tvDisVal"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:textSize="8sp"
+                           android:layout_width="0dip"
+                            android:layout_weight="1"
+                            android:singleLine="true"
+                            android:scrollHorizontally="true"
+                            android:layout_height="fill_parent" />
+                    </TableRow>

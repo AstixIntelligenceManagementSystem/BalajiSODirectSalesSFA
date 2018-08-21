@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent" >
+
+
+
+
+
+<LinearLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/custom_header" />
+
+    <LinearLayout
+        android:id="@+id/ll_start"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/but_DayStart"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:text="@string/DayStartButtonText"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginBottom="20dp"
+            android:textSize="16dp"
+            android:textColor="#ffffff"
+            android:background="@drawable/custom_button"/>
+
+        <Button
+            android:id="@+id/but_Exit"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:text="@string/ExitButtonText"
+            android:paddingLeft="45dp"
+            android:paddingRight="40dp"
+
+            android:textColor="#ffffff"
+            android:textSize="16dp"
+            android:background="@drawable/custom_button"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_startAfterDayEndFirst"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp">
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Time : "
+            android:textStyle="bold|italic"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:id="@+id/txt_DayStarttime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sunil"
+            android:textStyle="bold|italic"
+            android:textSize="16dp"/>
+
+    </LinearLayout>
+
+
+    <RadioGroup
+        android:id="@+id/rg_working_OrNot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="7dp">
+        <RadioButton
+            android:id="@+id/rb_workingYes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="@string/working"/>
+        <RadioButton
+            android:id="@+id/rb_workingNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="@string/not_working"/>
+    </RadioGroup>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginRight="5dp"
+        android:id="@+id/spinner_for_filter"
+
+        android:visibility="visible"
+        android:background="@drawable/spinner_distribtr_bckgrnd"
+        />
+    <LinearLayout
+        android:id="@+id/ll_map"
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content">
+        <fragment
+            android:id="@+id/map"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_height="200dp"
+            map:cameraBearing="112.5"
+            map:cameraTargetLat="22.7253"
+            map:cameraTargetLng="75.8655"
+            map:cameraTilt="30"
+            map:cameraZoom="13"
+
+
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:id="@+id/tv_MapLocationCorrectText"
+
+            android:text="Location on map is correct according to you?"/>
+        <RadioGroup
+            android:id="@+id/rg_yes_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rb_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes"/>
+            <RadioButton
+                android:id="@+id/rb_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No"/>
+        </RadioGroup>
+        <LinearLayout
+            android:id="@+id/ll_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/txt_rfrshCmnt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:layout_gravity="fill"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:paddingBottom="10dp"
+                android:textColor="@android:color/black"
+                android:text="If you are inside store then please go out of the store and then click refresh button to update you location"/>
+            <Button android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:background="@drawable/logo_background"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+
+                android:textColor="#FFFF4424"
+
+                android:id="@+id/btn_refresh"
+                android:textStyle="bold"
+                android:text="Refresh"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_startAfterDayEndSecond"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll_Working_parent"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/today_working"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="#ffff"
+                android:background="@drawable/custom_header_color"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"/>
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/ll_Working"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <EditText
+                android:id="@+id/et_otherPleaseSpecify"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/et_boundary_retrun"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ll_NoWorking_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/today_Notworking"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:layout_marginLeft="10dp"
+                android:textColor="#ffff"
+                android:background="@drawable/custom_header_color"
+
+                android:layout_marginTop="5dp"/>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/ll_NoWorking"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:id="@+id/ll_comment">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comment"
+                android:textStyle="bold"
+                android:textSize="17dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"/>
+
+           <EditText
+               android:layout_width="match_parent"
+               android:layout_height="100dp"
+               android:layout_marginTop="10dp"
+               android:id="@+id/commenttext"
+               android:background="@drawable/et_boundary_retrun"
+               android:digits="@string/only_alpha_numeric_new"
+               android:inputType="textMultiLine"
+               android:layout_marginLeft="15dp"
+               android:layout_marginRight="15dp"
+               android:ems="10"
+               android:enabled="true"
+               android:maxLines="10"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/but_Next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
+            android:text="@string/lastvisitdetails_next"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#ffff"
+            android:background="@drawable/custom_button"/>
+    </LinearLayout>
+</LinearLayout>
+    </ScrollView>

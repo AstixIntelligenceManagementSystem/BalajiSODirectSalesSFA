@@ -1,0 +1,355 @@
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#E6E6E6" >
+    
+     <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:orientation="horizontal">
+            
+          <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textColor="#3f3a65"
+	            android:layout_marginLeft="10dp"
+	            android:textStyle="bold"
+	            android:visibility="gone"
+	            android:id="@+id/TextOfCheckbox"
+	            android:textSize="13sp"
+	            android:text="Rate different to be claimed"/>
+        
+	        <CheckBox 
+	            android:layout_width="wrap_content"
+	            android:id="@+id/CB_rateDistibution"
+	            android:visibility="gone"
+	            android:layout_height="wrap_content"/>
+        
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_marginLeft="10dp"
+	            android:visibility="gone"
+	            android:padding="5dp"
+	            android:id="@+id/textRateDistribution"
+	            android:textSize="11sp"
+	            android:text=""/>
+	        
+        </LinearLayout>
+        
+      <LinearLayout 
+	        android:layout_width="match_parent"
+	        android:layout_height="0dp"
+	        android:background="@drawable/shadow_with_5dp"
+	        android:orientation="vertical"
+	        android:layout_weight="10">
+        
+	         <View 
+	            android:layout_width="match_parent"
+	            android:background="#949494"
+	            android:visibility="gone"
+	            android:layout_height="1dp"/>
+     
+     <LinearLayout 
+         android:layout_width="match_parent"
+         android:background="#25c"
+         android:orientation="horizontal"
+         android:visibility="gone"
+         android:layout_height="32dp">
+         
+          <TextView android:layout_width="0dp"
+              android:layout_weight="2"
+              android:gravity="center"
+              android:layout_height="match_parent"
+              android:text="Product"
+              android:focusable="true"
+    		  android:focusableInTouchMode="true"
+              android:textSize="10sp"
+              android:textColor="#fff"  />
+          
+          <View 
+              android:layout_width="1dp"
+              android:background="#949494"
+              android:layout_height="match_parent"/>
+          
+          <TextView 
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_height="match_parent"
+               android:gravity="center"
+               android:text="RATE"
+               android:focusable="true"
+     		   android:focusableInTouchMode="true"
+               android:textSize="10sp"
+          	   android:textColor="#fff"  />
+          
+          <View 
+	            android:layout_width="1dp"
+	            android:background="#949494"
+	            android:layout_height="match_parent"/>
+          
+          <TextView 
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_height="match_parent"
+               android:gravity="center"
+               android:text="QTY"
+               android:focusable="true"
+    		   android:focusableInTouchMode="true"
+               android:layout_margin="1.5dp"
+               android:textSize="10sp"
+               android:textColor="#fff"  />
+          
+          <View 
+              android:layout_width="1dp"
+              android:background="#949494"
+              android:layout_height="match_parent"/>
+          
+          <TextView 
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_height="match_parent"
+               android:gravity="center"
+               android:text="QUOTATION"
+               android:focusable="true"
+               android:focusableInTouchMode="true"
+               android:layout_margin="1.5dp"
+               android:textSize="10sp"
+               android:textColor="#fff" />
+          
+           <View 
+               android:layout_width="1dp"
+               android:background="#949494"
+               android:layout_height="match_parent"/>
+           
+          <TextView 
+               android:layout_width="0dp"
+               android:layout_weight="2"
+               android:layout_height="match_parent"
+               android:gravity="center"
+               android:text="REMARKS"
+               android:focusable="true"
+    		   android:focusableInTouchMode="true"
+               android:layout_margin="1.5dp"
+               android:textSize="10sp"
+               android:textColor="#fff" />
+         
+          
+         
+     </LinearLayout>
+     
+      <LinearLayout 
+          android:layout_width="match_parent"
+          android:background="#a25611"
+          android:orientation="horizontal"
+          android:layout_height="wrap_content">
+          
+            <TextView 
+	               android:layout_width="0dp"
+	               android:layout_weight=".7"
+	               android:layout_height="match_parent"
+	               android:gravity="center"
+	               android:text="St.Rate"
+	               android:focusable="true"
+	               android:focusableInTouchMode="true"
+	               android:layout_marginLeft="1dp"
+		           android:layout_marginRight="1dp"
+		           android:layout_marginTop="1dp"
+		           android:layout_marginBottom="1dp"
+	           	   android:textSize="10sp"
+	               android:textColor="#fff"  />
+            
+            <TextView 
+	               android:layout_width="0dp"
+	               android:layout_weight=".7"
+	               android:layout_height="match_parent"
+	               android:gravity="center"
+	               android:text="Last Trans Rt."
+	               android:focusable="true"
+	    		   android:focusableInTouchMode="true"
+	               android:layout_marginLeft="1dp"
+		           android:layout_marginRight="1dp"
+		           android:layout_marginTop="1dp"
+		           android:layout_marginBottom="1dp"
+	               android:textSize="10sp"
+	               android:textColor="#fff" />
+            
+            
+            <LinearLayout  
+                android:layout_width="0dp"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_height="match_parent" >
+                
+		         <TextView 
+		               android:layout_width="match_parent"
+		               android:layout_weight="1"
+		               android:layout_height="0dp"
+		               android:gravity="center"
+		               android:text="Rt.Offer " 
+		               android:focusable="true"
+		    		   android:focusableInTouchMode="true"
+		               android:layout_marginLeft="1dp"
+			           android:layout_marginRight="1dp"
+			           android:layout_marginTop="2dp"
+			           android:layout_marginBottom="2dp"
+		           	   android:textSize="10sp"
+		               android:textColor="#fff"  />
+		             
+		        <TextView
+		               android:layout_width="match_parent"
+		               android:layout_weight="1.5"
+		               android:layout_height="0dp"
+		               android:gravity="center"
+		               android:text="Min Dlv Qty"
+		               android:focusable="true"
+		    		   android:focusableInTouchMode="true"
+		               android:layout_marginLeft="1dp"
+			           android:layout_marginRight="1dp"
+			           android:layout_marginTop="1dp"
+			           android:layout_marginBottom="1dp"
+		               android:textSize="10sp"
+		               android:textColor="#fff"  />
+		        
+             </LinearLayout>
+             
+            
+              <LinearLayout  
+                android:layout_width="0dp"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_height="match_parent" >
+		        
+		       <TextView 
+		               android:layout_width="match_parent"
+		               android:layout_weight="0.5"
+		               android:layout_height="0dp"
+		               android:gravity="center"
+		               android:text="Tax %"
+		               android:focusable="true"
+		    		   android:focusableInTouchMode="true"
+		               android:layout_marginLeft="1dp"
+			           android:layout_marginRight="1dp"
+			           android:layout_marginTop="1dp"
+			           android:layout_marginBottom="1dp"
+		           	   android:textSize="10sp"
+		               android:textColor="#fff"  />
+		             
+		      <TextView 
+		               android:layout_width="match_parent"
+		               android:layout_weight="0.5"
+		               android:layout_height="0dp"
+		               android:gravity="center"
+		               android:text="UOM"
+		               android:focusable="true"
+		    		   android:focusableInTouchMode="true"
+		               android:layout_marginLeft="1dp"
+			           android:layout_marginRight="1dp"
+			           android:layout_marginTop="1dp"
+			           android:layout_marginBottom="1dp"
+		               android:textSize="10sp"
+		               android:textColor="#fff" />
+		      
+             </LinearLayout>
+             
+              <TextView 
+		               android:layout_width="0dp"
+		               android:layout_weight="1"
+		               android:layout_height="match_parent"
+		               android:gravity="center"
+		               android:text="Change Validty"
+		               android:focusable="true"
+		    		   android:focusableInTouchMode="true"
+		               android:layout_marginLeft="1dp"
+			           android:layout_marginRight="1dp"
+			           android:layout_marginTop="1dp"
+			           android:layout_marginBottom="1dp"
+		               android:textSize="10sp"
+		               android:textColor="#fff" />
+              
+              <TextView 
+	                   android:layout_width="0dp"
+	                   android:layout_weight="2"
+		               android:layout_height="match_parent"
+		               android:gravity="center"
+		               android:text="Remark"
+                       android:focusable="true"
+    				   android:focusableInTouchMode="true"
+                       android:layout_marginLeft="1dp"
+			           android:layout_marginRight="1dp"
+			           android:layout_marginTop="1dp"
+			           android:layout_marginBottom="1dp"
+                       android:textSize="10sp"
+           			   android:textColor="#fff" />
+              
+              <ImageView 
+                  android:layout_width="wrap_content"
+                  android:layout_height="match_parent"
+                  android:layout_margin="1dp"
+                  android:visibility="invisible"
+                  android:src="@drawable/delete_quotation"/>
+           
+    </LinearLayout>
+    
+	     <ScrollView  
+	         android:layout_width="fill_parent"
+	         android:layout_height="wrap_content"
+	         android:orientation="vertical"
+	         android:id="@+id/dynamcDtaContnrScrollview" >
+	         
+	     </ScrollView>
+	     
+     </LinearLayout>
+     
+     <LinearLayout 
+    			android:layout_width="match_parent"
+    			android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:orientation="horizontal" >
+   
+             <Button 
+                  android:layout_width="0dp"
+                  android:textStyle="bold"
+                  android:text="Previous"
+                  android:id="@+id/btnPrevious"
+                  android:textSize="11sp"
+                  android:textColor="#fff"
+                  android:layout_height="match_parent"
+                  android:background="@drawable/custom_button"
+                  android:layout_marginLeft="16dp"
+                  android:layout_weight="1"/>
+         
+         
+             <Button 
+                  android:layout_width="0dp"
+                  android:textStyle="bold"
+                  android:text="Submit Qoutation"
+                  android:id="@+id/Done_btn"
+                  android:textSize="11sp"
+                  android:textColor="#fff"
+                  android:layout_height="match_parent"
+                  android:background="@drawable/custom_button"
+                  android:layout_marginLeft="5dp"
+                  android:layout_weight="1"/>
+             
+              <Button 
+                  android:layout_width="0dp"
+                  android:layout_marginRight="16dp"
+                  android:textStyle="bold"
+                  android:text="Save &amp; Take Order"
+                  android:id="@+id/btn_Save_TakeOrder"
+                  android:textSize="11sp"
+                  android:textColor="#fff"
+                  android:layout_height="match_parent"
+                  android:background="@drawable/custom_button"
+                  android:layout_marginLeft="5dp"
+                  android:layout_weight="1"/>
+         
+  
+       </LinearLayout>
+     
+</LinearLayout>

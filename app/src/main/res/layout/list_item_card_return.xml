@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <LinearLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	
+   
+       android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingLeft="2dp"
+		android:paddingRight="2dp"
+		 android:paddingTop="3dp"
+      android:paddingBottom="3dp"  
+		android:descendantFocusability="afterDescendants" >
+	<LinearLayout
+	    android:id="@+id/ll_product_stock"
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:weightSum="4"
+		android:gravity="center"
+		>
+
+		<TextView
+			android:id="@+id/tvProdctName"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:text="@string/txtProductName"
+			 android:padding="1dp"
+			 android:layout_marginLeft="2dp"
+			 android:textColor="#000000"
+			 android:textSize="14sp"
+			android:layout_weight="3"/>
+
+		  <ImageView  
+	            android:id="@+id/imgVw_Photo"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	          android:layout_marginLeft="2dp"
+	           android:padding="1dp"
+	       android:src="@drawable/camera_clkd"
+	        android:gravity="center"
+	      
+	        android:layout_weight="1"/>
+		    
+
+	   
+ 
+  </LinearLayout>
+
+
+
+	
+
+	
+	<LinearLayout 
+	      android:id="@+id/ll_sample"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:layout_marginTop="1dp"
+	    
+	    android:weightSum="4">
+	    
+	    <TextView 
+	       android:id="@+id/txtVw_Stock"
+	       android:layout_width="0dp"
+	       android:layout_height="match_parent"
+	       android:singleLine="true"
+	       android:gravity="center"
+	       android:text="0"
+	       android:padding="1dp"
+	       android:textSize="12sp"
+	       android:textColor="#000000"
+	       android:layout_marginLeft="2dp"
+	       android:background="@drawable/edit_text_diable_bg_transprent"
+	       android:layout_weight="1"/>
+	    <EditText  
+	         android:id="@+id/et_ReturnQty"
+	        android:layout_width="0dp"
+	        android:layout_height="match_parent"
+	      android:singleLine="true"
+	      android:gravity="center"
+	     android:padding="1dp"
+	        android:textSize="12sp"
+	        android:hint="Ret. Qty"
+	        android:maxLength="4"
+	        android:inputType="number"
+	         android:textColor="#000000"
+	      android:layout_marginLeft="2dp"
+	      android:background="@drawable/edit_text_bg"
+	        android:layout_weight="1"/>
+	     <Spinner 
+	                    android:id="@+id/spnr_comment_Rtrn"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        
+	         android:padding="1dp"
+	         android:singleLine="true"
+	          android:textSize="12sp"
+	         android:textColor="#D42625"
+	          android:layout_marginLeft="2dp"
+	        android:gravity="center"
+	       
+	        
+	          android:background="@drawable/spinner_bckground_rtrn"
+	        android:layout_weight="2"/>
+	      
+	     <!--    <EditText  
+	            android:id="@+id/et_OrderQty"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	          android:layout_marginLeft="2dp"
+	           android:padding="1dp"
+	        android:singleLine="true"
+	        android:gravity="center"
+	          android:textSize="12sp"
+	         android:textColor="#000000"
+	         android:hint="Adj. Qty"
+	         android:inputType="number"
+	         android:maxLength="4"
+	          android:background="@drawable/edit_text_bg"
+	        android:layout_weight="1"/>
+	          <TextView 
+	               android:id="@+id/tv_Orderval"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:text="Adj. Amt"
+	         android:padding="1dp"
+	         android:singleLine="true"
+	          android:layout_marginLeft="2dp"
+	        android:gravity="center"
+	          android:textSize="12sp"
+	         
+	          android:background="@drawable/edit_text_bg"
+	        android:layout_weight="1"/> -->
+	          
+	           <!--  <EditText 
+	                 android:id="@+id/tv_FreeQty"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	      	 android:text="0"
+	      	 android:enabled="false"
+	      	  android:padding="1dp"
+	      	  android:singleLine="true"
+	      	 android:gravity="center"
+	      	   android:layout_marginLeft="2dp"
+	      	     android:textSize="12sp"
+	         android:textColor="#D42625"
+	      	   android:background="@drawable/edit_text_bg"
+	        android:layout_weight="1"/> -->
+	              
+	    
+	    
+	              
+	</LinearLayout>
+<EditText 
+    android:id="@+id/ed_Remark"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:singleLine="true"
+    android:layout_marginTop="1dp"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp"
+    android:paddingLeft="16dp"
+    android:maxLength="100"
+    android:background="@drawable/et_boundary_retrun"
+    android:digits="@string/only_alpha_numeric_new"
+    android:hint="Remark"/>
+	</LinearLayout>

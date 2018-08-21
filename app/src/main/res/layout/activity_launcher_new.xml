@@ -1,0 +1,231 @@
+<ScrollView
+       xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       
+       
+       >
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            
+            <RelativeLayout android:layout_width="match_parent"
+                android:layout_height="56dp"
+               
+                 android:background="@drawable/custom_header_color">
+            <TextView   android:id="@+id/bardd"
+				        android:layout_width="wrap_content"
+				        android:layout_height="match_parent"
+				        android:text="@string/txtSalesPerformanceMaximizer"
+				        android:textStyle="bold"
+				        android:textColor="#ffffff"
+				        android:typeface="normal" 
+				        android:paddingLeft="10dp"
+				      	android:gravity="center_vertical"
+				        android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/imgVw_logout"
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="5dp"
+				android:src="@drawable/logout_new"
+/>
+
+            </RelativeLayout>
+             <ImageView
+			            android:id="@+id/mainImg"
+			            android:layout_width="match_parent"
+			            android:layout_height="160dp"
+			            android:background="@drawable/banner"  />
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:layout_marginLeft="3dp"
+		android:layout_marginRight="3dp"
+		android:layout_marginBottom="5dp"
+		android:layout_marginTop="3dp"
+
+
+		>
+
+	<RadioGroup
+				        android:id="@+id/radioRoute"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        >
+
+	                 <RadioButton
+		                     android:id="@+id/radio0"
+		                     android:layout_width="match_parent"
+		                     android:layout_height="wrap_content"
+		                     android:checked="true"
+		                     android:layout_marginLeft="5dp"
+		                     android:layout_marginRight="5dp"
+						 android:paddingLeft="10dp"
+		                     android:textColor="#000000"
+		                     android:paddingTop="15dp"
+						     android:paddingBottom="15dp"
+		                     android:background="@drawable/custom_radiogroup_border"
+		                     android:text="@string/radioTodayRoute"
+		                     android:textSize="14dp" />
+                 
+ 
+			        <RadioButton
+					          android:id="@+id/radio1"
+					          android:layout_width="match_parent"
+					          android:layout_height="wrap_content"
+					          android:textSize="14dp"
+						android:paddingTop="15dp"
+						android:paddingLeft="10dp"
+						android:paddingBottom="15dp"
+					          android:layout_marginLeft="5dp"
+					          android:layout_marginRight="5dp"
+					          android:textColor="#000000"
+					         
+					          android:background="@drawable/custom_radiogroup_border"
+					          android:text="@string/radioChooseDifferentRoute" />
+
+       
+ 
+    		</RadioGroup>
+    
+	               <TextView
+		                    android:id="@+id/tv_Route_text"
+		                    android:layout_width="wrap_content"
+		                    android:layout_height="wrap_content"
+		                    android:textStyle="bold"
+		                    android:layout_marginLeft="10dp"
+		                    android:layout_marginTop="10dp"
+		                    android:text="@string/txtSelectedRoute"
+		                    android:textColor="#000000"  />
+	             
+    
+                   <TextView
+		                    android:id="@+id/tv_Route"
+		                    android:layout_width="match_parent"
+		                    android:layout_height="wrap_content"
+		                    android:text="@string/txtNoRouteAvailable"
+		                    android:textColor="#000000"
+		                    android:paddingTop="10dp"
+		                    android:background="@drawable/custom_border"
+		                    android:layout_margin="10dp"
+		                    android:paddingBottom="10dp"
+	
+		                    android:gravity="center_horizontal" />
+                   
+                   
+                    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+
+                   <Button
+                       android:id="@+id/but_GetStore"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginLeft="10dp"
+                       android:layout_marginRight="10dp"
+                       android:layout_marginTop="1dp"
+                       android:background="@drawable/custom_button"
+                       android:paddingBottom="10dp"
+                       android:layout_weight="2"
+                       android:paddingTop="10dp"
+                       android:text="@string/txtGetStores"
+                       android:textColor="#ffffff" />
+  
+
+                </LinearLayout>
+                
+                 <Button
+					        android:id="@+id/but_NoStoreVisit"
+					        android:layout_height="wrap_content"
+					        android:layout_width="match_parent"
+					        android:background="@drawable/custom_button"
+					        android:textColor="#ffffff"
+					        android:text="@string/txtNoStoreVisittoday"
+					        android:paddingTop="10dp"
+					        android:paddingBottom="10dp"
+					        android:layout_marginTop="10dp"
+					        android:layout_marginLeft="10dp"
+					        android:layout_marginRight="10dp"  />
+   
+                
+                <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+					android:visibility="gone">
+    </View>
+   
+
+        </LinearLayout>
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="3dp"
+		android:background="#000000"
+		android:visibility="visible">
+	</View>
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:layout_marginLeft="3dp"
+				android:layout_marginRight="3dp"
+				android:layout_marginBottom="3dp"
+				android:layout_marginTop="5dp"
+
+				>
+
+				<Button
+
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:background="@drawable/custom_button"
+					android:textColor="#ffffff"
+					android:text="@string/txtDistributorStock"
+					android:id="@+id/but_distribtrStock"
+					android:paddingTop="6dp"
+					android:textSize="14sp"
+					android:paddingBottom="6dp"
+					android:layout_marginTop="3dp"
+					android:layout_marginLeft="10dp"
+					android:layout_marginRight="10dp"
+					android:visibility="visible"/>
+
+				<Button
+					android:id="@+id/but_Invoice"
+					android:layout_height="wrap_content"
+					android:layout_width="match_parent"
+					android:background="@drawable/custom_button"
+					android:textColor="#ffffff"
+					android:text="@string/txtUpdateExecution"
+					android:paddingTop="6dp"
+					android:textSize="14sp"
+					android:paddingBottom="6dp"
+					android:layout_weight="1"
+					android:visibility="visible"
+					android:layout_marginTop="5dp"
+					android:layout_marginLeft="10dp"
+					android:layout_marginRight="10dp"
+					android:layout_marginBottom="3dp"
+					/>
+
+			</LinearLayout>
+
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="30dp">
+			</View>
+
+
+		</LinearLayout>
+
+</ScrollView>

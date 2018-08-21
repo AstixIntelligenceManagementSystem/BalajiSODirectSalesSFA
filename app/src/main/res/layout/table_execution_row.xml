@@ -1,0 +1,74 @@
+
+                    <TableRow xmlns:android="http://schemas.android.com/apk/res/android" 
+                        android:id="@+id/tblDynPg2Row"
+                        android:layout_margin="0.2dp" >
+                        
+                        <TextView
+                            android:id="@+id/skuName"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                           android:layout_weight="5.2"
+                        android:layout_width="0dip"
+                        android:textSize="10dp"
+                            android:singleLine="true" />
+
+                        
+                        
+                        <TextView
+                            android:id="@+id/firstDateOrder"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:layout_weight="0.8"
+                        android:layout_width="0dip"
+                        android:textSize="10dp"
+                            android:gravity="center_horizontal"
+                            android:singleLine="true" />
+
+                        <TextView
+                            android:id="@+id/firstDateInvoice"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:layout_weight="0.8"
+                        android:layout_width="0dip"
+                        android:textSize="10dp"
+                            android:gravity="center_horizontal"
+                            android:singleLine="true" />
+                        <TextView
+                            android:id="@+id/secondDateOrder"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:layout_weight="0.8"
+                            android:textSize="10dp"
+                        android:layout_width="0dip"
+                            android:gravity="center_horizontal"
+                           android:singleLine="true" />
+                        <TextView
+                            android:id="@+id/secondDateInvoice"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                           android:layout_weight="0.8"
+                           android:textSize="10dp"
+                        android:layout_width="0dip"
+                            android:gravity="center_horizontal"
+                           android:singleLine="true" />
+                        <TextView
+                            android:id="@+id/thirdDateOrder"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:layout_weight="0.8"
+                            android:textSize="10dp"
+                        android:layout_width="0dip"
+                            android:gravity="center_horizontal"
+                           
+                            android:singleLine="true" />
+                        <TextView
+                            android:id="@+id/thirdDateInvoice"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                           android:layout_weight="0.8"
+                           android:textSize="10dp"
+                        android:layout_width="0dip"
+                            android:gravity="center_horizontal"
+                            android:singleLine="true" />
+                        
+                    </TableRow>

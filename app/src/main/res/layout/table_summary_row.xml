@@ -1,0 +1,86 @@
+
+                    <TableRow xmlns:android="http://schemas.android.com/apk/res/android" 
+                  android:id="@+id/tblDynSummaryRow"
+                        android:layout_margin="0.2dp" >
+
+                         <TextView
+                            android:id="@+id/tvLine"
+                            android:layout_margin="0.2dp"
+                            android:background="#d8e2ee"
+                            android:textSize="8sp"
+                            android:layout_width="15dp"
+                            android:singleLine="true"
+                            />
+                        
+                        <TextView
+                            android:id="@+id/tvSkuName"
+                            android:layout_margin="0.2dp"
+                            android:background="#d8e2ee"
+                            android:textSize="8sp"
+                            android:layout_width="80dp"
+                            android:singleLine="true"
+                            />
+                        
+                      
+                        
+                        <TextView
+                            android:id="@+id/tvOrderQty"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:textSize="8sp"
+                            android:layout_width="15dp"
+                            android:singleLine="true"
+                             />
+                        
+                        <TextView
+                            android:id="@+id/tvFreeQty"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:textSize="8sp"
+                            android:layout_width="15dp"
+                            android:singleLine="true"
+                            />
+
+                        
+                        <TextView
+                            android:id="@+id/tvSampleQty"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:textSize="8sp"
+                            android:layout_width="15dp"
+                            android:singleLine="true"
+                            />
+                        
+                        <TextView
+                            android:id="@+id/tvTotalOrderKg"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:textSize="8sp"
+                            android:layout_width="22dp"
+                            android:singleLine="true"
+                            />
+                        
+                        <TextView
+                            android:id="@+id/tvTotalFreeKg"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:textSize="8sp"
+                            android:layout_width="18dp"
+                            android:singleLine="true"
+                            />
+                        
+                        <TextView
+                            android:id="@+id/tvTotalSampleKg"
+                            android:layout_margin="0.2dp"
+                            android:background="#90a3c1"
+                            android:textSize="8sp"
+                            android:layout_width="27dp"
+                            android:singleLine="true"
+                             />
+                        
+
+                       
+
+                            
+                      
+                    </TableRow>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/ll_hdr"
+        android:weightSum="10"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+	
+        android:background="#F36F24"
+        android:orientation="horizontal">
+        
+        <TextView 
+            android:layout_width="0dp"
+            android:layout_weight="6"
+            android:text="@string/txtIncentiveName"
+            android:textSize="13sp"
+            android:minLines="2"
+            android:padding="5dp"
+            android:textColor="#FFFFFF"
+            android:layout_height="match_parent"
+            android:id="@+id/text_header"/>
+        
+        <LinearLayout 
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_marginLeft="3dp"
+            android:layout_height="match_parent"
+            android:id="@+id/ll_earnedPtAndImg"
+            android:orientation="horizontal">
+        
+               <TextView 
+                   android:layout_width="0dp"
+                   android:layout_weight="1.40"
+                   android:layout_height="match_parent"
+                   android:id="@+id/txt_earnedpoints"
+                   android:text="@string/txtEarnedpoints"
+                   android:textColor="#FFFFFF"
+                   android:paddingTop="5dp"
+                   android:gravity="top|center"
+                   android:textSize="13sp"/>
+        
+        <ImageView 
+            android:layout_width="wrap_content"
+           android:layout_marginRight="5dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/expand_arrow"
+                 android:paddingTop="12dp"
+                 android:layout_marginLeft="3dp"
+            android:id="@+id/img_Openlayout"/>
+        
+            
+        </LinearLayout>
+        
+        
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@+id/ll_hdr"
+        android:id="@+id/ll_incentiveTblData"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:background="@drawable/incentive_tbl_bckgrnd"
+      	>
+  
+            <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_hdr"
+        android:id="@+id/ll_incentiveTblShow"
+        android:orientation="vertical"
+      	>
+
+      </LinearLayout>
+     
+        
+      </LinearLayout>
+       
+
+</RelativeLayout>
