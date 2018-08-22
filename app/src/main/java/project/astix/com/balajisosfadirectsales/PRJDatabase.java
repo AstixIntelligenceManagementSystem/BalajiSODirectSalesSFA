@@ -36098,6 +36098,34 @@ close();
             close();
         }
     }
+
+    public int fnGetflgDrctslsIndrctSls(String StoreID)
+    {
+        open();
+        Cursor cursorE2 = db.rawQuery("SELECT flgDrctslsIndrctSls FROM  tblDSRCoverageMaster inner join tblStorelist ontblDSRCoverageMaster tblDSRCoverageMaster.CoverageAreaNodeID=tblStorelist.CoverageAreaNodeID AND tblDSRCoverageMaster.CoverageAreaNodeType=tblStorelist.CoverageAreaNodeType  where tblStorelist.StoreID='"+StoreID+"'", null);
+        int flgDrctslsIndrctSls = 0;
+
+        try {
+            if(cursorE2.getCount()>0)
+            {
+                if (cursorE2.moveToFirst())
+                {
+
+
+                    flgDrctslsIndrctSls = (Integer.parseInt(cursorE2.getString(0).toString()));
+
+
+                }
+            }
+            return flgDrctslsIndrctSls;
+        } finally {
+            if(cursorE2!=null) {
+                cursorE2.close();
+            }
+            close();
+        }
+
+    }
 }
 
 

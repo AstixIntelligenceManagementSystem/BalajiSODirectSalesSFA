@@ -305,7 +305,7 @@ public class LastVisitDetails extends BaseActivity
 
 	public String  getStoreVisitCode()
 	{
-		//int CoverageAreaTypeDiretIndirectSales=
+		int flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(storeID);
 		int StoreCurrentOutsStat=dbengine.fnGetStoreCurrentOutsStat(storeID);
 		if(StoreCurrentOutsStat!=1)
 		{
