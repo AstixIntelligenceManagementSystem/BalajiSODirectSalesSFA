@@ -218,6 +218,9 @@ public class ServiceWorker
 					String StoreIDPDAFromServer="NA";
 					String SalesPersonName="NA";
 					String SalesPersonContactNo="NA";
+					int IsComposite=0;
+					int StoreStateID=0;
+					int StoreCityID=0;
 					//not used
 					//int IsNextDat=0;
 					//int flgSubmitFromQuotation=0;
@@ -651,6 +654,42 @@ public class ServiceWorker
 					}
 
 
+					if(!element.getElementsByTagName("IsComposite").equals(null))
+					{
+						NodeList IsCompositeNode = element.getElementsByTagName("IsComposite");
+						Element     line = (Element) IsCompositeNode.item(0);
+
+						if(IsCompositeNode.getLength()>0)
+						{
+
+							IsComposite=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
+						}
+					}
+					if(!element.getElementsByTagName("StoreStateID").equals(null))
+					{
+						NodeList StoreStateIDNode = element.getElementsByTagName("StoreStateID");
+						Element     line = (Element) StoreStateIDNode.item(0);
+
+						if(StoreStateIDNode.getLength()>0)
+						{
+
+							StoreStateID=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
+						}
+					}
+
+					if(!element.getElementsByTagName("StoreCityID").equals(null))
+					{
+						NodeList StoreCityIDNode = element.getElementsByTagName("StoreCityID");
+						Element     line = (Element) StoreCityIDNode.item(0);
+
+						if(StoreCityIDNode.getLength()>0)
+						{
+
+							StoreCityID=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
+						}
+					}
+
+
 					//flgSubmitFromQuotation
 					//flgAllowQuotation
 					int AutoIdStore=0;
@@ -663,7 +702,7 @@ public class ServiceWorker
 							StoreLatitude,StoreLongitude,LastVisitDate,LastTransactionDate, Sstat,StoreRouteID,
 							RouteNodeType, StoreCatNodeId,PaymentStage , flgHasQuote , flgAllowQuotation, flgGSTCapture,
 							flgGSTCompliance, GSTNumber , flgGSTRecordFromServer , StoreCity , StorePinCode , StoreState,
-							OutStanding , OverDue , DBR , flgRuleTaxVal,flgTransType,StoreType,IsClose,SalesPersonName,SalesPersonContactNo);
+							OutStanding , OverDue , DBR , flgRuleTaxVal,flgTransType,StoreType,IsClose,SalesPersonName,SalesPersonContactNo,IsComposite,StoreStateID,StoreCityID);
 					}
 				}
 

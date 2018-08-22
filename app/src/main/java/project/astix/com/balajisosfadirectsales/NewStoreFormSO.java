@@ -6063,6 +6063,7 @@ public void selectedOption(String optId, String optionVal, EditText editext,List
         else
         {
             hmapAddress.put("2","NA");
+            hmapAddress.put("4","0");
         }
         if(!etState.getText().toString().trim().equals("Select"))
         {
@@ -6072,6 +6073,7 @@ public void selectedOption(String optId, String optionVal, EditText editext,List
         else
         {
             hmapAddress.put("3","NA");
+            hmapAddress.put("5","0");
         }
         View viewOwner=ll_data.findViewWithTag(ownerName);
         View viewMobileNumber=ll_data.findViewWithTag(mobileNumber);

@@ -90,6 +90,7 @@ import java.util.regex.Pattern;
 
 public class AddNewStore_DynamicSectionWiseSO extends FragmentActivity implements LocationListener,GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener,SearchListCommunicator,OnMapReadyCallback,CategoryCommunicatorCityState
 {
+    int IsComposite=0;
     String getActiveRouteId="";
     public static int flgRuleTaxVal, flgTransType;
     public static String distID="0";
@@ -1298,7 +1299,7 @@ public class AddNewStore_DynamicSectionWiseSO extends FragmentActivity implement
                 if (null != recFragment) {
                     recFragment.saveDynamicQuesAns(true);
                     StoreName=recFragment.currentStoreName;
-                   // hmapStoreQuestAnsNew = recFragment.hmapAnsValues;
+                    //hmapStoreQuestAnsNew = recFragment.hmapAnsValues;
                    // hmapStoreAddress=recFragment.hmapAddress;
 
 
@@ -1386,7 +1387,7 @@ public class AddNewStore_DynamicSectionWiseSO extends FragmentActivity implement
                     }
                     helperDb.open();
                     helperDb.savetblStoreMain(CommonInfo.ActiveRouteSM,selStoreID,StoreName,"NA","NA","NA","NA","NA","NA","NA","0",StoreTypeTradeChannel,
-                            Integer.parseInt(fnlStoreType),0,0, 0, "NA",VisitStartTS,imei,""+battLevel,3,1,String.valueOf(fnLati),String.valueOf(fnLongi),"" + fnAccuracy,"" + fnAccurateProvider,0,fnlAddressName,allValuesOfPaymentStageID,flgHasQuote,flgAllowQuotation,flgSubmitFromQuotation,"1","0","NA",0,flgLocationServicesOnOff,flgGPSOnOff,flgNetworkOnOff,flgFusedOnOff,flgInternetOnOffWhileLocationTracking,flgRestart,flgStoreOrder, hmapStoreAddress.get("2"), hmapStoreAddress.get("1"), hmapStoreAddress.get("3"),distID,fnlOwnerName,fnlMobileNumber,fnStoreCatType,flgRuleTaxVal,flgTransType,fnlMobileNumber,fnSalesPersonName,fnSalesPersonContactNo);
+                            Integer.parseInt(fnlStoreType),0,0, 0, "NA",VisitStartTS,imei,""+battLevel,3,1,String.valueOf(fnLati),String.valueOf(fnLongi),"" + fnAccuracy,"" + fnAccurateProvider,0,fnlAddressName,allValuesOfPaymentStageID,flgHasQuote,flgAllowQuotation,flgSubmitFromQuotation,"1","0","NA",0,flgLocationServicesOnOff,flgGPSOnOff,flgNetworkOnOff,flgFusedOnOff,flgInternetOnOffWhileLocationTracking,flgRestart,flgStoreOrder, hmapStoreAddress.get("2"), hmapStoreAddress.get("1"), hmapStoreAddress.get("3"),distID,fnlOwnerName,fnlMobileNumber,fnStoreCatType,flgRuleTaxVal,flgTransType,fnlMobileNumber,fnSalesPersonName,fnSalesPersonContactNo,IsComposite,Integer.parseInt(hmapStoreAddress.get("5")),Integer.parseInt(hmapStoreAddress.get("4")));
 
                     helperDb.saveSOAPdataStoreListDetailsInNewTable(selStoreID, hmapStoreAddress.get("2"), hmapStoreAddress.get("1"), hmapStoreAddress.get("3"),1);
                     helperDb.close();
