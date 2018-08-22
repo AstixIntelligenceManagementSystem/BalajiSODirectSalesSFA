@@ -36099,10 +36099,10 @@ close();
         }
     }
 
-    public int fnGetflgDrctslsIndrctSls(String StoreID)
+    public int fnGetflgDrctslsIndrctSls(int CoverageAreaNodeID,int CoverageAreaNodeType)
     {
         open();
-        Cursor cursorE2 = db.rawQuery("SELECT flgDrctslsIndrctSls FROM  tblDSRCoverageMaster inner join tblStorelist ontblDSRCoverageMaster tblDSRCoverageMaster.CoverageAreaNodeID=tblStorelist.CoverageAreaNodeID AND tblDSRCoverageMaster.CoverageAreaNodeType=tblStorelist.CoverageAreaNodeType  where tblStorelist.StoreID='"+StoreID+"'", null);
+        Cursor cursorE2 = db.rawQuery("SELECT flgDrctslsIndrctSls FROM  tblDSRCoverageMaster  where tblDSRCoverageMaster.CoverageAreaNodeID="+CoverageAreaNodeID+" AND tblDSRCoverageMaster.CoverageAreaNodeType="+CoverageAreaNodeType, null);
         int flgDrctslsIndrctSls = 0;
 
         try {

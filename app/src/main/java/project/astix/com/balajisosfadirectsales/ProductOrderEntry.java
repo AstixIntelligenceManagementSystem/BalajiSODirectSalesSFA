@@ -4982,12 +4982,12 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator {
 		       {
 		    	   dbengine.open();
 			       StoreCatNodeId=dbengine.fnGetStoreCatNodeId(storeID);
-			      // dbengine.fnsaveStoreProdcutPurchaseDetails(imei,storeID,""+PCateId,ProductID,pickerDate,Integer.parseInt(ProductStock),Integer.parseInt(OrderQTY)
+			      	// dbengine.fnsaveStoreProdcutPurchaseDetails(imei,storeID,""+PCateId,ProductID,pickerDate,Integer.parseInt(ProductStock),Integer.parseInt(OrderQTY)
 				   // ,Double.parseDouble(OrderValue),Integer.parseInt(OrderFreeQty.split(Pattern.quote("."))[0]),Double.parseDouble(OrderDisVal),Integer.parseInt(SampleQTY)
 				   // ,PName,Double.parseDouble(PRate),Outstat,TaxRate,TaxValue,StoreCatNodeId,strGlobalOrderID,flgIsQuoteRateApplied,distID,PriceApplyDiscountLevelType
 				   // ,TmpInvoiceCodePDA,strFinalAllotedInvoiceIds);
 				   //dbengine.fnsaveStoreProdcutPurchaseDetails(imei,storeID,""+PCateId,ProductID,pickerDate,Integer.parseInt(ProductStock),Integer.parseInt(OrderQTY),Double.parseDouble(OrderValue),Integer.parseInt(OrderFreeQty.split(Pattern.quote("."))[0]),Double.parseDouble(OrderDisVal),Integer.parseInt(SampleQTY),PName,Double.parseDouble(PRate),Outstat,TaxRate,TaxValue,StoreCatNodeId,strGlobalOrderID,flgIsQuoteRateApplied,distID,PriceApplyDiscountLevelType,TmpInvoiceCodePDA,strFinalAllotedInvoiceIds);
-					int flgRuleTaxVal=1;
+				   int flgRuleTaxVal=1;
 				   dbengine.fnsaveStoreTempOrderEntryDetails(TmpInvoiceCodePDA,storeID,""+PCateId,ProductID,Double.parseDouble(PRate),TaxRate,flgRuleTaxVal,Integer.parseInt(OrderQTY),Integer.parseInt(hmapProductSelectedUOMId.get(ProductID)),Double.parseDouble(hmapLineValBfrTxAftrDscnt.get(ProductID)),Double.parseDouble(hmapLineValAftrTxAftrDscnt.get(ProductID)),Integer.parseInt(OrderFreeQty.split(Pattern.quote("."))[0]),Double.parseDouble(OrderDisVal),Integer.parseInt(SampleQTY),PName,TaxValue,strGlobalOrderID,flgIsQuoteRateApplied,PriceApplyDiscountLevelType,distID,Outstat,ProductExtraOrder);
 				   dbengine.close();
 		       }
@@ -7004,9 +7004,7 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator {
 
 			  if(hmapFetchPDASavedData!=null && hmapFetchPDASavedData.size()>0)
 			  {
-
 					  hmapProductIdStock.putAll(hmapFetchPDASavedData);
-
 			  }
 
 

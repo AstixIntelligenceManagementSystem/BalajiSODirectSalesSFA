@@ -305,7 +305,17 @@ public class LastVisitDetails extends BaseActivity
 
 	public String  getStoreVisitCode()
 	{
-		int flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(storeID);
+		int flgDrctslsIndrctSls=1;
+		if(CommonInfo.FlgDSRSO==1)
+		{
+			String SOCoverageAreaIDAndType=dbengine.fnGetPersonNodeIDAndPersonNodeTypeForSO();
+			flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[0]),Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[1]));
+		}
+		else
+		{
+			flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(CommonInfo.CoverageAreaNodeID,CommonInfo.CoverageAreaNodeType);
+		}
+
 		if(flgDrctslsIndrctSls==0)
 		{
 			int flgCheckIfVisitExists=dbengine.fnGetCountStoreVisitCode(storeID);
@@ -314,7 +324,6 @@ public class LastVisitDetails extends BaseActivity
 				String passdLevel = battLevel + "%";
 				StoreVisitCode=genStoreVisitCode();
 				dbengine.fnInsertOrUpdate_tblStoreVisitMstr(StoreVisitCode,storeID,1,getDateInMonthTextFormat(),"0","0",getDateAndTimeInMilliSecond(),getDateAndTimeInMilliSecond(),getDateAndTimeInMilliSecond(),getDateAndTimeInMilliSecond(),"","0",passdLevel,0,0,0,0,0,0,0,0,0,0,0,0,0,0,flgVisitCollectionMarkedStatus);
-
 			}
 			else
 			{
@@ -329,7 +338,6 @@ public class LastVisitDetails extends BaseActivity
 				String passdLevel = battLevel + "%";
 				StoreVisitCode=genStoreVisitCode();
 				dbengine.fnInsertOrUpdate_tblStoreVisitMstr(StoreVisitCode,storeID,1,getDateInMonthTextFormat(),"0","0",getDateAndTimeInMilliSecond(),getDateAndTimeInMilliSecond(),getDateAndTimeInMilliSecond(),getDateAndTimeInMilliSecond(),"","0",passdLevel,0,0,0,0,0,0,0,0,0,0,0,0,0,0,flgVisitCollectionMarkedStatus);
-
 				//dbengine.UpdateStoreVisitBattVisitWise(storeID,passdLevel,StoreVisitCode);
 			}
 			else
@@ -337,7 +345,6 @@ public class LastVisitDetails extends BaseActivity
 				StoreVisitCode=dbengine.fnGetStoreVisitCode(storeID);
 			}
 		}
-
 		return StoreVisitCode;
 	}
 
