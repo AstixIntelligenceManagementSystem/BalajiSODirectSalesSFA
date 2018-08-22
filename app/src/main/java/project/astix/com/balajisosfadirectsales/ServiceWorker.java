@@ -704,6 +704,7 @@ public class ServiceWorker
 							flgGSTCompliance, GSTNumber , flgGSTRecordFromServer , StoreCity , StorePinCode , StoreState,
 							OutStanding , OverDue , DBR , flgRuleTaxVal,flgTransType,StoreType,IsClose,SalesPersonName,SalesPersonContactNo,IsComposite,StoreStateID,StoreCityID);
 					}
+
 				}
 
 
