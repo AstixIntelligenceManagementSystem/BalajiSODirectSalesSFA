@@ -22121,6 +22121,7 @@ int flgProcessedInvoice=0;
 				String PersonNodeID ="0";
 				String PersonNodeType ="0";
 				String PersonName ="0";
+				int flgDrctslsIndrctSls =0;
 
 				Element element = (Element) tblDSRCoverageMasterNode.item(i);
 
@@ -22180,9 +22181,17 @@ int flgProcessedInvoice=0;
 					}
 				}
 
+				if(!element.getElementsByTagName("flgDrctslsIndrctSls").equals(null))
+				{
+					NodeList flgDrctslsIndrctSlsNode = element.getElementsByTagName("flgDrctslsIndrctSls");
+					Element     line = (Element) flgDrctslsIndrctSlsNode.item(0);
+					if (flgDrctslsIndrctSlsNode.getLength()>0)
+					{
+						flgDrctslsIndrctSls=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
+					}
+				}
 
-
-				dbengine.savetblDSRCoverageMaster(CoverageAreaNodeID, CoverageAreaNodeType, CoverageArea, PersonNodeID, PersonNodeType,PersonName);
+				dbengine.savetblDSRCoverageMaster(CoverageAreaNodeID, CoverageAreaNodeType, CoverageArea, PersonNodeID, PersonNodeType,PersonName,flgDrctslsIndrctSls);
 
 			}
 

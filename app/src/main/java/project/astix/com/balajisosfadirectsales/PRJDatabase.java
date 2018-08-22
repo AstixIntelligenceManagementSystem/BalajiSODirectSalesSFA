@@ -85,7 +85,7 @@ public class PRJDatabase
 
     // SO Tables Start
     private static final String Table_tblDSRCoverageMaster_Define = "tblDSRCoverageMaster";
-    private static final String Table_tblDSRCoverageMaster_Definition = "create table tblDSRCoverageMaster (CoverageAreaNodeID text null,CoverageAreaNodeType text null,CoverageArea text null,PersonNodeID text null,PersonNodeType text null,PersonName text null);";
+    private static final String Table_tblDSRCoverageMaster_Definition = "create table tblDSRCoverageMaster (CoverageAreaNodeID text null,CoverageAreaNodeType text null,CoverageArea text null,PersonNodeID text null,PersonNodeType text null,PersonName text null,flgDrctslsIndrctSls int null);";
 
 
     private static final String DATABASE_TABLE_tblUserName = "tblUserName";
@@ -35023,7 +35023,7 @@ close();
         }
     }
     public long savetblDSRCoverageMaster(String CoverageAreaNodeID, String CoverageAreaNodeType, String CoverageArea,
-                                         String PersonNodeID, String PersonNodeType,String PersonName)
+                                         String PersonNodeID, String PersonNodeType,String PersonName,int flgDrctslsIndrctSls)
     {
         ContentValues initialValues = new ContentValues();
 
@@ -35033,6 +35033,7 @@ close();
         initialValues.put("PersonNodeID", PersonNodeID);
         initialValues.put("PersonNodeType", PersonNodeType);
         initialValues.put("PersonName", PersonName);
+        initialValues.put("flgDrctslsIndrctSls", flgDrctslsIndrctSls);
 
 
         return db.insert(Table_tblDSRCoverageMaster_Define, null, initialValues);
