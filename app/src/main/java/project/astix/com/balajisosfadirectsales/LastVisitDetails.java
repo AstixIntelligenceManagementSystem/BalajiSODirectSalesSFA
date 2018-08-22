@@ -306,19 +306,38 @@ public class LastVisitDetails extends BaseActivity
 	public String  getStoreVisitCode()
 	{
 		int flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(storeID);
-		int StoreCurrentOutsStat=dbengine.fnGetStoreCurrentOutsStat(storeID);
-		if(StoreCurrentOutsStat!=1)
+		if(flgDrctslsIndrctSls==0)
 		{
-			String passdLevel = battLevel + "%";
-			StoreVisitCode=genStoreVisitCode();
-			dbengine.fnInsertOrUpdate_tblStoreVisitMstr(StoreVisitCode,storeID,1,getDateInMonthTextFormat(),"0","0",getDateAndTimeInMilliSecond(),getDateAndTimeInMilliSecond(),getDateAndTimeInMilliSecond(),getDateAndTimeInMilliSecond(),"","0",passdLevel,0,0,0,0,0,0,0,0,0,0,0,0,0,0,flgVisitCollectionMarkedStatus);
+			int flgCheckIfVisitExists=dbengine.fnGetCountStoreVisitCode(storeID);
+			if(flgCheckIfVisitExists==0)
+			{
+				String passdLevel = battLevel + "%";
+				StoreVisitCode=genStoreVisitCode();
+				dbengine.fnInsertOrUpdate_tblStoreVisitMstr(StoreVisitCode,storeID,1,getDateInMonthTextFormat(),"0","0",getDateAndTimeInMilliSecond(),getDateAndTimeInMilliSecond(),getDateAndTimeInMilliSecond(),getDateAndTimeInMilliSecond(),"","0",passdLevel,0,0,0,0,0,0,0,0,0,0,0,0,0,0,flgVisitCollectionMarkedStatus);
 
-			//dbengine.UpdateStoreVisitBattVisitWise(storeID,passdLevel,StoreVisitCode);
+			}
+			else
+			{
+				StoreVisitCode=dbengine.fnGetStoreVisitCode(storeID);
+			}
 		}
 		else
+		{
+			int StoreCurrentOutsStat=dbengine.fnGetStoreCurrentOutsStat(storeID);
+			if(StoreCurrentOutsStat!=1)
 			{
-			StoreVisitCode=dbengine.fnGetStoreVisitCode(storeID);
+				String passdLevel = battLevel + "%";
+				StoreVisitCode=genStoreVisitCode();
+				dbengine.fnInsertOrUpdate_tblStoreVisitMstr(StoreVisitCode,storeID,1,getDateInMonthTextFormat(),"0","0",getDateAndTimeInMilliSecond(),getDateAndTimeInMilliSecond(),getDateAndTimeInMilliSecond(),getDateAndTimeInMilliSecond(),"","0",passdLevel,0,0,0,0,0,0,0,0,0,0,0,0,0,0,flgVisitCollectionMarkedStatus);
+
+				//dbengine.UpdateStoreVisitBattVisitWise(storeID,passdLevel,StoreVisitCode);
+			}
+			else
+			{
+				StoreVisitCode=dbengine.fnGetStoreVisitCode(storeID);
+			}
 		}
+
 		return StoreVisitCode;
 	}
 

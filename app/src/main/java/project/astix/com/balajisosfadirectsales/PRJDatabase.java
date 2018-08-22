@@ -36126,6 +36126,27 @@ close();
         }
 
     }
+
+
+    public int fnGetCountStoreVisitCode(String StoreID)
+    {
+        open();
+        int StoreVisitCodecnt=0;
+        Cursor cursor=db.rawQuery("Select Count(*) from tblStoreVisitMstr Where StoreID='"+StoreID+"'",null);
+
+        if(cursor.getCount()>0)
+        {
+            if(cursor.moveToFirst())
+            {
+                StoreVisitCodecnt=Integer.parseInt(cursor.getString(0));
+            }
+        }
+        if(cursor!=null) {
+            cursor.close();
+        }
+        close();
+        return StoreVisitCodecnt;
+    }
 }
 
 
