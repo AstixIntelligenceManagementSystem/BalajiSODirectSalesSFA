@@ -115,6 +115,7 @@ public class AllButtonActivity extends BaseActivity implements LocationListener,
     public String userDate;
     int flgStockAlert=0;
 
+    int flgDrctslsIndrctSls=0;
 
 
     public boolean serviceException=false;
@@ -3804,12 +3805,12 @@ public class AllButtonActivity extends BaseActivity implements LocationListener,
                     if(mm==2)
                     {
 
-                      /*  newservice = newservice.getallProduct(getApplicationContext(), fDate, imei, rID,RouteType);
+                        newservice = newservice.getallProduct(getApplicationContext(), fDate, imei, rID,RouteType);
                         if(newservice.flagExecutedServiceSuccesfully!=2)
                         {
                             serviceException=true;
                             break;
-                        }*/
+                        }
                     }
                     if(mm==3)
                     {
@@ -4164,8 +4165,6 @@ public class AllButtonActivity extends BaseActivity implements LocationListener,
                     }
 
                 }
-
-
             }
             catch (Exception e)
             {

@@ -1,8 +1,12 @@
 package project.astix.com.balajisosfadirectsales;
 
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothSocket;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,13 +18,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.os.PowerManager;
 import android.provider.Settings;
 import android.text.Editable;
+import android.text.Html;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,6 +42,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.astix.Common.CommonInfo;
 import com.google.android.gms.common.ConnectionResult;
@@ -56,11 +65,14 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.ByteBuffer;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -73,20 +85,40 @@ import java.util.StringTokenizer;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
+import project.astix.com.balajisosfadirectsales.printer.DeviceListActivity;
+import project.astix.com.balajisosfadirectsales.printer.UnicodeFormatter;
+
 public class CollectionActivityNew extends BaseActivity  implements DatePickerDialog.OnDateSetListener, LocationListener,GoogleApiClient.ConnectionCallbacks,
-        GoogleApiClient.OnConnectionFailedListener,InterfaceClass
+        GoogleApiClient.OnConnectionFailedListener,InterfaceClass,Runnable
 {
-/* For Location Srvices Start*/
-public String VisitTimeInSideStore="NA";
+    /* For Location Srvices Start*/
+
+
+    public Double overallOutStand=0.0,curntCol=0.0;
+    private CoundownClass countDownTimer;
+    //protected static final String TAG = "TAG";
+    private static final int REQUEST_CONNECT_DEVICE = 1;
+    private static final int REQUEST_ENABLE_BT = 2;
+    Button mScan, mPrint, mDisc,mPrintImage,usbPrint;
+    BluetoothAdapter mBluetoothAdapter;
+    private UUID applicationUUID = UUID
+            .fromString("00001101-0000-1000-8000-00805F9B34FB");
+    private ProgressDialog mBluetoothConnectProgressDialog;
+    private BluetoothSocket mBluetoothSocket;
+    BluetoothDevice mBluetoothDevice;
+    int aletrDialogFlag=0;
+    public  boolean rstl=false;
+    public int flgOnlySubmitOrPrint=0;
+    public String VisitTimeInSideStore="NA";
     public  int flgRestartOrderReview=0;
     public  int flgStoreOrderOrderReview=0;
 
-String fusedData;
+    String fusedData;
     String mLastUpdateTime;
     int countSubmitClicked=0;
-Location mCurrentLocation;
+    Location mCurrentLocation;
     GoogleApiClient mGoogleApiClient;
-LocationRequest mLocationRequest;
+    LocationRequest mLocationRequest;
     boolean isGPSEnabled = false;
     boolean isNetworkEnabled = false;
     PowerManager pm;
@@ -145,13 +177,13 @@ LocationRequest mLocationRequest;
     public String strGlobalInvoiceNumber="NA";
     public String TmpInvoiceCodePDA="NA";
     public int chkflgInvoiceAlreadyGenerated=0;
-public CheckBox cb_collection;
-LinearLayout lnCollection,ll_collectionMandatory;
+    public CheckBox cb_collection;
+    LinearLayout lnCollection,ll_collectionMandatory;
     public int flgVisitCollectionMarkedStatus=0;
     TextView totaltextview,dateTextViewFirst,dateTextViewSecond,dateTextViewThird,pymtModeTextView,AmountTextview,chequeNoTextview,DateLabelTextview,BankLabelTextview;
 
     TextView BankSpinnerSecond,BankSpinnerThird;
-Double OverAllAmountCollected=0.0;
+    Double OverAllAmountCollected=0.0;
     TextView paymentModeSpinnerFirst,paymentModeSpinnerSecond,paymentModeSpinnerThird;
     AlertDialog.Builder alertDialog;
     AlertDialog ad;
@@ -171,8 +203,8 @@ Double OverAllAmountCollected=0.0;
     boolean calThird=false;
     EditText amountEdittextFirst,amountEdittextSecond,amountEdittextThird,checqueNoEdittextSecond,checqueNoEdittextThird;
 
-
-    Button Done_btn;
+    ArrayList<LinkedHashMap<String,ArrayList<String>>> arrAllPrintResult;
+    Button Done_btn,btn_print;
     String storeIDGlobal;
     String flagNew_orallDataFromDatabase,PaymentModeUpdate,PaymentModeSecondUpdate,AmountUpdate,ChequeNoUpdte,DateUpdate;
     String BankNameUpdate,BankNameSecondUpdate="0",BankNameThirdUpdate="0";
@@ -247,7 +279,7 @@ Double OverAllAmountCollected=0.0;
 
         CalendarInitialization();
 
-         ButtonInialization();
+        ButtonInialization();
 
 
         chkflgInvoiceAlreadyGenerated=dbengine.fnCheckForNewInvoiceOrPreviousValue(storeID,StoreVisitCode);//0=Need to Generate Invoice Number,1=No Need of Generating Invoice Number
@@ -366,7 +398,6 @@ Double OverAllAmountCollected=0.0;
                 {
                     amountEdittextSecond.setText("");
                 }
-
                 if(!DataFromDatabase.split(Pattern.quote("^"))[2].equals("0")) {
                     checqueNoEdittextSecond.setText(DataFromDatabase.split(Pattern.quote("^"))[2]);
                 }
@@ -382,9 +413,7 @@ Double OverAllAmountCollected=0.0;
                 } else
                 {
                     BankSpinnerSecond.setText(linkedHmapBankID.get(BankNameUpdate));
-
                 }
-
                 if(!DataFromDatabase.split(Pattern.quote("^"))[5].equals("0")) {
                     amountEdittextThird.setText(DataFromDatabase.split(Pattern.quote("^"))[5]);
                 }
@@ -392,7 +421,6 @@ Double OverAllAmountCollected=0.0;
                 {
                     amountEdittextThird.setText("");
                 }
-
                 if(!DataFromDatabase.split(Pattern.quote("^"))[6].equals("0")) {
                     checqueNoEdittextThird.setText(DataFromDatabase.split(Pattern.quote("^"))[6]);
                 }
@@ -406,7 +434,6 @@ Double OverAllAmountCollected=0.0;
                     BankSpinnerThird.setText(getResources().getString(R.string.txtSelect));
                 } else {
                     BankSpinnerThird.setText(linkedHmapBankID.get(BankNameUpdate));
-
                 }*/
 
             }
@@ -457,14 +484,14 @@ Double OverAllAmountCollected=0.0;
                 NumberFormat nf = NumberFormat.getInstance();
                 if(!amountEdittextFirst.getText().toString().trim().equals(""))
                 {
-                   // amntFirst= Double.parseDouble(amountEdittextFirst.getText().toString().trim());
+                    // amntFirst= Double.parseDouble(amountEdittextFirst.getText().toString().trim());
                     try
                     {
                         amntFirst = nf.parse(amountEdittextFirst.getText().toString().trim()).doubleValue();
                     }
                     catch(ParseException e)
                     {
-                      System.out.print("i m in errro");
+                        System.out.print("i m in errro");
                     }
 
                 }
@@ -524,7 +551,7 @@ Double OverAllAmountCollected=0.0;
                 NumberFormat nf = NumberFormat.getInstance();
                 if(!amountEdittextSecond.getText().toString().trim().equals(""))
                 {
-                   // amntSecond= Double.parseDouble(amountEdittextSecond.getText().toString().trim());
+                    // amntSecond= Double.parseDouble(amountEdittextSecond.getText().toString().trim());
                     try
                     {
                         amntSecond = nf.parse(amountEdittextSecond.getText().toString().trim()).doubleValue();
@@ -536,7 +563,7 @@ Double OverAllAmountCollected=0.0;
                 }
                 if(!amountEdittextFirst.getText().toString().trim().equals(""))
                 {
-                   // amntFirst= Double.parseDouble(amountEdittextFirst.getText().toString().trim());
+                    // amntFirst= Double.parseDouble(amountEdittextFirst.getText().toString().trim());
                     try
                     {
                         amntFirst = nf.parse(amountEdittextFirst.getText().toString().trim()).doubleValue();
@@ -550,7 +577,7 @@ Double OverAllAmountCollected=0.0;
 
                 if(!amountEdittextThird.getText().toString().trim().equals(""))
                 {
-                   // amntThird= Double.parseDouble(amountEdittextThird.getText().toString().trim());
+                    // amntThird= Double.parseDouble(amountEdittextThird.getText().toString().trim());
                     try
                     {
                         amntThird = nf.parse(amountEdittextThird.getText().toString().trim()).doubleValue();
@@ -671,7 +698,7 @@ Double OverAllAmountCollected=0.0;
         paymentModeSpinnerSecond.setText("Cheque/DD");
         amountEdittextSecond.setEnabled(true);
 
-       // paymentModeSpinnerThird.setText("Electronic");
+        // paymentModeSpinnerThird.setText("Electronic");
         paymentModeSpinnerThird.setText("Mobile");
         amountEdittextThird.setEnabled(true);
 
@@ -833,7 +860,7 @@ Double OverAllAmountCollected=0.0;
                 {
                     if(amountEdittextSecond.getText().toString().trim().equals(""))
                     {
-                       // allMessageAlert("Please Enter the Amount.");
+                        // allMessageAlert("Please Enter the Amount.");
                         showAlertSingleButtonError("Please Enter the Amount.");
                     }
                     else if(checqueNoEdittextSecond.getText().toString().trim().equals(""))
@@ -1040,7 +1067,7 @@ Double OverAllAmountCollected=0.0;
                     {
                         showAlertSingleButtonError("Please Enter ChequeNo/RefNo.");
                     }
-                     else
+                    else
                     {
                         showAlertSingleButtonError("Please Enter the Amount or ChequeNo/RefNo.");
                     }
@@ -1108,7 +1135,7 @@ Double OverAllAmountCollected=0.0;
                     {
                         showAlertSingleButtonError("Please Enter ChequeNo/RefNo.");
                     }
-                   else
+                    else
                     {
                         showAlertSingleButtonError("Please Enter the Amount or ChequeNo/RefNo.");
                     }
@@ -1148,7 +1175,6 @@ Double OverAllAmountCollected=0.0;
                 // TODO Auto-generated method stub
                /* AlertDialog.Builder alertDialog = new AlertDialog.Builder(CollectionActivityNew.this);
                 alertDialog.setTitle("Information");
-
                 alertDialog.setCancelable(false);
                 alertDialog.setMessage("Have you saved your data before going back ");
                 alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -1168,25 +1194,22 @@ Double OverAllAmountCollected=0.0;
                 alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int which) {
                         dialog.dismiss();
-
-
                     }
                 });
-
                 // Showing Alert Message
                 alertDialog.show();*/
-               if(flgFromPlace==2) {
-                   Intent ide = new Intent(CollectionActivityNew.this, ProductOrderReview.class);
-                   ide.putExtra("SN", SN);
-                   ide.putExtra("storeID", storeID);
-                   ide.putExtra("imei", imei);
-                   ide.putExtra("userdate", date);
-                   ide.putExtra("pickerDate", pickerDate);
-                   ide.putExtra("flgOrderType", flgOrderType);
+                if(flgFromPlace==2) {
+                    Intent ide = new Intent(CollectionActivityNew.this, ProductOrderReview.class);
+                    ide.putExtra("SN", SN);
+                    ide.putExtra("storeID", storeID);
+                    ide.putExtra("imei", imei);
+                    ide.putExtra("userdate", date);
+                    ide.putExtra("pickerDate", pickerDate);
+                    ide.putExtra("flgOrderType", flgOrderType);
 
-                   startActivity(ide);
-                   finish();
-               }
+                    startActivity(ide);
+                    finish();
+                }
                 if(flgFromPlace==1) {
                     Intent ide = new Intent(CollectionActivityNew.this, ProductInvoiceReview.class);
                     ide.putExtra("SN", SN);
@@ -1201,6 +1224,26 @@ Double OverAllAmountCollected=0.0;
                 }
             }
         });
+        mDisc = (Button) findViewById(R.id.dis);
+        mDisc.setOnClickListener(new OnClickListener() {
+            public void onClick(View mView) {
+                if (mBluetoothAdapter != null)
+                    mBluetoothAdapter.disable();
+            }
+        });
+        btn_print=(Button) findViewById(R.id.btn_print);
+        btn_print.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               /* ArrayList<String> arrResult=  dbengine.fnFetch_tblWarehouseMstr();
+                arrAllPrintResult= dbengine.fnFetch_InvoiceReportForPrint(StoreVisitCode,storeID, Integer.parseInt(arrResult.get(0)),Integer.parseInt(arrResult.get(1)));
+                MakePrintRecipt();*/
+                fnCallSaveDataFromTempToPermanetWithPrint("Do you want to submit visit data without and print Invoice");
+
+
+
+            }
+        });
 
         Done_btn=(Button) findViewById(R.id.Done_btn);
         Done_btn.setOnClickListener(new OnClickListener() {
@@ -1210,100 +1253,11 @@ Double OverAllAmountCollected=0.0;
 /*
                if(flgVisitCollectionMarkedStatus==1)
                {
-
                        saveDataToDatabase();
-
                }
                else {*/
 
-                   if (validate() && validateCollectionAmt()) {
-
-                       AlertDialog.Builder alertDialog = new AlertDialog.Builder(
-                               CollectionActivityNew.this);
-                       alertDialog.setTitle("Information");
-
-                       alertDialog.setCancelable(false);
-                       alertDialog.setMessage("Do you want to submit visit data ");
-                       alertDialog.setPositiveButton("Yes",
-                               new DialogInterface.OnClickListener() {
-                                   public void onClick(DialogInterface dialog,
-                                                       int which) {
-                                       dialog.dismiss();
-
-                                       saveDataToDatabase();
-                                      /* FullSyncDataNow task = new FullSyncDataNow(CollectionActivityNew.this);
-                                       task.execute();*/
-
-
-                                       butClickForGPS=3;
-                                       dbengine.open();
-                                       if ((dbengine.PrevLocChk(storeID.trim(),StoreVisitCode)) )
-                                       {
-                                           dbengine.close();
-
-                                           FullSyncDataNow task = new FullSyncDataNow(CollectionActivityNew.this);
-                                           task.execute();
-                                       }
-                                       else
-                                       {
-                                           dbengine.close();
-                                          /* appLocationService=new AppLocationService();
-
-								*//* pm = (PowerManager) getSystemService(POWER_SERVICE);
-								 *//**//*  wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK
-							                | PowerManager.ACQUIRE_CAUSES_WAKEUP
-							                | PowerManager.ON_AFTER_RELEASE, "INFO");
-							        wl.acquire();*//*
-
-
-                                           pDialog2STANDBY=ProgressDialog.show(CollectionActivityNew.this,getText(R.string.genTermPleaseWaitNew) ,getText(R.string.genTermRetrivingLocation), true);
-                                           pDialog2STANDBY.setIndeterminate(true);
-
-                                           pDialog2STANDBY.setCancelable(false);
-                                           pDialog2STANDBY.show();
-
-                                           if(isGooglePlayServicesAvailable()) {
-                                               createLocationRequest();
-
-                                               mGoogleApiClient = new GoogleApiClient.Builder(CollectionActivityNew.this)
-                                                       .addApi(LocationServices.API)
-                                                       .addConnectionCallbacks(CollectionActivityNew.this)
-                                                       .addOnConnectionFailedListener(CollectionActivityNew.this)
-                                                       .build();
-                                               mGoogleApiClient.connect();
-                                           }
-                                           //startService(new Intent(DynamicActivity.this, AppLocationService.class));
-                                           startService(new Intent(CollectionActivityNew.this, AppLocationService.class));
-                                           Location nwLocation=appLocationService.getLocation(locationManager,LocationManager.GPS_PROVIDER,location);
-                                           Location gpsLocation=appLocationService.getLocation(locationManager,LocationManager.NETWORK_PROVIDER,location);
-                                           countDownTimer2 = new CoundownClass2(startTime, interval);
-                                           countDownTimer2.start();
-
-*/
-                                           LocationRetreivingGlobal llaaa=new LocationRetreivingGlobal();
-                                           llaaa.locationRetrievingAndDistanceCalculating(CollectionActivityNew.this,false,20);
-
-
-                                       }
-
-
-
-                                   }
-                               });
-                       alertDialog.setNegativeButton("No",
-                               new DialogInterface.OnClickListener() {
-                                   public void onClick(DialogInterface dialog,
-                                                       int which) {
-                                       dialog.dismiss();
-                                   }
-                               });
-
-                       // Showing Alert Message
-                       alertDialog.show();
-
-
-                   }
-              // }
+                fnCallSaveDataFromTempToPermanetWithoutPrint("Do you want to submit visit data without printing Invoice");
             }
         });
 
@@ -1387,11 +1341,9 @@ Double OverAllAmountCollected=0.0;
         if(!dateTextViewThird.getText().toString().trim().equals("21-mar-2016")){
             DateThirdString =dateTextViewThird.getText().toString().trim();
         }
-
         if(dateTextViewThird.getText().toString().trim().equals("21-mar-2016")){
             DateThirdString ="0";
         }
-
         if (hashmapBank != null)
         {
             if(hashmapBank.containsKey(BankSpinnerThird.getText().toString().trim()))
@@ -1402,8 +1354,6 @@ Double OverAllAmountCollected=0.0;
             {
                 BankThirdString="0";
             }
-
-
         }
         else
         {
@@ -1455,8 +1405,6 @@ Double OverAllAmountCollected=0.0;
         ide.putExtra("pickerDate", pickerDate);
         ide.putExtra("flgOrderType", flgOrderType);
         ide.putExtra("OrderPDAID", strGlobalOrderID);
-
-
         startActivity(ide);
         finish();*/
 
@@ -1474,13 +1422,11 @@ Double OverAllAmountCollected=0.0;
                     public void onClick(DialogInterface dialog, int which)
                     {
                         dialog.dismiss();
-
                     }
                 });
         alertDialogNoConn.setIcon(R.drawable.error_ico);
         AlertDialog alert = alertDialogNoConn.create();
         alert.show();
-
     }*/
 
 
@@ -1516,7 +1462,7 @@ Double OverAllAmountCollected=0.0;
     }
     private boolean validateCollectionAmt()
     {
-       Double  OverAllAmountCollectedLimit=dbengine.fetch_Store_MaxCollectionAmount(storeID,TmpInvoiceCodePDA);
+        Double  OverAllAmountCollectedLimit=dbengine.fetch_Store_MaxCollectionAmount(storeID,TmpInvoiceCodePDA);
         OverAllAmountCollectedLimit=Double.parseDouble(new DecimalFormat("##.##").format(OverAllAmountCollectedLimit));
         OverAllAmountCollected=Double.parseDouble(new DecimalFormat("##.##").format(OverAllAmountCollected));
 
@@ -1564,51 +1510,51 @@ Double OverAllAmountCollected=0.0;
 
         // Start Second Row
         if(!TextUtils.isEmpty(amountEdittextSecond.getText().toString()) && checqueNoEdittextSecond.getText().toString().trim().equals(""))
-            {
-                checqueNoEdittextSecond.clearFocus();
-                checqueNoEdittextSecond.requestFocus();
-                String estring = "RefNo/chequeNo/TrnNo is Empty";
-                ForegroundColorSpan fgcspan = new ForegroundColorSpan(Color.parseColor("#ffffff"));
-                SpannableStringBuilder ssbuilder = new SpannableStringBuilder(estring);
-                ssbuilder.setSpan(fgcspan, 0, estring.length(), 0);
-                checqueNoEdittextSecond.setError(ssbuilder);
+        {
+            checqueNoEdittextSecond.clearFocus();
+            checqueNoEdittextSecond.requestFocus();
+            String estring = "RefNo/chequeNo/TrnNo is Empty";
+            ForegroundColorSpan fgcspan = new ForegroundColorSpan(Color.parseColor("#ffffff"));
+            SpannableStringBuilder ssbuilder = new SpannableStringBuilder(estring);
+            ssbuilder.setSpan(fgcspan, 0, estring.length(), 0);
+            checqueNoEdittextSecond.setError(ssbuilder);
 
-                return false;
-            }
+            return false;
+        }
         else if(!TextUtils.isEmpty(amountEdittextSecond.getText().toString()) && dateTextViewSecond.getText().toString().trim().equals(""))
-           {
-               showAlertSingleButtonError("Date is Empty");
-                 return false;
-           }
-          else  if(!TextUtils.isEmpty(amountEdittextSecond.getText().toString()) && dateTextViewSecond.getText().toString().trim().equals(""))
-           {
-               showAlertSingleButtonError("Please Select Bank.");
-                 return false;
-           }
-           else if(!TextUtils.isEmpty(checqueNoEdittextSecond.getText().toString()) && amountEdittextSecond.getText().toString().trim().equals(""))
-           {
-                 amountEdittextSecond.clearFocus();
-                 amountEdittextSecond.requestFocus();
+        {
+            showAlertSingleButtonError("Date is Empty");
+            return false;
+        }
+        else  if(!TextUtils.isEmpty(amountEdittextSecond.getText().toString()) && dateTextViewSecond.getText().toString().trim().equals(""))
+        {
+            showAlertSingleButtonError("Please Select Bank.");
+            return false;
+        }
+        else if(!TextUtils.isEmpty(checqueNoEdittextSecond.getText().toString()) && amountEdittextSecond.getText().toString().trim().equals(""))
+        {
+            amountEdittextSecond.clearFocus();
+            amountEdittextSecond.requestFocus();
 
-                 String estring = "Amount is Empty";
-                 ForegroundColorSpan fgcspan = new ForegroundColorSpan(Color.parseColor("#ffffff"));
-                 SpannableStringBuilder ssbuilder = new SpannableStringBuilder(estring);
-                 ssbuilder.setSpan(fgcspan, 0, estring.length(), 0);
-                 amountEdittextSecond.setError(ssbuilder);
+            String estring = "Amount is Empty";
+            ForegroundColorSpan fgcspan = new ForegroundColorSpan(Color.parseColor("#ffffff"));
+            SpannableStringBuilder ssbuilder = new SpannableStringBuilder(estring);
+            ssbuilder.setSpan(fgcspan, 0, estring.length(), 0);
+            amountEdittextSecond.setError(ssbuilder);
 
-                 return false;
-                        }
-            else if(!TextUtils.isEmpty(checqueNoEdittextSecond.getText().toString()) && dateTextViewSecond.getText().toString().trim().equals(""))
-            {
-                showAlertSingleButtonError("Date is Empty");
-                 return false;
-            }
-            else  if(!TextUtils.isEmpty(checqueNoEdittextSecond.getText().toString()) && BankSpinnerSecond.getText().toString().trim().equals("Select"))
-            {
-                showAlertSingleButtonError("Please Select Bank.");
-                return false;
-            }
-            // Second row end
+            return false;
+        }
+        else if(!TextUtils.isEmpty(checqueNoEdittextSecond.getText().toString()) && dateTextViewSecond.getText().toString().trim().equals(""))
+        {
+            showAlertSingleButtonError("Date is Empty");
+            return false;
+        }
+        else  if(!TextUtils.isEmpty(checqueNoEdittextSecond.getText().toString()) && BankSpinnerSecond.getText().toString().trim().equals("Select"))
+        {
+            showAlertSingleButtonError("Please Select Bank.");
+            return false;
+        }
+        // Second row end
         // Start Second Row
         if(!TextUtils.isEmpty(amountEdittextSecond.getText().toString()) && checqueNoEdittextSecond.getText().toString().trim().equals(""))
         {
@@ -1667,7 +1613,6 @@ Double OverAllAmountCollected=0.0;
             SpannableStringBuilder ssbuilder = new SpannableStringBuilder(estring);
             ssbuilder.setSpan(fgcspan, 0, estring.length(), 0);
             checqueNoEdittextThird.setError(ssbuilder);
-
             return false;
         }
         else if(!TextUtils.isEmpty(amountEdittextThird.getText().toString()) && dateTextViewThird.getText().toString().trim().equals(""))
@@ -1684,13 +1629,11 @@ Double OverAllAmountCollected=0.0;
         {
             amountEdittextThird.clearFocus();
             amountEdittextThird.requestFocus();
-
             String estring = "Amount is Empty";
             ForegroundColorSpan fgcspan = new ForegroundColorSpan(Color.parseColor("#ffffff"));
             SpannableStringBuilder ssbuilder = new SpannableStringBuilder(estring);
             ssbuilder.setSpan(fgcspan, 0, estring.length(), 0);
             amountEdittextThird.setError(ssbuilder);
-
             return false;
         }*/
         /*else if(!TextUtils.isEmpty(checqueNoEdittextThird.getText().toString()) && dateTextViewThird.getText().toString().trim().equals(""))
@@ -1703,10 +1646,10 @@ Double OverAllAmountCollected=0.0;
             showAlertSingleButtonError("Please Select Bank.");
             return false;
         }*/
-         else
-            {
-                return true;
-            }
+        else
+        {
+            return true;
+        }
 
 
     }
@@ -1734,7 +1677,6 @@ Double OverAllAmountCollected=0.0;
                 ide.putExtra("pickerDate", pickerDate);
                 ide.putExtra("flgOrderType", flgOrderType);
                 ide.putExtra("OrderPDAID", strGlobalOrderID);
-
                 startActivity(ide);
                 finish();*/
 
@@ -1805,7 +1747,6 @@ Double OverAllAmountCollected=0.0;
             } else
             {
                 BankSpinnerThird.setText(linkedHmapBankID.get(BankID));
-
             }*/
             checqueNoEdittextThird.setText("");
             dateTextViewThird.setText("");
@@ -1951,7 +1892,7 @@ Double OverAllAmountCollected=0.0;
         protected Void doInBackground(Void... params) {
 
             int Outstat=1;
-           flgTransferStatus=1;
+            flgTransferStatus=1;
             dbengine.open();
             dbengine.fnUpdateflgTransferStatusInInvoiceHeader(storeID,StoreVisitCode,TmpInvoiceCodePDA,flgTransferStatus);
             dbengine.close();
@@ -2086,15 +2027,39 @@ Double OverAllAmountCollected=0.0;
             }
             try
             {
-                StoreSelection.flgChangeRouteOrDayEnd=0;
-                DayStartActivity.flgDaySartWorking=0;
-                Intent syncIntent = new Intent(CollectionActivityNew.this, SyncMaster.class);
-                //syncIntent.putExtra("xmlPathForSync", Environment.getExternalStorageDirectory() + "/RSPLSFAXml/" + newfullFileName + ".xml");
-                syncIntent.putExtra("xmlPathForSync", Environment.getExternalStorageDirectory() + "/" + CommonInfo.OrderXMLFolder + "/" + newfullFileName + ".xml");
-                syncIntent.putExtra("OrigZipFileName", newfullFileName);
-                syncIntent.putExtra("whereTo", "Regular");
-                startActivity(syncIntent);
-                finish();
+
+                if(flgOnlySubmitOrPrint==1)
+                {
+                    //dbengine.open();
+                    ArrayList<String> arrResult=  dbengine.fnFetch_tblWarehouseMstr();
+                    // dbengine.close();
+                    arrAllPrintResult=null;
+                    if((arrResult!=null) && (arrResult.size()>0)){
+                        arrAllPrintResult= dbengine.fnFetch_InvoiceReportForPrint(StoreVisitCode,storeID, Integer.parseInt(arrResult.get(0)),Integer.parseInt(arrResult.get(1)));
+                        if((arrAllPrintResult!=null) && (arrAllPrintResult.size()>0)){
+                            PrintAll_Code();
+                        }
+                        else{
+                            Toast.makeText(CollectionActivityNew.this, "All print data is blank", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    else{
+                        Toast.makeText(CollectionActivityNew.this, "NodeID Blank", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+                if(flgOnlySubmitOrPrint==0) {
+                    StoreSelection.flgChangeRouteOrDayEnd = 0;
+                    DayStartActivity.flgDaySartWorking = 0;
+                    Intent syncIntent = new Intent(CollectionActivityNew.this, SyncMaster.class);
+                    //syncIntent.putExtra("xmlPathForSync", Environment.getExternalStorageDirectory() + "/RSPLSFAXml/" + newfullFileName + ".xml");
+                    syncIntent.putExtra("xmlPathForSync", Environment.getExternalStorageDirectory() + "/" + CommonInfo.OrderXMLFolder + "/" + newfullFileName + ".xml");
+                    syncIntent.putExtra("OrigZipFileName", newfullFileName);
+                    syncIntent.putExtra("whereTo", "Regular");
+                    startActivity(syncIntent);
+                    finish();
+                }
             } catch (Exception e) {
 
                 e.printStackTrace();
@@ -2525,13 +2490,11 @@ Double OverAllAmountCollected=0.0;
 			  InputMethodManager imm =(InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
 			  imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
 			}
-
 		public void showSoftKeyboard(View view){
 		    if(view.requestFocus()){
 		        InputMethodManager imm =(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 		        imm.showSoftInput(view,InputMethodManager.SHOW_IMPLICIT);
 		    }
-
 		}*/
 
     protected void startLocationUpdates()
@@ -2820,5 +2783,823 @@ Double OverAllAmountCollected=0.0;
 
         // Showing Alert Message
         alertDialog.show();
+    }
+
+    public void fnCallSaveDataFromTempToPermanetWithPrint(String msgForAlert)
+    {
+        if (validate() && validateCollectionAmt()) {
+
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(CollectionActivityNew.this);
+            alertDialog.setTitle("Information");
+
+            alertDialog.setCancelable(false);
+            alertDialog.setMessage(msgForAlert);
+            alertDialog.setPositiveButton("Yes",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int which) {
+                            dialog.dismiss();
+                            PrintALlFuctionality();
+
+                        }
+                    });
+            alertDialog.setNegativeButton("No",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+            // Showing Alert Message
+            alertDialog.show();
+
+
+        }
+    }
+    public void fnCallSaveDataFromTempToPermanetWithoutPrint(String msgForAlert)
+    {
+        if (validate() && validateCollectionAmt()) {
+
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+                    CollectionActivityNew.this);
+            alertDialog.setTitle("Information");
+
+            alertDialog.setCancelable(false);
+            alertDialog.setMessage(msgForAlert);
+            alertDialog.setPositiveButton("Yes",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int which) {
+                            dialog.dismiss();
+
+                            saveDataToDatabase();
+                                      /* FullSyncDataNow task = new FullSyncDataNow(CollectionActivityNew.this);
+                                       task.execute();*/
+
+
+                            butClickForGPS=3;
+                            dbengine.open();
+                            if ((dbengine.PrevLocChk(storeID.trim(),StoreVisitCode)) )
+                            {
+                                dbengine.close();
+
+                                FullSyncDataNow task = new FullSyncDataNow(CollectionActivityNew.this);
+                                task.execute();
+                            }
+                            else
+                            {
+                                dbengine.close();
+                                appLocationService=new AppLocationService();
+
+								/* pm = (PowerManager) getSystemService(POWER_SERVICE);
+								   wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK
+							                | PowerManager.ACQUIRE_CAUSES_WAKEUP
+							                | PowerManager.ON_AFTER_RELEASE, "INFO");
+							        wl.acquire();*/
+
+
+                                pDialog2STANDBY=ProgressDialog.show(CollectionActivityNew.this,getText(R.string.genTermPleaseWaitNew) ,getText(R.string.genTermRetrivingLocation), true);
+                                pDialog2STANDBY.setIndeterminate(true);
+
+                                pDialog2STANDBY.setCancelable(false);
+                                pDialog2STANDBY.show();
+
+                                if(isGooglePlayServicesAvailable()) {
+                                    createLocationRequest();
+
+                                    mGoogleApiClient = new GoogleApiClient.Builder(CollectionActivityNew.this)
+                                            .addApi(LocationServices.API)
+                                            .addConnectionCallbacks(CollectionActivityNew.this)
+                                            .addOnConnectionFailedListener(CollectionActivityNew.this)
+                                            .build();
+                                    mGoogleApiClient.connect();
+                                }
+                                //startService(new Intent(DynamicActivity.this, AppLocationService.class));
+                                startService(new Intent(CollectionActivityNew.this, AppLocationService.class));
+                                Location nwLocation=appLocationService.getLocation(locationManager,LocationManager.GPS_PROVIDER,location);
+                                Location gpsLocation=appLocationService.getLocation(locationManager,LocationManager.NETWORK_PROVIDER,location);
+                                countDownTimer2 = new CoundownClass2(startTime, interval);
+                                countDownTimer2.start();
+
+
+                                // LocationRetreivingGlobal llaaa=new LocationRetreivingGlobal();
+                                // llaaa.locationRetrievingAndDistanceCalculating(CollectionActivityNew.this,false,20);
+
+
+                            }
+
+
+
+                        }
+                    });
+            alertDialog.setNegativeButton("No",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+            // Showing Alert Message
+            alertDialog.show();
+
+
+        }
+    }
+    public void PrintALlFuctionality(){
+        {
+
+            if(mBluetoothAdapter==null){
+                mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+            }
+            if (!mBluetoothAdapter.isEnabled()) {
+
+                flgOnlySubmitOrPrint=0;
+                aletrDialogFlag=1;
+                AlertDialogCommonFunction("Bluetooth Printer is not connected.Do you want to  connect to Printer? ");
+
+            }
+            else{
+                if((mBluetoothSocket != null) && (mBluetoothSocket.isConnected())){
+                    flgOnlySubmitOrPrint=1;
+                    //Abhinav Will first transer the data from tem to Permanent table and then call for Print
+
+                }
+                else{
+                    flgOnlySubmitOrPrint=0;
+                    aletrDialogFlag=2;
+                    AlertDialogCommonFunction("Bluetooth Printer is not connected.Do you want to connect to Printer");
+
+                }
+            }
+
+
+
+        }
+
+    }
+
+    public class CoundownClass extends CountDownTimer {
+
+        CoundownClass(long startTime, long interval) {
+            super(startTime, interval);
+            // TODO Auto-generated constructor stub
+            if(mBluetoothSocket!=null){
+                if(mBluetoothSocket.isConnected()){
+                    countDownTimer.cancel();
+                }
+            }
+
+        }
+
+        @Override
+        public void onFinish()
+        {
+
+            if(mBluetoothConnectProgressDialog!=null){
+                if(mBluetoothConnectProgressDialog.isShowing()){
+                    mBluetoothConnectProgressDialog.dismiss();
+                    try {
+                        if (mBluetoothSocket != null)
+                            mBluetoothSocket.close();
+                        Toast.makeText(CollectionActivityNew.this, "Not Connected", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        Log.e("Tag", "Exe ", e);
+                    }
+                }
+            }
+
+
+        }
+
+        @Override
+        public void onTick(long arg0) {
+            // TODO Auto-generated method stub
+
+        }}
+    public void AlertDialogCommonFunction(String msg ){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+                CollectionActivityNew.this);
+        alertDialog.setTitle(getResources().getString(R.string.genTermInformation));
+
+        alertDialog.setCancelable(false);
+        alertDialog.setMessage(msg);
+        alertDialog.setPositiveButton(getResources().getString(R.string.AlertDialogYesButton),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,
+                                        int which) {
+
+                        dialog.dismiss();
+                        if((aletrDialogFlag==1) ){
+                            Intent enableBtIntent = new Intent(
+                                    BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                            startActivityForResult(enableBtIntent,
+                                    REQUEST_ENABLE_BT);
+                        }
+                        if((aletrDialogFlag==2) ){
+                            ListPairedDevices();
+                            Intent connectIntent = new Intent(CollectionActivityNew.this,DeviceListActivity.class);
+                            startActivityForResult(connectIntent,
+                                    REQUEST_CONNECT_DEVICE);
+                        }
+
+
+
+
+                    }
+                });
+        alertDialog.setNegativeButton(getResources().getString(R.string.AlertDialogNoButton),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,
+                                        int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+        // Showing Alert Message
+        alertDialog.show();
+    }
+    public void  PrintAll_Code(){
+        Thread t = new Thread() {
+            public void run() {
+                try {
+                    String data="";
+                    for(int i=1;i<10;i++){
+                        if(i==0){
+                            data  ="\n";
+                        }
+                        else{
+                            data=data+"\n " + String.format("%1$-10s %2$10s %3$11s %4$10s", "Shivam-001", "5", "10", "50.00");
+                        }
+                    }
+                    OutputStream os = mBluetoothSocket
+                            .getOutputStream();
+                    byte[] format = {29, 10, 35 }; // manipulate your font size in the second parameter
+                    byte[] center =  { 0x1b, 'a', 0x01 }; // center alignment
+
+
+                    byte[] printformat = new byte[]{0x1b,0x21,0x01};//center bold
+                           /*  byte[] printformat = new byte[]{0x1,'a',0x01};//center normal
+                            os.write(printformat);*/
+                    //os.write(printformat);
+                    //  os.write(format);
+
+                    String billDatatoprint=  MakePrintRecipt();
+                    os.write(printformat);//for small text
+                    os.write(center);//for center
+                    os.write(billDatatoprint.getBytes());
+                    //This is printer specific code you can comment ==== > Start
+
+                    // Setting height
+                /*    int gs = 29;
+                    os.write(intToByteArray(gs));
+                    int h = 104;
+                    os.write(intToByteArray(h));
+                    int n = 162;
+                    os.write(intToByteArray(n));
+
+                    // Setting Width
+                    int gs_width = 29;
+                    os.write(intToByteArray(gs_width));
+                    int w = 119;
+                    os.write(intToByteArray(w));
+                    int n_width = 2;
+                    os.write(intToByteArray(n_width));*/
+
+
+                } catch (Exception e) {
+                    Log.e("MainActivity", "Exe ", e);
+
+                }
+            }
+        };
+        t.start();
+
+        StoreSelection.flgChangeRouteOrDayEnd = 0;
+        DayStartActivity.flgDaySartWorking = 0;
+        Intent syncIntent = new Intent(CollectionActivityNew.this, SyncMaster.class);
+        //syncIntent.putExtra("xmlPathForSync", Environment.getExternalStorageDirectory() + "/RSPLSFAXml/" + newfullFileName + ".xml");
+        syncIntent.putExtra("xmlPathForSync", Environment.getExternalStorageDirectory() + "/" + CommonInfo.OrderXMLFolder + "/" + newfullFileName + ".xml");
+        syncIntent.putExtra("OrigZipFileName", newfullFileName);
+        syncIntent.putExtra("whereTo", "Regular");
+        startActivity(syncIntent);
+        finish();
+
+    }
+
+    public String MakePrintRecipt(){
+
+        LinkedHashMap<String,ArrayList<String>>hmapWareHouseDetails=arrAllPrintResult.get(0);
+        LinkedHashMap<String,ArrayList<String>> hmapStoreBasicDetails=arrAllPrintResult.get(1);
+        LinkedHashMap<String,ArrayList<String>> hmapInvoiceRecodsToPrint=arrAllPrintResult.get(2);
+        LinkedHashMap<String,ArrayList<String>> hmapTotalBfrAftrTaxVal=arrAllPrintResult.get(3);
+        LinkedHashMap<String,ArrayList<String>> hmapTaxWisePrdctDtlt=arrAllPrintResult.get(4);
+        LinkedHashMap<String,ArrayList<String>> hmapOverAllProductOrderQtyValue=arrAllPrintResult.get(5);
+
+        //ware house details starts
+        ArrayList<String> arrListWarehouse=  hmapWareHouseDetails.get("WarehouseDetails");
+
+        String shopName=arrListWarehouse.get(0);
+        String shopAddress=arrListWarehouse.get(2);//",GT ROAD, NEAR STATE BANK, GOPIGANJ BHADOHI"
+        String placeOfSuppllyAddress=arrListWarehouse.get(3)+", "+arrListWarehouse.get(1)+", "+arrListWarehouse.get(4);//"BHADOHI, UTTARPRADESH,221409 ";
+        String phoneNumber=arrListWarehouse.get(5);//"9716082084";
+        String gstNumber=arrListWarehouse.get(6);//"1231222ASSSMM99";
+        //ware house details ends
+
+        //Store details starts
+        ArrayList<String> arrListStoreData=  hmapStoreBasicDetails.get("StoreDetails");
+        String custName=arrListStoreData.get(0);//"CHANCHAL PAN";
+        String custAddress= arrListStoreData.get(1);//"B-166/48 GANDHI  TRAFFIC CHAURAHA MISSION ROAD  ";
+        if(custAddress.length()>50){
+            custAddress=  insertPeriodically(custAddress,"^$",50);
+            String[] custAddress50Digit=custAddress.split(Pattern.quote("^$"));
+            StringBuilder stringBuilder=new StringBuilder();
+
+            for(int j=0;j<custAddress50Digit.length;j++){
+                String addersss=  custAddress50Digit[j];
+                stringBuilder.append(addersss);
+
+                if((j+1)==custAddress50Digit.length){
+                    //means in last line dont add \n beacause it will create more space
+                }
+                else{
+                    stringBuilder.append("\n");
+                }
+            }
+            custAddress=stringBuilder.toString();
+        }
+        String custStateCityPin=arrListStoreData.get(3)+", "+arrListStoreData.get(2)+", "+arrListStoreData.get(4);//"BHADOHI, UTTARPRADESH,210205";
+        String delNo=dbengine.fnGetExistingInvoiceNumberAgainstInvoiceNumebr(storeID,StoreVisitCode);//dbengine.fnGettblDeliveryNoteNumber();
+        //delNo=delNo+1;
+        String deliveryNumber=""+delNo;//"12345678900";
+
+        long  syncTIMESTAMP = System.currentTimeMillis();
+        Date dateobj = new Date(syncTIMESTAMP);
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss", Locale.ENGLISH);
+        String currentDateTime = df.format(dateobj);
+        String date=currentDateTime;//"09-Aug-2018-10:45:17 AM";
+        String compositeScheme=arrListWarehouse.get(7);//"No";//or yes
+        //Store details ends
+
+        String data="";
+        String TotalQty="0";
+        String TotalValue="0.00";
+        ArrayList<String>  arrOverAllProductOrderQtyValue= hmapOverAllProductOrderQtyValue.get("OverAllProductOrderQtyValue");
+        if((arrOverAllProductOrderQtyValue!=null) &&(arrOverAllProductOrderQtyValue.size()>0) ){
+            TotalQty=arrOverAllProductOrderQtyValue.get(0);
+            TotalValue=arrOverAllProductOrderQtyValue.get(1);
+
+        }
+
+
+        //loop for product
+        //Product details Starts
+        int i=1;
+        for(Map.Entry<String,ArrayList<String>> entry:hmapInvoiceRecodsToPrint.entrySet())
+        {
+
+            String storeID= entry.getKey().trim();
+            ArrayList<String> arrProductInvoiceDetailsForPrint= entry.getValue();
+            String sr = (i < 10 ? "0" : "") + i+" ";
+            i++;
+            String HSNCode=arrProductInvoiceDetailsForPrint.get(0);//"00000"+i;
+            String itemDscr=arrProductInvoiceDetailsForPrint.get(1).toString().trim();//"item-11111133"+i;
+            itemDscr= itemDscr .replace(Html.fromHtml("&nbsp;"),"");
+
+
+       /* Spanned itemDscr1=  Html.fromHtml(itemDscr);// itemDscr.replace("   ","");
+        itemDscr=  itemDscr.replace("  ","");*/
+
+       /* if(itemDscr.contains("  ") || itemDscr.contains("   ")){
+            if(itemDscr.contains("  ") ){
+                itemDscr=  itemDscr.replace("  ","");
+            }
+            if(itemDscr.contains("   ")){
+                itemDscr=   itemDscr.replace("   ","");
+            }
+        }*/
+            //String rate="\u20B9"+"50.00"+i;
+            double rate=0.0;
+            double ValueText=0.0;
+            if(!arrProductInvoiceDetailsForPrint.get(2).toString().trim().equals("")){
+                rate=Double.parseDouble(arrProductInvoiceDetailsForPrint.get(2).toString().trim());//""+"50.0"+i;
+            }
+
+            String taxRate=arrProductInvoiceDetailsForPrint.get(3);//"6%";
+            String Qty=arrProductInvoiceDetailsForPrint.get(4);//"10"+i;
+            // String ValueText="\u20B9"+"500.00"+i;
+            if(!arrProductInvoiceDetailsForPrint.get(5).toString().trim().equals("")){
+                ValueText=Double.parseDouble(arrProductInvoiceDetailsForPrint.get(5).toString().trim());//""+"500.0"+i;
+            }
+            if(itemDscr.length()>21){
+                itemDscr=  insertPeriodically(itemDscr,"^$",21);
+                if(itemDscr.contains("^$")){
+                    String[] itemDesc21Digit=itemDscr.split(Pattern.quote("^$"));
+                    for(int j=0;j<itemDesc21Digit.length;j++){
+                        String itemDscr2=  itemDesc21Digit[j];
+                        if(j==0){
+                            data = data + "\n" + String.format("%1$-11s %2$-21s %3$9s %4$5s %5$5s %6$9s", sr+HSNCode,itemDscr2,String.format("%.2f", rate), taxRate, Qty,String.format("%.2f", ValueText));
+                        }
+                        else{
+                            data = data + "\n" + String.format("%1$-11s %2$-21s %3$9s %4$5s %5$5s %6$9s", "",itemDscr2, "", "", "","");
+                        }
+
+                    }
+                }
+                else{
+                    data = data + "\n" + String.format("%1$-11s %2$-21s %3$9s %4$5s %5$5s %6$9s", sr+HSNCode,itemDscr, String.format("%.2f", rate), taxRate, Qty,String.format("%.2f", ValueText));
+                }
+
+            }
+            else{
+                data = data + "\n" + String.format("%1$-11s %2$-21s %3$9s %4$5s %5$5s %6$9s", sr+HSNCode,itemDscr, String.format("%.2f", rate), taxRate, Qty,String.format("%.2f", ValueText));
+            }
+
+
+
+        }
+        //Product details Ends
+
+        //Tax details Starts
+        ArrayList<String> arrTaxWisePrdctDtlt=  hmapTotalBfrAftrTaxVal.get("TotalInvoiceBeforeAfterTax");
+        double valueBeforeTax=0.0;
+        double valueAfterTax=0.0;
+        if(!arrTaxWisePrdctDtlt.get(0).equals("")){
+            valueBeforeTax=Double.parseDouble(arrTaxWisePrdctDtlt.get(0));//"1000.00";
+        }
+        if(!arrTaxWisePrdctDtlt.get(1).equals("")){
+            valueAfterTax=Double.parseDouble(arrTaxWisePrdctDtlt.get(1));//"1040.00";
+        }
+
+
+        //loop for tax
+        String taxData="";
+        int  length=2;
+        double totalTaxValue=0.0;
+        for(Map.Entry<String,ArrayList<String>> entry:hmapTaxWisePrdctDtlt.entrySet())
+        {
+            String taxPercent= entry.getKey().trim();
+            ArrayList<String> arrTaxValue= entry.getValue();
+            String tax=taxPercent;//"5% Tax";
+            double taxAmount=Double.parseDouble(arrTaxValue.get(0));//"20.00";
+            totalTaxValue=totalTaxValue+taxAmount;
+            if(hmapTaxWisePrdctDtlt.size()>1){
+                taxData = taxData +"\n"+ String.format("%1$-11s %2$-21s %3$9s %4$3s %5$13s %6$3s",  "", tax, "","",String.format("%.2f", taxAmount), "");
+            }
+            else{
+                taxData = taxData +"\n"+  String.format("%1$-11s %2$-21s %3$9s %4$3s %5$3s %6$13s",  "", tax, "","","", String.format("%.2f", taxAmount));
+            }
+
+
+
+        }
+
+        String totalTax=""+String.format("%.2f", totalTaxValue);//"40.00";
+        if(hmapTaxWisePrdctDtlt.size()>1){
+            taxData = taxData +"\n"+ String.format("%1$-11s %2$-21s %3$9s %4$3s %5$13s %6$3s",  "", "Tax Value", "","",totalTax, "");
+        }
+        //Tax details Ends
+        //loop for tax end
+
+        //OutStandingsDetails Starts here
+        ArrayList<String> arrCollectionDetailsForPrint=   fnGetOutStandingDetailsForPrint();
+        String PreviousOutStandings= arrCollectionDetailsForPrint.get(0);//"150.00";
+        String currentInvoice=arrCollectionDetailsForPrint.get(1);//"1040.00";
+        String collection=arrCollectionDetailsForPrint.get(2);//"500.00";
+        String currentOutStanding=arrCollectionDetailsForPrint.get(3);//"750.00";
+        //OutStandingsDetails Ends here
+
+        String BILL = "";
+        BILL = BILL + "\n"+
+                "-----------------------------------------------------------------\n" +
+                "                          "+shopName+"                           \n" +
+                ""+shopAddress+"      \n" +
+                ""+ placeOfSuppllyAddress+" \n";
+        BILL = BILL
+                + "Phone: "+ phoneNumber+ "  GSTIN. No.:"+ gstNumber+" \n";
+        BILL = BILL
+                + "-----------------------------------------------------------------\n";
+
+        BILL = BILL
+                + "                          "+custName+"                            \n";
+        BILL = BILL
+                + ""+custAddress+"\n";
+        BILL = BILL
+                + ""+custStateCityPin+"\n";
+        BILL = BILL
+                + "DELIVERY  NO: "+ deliveryNumber+ "\n";
+        BILL = BILL
+                + "DATE:  "+ date+ "\n";
+
+        BILL = BILL + "Register under composite scheme? "+ compositeScheme+"\n";
+
+        BILL = BILL
+                + "-----------------------------------------------------------------\n";
+
+
+        BILL = BILL + String.format("%1$-11s %2$-21s %3$9s %4$5s %5$5s %6$9s", "Sr HSNCode","Item Descr", "Rate ", "TaxRt", "Qty","Value");
+        BILL = BILL + "\n";
+        BILL = BILL
+                + "-----------------------------------------------------------------";
+   /* BILL = BILL + "\n" + String.format("%1$-12s %2$-25s %3$6s %4$5s %5$4s %6$7s", "01 111111","item-111111", "\u20B9"+"50", "6%", "10","200.00");
+
+    BILL = BILL + "\n" + String.format("%1$-12s %2$-25s %3$6s %4$5s %5$4s %6$5s", "01 111111","item-11", "\u20B9"+"50", "6%", "10","₹200.00");
+    BILL = BILL + "\n" + String.format("%1$-12s %2$-25s %3$6s %4$5s %5$4s %6$5s", "01 111111","item-111111333", "\u20B9"+"50", "6%", "10","200.00");
+    BILL = BILL + "\n" + String.format("%1$-12s %2$-25s %3$6s %4$5s %5$4s %6$5s", "01 111111","item-111455555555", "\u20B9"+"50", "6%", "10","200.00");
+    */
+        BILL = BILL +data;
+
+        BILL = BILL + "\n";
+        BILL = BILL
+                + "-----------------------------------------------------------------\n";
+        BILL = BILL + String.format("%1$-11s %2$-21s %3$9s %4$5s %5$5s %6$9s", "","Total               ", "", "", TotalQty,TotalValue);
+        BILL = BILL + "\n";
+        BILL = BILL
+                + "-----------------------------------------------------------------\n";
+        BILL = BILL
+                + "                           Tax Details                            \n";
+
+        BILL = BILL
+                + "-----------------------------------------------------------------\n";
+        BILL = BILL  + String.format("%1$-11s %2$-21s %3$9s %4$3s %5$3s %6$13s",  "", "Value Before Tax", "","","",String.format("%.2f", valueBeforeTax) );
+
+        BILL=BILL+taxData;
+        BILL = BILL + "\n";
+        BILL = BILL  + String.format("%1$-11s %2$-21s %3$9s %4$3s %5$3s %6$13s",  "", "Value After Tax", "","","",String.format("%.2f", valueAfterTax) );
+        BILL = BILL + "\n";
+        BILL = BILL
+                + "-----------------------------------------------------------------\n";
+        BILL = BILL
+                + "                       OutStanding(s) Details                    \n";
+        BILL = BILL
+                + "-----------------------------------------------------------------\n";
+
+        BILL = BILL +"\n" + String.format("%1$-8s %2$-24s %3$9s %4$3s %5$3s %6$13s",  "", "Previous OutStanding(s)", "","","", PreviousOutStandings);
+        BILL = BILL +"\n" + String.format("%1$-8s %2$-24s %3$9s %4$3s %5$3s %6$13s",  "", "Current Invoice", "","","", currentInvoice);
+        BILL = BILL +"\n" + String.format("%1$-8s %2$-24s %3$9s %4$3s %5$3s %6$13s",  "", "Collection", "","","", collection);
+        BILL = BILL +"\n" + String.format("%1$-8s %2$-24s %3$9s %4$3s %5$3s %6$13s",  "", "Current OutStanding(s)", "","","", currentOutStanding);
+        BILL = BILL + "\n";
+        BILL = BILL
+                + "-----------------------------------------------------------------\n";
+
+        BILL = BILL
+                + "                           *Thank You*                            \n";
+        BILL = BILL
+                + "-----------------------------------------------------------------\n";
+        BILL = BILL + "";
+        System.out.println("SHIVAMJAYSAWAL"+BILL);
+        return BILL;
+    }
+    public void onActivityResult(int mRequestCode, int mResultCode,
+                                 Intent mDataIntent) {
+        super.onActivityResult(mRequestCode, mResultCode, mDataIntent);
+
+        switch (mRequestCode) {
+            case REQUEST_CONNECT_DEVICE:
+                if (mResultCode == Activity.RESULT_OK) {
+                    Bundle mExtra = mDataIntent.getExtras();
+                    String mDeviceAddress = mExtra.getString("DeviceAddress");
+                    Log.v(TAG, "Coming incoming address " + mDeviceAddress);
+                    mBluetoothDevice = mBluetoothAdapter
+                            .getRemoteDevice(mDeviceAddress);
+                    long interval = 200;
+                    long startTime = 25000;
+                    countDownTimer = new CoundownClass(startTime, interval);
+                    countDownTimer.start();
+                    mBluetoothConnectProgressDialog = ProgressDialog.show(this,
+                            "Connecting...", mBluetoothDevice.getName() + " : "
+                                    + mBluetoothDevice.getAddress(), true, false);
+                    Thread mBlutoothConnectThread = new Thread(this);
+                    mBlutoothConnectThread.start();
+                    // pairToDevice(mBluetoothDevice); This method is replaced by
+                    // progress dialog with thread
+                }
+                break;
+
+            case REQUEST_ENABLE_BT:
+                if (mResultCode == Activity.RESULT_OK) {
+                    ListPairedDevices();
+                    Intent connectIntent = new Intent(CollectionActivityNew.this,
+                            DeviceListActivity.class);
+                    startActivityForResult(connectIntent, REQUEST_CONNECT_DEVICE);
+                } else {
+                    Toast.makeText(CollectionActivityNew.this, "Message", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
+    }
+    private void ListPairedDevices() {
+        Set<BluetoothDevice> mPairedDevices = mBluetoothAdapter
+                .getBondedDevices();
+        if (mPairedDevices.size() > 0) {
+            for (BluetoothDevice mDevice : mPairedDevices) {
+                Log.v(TAG, "PairedDevices: " + mDevice.getName() + "  "
+                        + mDevice.getAddress());
+            }
+        }
+    }
+    public void run() {
+        try {
+            mBluetoothSocket = mBluetoothDevice
+                    .createRfcommSocketToServiceRecord(applicationUUID);
+            mBluetoothAdapter.cancelDiscovery();
+            mBluetoothSocket.connect();
+            mHandler.sendEmptyMessage(0);
+        } catch (IOException eConnectException) {
+            Log.d(TAG, "CouldNotConnectToSocket", eConnectException);
+            closeSocket(mBluetoothSocket);
+            return;
+        }
+    }
+
+    private void closeSocket(BluetoothSocket nOpenSocket) {
+        try {
+            nOpenSocket.close();
+            Log.d(TAG, "SocketClosed");
+        } catch (IOException ex) {
+            Log.d(TAG, "CouldNotCloseSocket");
+        }
+    }
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            mBluetoothConnectProgressDialog.dismiss();
+            if((countDownTimer!=null)){
+                countDownTimer.cancel();
+            }
+
+            Toast.makeText(CollectionActivityNew.this, "DeviceConnected", Toast.LENGTH_SHORT).show();
+            flgOnlySubmitOrPrint=1;
+            saveDataToDatabase();
+                                      /* FullSyncDataNow task = new FullSyncDataNow(CollectionActivityNew.this);
+                                       task.execute();*/
+
+
+            butClickForGPS=3;
+
+
+            dbengine.open();
+            if ((dbengine.PrevLocChk(storeID.trim(),StoreVisitCode)) )
+            {
+                dbengine.close();
+
+                FullSyncDataNow task = new FullSyncDataNow(CollectionActivityNew.this);
+                task.execute();
+            }
+            else
+            {
+                dbengine.close();
+                appLocationService=new AppLocationService();
+
+								/* pm = (PowerManager) getSystemService(POWER_SERVICE);
+								   wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK
+							                | PowerManager.ACQUIRE_CAUSES_WAKEUP
+							                | PowerManager.ON_AFTER_RELEASE, "INFO");
+							        wl.acquire();*/
+
+
+                pDialog2STANDBY=ProgressDialog.show(CollectionActivityNew.this,getText(R.string.genTermPleaseWaitNew) ,getText(R.string.genTermRetrivingLocation), true);
+                pDialog2STANDBY.setIndeterminate(true);
+
+                pDialog2STANDBY.setCancelable(false);
+                pDialog2STANDBY.show();
+
+                if(isGooglePlayServicesAvailable()) {
+                    createLocationRequest();
+
+                    mGoogleApiClient = new GoogleApiClient.Builder(CollectionActivityNew.this)
+                            .addApi(LocationServices.API)
+                            .addConnectionCallbacks(CollectionActivityNew.this)
+                            .addOnConnectionFailedListener(CollectionActivityNew.this)
+                            .build();
+                    mGoogleApiClient.connect();
+                }
+                //startService(new Intent(DynamicActivity.this, AppLocationService.class));
+                startService(new Intent(CollectionActivityNew.this, AppLocationService.class));
+                Location nwLocation=appLocationService.getLocation(locationManager,LocationManager.GPS_PROVIDER,location);
+                Location gpsLocation=appLocationService.getLocation(locationManager,LocationManager.NETWORK_PROVIDER,location);
+                countDownTimer2 = new CoundownClass2(startTime, interval);
+                countDownTimer2.start();
+
+
+                // LocationRetreivingGlobal llaaa=new LocationRetreivingGlobal();
+                // llaaa.locationRetrievingAndDistanceCalculating(CollectionActivityNew.this,false,20);
+
+
+            }
+
+
+
+        }
+    };
+
+    public static byte intToByteArray(int value) {
+        byte[] b = ByteBuffer.allocate(4).putInt(value).array();
+
+        for (int k = 0; k < b.length; k++) {
+            System.out.println("Selva  [" + k + "] = " + "0x"
+                    + UnicodeFormatter.byteToHex(b[k]));
+        }
+
+        return b[3];
+    }
+    @Override
+    protected void onDestroy() {
+        // TODO Auto-generated method stub
+        super.onDestroy();
+        try {
+            if((countDownTimer!=null)&& (mBluetoothConnectProgressDialog!=null)){
+
+                if(mBluetoothConnectProgressDialog.isShowing()){
+                    mBluetoothConnectProgressDialog.dismiss();
+                    countDownTimer.cancel();
+                }
+            }
+            if (mBluetoothSocket != null)
+                mBluetoothSocket.close();
+        } catch (Exception e) {
+            Log.e("Tag", "Exe ", e);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        try {
+            if((countDownTimer!=null)&& (mBluetoothConnectProgressDialog!=null)){
+
+                if(mBluetoothConnectProgressDialog.isShowing()){
+                    mBluetoothConnectProgressDialog.dismiss();
+                    countDownTimer.cancel();
+                }
+            }
+            if (mBluetoothSocket != null)
+                mBluetoothSocket.close();
+        } catch (Exception e) {
+            Log.e("Tag", "Exe ", e);
+        }
+        setResult(RESULT_CANCELED);
+        finish();
+    }
+
+    public  String insertPeriodically(
+            String text, String insert, int period)
+    {
+        StringBuilder builder = new StringBuilder(
+                text.length() + insert.length() * (text.length()/period)+1);
+
+        int index = 0;
+        String prefix = "";
+        while (index < text.length())
+        {
+            // Don't put the insert in the very first iteration.
+            // This is easier than appending it *after* each substring
+            builder.append(prefix);
+            prefix = insert;
+            builder.append(text.substring(index,
+                    Math.min(index + period, text.length())));
+            index += period;
+        }
+        return builder.toString();
+    }
+    public ArrayList<String> fnGetOutStandingDetailsForPrint()
+    {
+
+
+        ArrayList<String> arrCollectionDetailsForPrint=new ArrayList<String>();
+
+        if(TextUtils.isEmpty(totaltextview.getText().toString().replace(":","").trim()))
+        {
+            curntCol=0.0;
+        }
+        else
+        {
+            curntCol=Double.parseDouble(totaltextview.getText().toString().replace(":","").trim()) ;
+            curntCol=Double.parseDouble(new DecimalFormat("##.##").format(curntCol));
+        }
+
+
+
+        Double outstandingvalue=dbengine.fnGetStoretblLastOutstanding(storeID);
+        outstandingvalue=Double.parseDouble(new DecimalFormat("##.##").format(outstandingvalue));
+
+
+        Double cntInvoceValue=dbengine.fetch_Store_InvValAmount(storeID,TmpInvoiceCodePDA);
+        cntInvoceValue=Double.parseDouble(new DecimalFormat("##.##").format(cntInvoceValue));
+
+
+
+        Double cntAllOustandings=dbengine.fetch_Store_AllOustandings(storeID);
+        cntAllOustandings=Double.parseDouble(new DecimalFormat("##.##").format(cntAllOustandings));
+
+        arrCollectionDetailsForPrint.add(""+ String.format("%.2f", outstandingvalue));
+        arrCollectionDetailsForPrint.add(""+String.format("%.2f", cntInvoceValue));
+        arrCollectionDetailsForPrint.add(""+String.format("%.2f", curntCol));
+        Double fnOutStand=outstandingvalue+cntInvoceValue-curntCol;
+        fnOutStand=Double.parseDouble(new DecimalFormat("##.##").format(fnOutStand));
+        arrCollectionDetailsForPrint.add(""+String.format("%.2f", fnOutStand));
+
+        return arrCollectionDetailsForPrint;
     }
 }

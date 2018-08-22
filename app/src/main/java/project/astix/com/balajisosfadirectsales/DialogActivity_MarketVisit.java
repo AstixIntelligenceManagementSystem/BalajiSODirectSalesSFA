@@ -74,7 +74,7 @@ import java.util.regex.Pattern;
 
 public class DialogActivity_MarketVisit extends BaseActivity implements LocationListener,GoogleApiClient.ConnectionCallbacks,GoogleApiClient.OnConnectionFailedListener
 {
-
+    int flgDrctslsIndrctSls=0;
     int flgOwnRouteClick=0;
     String whereTo = "11";
     ProgressDialog pDialog2;
@@ -1721,8 +1721,19 @@ private void marketVisitGetRoutesClick(){
         {
 
             // ServiceWorker newservice=new ServiceWorker();
+            String RouteType="0";
+            try
+            {
+                dbengine.open();
+                RouteType=dbengine.FetchRouteType(rID);
+                dbengine.close();
+                dbengine.deleteAllSingleCallWebServiceTableWhole();
+            }
+            catch(Exception e)
+            {
 
-            for(int mm = 1; mm<8; mm++) {
+            }
+            for(int mm = 1; mm<44; mm++) {
                 if (mm == 1) {
                     newservice = newservice.fnGetStockUploadedStatus(getApplicationContext(), fDate, imei);
 
@@ -1731,13 +1742,199 @@ private void marketVisitGetRoutesClick(){
 
                     }
                 }
-                if (mm == 2) {
+                if (mm == 7) {
                     newservice = newservice.fnGetVanStockData(getApplicationContext(), CommonInfo.imei);
                     if (newservice.flagExecutedServiceSuccesfully != 39) {
                         serviceException = true;
                     }
 
                 }
+                if(mm==2)
+                {
+
+                    newservice = newservice.getallProduct(getApplicationContext(), fDate, imei, rID,RouteType);
+                    if(newservice.flagExecutedServiceSuccesfully!=2)
+                    {
+                        serviceException=true;
+                        break;
+                    }
+                }
+                if(mm==3)
+                {
+
+                    newservice = newservice.getCategory(getApplicationContext(), imei);
+                    if(newservice.flagExecutedServiceSuccesfully!=3)
+                    {
+                        serviceExceptionCode=" for Category and Error Code is : "+newservice.exceptionCode;
+                        serviceException=true;
+                        break;
+                    }
+
+                }
+                if(mm==8)
+                {
+                    newservice = newservice.getfnGetStoreWiseTarget(getApplicationContext(), fDate, imei, rID,RouteType);
+                }
+                if(mm==9)
+                {
+                    newservice = newservice.fnGetPDACollectionMaster(getApplicationContext(), fDate, imei, rID);
+                    if(newservice.flagExecutedServiceSuccesfully!=40)
+                    {
+                        serviceExceptionCode=" for Collection and Error Code is : "+newservice.exceptionCode;
+                        System.out.println("GRLTyre = "+mm);
+                        serviceException=true;
+                        break;
+                    }
+                }
+                if(mm==21)
+                {
+                    newservice = newservice.GetPDAIsSchemeApplicable(getApplicationContext(), fDate, imei, rID,RouteType);
+                      /*  if(newservice.flagExecutedServiceSuccesfully!=21)
+                        {
+                            serviceException=true;
+                            break;
+                        }*/
+
+                }
+                if(mm==29)
+                {
+                    newservice = newservice.GetLODDetailsOnLastSalesSummary(getApplicationContext(), fDate, imei, rID,RouteType);
+                    if(newservice.flagExecutedServiceSuccesfully!=29)
+                    {
+                        serviceExceptionCode=" for last summary and Error Code is : "+newservice.exceptionCode;
+                        serviceException=true;
+                        break;
+                    }
+                }
+
+                if(mm==31)
+                {
+                    newservice = newservice.GetCallspForPDAGetLastVisitDate(getApplicationContext(), fDate, imei, rID,RouteType);
+                    if(newservice.flagExecutedServiceSuccesfully!=31)
+                    {
+
+                        serviceExceptionCode=" for last visit and Error Code is : "+newservice.exceptionCode;
+                        serviceException=true;
+                        break;
+                    }
+                }
+                if(mm==32)
+                {
+                    newservice = newservice.GetCallspForPDAGetLastOrderDate(getApplicationContext(), fDate, imei, rID,RouteType);
+                    if(newservice.flagExecutedServiceSuccesfully!=32)
+                    {
+                        serviceExceptionCode=" for last order's and Error Code is : "+newservice.exceptionCode;
+                        serviceException=true;
+                        break;
+                    }
+                }
+                if(mm==33)
+                {
+                    newservice = newservice.GetCallspForPDAGetLastVisitDetails(getApplicationContext(), fDate, imei, rID,RouteType);
+                    if(newservice.flagExecutedServiceSuccesfully!=33)
+                    {
+                        serviceExceptionCode=" for last visit's and Error Code is : "+newservice.exceptionCode;
+                        serviceException=true;
+                        break;
+                    }
+                }
+                if(mm==34)
+                {
+                    newservice = newservice.GetCallspForPDAGetLastOrderDetails(getApplicationContext(), fDate, imei, rID,RouteType);
+                    if(newservice.flagExecutedServiceSuccesfully!=34)
+                    {
+                        serviceExceptionCode=" for last order detials and Error Code is : "+newservice.exceptionCode;
+                        serviceException=true;
+                        break;
+                    }
+                }
+                if(mm==35)
+                {
+                    newservice = newservice.GetCallspForPDAGetLastOrderDetails_TotalValues(getApplicationContext(), fDate, imei, rID,RouteType);
+                    if(newservice.flagExecutedServiceSuccesfully!=35)
+                    {
+                        serviceExceptionCode=" for last order total values and Error Code is : "+newservice.exceptionCode;
+                        serviceException=true;
+                        break;
+                    }
+                }
+                if(mm==36)
+                {
+                    newservice = newservice.GetCallspForPDAGetExecutionSummary(getApplicationContext(), fDate, imei, rID,RouteType);
+                    if(newservice.flagExecutedServiceSuccesfully!=36)
+                    {
+                        serviceExceptionCode=" for execution summary and Error Code is : "+newservice.exceptionCode;
+                        serviceException=true;
+                        break;
+                    }
+                }
+
+                if(mm==37)
+                {
+                     /*   newservice = newservice.getQuotationDataFromServer(getApplicationContext(), fDate, imei, rID);
+                        if(newservice.flagExecutedServiceSuccesfully!=37)
+                        {
+                            serviceException=true;
+                            break;
+                        }*/
+                }
+
+                if(mm==38)
+                {
+                 /*      newservice=newservice.fnGetDistStockData(getApplicationContext(),imei);
+                        if(newservice.flagExecutedServiceSuccesfully!=38)
+                        {
+                            serviceException=true;
+                            break;
+                        }
+*/
+                }
+
+
+                if(mm==39)
+                {
+                      /* newservice=newservice.fnGetVanStockData(getApplicationContext(),imei);
+                        if(newservice.flagExecutedServiceSuccesfully!=39)
+                        {
+                            serviceException=true;
+                            break;
+                        }*/
+                    newservice = newservice.getProductListLastVisitStockOrOrderMstr(getApplicationContext(), fDate, imei, rID);
+                    if(newservice.flagExecutedServiceSuccesfully!=1)
+                    {
+                        serviceException=true;
+                        break;
+                    }
+                }
+
+                if(mm==40)
+                {
+
+                    newservice = newservice.getStoreWiseOutStandings(getApplicationContext(), fDate, imei, rID,RouteType);
+                       /* if(newservice.flagExecutedServiceSuccesfully!=1)
+                        {
+                            serviceException=true;
+                            break;
+                        }*/
+                }
+
+                if(mm==41)
+                {
+
+                    newservice = newservice.getInvoiceCaption(getApplicationContext(), fDate, imei, rID,RouteType);
+
+                }
+                if(mm==43)
+                {
+                    newservice = newservice.getProductListLastVisitStockOrOrderMstr(getApplicationContext(), fDate, imei, rID);
+                    if(newservice.flagExecutedServiceSuccesfully!=1)
+                    {
+                        serviceException=true;
+                        break;
+                    }
+                }
+
+
             }
 
 
@@ -1769,7 +1966,8 @@ private void marketVisitGetRoutesClick(){
                 showAlertStockOut(getResources().getString(R.string.genTermNoDataConnection),getResources().getString(R.string.AlertVANStockStockOut)); // message change by Avinash Sir on 3 Aug 2018 on Paras SO SFA
                 //   Toast.makeText(AllButtonActivity.this,"Error while retrieving data.",Toast.LENGTH_SHORT).show();
             }
-            else if(dbengine.flgConfirmedWareHouse()==0 && flgOwnRouteClick==1)
+           // else if((dbengine.flgConfirmedWareHouse()==0 && flgOwnRouteClick==1) && (flgDrctslsIndrctSls==1))
+            else if((dbengine.flgConfirmedWareHouse()==0 && flgOwnRouteClick==1) )
             {
                 dismissProgress();
                 flgOwnRouteClick=0;

@@ -6299,6 +6299,7 @@ String RouteType="0";
 				int ManufacturerID=0;
 				String rptUnitName="";
 				String perbaseUnit="0";
+				String HSNCode="";
 				Element element = (Element) tblPrdctMstrNode.item(i);
 
 				if(!element.getElementsByTagName("CatID").equals(null))
@@ -6475,8 +6476,22 @@ String RouteType="0";
 					}
 				}
 
+				if(!element.getElementsByTagName("HSNCode").equals(null))
+				{
+
+					NodeList HSNCodeNode = element.getElementsByTagName("HSNCode");
+					Element     line = (Element) HSNCodeNode.item(0);
+
+					if(HSNCodeNode.getLength()>0)
+					{
+
+						HSNCode=xmlParser.getCharacterDataFromElement(line);
+
+					}
+				}
+
 				//SearchField
-				dbengine.saveSOAPdataProductList(CatID,ProductID,ProductShortName,DisplayUnit,CalculateKilo,KGLiter,CatOrdr,PrdOrdr,StoreCatNodeId,SearchField,ManufacturerID,rptUnitName,perbaseUnit);
+				dbengine.saveSOAPdataProductList(CatID,ProductID,ProductShortName,DisplayUnit,CalculateKilo,KGLiter,CatOrdr,PrdOrdr,StoreCatNodeId,SearchField,ManufacturerID,rptUnitName,perbaseUnit,HSNCode);
 
 
 			}
@@ -7507,7 +7522,7 @@ String RouteType="0";
 		this.context = ctx;
 
 		ServiceWorker setmovie = new ServiceWorker();
-		/*PRJDatabase dbengine = new PRJDatabase(context);
+		PRJDatabase dbengine = new PRJDatabase(context);
 		dbengine.open();
 		
 		final String SOAP_ACTION = "http://tempuri.org/GetCategoryMstr";
@@ -7668,10 +7683,9 @@ String RouteType="0";
 			dbengine.close();
 			return setmovie;
 		}
-*/
-		setmovie.director = "1";
+		/*setmovie.director = "1";
 		flagExecutedServiceSuccesfully=3;
-		return setmovie;
+		return setmovie;*/
 	}
 	public ServiceWorker getalllastTransactionDetails(Context ctx, String dateVAL, String uuid, String rID) {
 		this.context = ctx;
@@ -18970,8 +18984,8 @@ String RouteType="0";
 			Document doc = db.parse(is);
 
 			dbengine.deleteCompleteDataDistStock();
-			dbengine.Delete_tblProductList_for_refreshData();
-			dbengine.Delete_tblCategory_for_refreshData();
+			//dbengine.Delete_tblProductList_for_refreshData();
+			//dbengine.Delete_tblCategory_for_refreshData();
 
 			NodeList tblCycleIDNode = doc.getElementsByTagName("tblCycleID");
 			for (int i = 0; i < tblCycleIDNode.getLength(); i++)
@@ -19270,7 +19284,7 @@ int flgProcessedInvoice=0;
 
 
 
-			NodeList tblPrdctMstrNode = doc.getElementsByTagName("tblProductListMaster");
+			/*NodeList tblPrdctMstrNode = doc.getElementsByTagName("tblProductListMaster");
 			for (int i = 0; i < tblPrdctMstrNode.getLength(); i++)
 
 			{
@@ -19812,7 +19826,7 @@ int flgProcessedInvoice=0;
 
 				dbengine.saveCategory(stID.trim(), deDescr.trim(),CatOrdr);
 				//System.out.println("Column DESC TBL..."+IncId+"-"+ReportColumnName+"-"+DisplayColumnName);
-			}
+			}*/
 			flagExecutedServiceSuccesfully=39;
 
 
@@ -22356,6 +22370,12 @@ int flgProcessedInvoice=0;
 				String latCode="0";
 				String LongCode="0";
 				String flgMapped="0";
+				String State="NA";
+				String Address="NA";
+				String City="NA";
+				String PinCode="NA";
+				String PhoneNo="NA";
+				String TaxNumber="NA";
 
 				Element element = (Element) tblDistributorListForSONode.item(i);
 				if(!element.getElementsByTagName("NodeID").equals(null))
@@ -22412,13 +22432,66 @@ int flgProcessedInvoice=0;
 						flgMapped=xmlParser.getCharacterDataFromElement(line);
 					}
 				}
-
+				if(!element.getElementsByTagName("Address").equals(null))
+				{
+					NodeList AddressNode = element.getElementsByTagName("Address");
+					Element     line = (Element) AddressNode.item(0);
+					if (AddressNode.getLength()>0)
+					{
+						Address=xmlParser.getCharacterDataFromElement(line);
+					}
+				}
+				if(!element.getElementsByTagName("State").equals(null))
+				{
+					NodeList StateNode = element.getElementsByTagName("State");
+					Element     line = (Element) StateNode.item(0);
+					if (StateNode.getLength()>0)
+					{
+						State=xmlParser.getCharacterDataFromElement(line);
+					}
+				}
+				if(!element.getElementsByTagName("City").equals(null))
+				{
+					NodeList CityNode = element.getElementsByTagName("City");
+					Element     line = (Element) CityNode.item(0);
+					if (CityNode.getLength()>0)
+					{
+						City=xmlParser.getCharacterDataFromElement(line);
+					}
+				}
+				if(!element.getElementsByTagName("PinCode").equals(null))
+				{
+					NodeList PinCodeNode = element.getElementsByTagName("PinCode");
+					Element     line = (Element) PinCodeNode.item(0);
+					if (PinCodeNode.getLength()>0)
+					{
+						PinCode=xmlParser.getCharacterDataFromElement(line);
+					}
+				}
+				if(!element.getElementsByTagName("PhoneNo").equals(null))
+				{
+					NodeList PhoneNoNode = element.getElementsByTagName("PhoneNo");
+					Element     line = (Element) PhoneNoNode.item(0);
+					if (PhoneNoNode.getLength()>0)
+					{
+						PhoneNo=xmlParser.getCharacterDataFromElement(line);
+					}
+				}
+				if(!element.getElementsByTagName("TaxNumber").equals(null))
+				{
+					NodeList TaxNumberNode = element.getElementsByTagName("TaxNumber");
+					Element     line = (Element) TaxNumberNode.item(0);
+					if (TaxNumberNode.getLength()>0)
+					{
+						TaxNumber=xmlParser.getCharacterDataFromElement(line);
+					}
+				}
 				//flgMapped="1";
 
 
-				dbengine.saveWarehouseMstrData(Integer.parseInt(NodeID),Integer.parseInt(NodeType),Descr,latCode,LongCode,Integer.parseInt(flgMapped));
+				dbengine.saveWarehouseMstrData(Integer.parseInt(NodeID),Integer.parseInt(NodeType),Descr,latCode,LongCode,Integer.parseInt(flgMapped),Address,State,City,PinCode,PhoneNo,TaxNumber);
 
-				}
+			}
 
 
 

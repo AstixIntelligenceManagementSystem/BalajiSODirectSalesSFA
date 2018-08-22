@@ -51,9 +51,12 @@ public class PRJDatabase
     private static final String DATABASE_CREATE_TABLE_tblRouteMasterWithCoverageMapping = "create table tblRouteMasterWithCoverageMapping (CoverageAreaNodeID int null,CoverageAreaNodeType int null,CoverageArea text null,RouteID int null,RouteType int null,Route text null);";
 
     // WareHouse Mapping
+
+
+
     private static final String TABLE_tblWarehouseMstr = "tblWarehouseMstr";
-    private static final String DATABASE_CREATE_TABLE_tblWarehouseMstr = "create table tblWarehouseMstr(NodeID int null," +
-            "NodeType int null,Descr text null,latCode text null,LongCode text null,flgMapped int null);";
+    private static final String DATABASE_CREATE_TABLE_tblWarehouseMstr = "create table tblWarehouseMstr(NodeID int null,NodeType int null,Descr text null,latCode text null,LongCode text null,flgMapped int null,Address text null,State text null,City text null,PinCode text null,PhoneNo text null,TaxNumber text null);";
+
 
     private static final String TABLE_tblWarehouseMapping="tblWarehouseMapping";
     private static final String DATABASE_CREATE_TABLE_tblWarehouseMapping="create table tblWarehouseMapping(" +
@@ -505,7 +508,7 @@ public class PRJDatabase
     private static final String DATABASE_CREATE_TABLE_11 = "create table tblPdaDate (PdaDate text null);";
     private static final String DATABASE_CREATE_TABLE_12 = "create table tblDayStartEndDetails (IMEINo text null,SyncTime text null,RouteID text null,EndTime text null,DayEndFlag int null,ChangeRouteFlg int null,ForDate text null,AppVersionID string null,Sstat int null);";//,AppVersionID int null//, VersionNo string null
     private static final String DATABASE_CREATE_TABLE_13 = "create table tblStoreList(IMEINumber text null,AutoIdStore INTEGER PRIMARY KEY AUTOINCREMENT not null,StoreID text not null, StoreName string not null,OwnerName text null,StoreContactNo text null,StoreAddress text null,StoreType string not null,chainID integer null,StoreLatitude real not null, StoreLongitude real not null, LastVisitDate string not null, LastTransactionDate string not null, Sstat integer not null,ISNewStore int null,StoreRouteID int null,RouteNodeType int null,StoreCatNodeId int null,PaymentStage text null,flgHasQuote int null,flgAllowQuotation int null,flgGSTCapture text null,flgGSTCompliance text null,GSTNumber text null,flgGSTRecordFromServer int null,DistanceNear int null,flgStoreOrder int null,StoreCity text null,StorePinCode text not null,StoreState text null,OutStanding float null,OverDue float null,DBR text null,flgRuleTaxVal integer null,flgTransType integer null,StoreCatType text null,IsNewStoreDataCompleteSaved int null,StoreClose int null,SalesPersonName text null,SalesPersonContact text null,CoverageAreaNodeID integer null,CoverageAreaNodeType integer null,FlgDSRSO integer null);";//
-    private static final String DATABASE_CREATE_TABLE_14 = "create table tblProductList(CategoryID text  null,ProductID text  null, ProductShortName text  null, DisplayUnit text null, CalculateKilo real  null,ProductMRP real null, ProductRLP real null, ProductTaxAmount real null, KGLiter string null,RetMarginPer real null,VatTax real null,StandardRate real null,StandardRateBeforeTax real null,StandardTax real null,CatOrdr int null,PrdOrdr int null,StoreCatNodeId int null,SearchField text null,ManufacturerID int null,RptUnitName text null,PerbaseUnit text null);";
+    private static final String DATABASE_CREATE_TABLE_14 = "create table tblProductList(CategoryID text  null,ProductID text  null, ProductShortName text  null, DisplayUnit text null, CalculateKilo real  null,ProductMRP real null, ProductRLP real null, ProductTaxAmount real null, KGLiter string null,RetMarginPer real null,VatTax real null,StandardRate real null,StandardRateBeforeTax real null,StandardTax real null,CatOrdr int null,PrdOrdr int null,StoreCatNodeId int null,SearchField text null,ManufacturerID int null,RptUnitName text null,PerbaseUnit text null,HSNCode text null);";
     private static final String DATABASE_CREATE_TABLE_ProductSegementMap = "create table tblProductSegementMap(ProductID text  null,ProductMRP real not null, ProductRLP real not null, ProductTaxAmount real not null,RetMarginPer real null,VatTax real null,StandardRate real null,StandardRateBeforeTax real null,StandardTax real null,BusinessSegmentId int null,flgPriceAva int null,flgWholeSellApplicable int null,PriceRangeWholeSellApplicable real null,StandardRateWholeSale real null,StandardRateBeforeTaxWholeSell real null,StandardTaxWholeSale real null);";
 
 
@@ -13697,7 +13700,7 @@ open();
 			Double RetMarginPer, Double VatTax,Double StandardRate,Double StandardRateBeforeTax,
 			Double StandardTax,int CatOrdr,int PrdOrdr,int StoreCatNodeId,String SearchField)*/
     public long saveSOAPdataProductList(String CategoryID,String ProductID, String ProductShortName,
-                                        String DisplayUnit, Double CalculateKilo, String KGLiter,int CatOrdr,int PrdOrdr,int StoreCatNodeId,String SearchField,int ManufacturerID,String RptUnitName,String PerbaseUnit)
+                                        String DisplayUnit, Double CalculateKilo, String KGLiter,int CatOrdr,int PrdOrdr,int StoreCatNodeId,String SearchField,int ManufacturerID,String RptUnitName,String PerbaseUnit,String HSNCode)
     {
         ContentValues initialValues = new ContentValues();
 
@@ -13724,7 +13727,7 @@ open();
         initialValues.put("ManufacturerID", ManufacturerID);
         initialValues.put("RptUnitName", RptUnitName);
         initialValues.put("PerbaseUnit", PerbaseUnit);
-
+        initialValues.put("HSNCode", HSNCode);
         // text null,
         return db.insert(DATABASE_TABLE_MAIN14, null, initialValues);
     }
@@ -35134,7 +35137,7 @@ close();
 
     //map distributor
     public long  saveWarehouseMstrData(int NodeID, int NodeType, String Descr,String latCode,
-                                       String LongCode, int flgMapped)
+                                       String LongCode, int flgMapped,String Address,String State,String City,String PinCode,String PhoneNo,String TaxNumber)
     {
         ContentValues initialValues = new ContentValues();
 
@@ -35144,6 +35147,12 @@ close();
         initialValues.put("latCode", latCode.trim());
         initialValues.put("LongCode", LongCode.trim());
         initialValues.put("flgMapped", flgMapped);   //0=Not To be mapped Again,1=Can Map Distributor
+        initialValues.put("Address", Address.trim());
+        initialValues.put("State", State.trim());
+        initialValues.put("City", City.trim());
+        initialValues.put("PinCode", PinCode.trim());
+        initialValues.put("PhoneNo", PhoneNo.trim());
+        initialValues.put("TaxNumber", TaxNumber.trim());
 
         return db.insert(TABLE_tblWarehouseMstr, null, initialValues);
     }
@@ -35699,6 +35708,389 @@ close();
 
         }
         return count;
+    }
+
+    public String fnGetExistingInvoiceNumberAgainstInvoiceNumebr (String StoreID,String StoreVisitCode)
+    {
+        open();
+        Cursor cursorE2 = db.rawQuery("SELECT InvoiceNumber FROM tblInvoiceHeader WHERE StoreID='" + StoreID + "' AND StoreVisitCode='"+StoreVisitCode+"'", null);
+        String InvoiceNumber = "0";
+        try {
+            if(cursorE2.getCount()>0)
+            {
+                if (cursorE2.moveToFirst()) {
+                    InvoiceNumber = cursorE2.getString(0).toString();
+                }
+            }
+        } finally {
+            if(cursorE2!=null) {
+                cursorE2.close();
+            }
+             close();
+        }
+        return InvoiceNumber;
+    }
+    public Double fetch_Store_AllOustandings(String StoreID)
+    {
+//tv_GrossInvVal
+        open();
+        Double TotCollectionAmt=0.0;
+
+        Cursor cursor = db.rawQuery("SELECT ifnull(SUM(tblInvoiceLastVisitDetails.OutstandingAmt),'0.0') from tblInvoiceLastVisitDetails WHERE tblInvoiceLastVisitDetails.StoreID='"+StoreID+"'", null); //order by AutoIdOutlet Desc
+        String InvoiceLastVisitDetails[]= new String[cursor.getCount()];
+        try
+        {
+            if(cursor.getCount()>0)
+            {
+                if (cursor.moveToFirst())
+                {
+
+                    for (int i = 0; i <= (cursor.getCount() - 1); i++)
+                    {
+                        TotCollectionAmt=Double.parseDouble(cursor.getString(0).toString());
+                        cursor.moveToNext();
+                    }
+                }
+            }
+            return TotCollectionAmt;
+        }
+        finally
+        {
+            if(cursor!=null) {
+                cursor.close();
+            }
+            close();
+        }
+    }
+    public ArrayList<String> fnFetch_tblWarehouseMstr()
+    {
+        ArrayList<String> arrResult=new ArrayList<String>();
+
+open();
+        //  Cursor cursor = db.rawQuery("SELECT NodeID ,NodeType from tblWarehouseMstr", null); //order by AutoIdOutlet Desc
+        try
+        {
+            Cursor cursor = db.rawQuery("SELECT NodeID ,NodeType from tblWarehouseMstr", null); //order by AutoIdOutlet Desc
+            if(cursor.getCount()>0)
+            {
+                if (cursor.moveToFirst())
+                {
+                    for (int i = 0; i < cursor.getCount(); i++) {
+                        arrResult.add(0,cursor.getString(0));
+                        arrResult.add(1,cursor.getString(1));
+                        // cursor.moveToNext();
+                    }
+
+                }
+            }
+
+
+        }
+        catch (Exception e){
+            System.out.println(e);
+        }
+        finally
+        {
+            if(cursor!=null) {
+                cursor.close();
+            }
+            close();
+            return arrResult;
+
+        }
+    }
+
+    public ArrayList<LinkedHashMap<String,ArrayList<String>>> fnFetch_InvoiceReportForPrint(String VisitCode,String StoreID,int WarehouseNodeID,int WarehouseNodeType)
+    {
+
+        ArrayList<LinkedHashMap<String,ArrayList<String>>> arrResult=new ArrayList<LinkedHashMap<String,ArrayList<String>>>();
+
+        //--------------Ware House Details Starts Here--------------------------------
+        LinkedHashMap<String,ArrayList<String>>hmapWareHouseDetails=new LinkedHashMap<String,ArrayList<String>>();
+        ArrayList<String> arrWareHouseDetails=new ArrayList<String>();
+        arrWareHouseDetails=fnGetWarehouseDataForPrint(VisitCode,StoreID,WarehouseNodeID,WarehouseNodeType);
+        hmapWareHouseDetails.put("WarehouseDetails",arrWareHouseDetails);
+
+        //--------------Ware House Details Ends Here--------------------------------
+        //--------------Store  Details Starts Here--------------------------------
+
+        LinkedHashMap<String,ArrayList<String>> hmapStoreBasicDetails=fnGetStoreDetailsDataForPrint(VisitCode,StoreID);
+
+        //--------------Store Details Ends Here--------------------------------
+
+        //--------------Store Invoice  Details Starts Here--------------------------------
+
+        LinkedHashMap<String,ArrayList<String>> hmapInvoiceRecodsToPrint=fnGetInvoiceListForPrint(VisitCode,StoreID);
+
+        //--------------Store Invoice Details Ends Here--------------------------------
+
+        //--------------Store Invoice  Before Tax And After Tax Starts Here--------------------------------
+
+        LinkedHashMap<String,ArrayList<String>> hmapTotalBfrAftrTaxVal=fnGetTotalBfrAftrTaxVal(StoreID,VisitCode);
+
+        //--------------Store Invoice Before Tax And After Tax Ends Here--------------------------------
+
+        //--------------Store Invoice  Tax wise Product Details Starts Here--------------------------------
+
+        LinkedHashMap<String,ArrayList<String>> hmapTaxWisePrdctDtlt=fnGetTaxWisePrdctDtl(StoreID,VisitCode);
+
+        //--------------Store Invoice Tax wise Product Details  Ends Here--------------------------------
+
+        //--------------Store Invoice  Tax wise Product Details Starts Here--------------------------------
+
+        LinkedHashMap<String,ArrayList<String>> hmapOverAllProductOrderQtyValue=fnGetOverAllProductOrderQtyValue(StoreID,VisitCode);
+
+        //--------------Store Invoice Tax wise Product Details  Ends Here--------------------------------
+
+        arrResult.add(hmapWareHouseDetails);
+        arrResult.add(hmapStoreBasicDetails);
+        arrResult.add(hmapInvoiceRecodsToPrint);
+        arrResult.add(hmapTotalBfrAftrTaxVal);
+        arrResult.add(hmapTaxWisePrdctDtlt);
+        arrResult.add(hmapOverAllProductOrderQtyValue);
+        return arrResult;
+    }
+
+    public ArrayList<String> fnGetWarehouseDataForPrint(String VisitCode,String StoreID,int WarehouseNodeID,int WarehouseNodeType)
+    {
+        open();
+        ArrayList<String> arrWareHouseDetails=new ArrayList<String>();
+        try {
+            Cursor cursor2 = db.rawQuery("SELECT Descr,ifnull(State,'') AS State,ifnull(Address,'') AS Address,ifnull(City,'') AS City,ifnull(PinCode,'') AS PinCode,ifnull(PhoneNo,'NA') AS PhoneNo,ifnull(TaxNumber,'NA') AS TaxNumber FROM tblWarehouseMstr Where NodeID="+WarehouseNodeID+" and NodeType="+WarehouseNodeType, null);
+
+            if(cursor2.getCount()>0)
+            {
+                if (cursor2.moveToFirst())
+                {
+                    arrWareHouseDetails.add(cursor2.getString(0));
+                    arrWareHouseDetails.add(cursor2.getString(1));
+                    arrWareHouseDetails.add(cursor2.getString(2));
+                    arrWareHouseDetails.add(cursor2.getString(3));
+                    arrWareHouseDetails.add(cursor2.getString(4));
+                    arrWareHouseDetails.add(cursor2.getString(5));
+                    arrWareHouseDetails.add(cursor2.getString(6));
+                    int IsCompositeStatus=fnGetStoreIsCompositeStatus(StoreID);
+                    if(IsCompositeStatus==0){
+                        arrWareHouseDetails.add("No");
+                    }
+                    if(IsCompositeStatus==1){
+                        arrWareHouseDetails.add("Yes");
+                    }
+
+                }
+            }
+            return arrWareHouseDetails;
+        } finally {
+close();
+        }
+    }
+
+
+    public LinkedHashMap<String,ArrayList<String>> fnGetStoreDetailsDataForPrint(String StoreVisitCode,String StoreID)
+    {
+        LinkedHashMap<String,ArrayList<String>> hmapStoreBasicDetails=new LinkedHashMap<String,ArrayList<String>>();
+
+        Cursor cursor2=null;
+        open();
+        ArrayList<String> arrStoreDetails=new ArrayList<String>();
+        try {
+            cursor2 = db.rawQuery("SELECT StoreName,ifnull(StoreAddress,'') AS StoreAddress,ifnull(StoreState,'') AS StoreState,ifnull(StoreCity,'') AS StoreCity,ifnull(StorePinCode,'') AS StorePinCode,ifnull(StoreContactNo,'') AS StoreContactNo,ifnull(GSTNumber,'NA') AS GSTNumber FROM tblStoreList Where StoreID='"+StoreID+"'", null);
+            if(cursor2.getCount()>0)
+            {
+                if (cursor2.moveToFirst())
+                {
+
+                    arrStoreDetails.add(cursor2.getString(0));
+                    arrStoreDetails.add(cursor2.getString(1));
+                    arrStoreDetails.add(cursor2.getString(2));
+                    arrStoreDetails.add(cursor2.getString(3));
+                    arrStoreDetails.add(cursor2.getString(4));
+                    arrStoreDetails.add(cursor2.getString(5));
+                    arrStoreDetails.add(cursor2.getString(6));
+                }
+            }
+            hmapStoreBasicDetails.put("StoreDetails",arrStoreDetails);
+            return hmapStoreBasicDetails;
+        } finally {
+            if(cursor2!=null)
+            {
+                cursor2.close();
+
+            }
+            close();
+        }
+    }
+    public int fnGetStoreIsCompositeStatus(String StoreID)
+    {
+        int IsCompositeStatus=0;
+        try {
+            Cursor cursor2 = db.rawQuery("SELECT ifnull(IsComposite,0) AS IsComposite FROM tblStoreList Where StoreID='"+StoreID+"'", null);
+
+            if(cursor2.getCount()>0)
+            {
+                if (cursor2.moveToFirst())
+                {
+                    IsCompositeStatus=Integer.parseInt(cursor2.getString(0));
+                }
+            }
+            return IsCompositeStatus;
+        } finally {
+
+        }
+    }
+
+    public LinkedHashMap<String,ArrayList<String>> fnGetInvoiceListForPrint(String StoreVisitCode,String StoreID)
+    {
+        LinkedHashMap<String,ArrayList<String>> hmapInvoiceRecodsToPrint=new LinkedHashMap<String,ArrayList<String>>();
+
+        Cursor cursor21=null;
+        open();
+        try {
+            cursor21 = db.rawQuery("SELECT tblInvoiceDetails.ProdID,ifnull(tblProductList.HSNCode,'') AS HSNCode,ifnull(tblInvoiceDetails.ProductShortName,'NA') AS ProductShortName,ifnull(tblInvoiceDetails.ProductPrice,'0') AS ProductPrice,ifnull(tblProductSegementMap.VatTax,'0') AS VatTax,ifnull(tblInvoiceDetails.OrderQty,'0') AS OrderQty,ifnull(tblInvoiceDetails.LineValAftrTxAftrDscnt,'0') AS OrdValue FROM tblInvoiceDetails inner join tblProductSegementMap on tblInvoiceDetails.ProdID=tblProductSegementMap.ProductID inner join tblProductList on tblProductList.ProductID=tblInvoiceDetails.ProdID inner join tblInvoiceHeader on tblInvoiceHeader.InvoiceNumber=tblInvoiceDetails.InvoiceNumber Where tblInvoiceHeader.StoreID='"+StoreID+"' AND tblInvoiceHeader.StoreVisitCode='"+StoreVisitCode+"' AND tblInvoiceDetails.OrderQty>0", null);
+            if(cursor21.getCount()>0)
+            {
+                if (cursor21.moveToFirst())
+                {
+                    for(int i=0;i<cursor21.getCount();i++)
+                    {
+                        ArrayList<String> arrProductInvoiceDetailsForPrint=new ArrayList<String>();
+                        arrProductInvoiceDetailsForPrint.add(cursor21.getString(1));
+                        arrProductInvoiceDetailsForPrint.add(cursor21.getString(2));
+                        arrProductInvoiceDetailsForPrint.add(cursor21.getString(3));
+                        arrProductInvoiceDetailsForPrint.add(cursor21.getString(4)+"%");
+                        arrProductInvoiceDetailsForPrint.add(cursor21.getString(5));
+                        arrProductInvoiceDetailsForPrint.add(cursor21.getString(6));
+                        hmapInvoiceRecodsToPrint.put(cursor21.getString(0).toString().trim(),arrProductInvoiceDetailsForPrint);
+                        cursor21.moveToNext();
+                    }
+                }
+            }
+
+            return hmapInvoiceRecodsToPrint;
+        } finally {
+            if(cursor21!=null)
+            {
+                cursor21.close();
+            }
+            close();
+        }
+    }
+    public LinkedHashMap<String,ArrayList<String>> fnGetTotalBfrAftrTaxVal(String StoreID,String storeVisitCode)
+    {
+        LinkedHashMap<String,ArrayList<String>> hmapTotalBfrAftrTaxVal=new LinkedHashMap<String,ArrayList<String>>();
+        // ArrayList<String> arrTaxWisePrdctDtlt=new ArrayList<String>();
+        Cursor cursor21=null;
+        open();
+        try {
+            cursor21 = db.rawQuery("Select tblInvoiceHeader.TotalBeforeTaxDis,tblInvoiceHeader.InvoiceVal from tblInvoiceHeader where tblInvoiceHeader.StoreID='"+StoreID+"' AND tblInvoiceHeader.StoreVisitCode='"+storeVisitCode+"'"
+                    , null);
+            if(cursor21.getCount()>0)
+            {
+                if (cursor21.moveToFirst())
+                {
+
+                    // arrTaxWisePrdctDtlt.add(cursor21.getString(0));
+                    ArrayList<String> arrTaxWisePrdctDtlt=new ArrayList<String>();
+                    arrTaxWisePrdctDtlt.add(cursor21.getString(0));
+                    arrTaxWisePrdctDtlt.add(cursor21.getString(1));
+
+                    hmapTotalBfrAftrTaxVal.put("TotalInvoiceBeforeAfterTax",arrTaxWisePrdctDtlt);
+
+                }
+            }
+
+            return hmapTotalBfrAftrTaxVal;
+        } finally {
+            if(cursor21!=null)
+            {
+                cursor21.close();
+            }
+            close();
+        }
+    }
+
+    public LinkedHashMap<String,ArrayList<String>> fnGetTaxWisePrdctDtl(String StoreID,String StoreVisitCode)
+    {
+        LinkedHashMap<String,ArrayList<String>> hmapTaxWisePrdctDtlt=new LinkedHashMap<String,ArrayList<String>>();
+        // ArrayList<String> arrTaxWisePrdctDtlt=new ArrayList<String>();
+        Cursor cursor21=null;
+        open();
+        try {
+            cursor21 = db.rawQuery("Select DISTINCT tblProductSegementMap.VatTax,CASE WHEN ifnull(Sum(tblInvoiceDetails.LineValAftrTxAftrDscnt-tblInvoiceDetails.LineValBfrTxAftrDscnt),'0.0')=0 THEN '0.0' ELSE ifnull(Sum(tblInvoiceDetails.LineValAftrTxAftrDscnt-tblInvoiceDetails.LineValBfrTxAftrDscnt),'0.0') END AS TaxAmtPercent from tblProductSegementMap inner join tblInvoiceDetails On tblProductSegementMap.ProductID=tblInvoiceDetails.ProdID inner join tblInvoiceHeader on tblInvoiceHeader.InvoiceNumber=tblInvoiceDetails.InvoiceNumber where tblInvoiceDetails.StoreID='"+StoreID+"' AND tblInvoiceHeader.StoreVisitCode='"+StoreVisitCode+"' AND tblInvoiceDetails.OrderQty>0 group by tblProductSegementMap.VatTax Order by tblProductSegementMap.VatTax ASC", null);
+            if(cursor21.getCount()>0)
+            {
+                if (cursor21.moveToFirst())
+                {
+                    for(int i=0;i<cursor21.getCount();i++)
+                    {
+                        // arrTaxWisePrdctDtlt.add(cursor21.getString(0));
+                        ArrayList arrTaxWisePrdctDtlt=new ArrayList<String>();
+                        Double TaxSum=Double.parseDouble(cursor21.getString(1).toString());
+
+                        if(TaxSum>0.0)
+                        {
+                            TaxSum=TaxSum/2.0;
+                        }
+
+                        TaxSum=Double.parseDouble(new DecimalFormat("##.##").format(TaxSum));
+                        arrTaxWisePrdctDtlt.add(""+TaxSum);
+
+                        Double TaxRateToShow=Double.parseDouble(cursor21.getString(0).toString());
+
+                        if(TaxRateToShow>0.0)
+                        {
+                            TaxRateToShow=TaxRateToShow/2.0;
+                        }
+                        TaxRateToShow=Double.parseDouble(new DecimalFormat("##.##").format(TaxRateToShow));
+
+                        hmapTaxWisePrdctDtlt.put("CGST "+TaxRateToShow+"%",arrTaxWisePrdctDtlt);
+                        hmapTaxWisePrdctDtlt.put("SGST "+TaxRateToShow+"%",arrTaxWisePrdctDtlt);
+                        cursor21.moveToNext();
+                    }
+                }
+            }
+
+            return hmapTaxWisePrdctDtlt;
+        } finally {
+            if(cursor21!=null)
+            {
+                cursor21.close();
+            }
+            close();
+        }
+    }
+
+    public LinkedHashMap<String,ArrayList<String>> fnGetOverAllProductOrderQtyValue(String StoreID,String StoreVisitCode)
+    {
+        LinkedHashMap<String,ArrayList<String>> hmapOverAllProductOrderQtyValue=new LinkedHashMap<String,ArrayList<String>>();
+        // ArrayList<String> arrTaxWisePrdctDtlt=new ArrayList<String>();
+        Cursor cursor21=null;
+        open();
+        try {
+            cursor21 = db.rawQuery("Select ifnull(Sum(tblInvoiceDetails.OrderQty),'0') AS OrderQtyCount,ifnull(Sum(tblInvoiceDetails.LineValAftrTxAftrDscnt),'0.00') AS LineValAftrTxAftrDscntValue from tblInvoiceDetails inner join tblTmpInvoiceHeader on tblInvoiceDetails.InvoiceNumber=tblInvoiceHeader.InvoiceNumber where tblInvoiceDetails.StoreID='"+StoreID+"' AND tblInvoiceHeader.StoreVisitCode='"+StoreVisitCode+"' AND tblInvoiceDetails.OrderQty>0", null);
+            if(cursor21.getCount()>0)
+            {
+                if (cursor21.moveToFirst())
+                {
+                    ArrayList arrOverAllProductOrderQtyValue=new ArrayList<String>();
+                   /* Double AllProductOrderQty=Double.parseDouble(cursor21.getString(0).toString());
+                    AllProductOrderQty=Double.parseDouble(new DecimalFormat("##.##").format(AllProductOrderQty));*/
+                    arrOverAllProductOrderQtyValue.add(cursor21.getString(0).toString());
+
+                    Double AllProductOrderValue=Double.parseDouble(cursor21.getString(1).toString());
+                    // AllProductOrderValue=Double.parseDouble(new DecimalFormat("##.##").format(AllProductOrderValue));
+                    arrOverAllProductOrderQtyValue.add(""+String.format("%.2f", AllProductOrderValue));
+
+                    hmapOverAllProductOrderQtyValue.put("OverAllProductOrderQtyValue",arrOverAllProductOrderQtyValue);                }
+            }
+            return hmapOverAllProductOrderQtyValue;
+        } finally {
+            if(cursor21!=null)
+            {
+                cursor21.close();
+            }
+            close();
+        }
     }
 }
 

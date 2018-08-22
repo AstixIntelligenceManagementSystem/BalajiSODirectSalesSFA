@@ -5,6 +5,33 @@
     <!--<string name="app_name">Balaji SO SFA Direct Sales  Test</string>-->
    <!-- <string name="app_name">Balaji SO SFA Direct Sales</string>-->
 
+    <string name="PrintSubmit">प्रिंट करें &amp; जमा करें</string>
+
+    <string name="PreOutAmt">पिछली बकाया राशि.</string>
+    <string name="CntInvVal">वर्तमान चालान मूल्य</string>
+    <string name="TotOut">कुल बकाया </string>
+    <string name="MinAmtToColec">चालान जमा करने के लिए न्यूनतम राशि एकत्र की जानी चाहिए:</string>
+    <string name="totAmt">कुल रकम:-</string>
+    <string name="NoCollection">आज कोई संग्रह नहीं</string>
+    <string name="paymentCollection">भुगतान संग्रह</string>
+    <string name="AddStorePicture">स्टॉक पिक जोड़ें</string>
+    <string name="ViewStorePicture">स्टॉक पिक्चर देखें</string>
+    <string name="AddEditStorePicture">स्टॉक पिक संपादित/जोड़ें</string>
+
+    <string name="totLineCnt">कुल रेखा गणना</string>
+    <string name="totInvoiceQty">कुल चालान मात्रा</string>
+    <string name="PrevOutAmt">पिछली आउटसमंडिंग राशि</string>
+
+    <string name="CollectionAlert1">अगर आज के लिए कोई संग्रह नहीं है तो सबमिट पर क्लिक करने से पहले कृपया  \'नो कलेक्शन टुडे \' पर टिकटें</string>
+    <string name="CollectionAlert2">
+एकत्रित राशि न्यूनतम संग्रह राशि से कम है, वर्तमान चालान नहीं किया जा सकता है।
+चालान बंद करने और वर्तमान यात्रा से बाहर निकलने के लिए कैंसल और एक्स्टिट पर क्लिक करें।
+संग्रह राशि अपडेट करने के लिए अद्यतन भुगतान पर क्लिक करें</string>
+    <!-- Selection header ends -->
+
+    <string name="CollectionAlert3">आप कुल बकाया एकत्रित कर रहे हैं। यदि यह सही है, तो जारी रखने के लिए हाँ पर क्लिक करें, फिर वापस जाने और सही राशि को रद्द करने के लिए रद्द करें पर क्लिक करें।</string>
+
+
 
     <string name="uploading_errorXMLFiles">Error while uploading pending store details</string>
     <string name="saveAlertOKMsg"><small>Details submitted successfully!</small></string>

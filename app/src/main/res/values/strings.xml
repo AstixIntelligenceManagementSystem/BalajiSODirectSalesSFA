@@ -6,6 +6,31 @@
    <string name="app_name">Balaji SO SFA Direct Sales Dev</string>
 
 
+    <string name="PreOutAmt">Previous Outstanding Amt.</string>
+    <string name="CntInvVal">Current Invoice Value</string>
+    <string name="TotOut">Total Outstanding </string>
+    <string name="MinAmtToColec">Minimum amount to be collected for invoice submission:</string>
+    <string name="totAmt">Total Amount:-</string>
+    <string name="NoCollection">No Collection Today</string>
+    <string name="paymentCollection">Payment Collection</string>
+
+    <string name="totLineCnt">Total Line Count</string>
+    <string name="totInvoiceQty">Total Invoice Qty</string>
+    <string name="PrevOutAmt">Previous Outsanding Amount</string>
+
+
+    <string name="AddEditStorePicture">Edit/Add Stock Pic</string>
+    <string name="AddStorePicture">Add Stock Pic</string>
+    <string name="ViewStorePicture">View Stock Picture</string>
+
+
+    <string name="CollectionAlert1">If there is no Collection for today then  please Tick on \'No Collection Today\' before click on Submit</string>
+    <string name="CollectionAlert2">Collected amount is less than the minimum collection amount , current invoice cannot be made.
+Click CANCEL &amp; EXIT to close Invoice and exit current visit.
+Click on UPDATE PAYMENT to update Collection amount.</string>
+    <string name="CollectionAlert3">You are collecting more the total outstanding. If this is correct click yes to continue else click cancel to go back and correct amount.</string>
+
+    <string name="PrintSubmit">Print &amp; Submit</string>
     <string name="uploading_errorXMLFiles">Error while uploading pending store details</string>
     <string name="saveAlertOKMsg"><small>Details submitted successfully!</small></string>
     <string name="AddedStoresSummary">Added Stores Summary</string>

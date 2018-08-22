@@ -49,7 +49,9 @@
         android:required="false" />
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
+    <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
+    <uses-feature android:name="android.hardware.usb.host"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/app_logo"
@@ -554,6 +556,10 @@
         <activity
             android:name=".DialogActivity_MarketVisit"
             android:theme="@style/marketVisitTheme"></activity>
+        <activity
+            android:name="project.astix.com.balajisosfadirectsales.printer.DeviceListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.DeviceDefault.Dialog"></activity>
 
     </application>
 

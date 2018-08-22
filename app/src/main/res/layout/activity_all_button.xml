@@ -400,8 +400,6 @@
 
 
                 <LinearLayout
-
-
                     android:id="@+id/ll_warehose"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -419,7 +417,7 @@
                         android:layout_width="56dp"
                         android:layout_height="56dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/backgrnd_distributionstock" />
+                        android:background="@drawable/backgrnd_distributionstock"/>
 
                     <TextView
                         android:id="@+id/Warehouse"

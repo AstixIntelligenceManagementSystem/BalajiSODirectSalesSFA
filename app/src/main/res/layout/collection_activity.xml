@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#eeeeee"
@@ -9,11 +9,8 @@
     android:layout_width="fill_parent" 
     android:background="@drawable/custom_header_color"
     android:paddingLeft="16dp"
-  
-    
-   
+  android:layout_alignParentTop="true"
     android:id="@+id/rtv_hdr">
-    
     <ImageView 
     android:id="@+id/btn_bck"
     android:layout_width="wrap_content"
@@ -30,15 +27,12 @@
    android:paddingLeft="10dp"
  	android:layout_centerInParent="true"
     android:gravity="center_horizontal|left"
-     
 	android:textStyle="bold"
     android:shadowColor="#80FFFFFF" 
     android:textSize="18sp"
-    android:text="Payment Collection"/>
-
+    android:text="@string/paymentCollection"/>
  <ImageView
      android:id="@+id/img_return"
-     
      android:layout_toRightOf="@+id/order_detail"
      android:layout_width="match_parent"
      android:layout_height="match_parent"
@@ -47,9 +41,18 @@
      android:src="@drawable/return_order"
      android:layout_marginLeft="30dp"
      android:visibility="gone" />
-
 </RelativeLayout>
 
+	<ScrollView
+		android:id="@+id/scrlView"
+		android:layout_below="@+id/rtv_hdr"
+		android:layout_above="@+id/ll_keypad"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
 	<LinearLayout android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:orientation="vertical"
@@ -66,7 +69,7 @@
 
 			android:orientation="horizontal">
 			<TextView android:layout_width="0dp"
-				android:text="Previous Outstanding Amt. "
+				android:text="@string/PreOutAmt"
 				android:gravity="left|center"
 
 				android:id="@+id/tv_outstandingtext"
@@ -103,7 +106,7 @@
 
 			android:orientation="horizontal">
 			<TextView android:layout_width="0dp"
-				android:text="Current Invoice Value "
+				android:text="@string/CntInvVal"
 				android:gravity="left|center"
 				android:id="@+id/tv_crntInvoiceText"
 				android:focusable="true"
@@ -138,7 +141,7 @@
 
 			android:orientation="horizontal">
 			<TextView android:layout_width="0dp"
-				android:text="Total Outstanding "
+				android:text="@string/TotOut"
 				android:gravity="left|center"
 				android:id="@+id/tv_totOutstandingText"
 				android:focusable="true"
@@ -176,7 +179,7 @@
 
 			android:orientation="vertical">
 			<TextView android:layout_width="wrap_content"
-				android:text="Minimum amount to be collected for invoice submission:"
+				android:text="@string/MinAmtToColec"
 				android:gravity="left|center"
 				android:id="@+id/tv_minCollectiontext"
 				android:focusable="true"
@@ -215,7 +218,7 @@
 		 android:layout_width="wrap_content"
 		 android:layout_height="wrap_content"
 		 android:layout_margin="4dp"
-		 android:text="No Collection Today"
+		 android:text="@string/NoCollection"
 		 android:textColor="#A6004E"
 		 android:textSize="15sp"
 		 android:textStyle="bold" />
@@ -579,7 +582,7 @@
                               android:textColor="#000"
                               android:textSize="11sp"
                               android:layout_margin="5dp"
-                              android:text="Total Amount:-"/>
+                              android:text="@string/totAmt"/>
                            <TextView android:layout_width="wrap_content"
                               android:layout_height="wrap_content"
                               android:textColor="#000"
@@ -589,8 +592,36 @@
                               android:layout_marginTop="5dp"
                               android:text="0.00"/>
                       </LinearLayout>
-                      
 
+
+
+		<View android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:layout_marginBottom="10dp"
+			android:background="#868686"/>
+		<LinearLayout android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:visibility="gone"
+			android:orientation="horizontal">
+			<TextView android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="#000"
+				android:textSize="11sp"
+				android:layout_margin="5dp"
+				android:text="Self Credit Amt:-"/>
+			<EditText android:layout_width="100dp"
+				android:layout_height="30dp"
+				android:textColor="#000"
+				android:textSize="11sp"
+				android:background="@drawable/edit_text_bg"
+				android:maxLength="5"
+				android:paddingLeft="10dp"
+				android:inputType="numberDecimal"
+				android:id="@+id/et_SelfCreditNote"
+				android:layout_marginBottom="5dp"
+				android:layout_marginTop="5dp"
+				android:text="0.00"/>
+		</LinearLayout>
    
 </LinearLayout>
 	<LinearLayout
@@ -602,6 +633,31 @@
 		android:orientation="horizontal" >
 		<Button
 			android:id="@+id/btn_print"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="20dp"
+			android:layout_weight="1"
+			android:background="@drawable/custom_button"
+			android:gravity="center"
+			android:text="@string/PrintSubmit"
+
+			android:visibility="visible"
+			android:textColor="#ffffff"
+			android:textSize="11sp"/>
+		<Button
+			android:id="@+id/mPrintImage"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="20dp"
+			android:layout_weight="1"
+			android:background="@drawable/custom_button"
+			android:gravity="center"
+			android:text="Print"
+			android:visibility="gone"
+			android:textColor="#ffffff"
+			android:textSize="11sp"/>
+		<Button
+			android:id="@+id/dis"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_marginLeft="20dp"
@@ -642,5 +698,44 @@
 
 
 	</LinearLayout>
+		</LinearLayout>
+	</ScrollView>
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_alignParentBottom="true"
+		android:id="@+id/ll_keypad"
+		android:orientation="vertical">
+		<android.inputmethodservice.KeyboardView
+			android:id="@+id/keyboardview"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true"
+			android:layout_centerHorizontal="true"
+			android:focusable="true"
+			android:focusableInTouchMode="true"
+			android:visibility="gone"
 
-</LinearLayout>
+			/>
+
+		<android.inputmethodservice.KeyboardView
+			android:id="@+id/keyboardviewNum"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true"
+			android:layout_centerHorizontal="true"
+			android:focusable="true"
+			android:focusableInTouchMode="true"
+			android:visibility="gone" />
+
+		<android.inputmethodservice.KeyboardView
+			android:id="@+id/keyboardviewNumDecimal"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true"
+			android:layout_centerHorizontal="true"
+			android:focusable="true"
+			android:focusableInTouchMode="true"
+			android:visibility="gone" />
+	</LinearLayout>
+</RelativeLayout>

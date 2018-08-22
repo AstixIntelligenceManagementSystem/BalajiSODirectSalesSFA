@@ -95,9 +95,9 @@ public class CommonInfo
 	public static String DATABASE_NAME = "DbBalajiSOSFAApp";
 	public static int AnyVisit = 0;
 
-	public static int DATABASE_VERSIONID = 21;      // put this field value based on value in table on the server
+	public static int DATABASE_VERSIONID = 21;   // put this field value based on value in table on the server
 	public static String AppVersionID = "1.1";   // put this field value based on value in table on the server
-	public static int Application_TypeID = 9; //1=Parag Store Mapping,2=Parag SFA Indirect,3=Parag SFA Direct
+	public static int Application_TypeID = 9;    //1=Parag Store Mapping,2=Parag SFA Indirect,3=Parag SFA Direct
 
     // application id will be 9 because its its is copy of Godrej
 
