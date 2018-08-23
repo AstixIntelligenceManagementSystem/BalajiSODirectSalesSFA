@@ -1881,13 +1881,13 @@ private void marketVisitGetRoutesClick(){
 
                 if(mm==38)
                 {
-                 /*      newservice=newservice.fnGetDistStockData(getApplicationContext(),imei);
+                      newservice=newservice.fnGetDistStockData(getApplicationContext(),imei);
                         if(newservice.flagExecutedServiceSuccesfully!=38)
                         {
                             serviceException=true;
                             break;
                         }
-*/
+
                 }
 
 
@@ -1950,24 +1950,33 @@ private void marketVisitGetRoutesClick(){
            // dismissProgress();
 
             flgStockOut= dbengine.fetchtblStockUploadedStatus();
+            if( CommonInfo.FlgDSRSO==2)
+            {
+                flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(CommonInfo.CoverageAreaNodeID,CommonInfo.CoverageAreaNodeType);
+            }
+            else
+            {
+                String SOCoverageAreaIDAndType=dbengine.fnGetPersonNodeIDAndPersonNodeTypeForSO();
+                flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[0]),Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[1]));
+            }
             //  flgStockOut=1;
             if(serviceException)
             {
                 dismissProgress();
                 serviceException=false;
-                showAlertException(getResources().getString(R.string.txtError),getResources().getString(R.string.txtErrorRetrievingData));
+                showAlertException( getResources().getString(R.string.txtError),getResources().getString(R.string.txtErrorRetrievingData));
                 //Toast.makeText(AllButtonActivity.this,"Please fill Stock out first for starting your market visit.",Toast.LENGTH_SHORT).show();
                 //showSyncError();
             }
-            else if(flgStockOut==0 && flgOwnRouteClick==1)
+            else if((flgStockOut==0 && flgOwnRouteClick==1) && (flgDrctslsIndrctSls==1))
             {
                 dismissProgress();
                 flgOwnRouteClick=0;
                 showAlertStockOut(getResources().getString(R.string.genTermNoDataConnection),getResources().getString(R.string.AlertVANStockStockOut)); // message change by Avinash Sir on 3 Aug 2018 on Paras SO SFA
                 //   Toast.makeText(AllButtonActivity.this,"Error while retrieving data.",Toast.LENGTH_SHORT).show();
             }
-           // else if((dbengine.flgConfirmedWareHouse()==0 && flgOwnRouteClick==1) && (flgDrctslsIndrctSls==1))
-            else if((dbengine.flgConfirmedWareHouse()==0 && flgOwnRouteClick==1) )
+           else if((dbengine.flgConfirmedWareHouse()==0 && flgOwnRouteClick==1) && (flgDrctslsIndrctSls==1))
+           // else if((dbengine.flgConfirmedWareHouse()==0 && flgOwnRouteClick==1) )
             {
                 dismissProgress();
                 flgOwnRouteClick=0;

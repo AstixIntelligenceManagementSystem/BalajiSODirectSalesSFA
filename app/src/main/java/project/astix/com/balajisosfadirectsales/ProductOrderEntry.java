@@ -97,6 +97,7 @@ import java.util.regex.Pattern;
 
 public class ProductOrderEntry extends BaseActivity implements OnItemSelectedListener, OnClickListener, OnFocusChangeListener, LocationListener,GoogleApiClient.ConnectionCallbacks,
 GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator {
+	int flgDrctslsIndrctSls=0;
 	LinkedHashMap<String,String> hampGetLastProductExecution=new LinkedHashMap<String,String>();
 	public int flgInvoiceOrOrderReviewClicked=0;
 	HashMap<String, String> hmapProductExtraOrder=new HashMap<String, String>();
@@ -1174,21 +1175,25 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator {
 				if (ed_LastEditextFocusd != null) {
 					//etOrderQty
 					String tag = ed_LastEditextFocusd.getTag().toString();
-					if (tag.contains("etOrderQty")) {
-						if (hmapPrdctOdrQty != null && hmapPrdctOdrQty.containsKey(ProductIdOnClickedEdit)) {
+					if(flgDrctslsIndrctSls==1)
+					{
+						if (tag.contains("etOrderQty")) {
+							if (hmapPrdctOdrQty != null && hmapPrdctOdrQty.containsKey(ProductIdOnClickedEdit)) {
 
-							int originalNetQntty = Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit));
-							int totalStockLeft = hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
+								int originalNetQntty = Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit));
+								int totalStockLeft = hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
 
-							if (originalNetQntty > totalStockLeft) {
+								if (originalNetQntty > totalStockLeft) {
 
-								alertForOrderExceedStock(ProductIdOnClickedEdit, ed_LastEditextFocusd, ed_LastEditextFocusd, -1);
-							} else {
+									alertForOrderExceedStock(ProductIdOnClickedEdit, ed_LastEditextFocusd, ed_LastEditextFocusd, -1);
+								} else {
+
+								}
 
 							}
-
 						}
 					}
+
 
 					fnUpdateSchemeNameOnScehmeControl(ProductIdOnClickedEdit);
 					orderBookingTotalCalc();
@@ -3203,14 +3208,19 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator {
 					}
 					if (v.getId() == R.id.et_OrderQty) {
 
-						if (hmapPrdctOdrQty != null && hmapPrdctOdrQty.containsKey(ProductIdOnClickedEdit)) {
-							int originalNetQntty = Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit));
-							int totalStockLeft = hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
-							if (originalNetQntty > totalStockLeft) {
 
-								alertForOrderExceedStock(ProductIdOnClickedEdit, et_ValueOnFocuslost, et_ValueOnFocuslost, -1);
+						if(flgDrctslsIndrctSls==1)
+						{
+							if (hmapPrdctOdrQty != null && hmapPrdctOdrQty.containsKey(ProductIdOnClickedEdit)) {
+								int originalNetQntty = Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit));
+								int totalStockLeft = hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
+								if (originalNetQntty > totalStockLeft) {
+
+									alertForOrderExceedStock(ProductIdOnClickedEdit, et_ValueOnFocuslost, et_ValueOnFocuslost, -1);
+								}
 							}
 						}
+
 
 
 						if (Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit)) > 0) {
@@ -6770,33 +6780,49 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator {
 			String tag=ed_LastEditextFocusd.getTag().toString();
 			if(tag.contains("etOrderQty"))
 			{
-
-				if(hmapPrdctOdrQty!=null && hmapPrdctOdrQty.containsKey(ProductIdOnClickedEdit))
+				if(flgDrctslsIndrctSls==1)
 				{
-
-
-					int originalNetQntty=Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit));
-					int totalStockLeft=hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
-
-					if (originalNetQntty>totalStockLeft)
+					if(hmapPrdctOdrQty!=null && hmapPrdctOdrQty.containsKey(ProductIdOnClickedEdit))
 					{
 
-						alertForOrderExceedStock(ProductIdOnClickedEdit,ed_LastEditextFocusd,ed_LastEditextFocusd,-1);
-					}
-					else
-					{
 
-						if(dbengine.isFlgCrediBalSubmitted(storeID))
+						int originalNetQntty=Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit));
+						int totalStockLeft=hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
+
+						if (originalNetQntty>totalStockLeft)
 						{
-							nextStepAfterRetailerCreditBal(butnClkd);
+
+							alertForOrderExceedStock(ProductIdOnClickedEdit,ed_LastEditextFocusd,ed_LastEditextFocusd,-1);
 						}
 						else
 						{
-							alertForRetailerCreditLimit(butnClkd);
+
+							if(dbengine.isFlgCrediBalSubmitted(storeID))
+							{
+								nextStepAfterRetailerCreditBal(butnClkd);
+							}
+							else
+							{
+								alertForRetailerCreditLimit(butnClkd);
+							}
+
 						}
 
 					}
+					else
+					{
+						if(dbengine.isFlgCrediBalSubmitted(storeID))
+						{
 
+							nextStepAfterRetailerCreditBal(butnClkd);
+
+						}
+						else
+						{
+
+							alertForRetailerCreditLimit(butnClkd);
+						}
+					}
 				}
 				else
 				{
@@ -6812,6 +6838,7 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator {
 						alertForRetailerCreditLimit(butnClkd);
 					}
 				}
+
 
 			}
 
@@ -7007,7 +7034,15 @@ GoogleApiClient.OnConnectionFailedListener,CategoryCommunicator {
 					  hmapProductIdStock.putAll(hmapFetchPDASavedData);
 			  }
 
-
+			  if( CommonInfo.FlgDSRSO==2)
+			  {
+				  flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(CommonInfo.CoverageAreaNodeID,CommonInfo.CoverageAreaNodeType);
+			  }
+			  else
+			  {
+				  String SOCoverageAreaIDAndType=dbengine.fnGetPersonNodeIDAndPersonNodeTypeForSO();
+				  flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[0]),Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[1]));
+			  }
 			  distID=dbengine.getDisId(storeID);
 			  hmapDistPrdctStockCount=dbengine.fnGetFinalInvoiceQtyProductWise();
 			  hmapPerUnitName=dbengine.getPerUnitName();

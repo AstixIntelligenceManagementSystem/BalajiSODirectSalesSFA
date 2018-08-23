@@ -196,7 +196,7 @@ public class WarehouseCheckInFirstActivity extends BaseActivity implements Locat
     String LattitudeFromLauncher="NA";
     String LongitudeFromLauncher="NA";
     String StoreName="NA";
-
+    int flgDrctslsIndrctSls=0;
     String[] Distribtr_list;
 
     LinearLayout ll_address_section,ll_local_area,ll_gstDetails;
@@ -236,7 +236,15 @@ public class WarehouseCheckInFirstActivity extends BaseActivity implements Locat
         rb_yes = (RadioButton) findViewById(R.id.rb_yes);
         rb_no = (RadioButton) findViewById(R.id.rb_no);
         txt_rfrshCmnt= (TextView) findViewById(R.id.txt_rfrshCmnt);
-
+        if( CommonInfo.FlgDSRSO==2)
+        {
+            flgDrctslsIndrctSls=helperDb.fnGetflgDrctslsIndrctSls(CommonInfo.CoverageAreaNodeID,CommonInfo.CoverageAreaNodeType);
+        }
+        else
+        {
+            String SOCoverageAreaIDAndType=helperDb.fnGetPersonNodeIDAndPersonNodeTypeForSO();
+            flgDrctslsIndrctSls=helperDb.fnGetflgDrctslsIndrctSls(Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[0]),Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[1]));
+        }
         TextView bardd= (TextView) findViewById(R.id.bardd);
         bardd.setText(R.string.Warehouse);
 
@@ -1996,12 +2004,12 @@ public class WarehouseCheckInFirstActivity extends BaseActivity implements Locat
            // FullSyncDataNow task = new FullSyncDataNow(DistributorCheckInFirstActivity.this);
            // task.execute();
 
+                Intent intent=new Intent(WarehouseCheckInFirstActivity.this,WarehouseCheckInSecondActivity.class);
+                intent.putExtra("imei", imei);
+                intent.putExtra("fDate", fDate);
+                startActivity(intent);
 
-            Intent intent=new Intent(WarehouseCheckInFirstActivity.this,WarehouseCheckInSecondActivity.class);
-            intent.putExtra("imei", imei);
-            intent.putExtra("fDate", fDate);
-            startActivity(intent);
-            finish();
+
 
 
 

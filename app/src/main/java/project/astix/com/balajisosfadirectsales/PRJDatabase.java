@@ -163,6 +163,9 @@ public class PRJDatabase
     private static final String DATABASE_TABLE_tblStockConfirm="tblStockConfirm";
     private static final String DATABASE_CREATE_TABLE_tblStockConfirm="create table tblStockConfirm(UserId text null,confirmFlg text null);";
     //setock out flg not using below tavle
+    private static final String DATABASE_TABLE_Indrct_DISTRIBUTOR_STOCK = "tblIndrctDistributorStock";
+    private static final String DATABASE_CREATE_TABLE_Indrct_DISTRIBUTOR_STOCK="create table tblIndrctDistributorStock(ProductNodeId text null,PrdctNodeType text null,StockQntty text null,DistributorNodeIdNodeType text null,SKUName text null,StockDate text null);";
+
     private static final String DATABASE_TABLE_tblStockOut="dtDistributorStockOutFlg";
     private static final String DATABASE_CREATE_TABLE_tblStockOut="create table dtDistributorStockOutFlg(flgStockOutEntryDone int null);";
     private static final String DATABASE_TABLE_tblBankMaster="tblBankMaster";
@@ -218,6 +221,11 @@ public class PRJDatabase
    private static final String DATABASE_TABLE_CYCLEID="tblCycleID";
     private static final String DATABASE_CREATE_TABLE_CYCLEID="create table tblCycleID(CycleID int null,Sstat int null,CycStartTime text null,CycleTime text null);";
     private static final String DATABASE_CREATE_TABLE_DISTRIBUTOR_LEFTPRODUCT="create table tblDistributorProductLeft(DistributorNodeIdNodeType text null,OrderId text null,flgProcessedInvoice int not null);";
+
+    private static final String DATABASE_TABLE_DISTRIBUTOR_Indrct_LEFTPRODUCT = "tblDistributorIndrctProductLeft";
+    private static final String DATABASE_CREATE_TABLE_DISTRIBUTOR_Indrct_LEFTPRODUCT="create table tblDistributorIndrctProductLeft(DistributorNodeIdNodeType text null,OrderId text null);";
+
+
     private static final String DATABASE_CREATE_TABLE_23 = "create table tblStoreWiseTarget (StoreID text not null,TargetValue text null);";
     private static final String DATABASE_CREATE_TABLE_235 = "create table tblTargetVsAchievedSummary (AutoId int not null,Descr text null," +
             "TodayTarget text null,TodayAchieved text null,TodayBal text null,Todayflg text null,MonthTarget text null,MonthAchieved text null,MonthBal text null,Monthflg text null,ValTgtOrPrdctFlg int not null);";
@@ -28832,6 +28840,25 @@ String fetchdate=fnGetDateTimeString();
 //DATABASE_TABLE_DISTRIBUTOR_STOCK
         // close();
     }
+    public void insertDistributorIndrctStock(String distId,String productId,String productNodeType,String StockQntity,String StockDate,String SKUName)
+    {
+        //open();
+
+//tblIndrctDistributorStock(ProductNodeId text null,PrdctNodeType text null,StockQntty text null,DistributorNodeIdNodeType text null,SKUName text null,StockDate
+        ContentValues  values=new ContentValues();
+        values.put("ProductNodeId",productId);
+
+        values.put("DistributorNodeIdNodeType",distId);
+        values.put("SKUName",SKUName);
+
+        values.put("PrdctNodeType",productNodeType);
+        values.put("StockQntty",StockQntity);
+        values.put("StockDate",StockDate);
+
+
+        db.insert(DATABASE_TABLE_Indrct_DISTRIBUTOR_STOCK,null,values);
+
+    }
 
     public void updateOriginalStock(HashMap<String,Integer> hmapProductStock,String distId)
     {
@@ -28864,6 +28891,23 @@ String fetchdate=fnGetDateTimeString();
         //close();
     }
 
+    public void insertDistributorIndrctLeftOrderId(String distributorNodeIdNodeType,String orderId)
+    {
+        //open();
+
+        ContentValues values=new ContentValues();
+
+//tblDistributorProductLeft(DistributorNodeIdNodeType text null,OrderId text null,ProductId text null,OrderQntty text null);";
+        values.put("DistributorNodeIdNodeType",distributorNodeIdNodeType);
+        values.put("OrderId",orderId);
+
+
+        db.insert(DATABASE_TABLE_DISTRIBUTOR_Indrct_LEFTPRODUCT,null,values);
+
+
+        //close();
+    }
+
     public void insertStockOut(int flgStockOutEntryDone)
     {
         //open();
@@ -28887,7 +28931,7 @@ String fetchdate=fnGetDateTimeString();
         //tblDistributorProductLeft
         //tblDistributorOrderPdaId(DistributorNodeIdNodeType text null,OrderPDAID text null,ProductId text null,OrderQntty text null,Sstat integer not null);";
         try {
-            cur=db.rawQuery("Select DISTINCT ServingDBRId,InvoiceNumber from tblInvoiceDetails",null);
+            cur=db.rawQuery("Select DISTINCT ServingDBRId,InvoiceNumber from tblInvoiceDetails where flgDrctslsIndrctSls=1",null);
             if(cur.getCount()>0)
             {
                 StringBuilder sb=new StringBuilder();
@@ -28924,6 +28968,53 @@ String fetchdate=fnGetDateTimeString();
         }
 
     }
+
+    public String getDistinctIndrctInvoiceNumbers()
+    {
+        open();
+        String distIDOrderId="";
+        Cursor cur=null;
+        //tblDistributorProductLeft
+        //tblInvoiceDetails (InvoiceNumber int not null,TmpInvoiceCodePDA text null,StoreID text not null,CatID text  null,ProdID text not null,ProductPrice real null, TaxRate real null,flgRuleTaxVal integer null,OrderQty integer not null,UOMId integer not null,LineValBfrTxAftrDscnt real not null,LineValAftrTxAftrDscnt real not null,FreeQty integer not null,DisVal real not null,Sstat integer not null,SampleQuantity int null,ProductShortName text null,TaxValue real null,OrderIDPDA text null,flgIsQuoteRateApplied int null,ServingDBRId text null,flgWholeSellApplicable int null,ProductExtraOrder int null);";
+        try {
+            cur=db.rawQuery("Select DISTINCT ServingDBRId,OrderIDPDA from tblInvoiceDetails where flgDrctslsIndrctSls=0",null);
+            if(cur.getCount()>0)
+            {
+                StringBuilder sb=new StringBuilder();
+                if(cur.moveToFirst())
+                {
+                    for(int i=0;i<cur.getCount();i++)
+                    {
+                        if(i==0)
+                        {
+                            sb.append(cur.getString(0)).append("|").append(cur.getString(1));
+                        }
+                        else
+                        {
+                            sb.append("^").append(cur.getString(0)).append("|").append(cur.getString(1));
+                        }
+                        cur.moveToNext();
+                    }
+                }
+                distIDOrderId=sb.toString();
+            }
+        }
+        catch(Exception e)
+        {
+
+        }
+        finally
+        {
+            if(cur!=null)
+            {
+                cur.close();
+            }
+            close();
+            return distIDOrderId;
+        }
+
+    }
+
 
 
     public String getDistinctCollectionPaymentIds()
@@ -29050,6 +29141,13 @@ String fetchdate=fnGetDateTimeString();
 
 
 
+
+    }
+
+    public void deleteCompleteDataIndrctDistStock()
+    {
+         db.execSQL("DELETE FROM tblIndrctDistributorStock");
+        db.execSQL("DELETE FROM tblDistributorIndrctProductLeft");
 
     }
 
@@ -30946,7 +31044,7 @@ String fetchdate=fnGetDateTimeString();
        // flgProcessedInvoice,InvoiceNumber
         //tblDistributorProductLeft(DistributorNodeIdNodeType text null,OrderId text null,flgProcessedInvoice int not null);";
         //tblInvoiceHeader (StoreVisitCode text not null,InvoiceNumber int not null,TmpInvoiceCodePDA text null, StoreID text not null, InvoiceDate string not null, TotalBeforeTaxDis real not null, TaxAmt real not null, TotalDis real not null, InvoiceVal real not null, FreeTotal integer not null, Sstat integer not null, InvAfterDis real not null, AddDis real not null,  NoCoupon int null, TotalCoupunAmount real null,TransDate string not null,FlgInvoiceType text not null,flgWholeSellApplicable int null,flgProcessedInvoice int not null,CycleID  int not null);";
-        db.execSQL("UPDATE tblInvoiceHeader SET flgProcessedInvoice=(Select flgProcessedInvoice from tblDistributorProductLeft Where (tblInvoiceHeader.InvoiceNumber=tblDistributorProductLeft.OrderId))");
+        db.execSQL("UPDATE tblInvoiceHeader SET flgProcessedInvoice=(Select flgProcessedInvoice from tblDistributorProductLeft Where (tblInvoiceHeader.InvoiceNumber=tblDistributorProductLeft.OrderId) AND tblInvoiceHeader.flgDrctslsIndrctSls=1)");
 
     }
 
@@ -32109,8 +32207,27 @@ String fetchdate=fnGetDateTimeString();
     public LinkedHashMap<String,Integer> fnGetFinalInvoiceQtyProductWise()
     {
         LinkedHashMap<String,Integer> hmapFinalInvoiceQtyProductWise=new LinkedHashMap<String,Integer>();
+        int flgDrctslsIndrctSls=0;
+        if( CommonInfo.FlgDSRSO==2)
+        {
+            flgDrctslsIndrctSls=fnGetflgDrctslsIndrctSls(CommonInfo.CoverageAreaNodeID,CommonInfo.CoverageAreaNodeType);
+        }
+        else
+        {
+            String SOCoverageAreaIDAndType=fnGetPersonNodeIDAndPersonNodeTypeForSO();
+            flgDrctslsIndrctSls=fnGetflgDrctslsIndrctSls(Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[0]),Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[1]));
+        }
         open();
-        Cursor cursor= db.rawQuery("SELECT DISTINCT S.PrdctId,S.StockQntty-ifnull(D.OrderQty,0) AS StockAvailable  from tblDistributorStock S left outer join (SELECT ID.ProdID,SUM(ID.OrderQty) OrderQty FROM tblInvoiceHeader AS I INNER JOIN tblInvoiceDetails AS ID ON ID.InvoiceNumber=I.InvoiceNumber  WHERE I.flgProcessedInvoice=0 GROUP BY ID.ProdID) D ON D.ProdID=S.PrdctId", null);
+        Cursor cursor=null;
+        if(flgDrctslsIndrctSls==1)
+        {
+            cursor= db.rawQuery("SELECT DISTINCT S.PrdctId,S.StockQntty-ifnull(D.OrderQty,0) AS StockAvailable  from tblDistributorStock S left outer join (SELECT ID.ProdID,SUM(ID.OrderQty) OrderQty FROM tblInvoiceHeader AS I INNER JOIN tblInvoiceDetails AS ID ON ID.InvoiceNumber=I.InvoiceNumber  WHERE I.flgProcessedInvoice=0 GROUP BY ID.ProdID) D ON D.ProdID=S.PrdctId", null);
+        }
+        else
+        {
+            cursor= db.rawQuery("SELECT DISTINCT S.ProductNodeId,S.StockQntty-ifnull(D.OrderQty,0) AS StockAvailable  from tblIndrctDistributorStock S left outer join (SELECT ID.ProdID,SUM(ID.OrderQty) OrderQty FROM tblInvoiceHeader AS I INNER JOIN tblInvoiceDetails AS ID ON ID.InvoiceNumber=I.InvoiceNumber  WHERE I.flgProcessedOrderId=0 GROUP BY ID.ProdID) D ON D.ProdID=S.ProductNodeId", null);
+        }
+
         try {
             if(cursor.getCount()>0)
             {
@@ -33129,6 +33246,8 @@ close();
 
             try
             {
+                db.execSQL(DATABASE_CREATE_TABLE_DISTRIBUTOR_Indrct_LEFTPRODUCT);
+                db.execSQL(DATABASE_CREATE_TABLE_Indrct_DISTRIBUTOR_STOCK);
                 db.execSQL(DATABASE_CREATE_TABLE_tblStoreImageList);
                 db.execSQL(DATABASE_CREATE_tblAllServicesCalledSuccessfull);
                 db.execSQL(DATABASE_CREATE_TABLE_tblCoverageMaster);
@@ -33409,6 +33528,8 @@ close();
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
             try
             {
+                db.execSQL("DROP TABLE IF EXISTS tblDistributorIndrctProductLeft");
+                db.execSQL("DROP TABLE IF EXISTS tblIndrctDistributorStock");
                 db.execSQL("DROP TABLE IF EXISTS tblStoreImageList");
                 db.execSQL("DROP TABLE IF EXISTS tblAllServicesCalledSuccessfull");
                 db.execSQL("DROP TABLE IF EXISTS tblWarehouseMapping");
@@ -36127,6 +36248,33 @@ close();
 
     }
 
+    public int fnGetflgDrctslsIndrctSlsForSo(int CoverageAreaNodeID,int CoverageAreaNodeType)
+    {
+        open();
+        Cursor cursorE2 = db.rawQuery("SELECT flgDrctslsIndrctSls FROM  tblUserAuthenticationMstr  where CoverageAreaNodeID="+CoverageAreaNodeID+" AND CoverageAreaNodeType="+CoverageAreaNodeType, null);
+        int flgDrctslsIndrctSls = 0;
+
+        try {
+            if(cursorE2.getCount()>0)
+            {
+                if (cursorE2.moveToFirst())
+                {
+
+
+                    flgDrctslsIndrctSls = (Integer.parseInt(cursorE2.getString(0).toString()));
+
+
+                }
+            }
+            return flgDrctslsIndrctSls;
+        } finally {
+            if(cursorE2!=null) {
+                cursorE2.close();
+            }
+            close();
+        }
+
+    }
 
     public int fnGetCountStoreVisitCode(String StoreID)
     {

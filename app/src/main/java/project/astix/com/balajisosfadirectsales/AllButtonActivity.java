@@ -4438,7 +4438,7 @@ public class AllButtonActivity extends BaseActivity implements LocationListener,
 
                 String RouteType="0";
 
-                for(int mm = 1; mm < 4  ; mm++)
+                for(int mm = 1; mm < 5  ; mm++)
                 {
 
 
@@ -4490,6 +4490,17 @@ public class AllButtonActivity extends BaseActivity implements LocationListener,
                         }
                     }
 
+                    if(mm==4)
+                    {
+                        newservice=newservice.fnGetDistStockData(getApplicationContext(),imei);
+                        if(newservice.flagExecutedServiceSuccesfully!=38)
+                        {
+                            serviceException=true;
+                            break;
+                        }
+
+                    }
+
                 }
             }
             catch (Exception e)
@@ -4513,6 +4524,15 @@ public class AllButtonActivity extends BaseActivity implements LocationListener,
             dismissProgress();   // Base class method for dismissing ProgressDialog
 
             flgStockOut= dbengine.fetchtblStockUploadedStatus();
+            if( CommonInfo.FlgDSRSO==2)
+            {
+                flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(CommonInfo.CoverageAreaNodeID,CommonInfo.CoverageAreaNodeType);
+            }
+            else
+            {
+                String SOCoverageAreaIDAndType=dbengine.fnGetPersonNodeIDAndPersonNodeTypeForSO();
+                flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[0]),Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[1]));
+            }
             //  flgStockOut=1;
             if(serviceException)
             {
@@ -4522,7 +4542,8 @@ public class AllButtonActivity extends BaseActivity implements LocationListener,
                 //    Toast.makeText(AllButtonActivity.this,"Please fill Stock out first for starting your market visit.",Toast.LENGTH_SHORT).show();
                 //  showSyncError();
             }
-            else if(flgStockOut==0)
+
+            else if(flgStockOut==0 && flgDrctslsIndrctSls==1)
             {
                 showAlertStockOut(getResources().getString(R.string.genTermNoDataConnection),getResources().getString(R.string.AlertVANStockStockOutWareHouse)+" "+tv_Warehouse.getText().toString());
 

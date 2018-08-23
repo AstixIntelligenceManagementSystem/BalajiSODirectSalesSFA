@@ -18292,7 +18292,7 @@ String RouteType="0";
 	}
 
 
-	/*public ServiceWorker fnGetDistStockData(Context ctx,String IMEINo)
+	public ServiceWorker fnGetDistStockData(Context ctx,String IMEINo)
 	{
 		this.context = ctx;
 		String querryString="";
@@ -18347,7 +18347,7 @@ String RouteType="0";
 			is.setCharacterStream(new StringReader(name));
 			Document doc = db.parse(is);
 
-			dbengine.deleteCompleteDataDistStock();
+			dbengine.deleteCompleteDataIndrctDistStock();
 
 			NodeList dtDistributorIDOrderIDLeftNode = doc.getElementsByTagName("dtDistributorIDOrderIDLeft");
 			for (int i = 0; i < dtDistributorIDOrderIDLeftNode.getLength(); i++)
@@ -18379,23 +18379,22 @@ String RouteType="0";
 				}
 
 
-				dbengine.insertDistributorLeftOrderId(DistID,PDAOrderId);
+				dbengine.insertDistributorIndrctLeftOrderId(DistID,PDAOrderId);
 				//System.out.println("Column DESC TBL..."+IncId+"-"+ReportColumnName+"-"+DisplayColumnName);
 			}
 
 			NodeList dtDistributorProdctStockNode = doc.getElementsByTagName("dtDistributorProdctStock");
 			for (int i = 0; i < dtDistributorProdctStockNode.getLength(); i++)
 			{
-				String CategoryID="0";
+
 				String distId="0";
 				String productId="0";
+				String productNodeType="0";
 				String StockQntity="0";
-				String NetStockQty="0";
+				String StockDate="0";
 				String SKUName="0";
 
-				String OpeningStock="0";
-				String AddedStock="0";
-				String StockOutQty="0";
+
 
 				Element element = (Element) dtDistributorProdctStockNode.item(i);
 
@@ -18418,8 +18417,17 @@ String RouteType="0";
 						productId=xmlParser.getCharacterDataFromElement(line);
 					}
 				}
+				if(!element.getElementsByTagName("ProductNodeType").equals(null))
+				{
+					NodeList productNodeTypeNode = element.getElementsByTagName("ProductNodeType");
+					Element      line = (Element) productNodeTypeNode.item(0);
+					if(productNodeTypeNode.getLength()>0)
+					{
+						productNodeType=xmlParser.getCharacterDataFromElement(line);
+					}
+				}
 
-*//*
+
 				if(!element.getElementsByTagName("StockQty").equals(null))
 				{
 					NodeList StockQtyNode = element.getElementsByTagName("StockQty");
@@ -18429,46 +18437,10 @@ String RouteType="0";
 						StockQntity=xmlParser.getCharacterDataFromElement(line);
 					}
 				}
-*//*
-				if(!element.getElementsByTagName("OpeningStock").equals(null))
-				{
-					NodeList OpeningStockNode = element.getElementsByTagName("OpeningStock");
-					Element      line = (Element) OpeningStockNode.item(0);
-					if(OpeningStockNode.getLength()>0)
-					{
-						OpeningStock=xmlParser.getCharacterDataFromElement(line);
-					}
-				}
 
 
-				if(!element.getElementsByTagName("AddedStock").equals(null))
-				{
-					NodeList AddedStockNode = element.getElementsByTagName("AddedStock");
-					Element      line = (Element) AddedStockNode.item(0);
-					if(AddedStockNode.getLength()>0)
-					{
-						AddedStock=xmlParser.getCharacterDataFromElement(line);
-					}
-				}
 
-				*//*if(!element.getElementsByTagName("FinalStockQty").equals(null))
-				{
-					NodeList FinalStockQtyNode = element.getElementsByTagName("FinalStockQty");
-					Element      line = (Element) FinalStockQtyNode.item(0);
-					if(FinalStockQtyNode.getLength()>0)
-					{
-						FinalStockQty=xmlParser.getCharacterDataFromElement(line);
-					}
-				}*//*
-				if(!element.getElementsByTagName("FinalStockQty").equals(null))
-				{
-					NodeList StockQtyNode = element.getElementsByTagName("FinalStockQty");
-					Element      line = (Element) StockQtyNode.item(0);
-					if(StockQtyNode.getLength()>0)
-					{
-						StockQntity=xmlParser.getCharacterDataFromElement(line);
-					}
-				}
+
 
 				if(!element.getElementsByTagName("SKUName").equals(null))
 				{
@@ -18479,34 +18451,19 @@ String RouteType="0";
 						SKUName=xmlParser.getCharacterDataFromElement(line);
 					}
 				}
-				if(!element.getElementsByTagName("NetStockOut").equals(null))
+				if(!element.getElementsByTagName("StockDate").equals(null))
 				{
-					NodeList NetStockQtyNode = element.getElementsByTagName("NetStockOut");
-					Element      line = (Element) NetStockQtyNode.item(0);
-					if(NetStockQtyNode.getLength()>0)
+					NodeList StockDateNode = element.getElementsByTagName("StockDate");
+					Element      line = (Element) StockDateNode.item(0);
+					if(StockDateNode.getLength()>0)
 					{
-						NetStockQty=xmlParser.getCharacterDataFromElement(line);
+						StockDate=xmlParser.getCharacterDataFromElement(line);
 					}
 				}
-				if(!element.getElementsByTagName("UnloadQty").equals(null))
-				{
-					NodeList StockOutQtyNode = element.getElementsByTagName("UnloadQty");
-					Element      line = (Element)StockOutQtyNode.item(0);
-					if(StockOutQtyNode.getLength()>0)
-					{
-						StockOutQty=xmlParser.getCharacterDataFromElement(line);
-					}
-				}
-				if(!element.getElementsByTagName("CategoryID").equals(null))
-				{
-					NodeList CategoryIDNode = element.getElementsByTagName("CategoryID");
-					Element      line = (Element)CategoryIDNode.item(0);
-					if(CategoryIDNode.getLength()>0)
-					{
-						CategoryID=xmlParser.getCharacterDataFromElement(line);
-					}
-				}
-				dbengine.insertDistributorStock(productId,StockQntity,distId,SKUName,OpeningStock,AddedStock,NetStockQty,CategoryID,StockOutQty);
+
+
+
+				dbengine.insertDistributorIndrctStock(distId,productId,productNodeType,StockQntity,StockDate,SKUName);
 				//System.out.println("MASTER TBL..."+IncId+"-"+OutputType+"-"+IncentiveName+"-"+flgAcheived+"-"+Earning);
 			}
 
@@ -18530,7 +18487,7 @@ String RouteType="0";
 
 			return setmovie;
 		}
-	}*/
+	}
 
 	//map distributor
 	public ServiceWorker getDistributorMstr(Context ctx,String uuid,String CurDate)
@@ -18987,7 +18944,7 @@ String RouteType="0";
 		sse.dotNet = true;
 
 		HttpTransportSE androidHttpTransport = new HttpTransportSE(URL,0);
-		String DstId_OrderPdaId=dbengine.getDistinctInvoiceNumbers();
+		String DstId_OrderPdaId=dbengine.getDistinctIndrctInvoiceNumbers();
 		//String strStoreCollectionUniquneVisitId=dbengine.getDistinctCollectionPaymentIds();
 		dbengine.open();
 		ServiceWorker setmovie = new ServiceWorker();

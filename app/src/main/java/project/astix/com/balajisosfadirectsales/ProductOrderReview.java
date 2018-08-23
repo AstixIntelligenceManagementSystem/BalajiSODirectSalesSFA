@@ -92,6 +92,7 @@ import java.util.regex.Pattern;
 public class ProductOrderReview extends BaseActivity implements OnItemSelectedListener, OnClickListener, OnFocusChangeListener, LocationListener,GoogleApiClient.ConnectionCallbacks,
 GoogleApiClient.OnConnectionFailedListener{
 
+	int flgDrctslsIndrctSls=0;
 	HashMap<String, String> hmapProductExtraOrder=new HashMap<String, String>();
 	TextView txt_Lststock;
 	public EditText ed_extraQty;
@@ -897,37 +898,46 @@ public void loadPurchaseProductDefault()
 						String tag=ed_LastEditextFocusd.getTag().toString();
 						if(tag.contains("etOrderQty"))
 						{
-							if(hmapPrdctOdrQty!=null && hmapPrdctOdrQty.containsKey(ProductIdOnClickedEdit))
+							if(flgDrctslsIndrctSls==1)
 							{
-
-								int originalNetQntty=Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit));
-								int totalStockLeft=hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
-
-								if (originalNetQntty>totalStockLeft)
+								if(hmapPrdctOdrQty!=null && hmapPrdctOdrQty.containsKey(ProductIdOnClickedEdit))
 								{
 
-									alertForOrderExceedStock(ProductIdOnClickedEdit,ed_LastEditextFocusd,ed_LastEditextFocusd,7);
+									int originalNetQntty=Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit));
+									int totalStockLeft=hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
+
+									if (originalNetQntty>totalStockLeft)
+									{
+
+										alertForOrderExceedStock(ProductIdOnClickedEdit,ed_LastEditextFocusd,ed_LastEditextFocusd,7);
+									}
+									else
+									{
+
+										if(mProgressDialog!=null) {
+											if (mProgressDialog.isShowing() == true) {
+												mProgressDialog.dismiss();
+											}
+										}
+
+										orderBookingTotalCalc();
+										nextStepAfterRetailerCreditBal(7);
+									}
+
 								}
 								else
 								{
 
-									if(mProgressDialog!=null) {
-										if (mProgressDialog.isShowing() == true) {
-											mProgressDialog.dismiss();
-										}
-									}
-
 									orderBookingTotalCalc();
 									nextStepAfterRetailerCreditBal(7);
 								}
-
 							}
 							else
 							{
-
 								orderBookingTotalCalc();
 								nextStepAfterRetailerCreditBal(7);
 							}
+
 						}
 
 
@@ -979,37 +989,46 @@ public void loadPurchaseProductDefault()
 						String tag=ed_LastEditextFocusd.getTag().toString();
 						if(tag.contains("etOrderQty"))
 						{
-							if(hmapPrdctOdrQty!=null && hmapPrdctOdrQty.containsKey(ProductIdOnClickedEdit))
+							if(flgDrctslsIndrctSls==1)
 							{
-
-								int originalNetQntty=Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit));
-								int totalStockLeft=hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
-
-								if (originalNetQntty>totalStockLeft)
+								if(hmapPrdctOdrQty!=null && hmapPrdctOdrQty.containsKey(ProductIdOnClickedEdit))
 								{
 
-									alertForOrderExceedStock(ProductIdOnClickedEdit,ed_LastEditextFocusd,ed_LastEditextFocusd,7);
+									int originalNetQntty=Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit));
+									int totalStockLeft=hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
+
+									if (originalNetQntty>totalStockLeft)
+									{
+
+										alertForOrderExceedStock(ProductIdOnClickedEdit,ed_LastEditextFocusd,ed_LastEditextFocusd,7);
+									}
+									else
+									{
+
+										if(mProgressDialog!=null) {
+											if (mProgressDialog.isShowing() == true) {
+												mProgressDialog.dismiss();
+											}
+										}
+
+										orderBookingTotalCalc();
+										nextStepAfterRetailerCreditBal(7);
+									}
+
 								}
 								else
 								{
 
-									if(mProgressDialog!=null) {
-										if (mProgressDialog.isShowing() == true) {
-											mProgressDialog.dismiss();
-										}
-									}
-
 									orderBookingTotalCalc();
 									nextStepAfterRetailerCreditBal(7);
 								}
-
 							}
 							else
 							{
-
 								orderBookingTotalCalc();
 								nextStepAfterRetailerCreditBal(7);
 							}
+
 						}
 
 
@@ -1040,37 +1059,46 @@ public void loadPurchaseProductDefault()
 						String tag=ed_LastEditextFocusd.getTag().toString();
 						if(tag.contains("etOrderQty"))
 						{
-							if(hmapPrdctOdrQty!=null && hmapPrdctOdrQty.containsKey(ProductIdOnClickedEdit))
+							if(flgDrctslsIndrctSls==1)
 							{
-
-								int originalNetQntty=Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit));
-								int totalStockLeft=hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
-
-								if (originalNetQntty>totalStockLeft)
+								if(hmapPrdctOdrQty!=null && hmapPrdctOdrQty.containsKey(ProductIdOnClickedEdit))
 								{
 
-									alertForOrderExceedStock(ProductIdOnClickedEdit,ed_LastEditextFocusd,ed_LastEditextFocusd,5);
+									int originalNetQntty=Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit));
+									int totalStockLeft=hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
+
+									if (originalNetQntty>totalStockLeft)
+									{
+
+										alertForOrderExceedStock(ProductIdOnClickedEdit,ed_LastEditextFocusd,ed_LastEditextFocusd,5);
+									}
+									else
+									{
+
+										if(mProgressDialog!=null) {
+											if (mProgressDialog.isShowing() == true) {
+												mProgressDialog.dismiss();
+											}
+										}
+
+										orderBookingTotalCalc();
+										nextStepAfterRetailerCreditBal(5);
+									}
+
 								}
 								else
 								{
 
-									if(mProgressDialog!=null) {
-										if (mProgressDialog.isShowing() == true) {
-											mProgressDialog.dismiss();
-										}
-									}
-
 									orderBookingTotalCalc();
 									nextStepAfterRetailerCreditBal(5);
 								}
-
 							}
 							else
 							{
-
 								orderBookingTotalCalc();
 								nextStepAfterRetailerCreditBal(5);
 							}
+
 						}
 
 
@@ -1288,18 +1316,32 @@ public void loadPurchaseProductDefault()
 					   String tag=ed_LastEditextFocusd.getTag().toString();
 					   if(tag.contains("etOrderQty"))
 					   {
-						   if(hmapPrdctOdrQty!=null && hmapPrdctOdrQty.containsKey(ProductIdOnClickedEdit)) {
-							   int originalNetQntty=Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit));
-							   int totalStockLeft=hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
+						   if(flgDrctslsIndrctSls==1)
+						   {
+							   if(hmapPrdctOdrQty!=null && hmapPrdctOdrQty.containsKey(ProductIdOnClickedEdit)) {
+								   int originalNetQntty=Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit));
+								   int totalStockLeft=hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
 
-							   if (originalNetQntty>totalStockLeft)
-							   {
+								   if (originalNetQntty>totalStockLeft)
+								   {
 
-								   alertForOrderExceedStock(ProductIdOnClickedEdit,ed_LastEditextFocusd,ed_LastEditextFocusd,-1);
+									   alertForOrderExceedStock(ProductIdOnClickedEdit,ed_LastEditextFocusd,ed_LastEditextFocusd,-1);
+								   }
+								   else
+								   {
+
+									   if(dbengine.isFlgCrediBalSubmitted(storeID))
+									   {
+										   nextStepAfterRetailerCreditBal(2);
+									   }
+									   else
+									   {
+										   alertForRetailerCreditLimit(2);
+									   }
+								   }
 							   }
 							   else
 							   {
-
 								   if(dbengine.isFlgCrediBalSubmitted(storeID))
 								   {
 									   nextStepAfterRetailerCreditBal(2);
@@ -1321,6 +1363,7 @@ public void loadPurchaseProductDefault()
 								   alertForRetailerCreditLimit(2);
 							   }
 						   }
+
 					   }
 					   else
 					   {
@@ -1358,39 +1401,54 @@ public void loadPurchaseProductDefault()
 					   String tag=ed_LastEditextFocusd.getTag().toString();
 					   if(tag.contains("etOrderQty"))
 					   {
-						   if(hmapPrdctOdrQty!=null && hmapPrdctOdrQty.containsKey(ProductIdOnClickedEdit)) {
+					   	if(flgDrctslsIndrctSls==1)
+						{
+							if(hmapPrdctOdrQty!=null && hmapPrdctOdrQty.containsKey(ProductIdOnClickedEdit)) {
 
-							   int originalNetQntty=Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit));
-							   int totalStockLeft=hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
-							   if (originalNetQntty>totalStockLeft)
-							   {
+								int originalNetQntty=Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit));
+								int totalStockLeft=hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
+								if (originalNetQntty>totalStockLeft)
+								{
 
-								   alertForOrderExceedStock(ProductIdOnClickedEdit,ed_LastEditextFocusd,ed_LastEditextFocusd,-1);
-							   }
-							   else
-							   {
+									alertForOrderExceedStock(ProductIdOnClickedEdit,ed_LastEditextFocusd,ed_LastEditextFocusd,-1);
+								}
+								else
+								{
 
-								   if(dbengine.isFlgCrediBalSubmitted(storeID))
-								   {
-									   nextStepAfterRetailerCreditBal(3);
-								   }
-								   else
-								   {
-									   alertForRetailerCreditLimit(3);
-								   }
-							   }
-						   }
-						   else
-						   {
-							   if(dbengine.isFlgCrediBalSubmitted(storeID))
-							   {
-								   nextStepAfterRetailerCreditBal(3);
-							   }
-							   else
-							   {
-								   alertForRetailerCreditLimit(3);
-							   }
-						   }
+									if(dbengine.isFlgCrediBalSubmitted(storeID))
+									{
+										nextStepAfterRetailerCreditBal(3);
+									}
+									else
+									{
+										alertForRetailerCreditLimit(3);
+									}
+								}
+							}
+							else
+							{
+								if(dbengine.isFlgCrediBalSubmitted(storeID))
+								{
+									nextStepAfterRetailerCreditBal(3);
+								}
+								else
+								{
+									alertForRetailerCreditLimit(3);
+								}
+							}
+						}
+						else
+						{
+							if(dbengine.isFlgCrediBalSubmitted(storeID))
+							{
+								nextStepAfterRetailerCreditBal(3);
+							}
+							else
+							{
+								alertForRetailerCreditLimit(3);
+							}
+						}
+
 					   }
 					   else
 					   {
@@ -1473,19 +1531,37 @@ public void loadPurchaseProductDefault()
 					   String tag=ed_LastEditextFocusd.getTag().toString();
 					   if(tag.contains("etOrderQty"))
 					   {
-						   if(hmapPrdctOdrQty!=null && hmapPrdctOdrQty.containsKey(ProductIdOnClickedEdit)) {
+						   if(flgDrctslsIndrctSls==1)
+						   {
+							   if(hmapPrdctOdrQty!=null && hmapPrdctOdrQty.containsKey(ProductIdOnClickedEdit)) {
 
-							   int originalNetQntty=Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit));
-							   int totalStockLeft=hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
+								   int originalNetQntty=Integer.parseInt(hmapPrdctOdrQty.get(ProductIdOnClickedEdit));
+								   int totalStockLeft=hmapDistPrdctStockCount.get(ProductIdOnClickedEdit);
 
-							   if (originalNetQntty>totalStockLeft)
-							   {
+								   if (originalNetQntty>totalStockLeft)
+								   {
 
-								   alertForOrderExceedStock(ProductIdOnClickedEdit,ed_LastEditextFocusd,ed_LastEditextFocusd,-1);
+									   alertForOrderExceedStock(ProductIdOnClickedEdit,ed_LastEditextFocusd,ed_LastEditextFocusd,-1);
+								   }
+								   else
+								   {
+
+									   if(dbengine.isFlgCrediBalSubmitted(storeID))
+									   {
+
+										   nextStepAfterRetailerCreditBal(4);
+
+									   }
+									   else
+									   {
+
+										   alertForRetailerCreditLimit(4);
+									   }
+								   }
+
 							   }
 							   else
 							   {
-
 								   if(dbengine.isFlgCrediBalSubmitted(storeID))
 								   {
 
@@ -1498,7 +1574,6 @@ public void loadPurchaseProductDefault()
 									   alertForRetailerCreditLimit(4);
 								   }
 							   }
-
 						   }
 						   else
 						   {
@@ -1514,6 +1589,7 @@ public void loadPurchaseProductDefault()
 								   alertForRetailerCreditLimit(4);
 							   }
 						   }
+
 					   }
 
 
@@ -8019,6 +8095,16 @@ public void loadPurchaseProductDefault()
 
 			  dbengine.close();
 
+
+			  if( CommonInfo.FlgDSRSO==2)
+			  {
+				  flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(CommonInfo.CoverageAreaNodeID,CommonInfo.CoverageAreaNodeType);
+			  }
+			  else
+			  {
+				  String SOCoverageAreaIDAndType=dbengine.fnGetPersonNodeIDAndPersonNodeTypeForSO();
+				  flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[0]),Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[1]));
+			  }
 			  if(hmapFetchPDASavedData!=null && hmapFetchPDASavedData.size()>0)
 			  {
 
