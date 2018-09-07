@@ -155,7 +155,7 @@ public class AllButtonActivity extends BaseActivity implements LocationListener,
 
     public  PowerManager.WakeLock wl;
     public String rID="0";    // Abhinav Sir tell Sunil for set its value zero at 10 October 2017
-    LinearLayout ll_noVisit, ll_marketVisit, ll_reports, ll_storeVal, ll_distrbtrCheckIn, ll_execution,ll_stockCheckOut,ll_warehose;
+    LinearLayout ll_noVisit, ll_marketVisit, ll_reports, ll_storeVal, ll_distrbtrCheckIn, ll_execution,ll_stockCheckOut,ll_StkRqst,ll_warehose;
     String[] drsNames;
     TextView tv_Warehouse;
     PRJDatabase dbengine = new PRJDatabase(this);
@@ -492,6 +492,16 @@ public class AllButtonActivity extends BaseActivity implements LocationListener,
             tv_Warehouse.setText(R.string.DayStartCheckIN);
         }
 
+        ll_StkRqst= (LinearLayout) findViewById(R.id.ll_StkRqst);
+
+        ll_StkRqst.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new GetRqstStockForDay(AllButtonActivity.this).execute();
+
+
+            }
+        });
         txtview_Dashboard= (TextView) findViewById(R.id.txtview_Dashboard);
 
 
@@ -4146,13 +4156,13 @@ public class AllButtonActivity extends BaseActivity implements LocationListener,
                     if(mm==42)
                     {
 
-                        newservice = newservice.getallStores(getApplicationContext(), fDate, imei, rID,RouteType,1);
+                       /* newservice = newservice.getallStores(getApplicationContext(), fDate, imei, rID,RouteType,1);
                         if(newservice.flagExecutedServiceSuccesfully!=1)
                         {
                             serviceExceptionCode=" for getting all stores and Error Code is : "+newservice.exceptionCode;
                             serviceException=true;
                             break;
-                        }
+                        }*/
                     }
                     if(mm==43)
                     {
@@ -5123,5 +5133,107 @@ public class AllButtonActivity extends BaseActivity implements LocationListener,
         file.delete();
         File file1 = new File(delPath.toString().replace(".xml", ".zip"));
         file1.delete();
+    }
+    private class GetRqstStockForDay extends AsyncTask<Void, Void, Void>
+    {
+
+        int flgStockOut=0;
+        public GetRqstStockForDay(AllButtonActivity activity)
+        {
+
+        }
+        @Override
+        protected void onPreExecute()
+        {
+            super.onPreExecute();
+
+
+
+
+            // Base class method for Creating ProgressDialog
+            showProgress(getResources().getString(R.string.RetrivingDataMsg));
+
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... args)
+        {
+
+
+            try
+            {
+
+                String RouteType="0";
+
+                for(int mm = 1; mm < 2  ; mm++)
+                {
+
+
+
+                    // System.out.println("Excecuted function : "+newservice.flagExecutedServiceSuccesfully);
+                    if (mm == 1) {
+                        newservice = newservice.fnGetStockUploadedStatus(getApplicationContext(), fDate, imei);
+
+                        if (!newservice.director.toString().trim().equals("1")) {
+                            chkFlgForErrorToCloseApp = 1;
+                            serviceException = true;
+                            break;
+
+                        }
+                    }
+
+
+
+                }
+            }
+            catch (Exception e)
+            {
+                Log.i("SvcMgr", "Service Execution Failed!", e);
+            }
+            finally
+            {
+                Log.i("SvcMgr", "Service Execution Completed...");
+            }
+            return null;
+        }
+
+
+        @Override
+        protected void onPostExecute(Void result)
+        {
+            super.onPostExecute(result);
+
+
+            dismissProgress();   // Base class method for dismissing ProgressDialog
+
+            int flgStockRqst = dbengine.fetchtblStockUploadedStatusForRqstStatus();
+            //  flgStockOut=1;
+            if(serviceException)
+            {
+                serviceException=false;
+                showAlertStockOut("Error","Error While Retrieving Data.");
+                // showAlertException(getResources().getString(R.string.txtError),getResources().getString(R.string.txtErrorRetrievingData));
+                //    Toast.makeText(AllButtonActivity.this,"Please fill Stock out first for starting your market visit.",Toast.LENGTH_SHORT).show();
+                //  showSyncError();
+            }
+
+            else if (flgStockRqst == 0 || flgStockRqst == 2) {
+                Intent intent=new Intent(AllButtonActivity.this,StockRequestActivity.class);
+                startActivity(intent);
+                finish();
+
+
+            }
+            else
+            {
+
+                showAlertStockOut(getResources().getString(R.string.genTermNoDataConnection),getResources().getString(R.string.AlertVANStockForRqstStk));
+
+            }
+
+
+
+        }
     }
 }

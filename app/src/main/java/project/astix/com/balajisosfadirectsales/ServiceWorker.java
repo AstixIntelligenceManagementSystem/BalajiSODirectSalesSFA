@@ -1093,6 +1093,7 @@ public class ServiceWorker
 					String SalesAreaName="0";
 					int CoverageAreaNodeID=0;
 					int CoverageAreaNodeType=0;
+					int flgDrctslsIndrctSls=0;
 
 					Element element = (Element) tblSchemeStoreMappingNode.item(i);
 
@@ -1227,13 +1228,21 @@ public class ServiceWorker
 						}
 
 
-
+						if(!element.getElementsByTagName("WorkingType").equals(null))
+						{
+							NodeList flgDrctslsIndrctSlsNode = element.getElementsByTagName("WorkingType");
+							line = (Element) flgDrctslsIndrctSlsNode.item(0);
+							if(flgDrctslsIndrctSlsNode.getLength()>0)
+							{
+								flgDrctslsIndrctSls=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
+							}
+						}
 					}
 
 
 					dbengine.savetblUserAuthenticationMstr(flgUserAuthenticated,PersonName,FlgRegistered,
 							flgAppStatus,DisplayMessage,flgValidApplication,MessageForInvalid,flgPersonTodaysAtt,
-							PersonNodeID,PersonNodeType,ContactNo,DOB,SelfieName,SelfieNameURL,SalesAreaName,CoverageAreaNodeID,CoverageAreaNodeType);
+							PersonNodeID,PersonNodeType,ContactNo,DOB,SelfieName,SelfieNameURL,SalesAreaName,CoverageAreaNodeID,CoverageAreaNodeType,flgDrctslsIndrctSls);
 
 				}
 
@@ -6833,7 +6842,145 @@ String RouteType="0";
 				dbengine.savetblPriceApplyType(DiscountLevelType,cutoffvalue);
 			}
 
+			NodeList tblUOMMaster = doc.getElementsByTagName("tblUOMMaster");
+			for (int i = 0; i < tblUOMMaster.getLength(); i++)
+			{
 
+
+				int BUomId=0;
+				String BUOMName="NA";
+				int flgRetailUnit=0;
+
+
+
+				Element element = (Element) tblUOMMaster.item(i);
+
+				if(!element.getElementsByTagName("BUOMID").equals(null))
+				{
+
+					NodeList BUomIdNode = element.getElementsByTagName("BUOMID");
+					Element     line = (Element) BUomIdNode.item(0);
+
+					if(BUomIdNode.getLength()>0)
+					{
+
+						BUomId=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
+					}
+				}
+
+				if(!element.getElementsByTagName("BUOMName").equals(null))
+				{
+
+					NodeList BUOMNameNode = element.getElementsByTagName("BUOMName");
+					Element     line = (Element) BUOMNameNode.item(0);
+
+					if(BUOMNameNode.getLength()>0)
+					{
+
+						BUOMName=xmlParser.getCharacterDataFromElement(line);
+
+					}
+				}
+				if(!element.getElementsByTagName("flgRetailUnit").equals(null))
+				{
+
+					NodeList flgRetailUnitNode = element.getElementsByTagName("flgRetailUnit");
+					Element     line = (Element) flgRetailUnitNode.item(0);
+
+					if(flgRetailUnitNode.getLength()>0)
+					{
+
+						flgRetailUnit=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
+					}
+				}
+
+
+				dbengine.insertUOMMstr(BUomId,BUOMName,flgRetailUnit);
+			}
+
+
+
+			NodeList tblUOMMapping = doc.getElementsByTagName("tblUOMMapping");
+			for (int i = 0; i < tblUOMMapping.getLength(); i++)
+			{
+
+				int NodeId=0;
+				int NodeType=0;
+				int BaseUomId=0;
+				int PackUomId=0;
+				Double relConverionUnit=0.0;
+
+
+
+				Element element = (Element) tblUOMMapping.item(i);
+
+				if(!element.getElementsByTagName("NodeID").equals(null))
+				{
+
+					NodeList NodeIDNode = element.getElementsByTagName("NodeID");
+					Element     line = (Element) NodeIDNode.item(0);
+
+					if(NodeIDNode.getLength()>0)
+					{
+
+						NodeId=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
+					}
+				}
+				if(!element.getElementsByTagName("NodeType").equals(null))
+				{
+
+					NodeList NodeTypeNode = element.getElementsByTagName("NodeType");
+					Element     line = (Element) NodeTypeNode.item(0);
+
+					if(NodeTypeNode.getLength()>0)
+					{
+
+						NodeType=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
+					}
+				}
+
+				if(!element.getElementsByTagName("BaseUOMID").equals(null))
+				{
+
+					NodeList BaseUOMIDNode = element.getElementsByTagName("BaseUOMID");
+					Element     line = (Element) BaseUOMIDNode.item(0);
+
+					if(BaseUOMIDNode.getLength()>0)
+					{
+
+						BaseUomId=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
+					}
+				}
+
+				if(!element.getElementsByTagName("PackUOMID").equals(null))
+				{
+
+					NodeList PackUOMIDNode = element.getElementsByTagName("PackUOMID");
+					Element     line = (Element) PackUOMIDNode.item(0);
+
+					if(PackUOMIDNode.getLength()>0)
+					{
+
+						PackUomId=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
+
+					}
+				}
+				if(!element.getElementsByTagName("RelConversionUnits").equals(null))
+				{
+
+					NodeList RelConversionUnitsNode = element.getElementsByTagName("RelConversionUnits");
+					Element     line = (Element) RelConversionUnitsNode.item(0);
+
+					if(RelConversionUnitsNode.getLength()>0)
+					{
+
+						relConverionUnit=Double.parseDouble(xmlParser.getCharacterDataFromElement(line));
+					}
+				}
+
+
+				dbengine.insertUOMMapping(NodeId,NodeType,BaseUomId,PackUomId,relConverionUnit);
+			}
 			dbengine.close();
 
 			setmovie.director = "1";
@@ -18307,7 +18454,7 @@ String RouteType="0";
 		SoapObject responseBody = null; //Contains XML content of dataset
 
 		PRJDatabase dbengine = new PRJDatabase(context);
-		String DstId_OrderPdaId=dbengine.getDstBIDOrderId();
+		String DstId_OrderPdaId=dbengine.getDistinctIndrctInvoiceNumbers();
 		dbengine.open();
 
 		//SoapObject param
@@ -18377,9 +18524,12 @@ String RouteType="0";
 						PDAOrderId=xmlParser.getCharacterDataFromElement(line);
 					}
 				}
-
-
 				dbengine.insertDistributorIndrctLeftOrderId(DistID,PDAOrderId);
+
+				if(i==(dtDistributorIDOrderIDLeftNode.getLength()-1))
+				{
+					dbengine.updateOrderPDAID();
+				}
 				//System.out.println("Column DESC TBL..."+IncId+"-"+ReportColumnName+"-"+DisplayColumnName);
 			}
 
@@ -18944,7 +19094,7 @@ String RouteType="0";
 		sse.dotNet = true;
 
 		HttpTransportSE androidHttpTransport = new HttpTransportSE(URL,0);
-		String DstId_OrderPdaId=dbengine.getDistinctIndrctInvoiceNumbers();
+		String DstId_OrderPdaId=dbengine.getDistinctInvoiceNumbers();
 		//String strStoreCollectionUniquneVisitId=dbengine.getDistinctCollectionPaymentIds();
 		dbengine.open();
 		ServiceWorker setmovie = new ServiceWorker();
@@ -19280,565 +19430,17 @@ int flgProcessedInvoice=0;
 
 
 
-
-			/*NodeList tblPrdctMstrNode = doc.getElementsByTagName("tblProductListMaster");
-			for (int i = 0; i < tblPrdctMstrNode.getLength(); i++)
-
-			{
-				String CatID="0";
-				String ProductID="0";
-				String ProductShortName="NA";
-				String DisplayUnit="0";
-				Double CalculateKilo=0.0;
-				String KGLiter="0";
-				int StoreCatNodeId=0;
-				String SearchField="";
-
-				int CatOrdr=0;
-				int PrdOrdr=0;
-				int ManufacturerID=0;
-				String rptUnitName="";
-				String perbaseUnit="0";
-				Element element = (Element) tblPrdctMstrNode.item(i);
-
-				if(!element.getElementsByTagName("CatID").equals(null))
-				{
-
-					NodeList CatIDNode = element.getElementsByTagName("CatID");
-					Element     line = (Element) CatIDNode.item(0);
-
-					if(CatIDNode.getLength()>0)
-					{
-
-						CatID=xmlParser.getCharacterDataFromElement(line);
-						StoreCatNodeId=Integer.parseInt(CatID);
-					}
-				}
-				if(!element.getElementsByTagName("ProductID").equals(null))
-				{
-
-					NodeList ProductIDNode = element.getElementsByTagName("ProductID");
-					Element     line = (Element) ProductIDNode.item(0);
-
-					if(ProductIDNode.getLength()>0)
-					{
-
-						ProductID=xmlParser.getCharacterDataFromElement(line);
-					}
-				}
-
-				if(!element.getElementsByTagName("ProductShortName").equals(null))
-				{
-
-					NodeList ProductShortNameNode = element.getElementsByTagName("ProductShortName");
-					Element     line = (Element) ProductShortNameNode.item(0);
-
-					if(ProductShortNameNode.getLength()>0)
-					{
-
-						ProductShortName=xmlParser.getCharacterDataFromElement(line);
-					}
-				}
-				if(!element.getElementsByTagName("DisplayUnit").equals(null))
-				{
-
-					NodeList DisplayUnitNode = element.getElementsByTagName("DisplayUnit");
-					Element     line = (Element) DisplayUnitNode.item(0);
-
-					if(DisplayUnitNode.getLength()>0)
-					{
-
-						DisplayUnit=xmlParser.getCharacterDataFromElement(line);
-					}
-				}
-				if(!element.getElementsByTagName("CalculateKilo").equals(null))
-				{
-
-					NodeList CalculateKiloNode = element.getElementsByTagName("CalculateKilo");
-					Element     line = (Element) CalculateKiloNode.item(0);
-
-					if(CalculateKiloNode.getLength()>0)
-					{
-
-						CalculateKilo=Double.parseDouble(xmlParser.getCharacterDataFromElement(line));
-					}
-				}
-
-				if(!element.getElementsByTagName("KGLiter").equals(null))
-				{
-
-					NodeList KGLiterNode = element.getElementsByTagName("KGLiter");
-					Element     line = (Element) KGLiterNode.item(0);
-
-					if(KGLiterNode.getLength()>0)
-					{
-
-						KGLiter=xmlParser.getCharacterDataFromElement(line);
-
-					}
-				}
-
-				if(!element.getElementsByTagName("CatOrdr").equals(null))
-				{
-
-					NodeList CatOrdrNode = element.getElementsByTagName("CatOrdr");
-					Element     line = (Element) CatOrdrNode.item(0);
-
-					if(CatOrdrNode.getLength()>0)
-					{
-
-						CatOrdr=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
-
-					}
-				}
-
-				if(!element.getElementsByTagName("PrdOrdr").equals(null))
-				{
-
-					NodeList PrdOrdrNode = element.getElementsByTagName("PrdOrdr");
-					Element     line = (Element) PrdOrdrNode.item(0);
-
-					if(PrdOrdrNode.getLength()>0)
-					{
-
-						PrdOrdr=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
-
-					}
-				}
-				if(!element.getElementsByTagName("StoreCatNodeId").equals(null))
-				{
-
-					NodeList StoreCatNodeIdNode = element.getElementsByTagName("StoreCatNodeId");
-					Element     line = (Element) StoreCatNodeIdNode.item(0);
-
-					if(StoreCatNodeIdNode.getLength()>0)
-					{
-
-						StoreCatNodeId=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
-
-					}
-				}
-
-				if(!element.getElementsByTagName("SearchField").equals(null))
-				{
-
-					NodeList SearchFieldNode = element.getElementsByTagName("SearchField");
-					Element     line = (Element) SearchFieldNode.item(0);
-
-					if(SearchFieldNode.getLength()>0)
-					{
-
-						SearchField=xmlParser.getCharacterDataFromElement(line);
-
-					}
-				}
-
-
-				if(!element.getElementsByTagName("ManufacturerID").equals(null))
-				{
-
-					NodeList ManufacturerIDNode = element.getElementsByTagName("ManufacturerID");
-					Element     line = (Element) ManufacturerIDNode.item(0);
-
-					if(ManufacturerIDNode.getLength()>0)
-					{
-
-						ManufacturerID=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
-
-					}
-				}
-
-				if(!element.getElementsByTagName("RptUnitName").equals(null))
-				{
-
-					NodeList RptUnitNameNode = element.getElementsByTagName("RptUnitName");
-					Element     line = (Element) RptUnitNameNode.item(0);
-
-					if(RptUnitNameNode.getLength()>0)
-					{
-
-						rptUnitName=xmlParser.getCharacterDataFromElement(line);
-
-					}
-				}
-				if(!element.getElementsByTagName("PerbaseUnit").equals(null))
-				{
-
-					NodeList PerbaseUnitNode = element.getElementsByTagName("PerbaseUnit");
-					Element     line = (Element) PerbaseUnitNode.item(0);
-
-					if(PerbaseUnitNode.getLength()>0)
-					{
-
-						perbaseUnit=xmlParser.getCharacterDataFromElement(line);
-
-					}
-				}
-
-
-				//SearchField
-				dbengine.saveSOAPdataProductList(CatID,ProductID,ProductShortName,DisplayUnit,CalculateKilo,KGLiter,CatOrdr,PrdOrdr,StoreCatNodeId,SearchField,ManufacturerID,rptUnitName,perbaseUnit);
-
-
-			}
-
-
-			NodeList tblProductSegementMap = doc.getElementsByTagName("tblProductSegementMap");
-			for (int i = 0; i < tblProductSegementMap.getLength(); i++)
-			{
-
-				String ProductID="0";
-				int BusinessSegmentId=0;
-				Double ProductMRP=-99.0;
-				Double ProductRLP=0.0;
-				Double ProductTaxAmount=0.0;
-				Double RetMarginPer=0.0;
-				Double VatTax=0.0;
-				Double StandardRate=-99.0;
-				Double StandardRateBeforeTax=0.0;
-				Double StandardTax=0.0;
-				int flgPriceAva=0;
-				int flgWholeSellApplicable=0;
-				double PriceRangeWholeSellApplicable=0.0;
-				double StandardRateWholeSale=0.0;
-				double StandardRateBeforeTaxWholeSell=0.0;
-				double StandardTaxWholeSale=0.0;
-
-
-				Element element = (Element) tblProductSegementMap.item(i);
-
-				if(!element.getElementsByTagName("ProductId").equals(null))
-				{
-
-					NodeList ProductIDNode = element.getElementsByTagName("ProductId");
-					Element     line = (Element) ProductIDNode.item(0);
-
-					if(ProductIDNode.getLength()>0)
-					{
-
-						ProductID=xmlParser.getCharacterDataFromElement(line);
-					}
-				}
-
-				if(!element.getElementsByTagName("ProductMRP").equals(null))
-				{
-
-					NodeList ProductMRPNode = element.getElementsByTagName("ProductMRP");
-					Element     line = (Element) ProductMRPNode.item(0);
-
-					if(ProductMRPNode.getLength()>0)
-					{
-
-						ProductMRP=Double.parseDouble(xmlParser.getCharacterDataFromElement(line));
-						ProductMRP=Double.parseDouble(decimalFormat.format(ProductMRP));
-					}
-				}
-
-				if(!element.getElementsByTagName("ProductRLP").equals(null))
-				{
-
-					NodeList ProductRLPNode = element.getElementsByTagName("ProductRLP");
-					Element     line = (Element) ProductRLPNode.item(0);
-
-					if(ProductRLPNode.getLength()>0)
-					{
-
-						ProductRLP=Double.parseDouble(xmlParser.getCharacterDataFromElement(line));
-						ProductRLP=Double.parseDouble(decimalFormat.format(ProductMRP));
-					}
-				}
-
-				if(!element.getElementsByTagName("ProductTaxAmount").equals(null))
-				{
-
-					NodeList ProductTaxAmountNode = element.getElementsByTagName("ProductTaxAmount");
-					Element     line = (Element) ProductTaxAmountNode.item(0);
-
-					if(ProductTaxAmountNode.getLength()>0)
-					{
-
-						ProductTaxAmount=Double.parseDouble(xmlParser.getCharacterDataFromElement(line));
-						ProductTaxAmount=Double.parseDouble(decimalFormat.format(ProductMRP));
-					}
-				}
-
-
-				if(!element.getElementsByTagName("RetMarginPer").equals(null))
-				{
-
-					NodeList RetMarginPerNode = element.getElementsByTagName("RetMarginPer");
-					Element     line = (Element) RetMarginPerNode.item(0);
-
-					if(RetMarginPerNode.getLength()>0)
-					{
-
-						RetMarginPer=Double.parseDouble(xmlParser.getCharacterDataFromElement(line));
-
-					}
-				}
-
-				if(!element.getElementsByTagName("Tax").equals(null))
-				{
-
-					NodeList TaxNode = element.getElementsByTagName("Tax");
-					Element     line = (Element) TaxNode.item(0);
-
-					if(TaxNode.getLength()>0)
-					{
-
-						VatTax=Double.parseDouble(xmlParser.getCharacterDataFromElement(line));
-
-					}
-				}
-
-
-				if(!element.getElementsByTagName("StandardRate").equals(null))
-				{
-
-					NodeList StandardRateNode = element.getElementsByTagName("StandardRate");
-					Element     line = (Element) StandardRateNode.item(0);
-
-					if(StandardRateNode.getLength()>0)
-					{
-
-						StandardRate=Double.parseDouble(xmlParser.getCharacterDataFromElement(line));
-
-					}
-				}
-				if(!element.getElementsByTagName("StandardRateBeforeTax").equals(null))
-				{
-
-					NodeList StandardRateBeforeTaxNode = element.getElementsByTagName("StandardRateBeforeTax");
-					Element     line = (Element) StandardRateBeforeTaxNode.item(0);
-
-					if(StandardRateBeforeTaxNode.getLength()>0)
-					{
-
-						StandardRateBeforeTax=Double.parseDouble(xmlParser.getCharacterDataFromElement(line));
-
-					}
-				}
-				if(!element.getElementsByTagName("StandardTax").equals(null))
-				{
-
-					NodeList StandardTaxNode = element.getElementsByTagName("StandardTax");
-					Element     line = (Element) StandardTaxNode.item(0);
-
-					if(StandardTaxNode.getLength()>0)
-					{
-
-						StandardTax=Double.parseDouble(xmlParser.getCharacterDataFromElement(line));
-
-					}
-				}
-
-
-				if(!element.getElementsByTagName("SegmentId").equals(null))
-				{
-
-					NodeList BusinessSegmentIdNode = element.getElementsByTagName("SegmentId");
-					Element     line = (Element) BusinessSegmentIdNode.item(0);
-
-					if(BusinessSegmentIdNode.getLength()>0)
-					{
-
-						BusinessSegmentId=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
-
-					}
-				}
-
-				if(!element.getElementsByTagName("flgPriceAva").equals(null))
-				{
-
-					NodeList flgPriceAvaNode = element.getElementsByTagName("flgPriceAva");
-					Element     line = (Element) flgPriceAvaNode.item(0);
-
-					if(flgPriceAvaNode.getLength()>0)
-					{
-
-						flgPriceAva=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
-
-					}
-				}
-				//flgPriceAva
-				if(!element.getElementsByTagName("flgPrdBulkPriceapplicable").equals(null))
-				{
-
-					NodeList flgWholeSellApplicableNode = element.getElementsByTagName("flgPrdBulkPriceapplicable");
-					Element     line = (Element) flgWholeSellApplicableNode.item(0);
-
-					if(flgWholeSellApplicableNode.getLength()>0)
-					{
-
-						flgWholeSellApplicable=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
-
-					}
-				}
-
-
-				if(!element.getElementsByTagName("Cutoffvalue").equals(null))
-				{
-
-					NodeList PriceRangeWholeSellApplicableNode = element.getElementsByTagName("Cutoffvalue");
-					Element     line = (Element) PriceRangeWholeSellApplicableNode.item(0);
-
-					if(PriceRangeWholeSellApplicableNode.getLength()>0)
-					{
-
-						PriceRangeWholeSellApplicable=Double.parseDouble(xmlParser.getCharacterDataFromElement(line));
-
-					}
-				}
-
-				if(!element.getElementsByTagName("StandardRateWholeSale").equals(null))
-				{
-
-					NodeList StandardRateWholeSaleNode = element.getElementsByTagName("StandardRateWholeSale");
-					Element     line = (Element) StandardRateWholeSaleNode.item(0);
-
-					if(StandardRateWholeSaleNode.getLength()>0)
-					{
-
-						StandardRateWholeSale=Double.parseDouble(xmlParser.getCharacterDataFromElement(line));
-
-					}
-				}
-
-				if(!element.getElementsByTagName("StandardRateBeforeTaxWholeSale").equals(null))
-				{
-
-					NodeList StandardRateBeforeTaxWholeSellNode = element.getElementsByTagName("StandardRateBeforeTaxWholeSale");
-					Element     line = (Element) StandardRateBeforeTaxWholeSellNode.item(0);
-
-					if(StandardRateBeforeTaxWholeSellNode.getLength()>0)
-					{
-
-						StandardRateBeforeTaxWholeSell=Double.parseDouble(xmlParser.getCharacterDataFromElement(line));
-
-					}
-				}
-
-				if(!element.getElementsByTagName("StandardTaxWholeSale").equals(null))
-				{
-
-					NodeList StandardTaxWholeSaleNode = element.getElementsByTagName("StandardTaxWholeSale");
-					Element     line = (Element) StandardTaxWholeSaleNode.item(0);
-
-					if(StandardTaxWholeSaleNode.getLength()>0)
-					{
-
-						StandardTaxWholeSale=Double.parseDouble(xmlParser.getCharacterDataFromElement(line));
-
-					}
-				}
-				dbengine.saveProductSegementMap(ProductID,ProductMRP, ProductRLP, ProductTaxAmount,RetMarginPer,VatTax,StandardRate,StandardRateBeforeTax,StandardTax,BusinessSegmentId,flgPriceAva,flgWholeSellApplicable,PriceRangeWholeSellApplicable,StandardRateWholeSale,StandardRateBeforeTaxWholeSell,StandardTaxWholeSale);
-
-
-			}
-
-			NodeList tblPriceApplyType = doc.getElementsByTagName("tblPriceApplyType");
-			for (int i = 0; i < tblPriceApplyType.getLength(); i++)
-			{
-
-
-				int DiscountLevelType=0;
-				String cutoffvalueTmp="0.0";
-				Double cutoffvalue=0.0;
-
-
-
-				Element element = (Element) tblPriceApplyType.item(i);
-
-				if(!element.getElementsByTagName("DiscountLevel").equals(null))
-				{
-
-					NodeList DiscountLevelTypeNode = element.getElementsByTagName("DiscountLevel");
-					Element     line = (Element) DiscountLevelTypeNode.item(0);
-
-					if(DiscountLevelTypeNode.getLength()>0)
-					{
-
-						DiscountLevelType=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
-					}
-				}
-
-				if(!element.getElementsByTagName("cutoffvalue").equals(null))
-				{
-
-					NodeList cutoffvalueNode = element.getElementsByTagName("cutoffvalue");
-					Element     line = (Element) cutoffvalueNode.item(0);
-
-					if(cutoffvalueNode.getLength()>0)
-					{
-
-						cutoffvalueTmp=(xmlParser.getCharacterDataFromElement(line));
-
-						cutoffvalue=Double.parseDouble(cutoffvalueTmp);
-					}
-				}
-
-
-				dbengine.savetblPriceApplyType(DiscountLevelType,cutoffvalue);
-			}
-// Category Details
-			NodeList tblCategoryMaster = doc.getElementsByTagName("tblCategoryMaster");
-			for (int i = 0; i < tblCategoryMaster.getLength(); i++)
-			{
-
-				String stID = "NA";
-				String deDescr = "NA";
-				int CatOrdr=0;
-
-				Element element = (Element) tblCategoryMaster.item(i);
-
-				if(!element.getElementsByTagName("NODEID").equals(null))
-				{
-					NodeList NODEIDNode = element.getElementsByTagName("NODEID");
-					Element      line = (Element) NODEIDNode.item(0);
-					if(NODEIDNode.getLength()>0)
-					{
-						stID=xmlParser.getCharacterDataFromElement(line);
-					}
-				}
-
-
-				if(!element.getElementsByTagName("CatOrdr").equals(null))
-				{
-					NodeList CatOrdrNode = element.getElementsByTagName("CatOrdr");
-					Element      line = (Element) CatOrdrNode.item(0);
-					if(CatOrdrNode.getLength()>0)
-					{
-						CatOrdr=Integer.parseInt(xmlParser.getCharacterDataFromElement(line));
-					}
-				}
-				if(!element.getElementsByTagName("CATEGORY").equals(null))
-				{
-					NodeList CATEGORYNode = element.getElementsByTagName("CATEGORY");
-					Element      line = (Element) CATEGORYNode.item(0);
-					if(CATEGORYNode.getLength()>0)
-					{
-						deDescr=xmlParser.getCharacterDataFromElement(line);
-					}
-				}
-
-				dbengine.saveCategory(stID.trim(), deDescr.trim(),CatOrdr);
-				//System.out.println("Column DESC TBL..."+IncId+"-"+ReportColumnName+"-"+DisplayColumnName);
-			}*/
-			flagExecutedServiceSuccesfully=39;
-
-
-
-
 			dbengine.close();
 
 
 			int statusId = dbengine.confirmedStock();
+			setmovie.director = "1";
 			if(statusId==2)
 			{
 				dbengine.insertConfirmWArehouse(dbrId,"1");
 				dbengine.inserttblDayCheckIn(1);
 			}
-			setmovie.director = "1";
+
 			return setmovie;
 		} catch (Exception e) {
 			setmovie.exceptionCode=e.getCause().getMessage();
@@ -22138,9 +21740,9 @@ int flgProcessedInvoice=0;
 					}
 				}
 
-				if(!element.getElementsByTagName("flgDrctslsIndrctSls").equals(null))
+				if(!element.getElementsByTagName("WorkingType").equals(null))
 				{
-					NodeList flgDrctslsIndrctSlsNode = element.getElementsByTagName("flgDrctslsIndrctSls");
+					NodeList flgDrctslsIndrctSlsNode = element.getElementsByTagName("WorkingType");
 					Element     line = (Element) flgDrctslsIndrctSlsNode.item(0);
 					if (flgDrctslsIndrctSlsNode.getLength()>0)
 					{
@@ -22515,6 +22117,136 @@ int flgProcessedInvoice=0;
 		}
 	}
 
+	public ServiceWorker getConfirmtionRqstStock(Context ctx,String RqstdStk,String uuid,String CoverageAreaNodeID,String coverageAreaNodeType)
+	{
+		this.context = ctx;
+		PRJDatabase dbengine = new PRJDatabase(context);
 
+		decimalFormat.applyPattern(pattern);
+
+		int chkTblStoreListContainsRow=1;
+		StringReader read;
+		InputSource inputstream;
+		final String SOAP_ACTION = "http://tempuri.org/fnSpVanStockRequestSave";
+		final String METHOD_NAME = "fnSpVanStockRequestSave";
+		final String NAMESPACE = "http://tempuri.org/";
+		final String URL = UrlForWebService;
+		//Create request
+		SoapObject table = null; // Contains table of dataset that returned
+		// through SoapObject
+		SoapObject client = null; // Its the client petition to the web service
+		SoapObject tableRow = null; // Contains row of table
+		SoapObject responseBody = null; // Contains XML content of dataset
+
+		//SoapObject param
+		HttpTransportSE transport = null; // That call webservice
+		SoapSerializationEnvelope sse = null;
+
+		sse = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+
+		sse.dotNet = true;
+		HttpTransportSE androidHttpTransport = new HttpTransportSE(URL,timeout);
+
+		ServiceWorker setmovie = new ServiceWorker();
+		Date currDate= new Date();
+		SimpleDateFormat currDateFormat = new SimpleDateFormat("dd-MMM-yyyy",Locale.ENGLISH);
+
+		currSysDate = currDateFormat.format(currDate).toString();
+		String crntDate = currSysDate.trim().toString();
+		try {
+			client = new SoapObject(NAMESPACE, METHOD_NAME);
+
+
+			client.addProperty("bydate", crntDate);
+			client.addProperty("IMEINo", uuid.toString());
+			client.addProperty("CoverageAreaNodeID", CoverageAreaNodeID);
+
+			client.addProperty("coverageAreaNodeType", coverageAreaNodeType);
+			client.addProperty("Prdvalues", RqstdStk);
+
+
+			sse.setOutputSoapObject(client);
+
+			sse.bodyOut = client;
+
+			androidHttpTransport.call(SOAP_ACTION, sse);
+
+			responseBody = (SoapObject)sse.bodyIn;
+			// This step: get file XML
+			//responseBody = (SoapObject) sse.getResponse();
+			int totalCount = responseBody.getPropertyCount();
+
+			// // System.out.println("Kajol 2 :"+totalCount);
+			String resultString=androidHttpTransport.responseDump;
+
+			String name=responseBody.getProperty(0).toString();
+
+			XMLParser xmlParser = new XMLParser();
+			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder db = dbf.newDocumentBuilder();
+			InputSource is = new InputSource();
+			is.setCharacterStream(new StringReader(name));
+			Document doc = db.parse(is);
+
+			dbengine.open();
+
+
+
+
+			NodeList tblDistributorListForSONode = doc.getElementsByTagName("tblflgRequestStockAccepted");
+			for (int i = 0; i < tblDistributorListForSONode.getLength(); i++)
+			{
+
+				String VanLoadUnLoadCycID="0";
+				String flgRequestAccept="0";
+
+
+				Element element = (Element) tblDistributorListForSONode.item(i);
+				if(!element.getElementsByTagName("VanLoadUnLoadCycID").equals(null))
+				{
+					NodeList VanLoadUnLoadCycIDNode = element.getElementsByTagName("VanLoadUnLoadCycID");
+					Element     line = (Element) VanLoadUnLoadCycIDNode.item(0);
+					if (VanLoadUnLoadCycIDNode.getLength()>0)
+					{
+						VanLoadUnLoadCycID=xmlParser.getCharacterDataFromElement(line);
+					}
+				}
+				if(!element.getElementsByTagName("flgRequestAccept").equals(null))
+				{
+					NodeList flgRequestAcceptNode = element.getElementsByTagName("flgRequestAccept");
+					Element     line = (Element) flgRequestAcceptNode.item(0);
+					if (flgRequestAcceptNode.getLength()>0)
+					{
+						flgRequestAccept=xmlParser.getCharacterDataFromElement(line);
+						if(flgRequestAccept.equals("1"))
+						{
+							setmovie.director = "1";
+							break;
+						}
+						else
+						{
+							setmovie.director = "0";
+							break;
+						}
+					}
+				}
+
+			}
+
+
+
+
+			dbengine.close();
+			return setmovie;
+
+		} catch (Exception e) {
+			//setmovie.exceptionCode=e.getCause().getMessage();
+			setmovie.director = e.toString();
+			setmovie.movie_name = e.toString();
+			//dbengine.close();
+
+			return setmovie;
+		}
+	}
 
 }

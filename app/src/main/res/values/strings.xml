@@ -1,9 +1,19 @@
 <resources>
 
-     <!--<string name="app_name">Balaji SO SFA Direct Sales</string>-->
+    <!--<string name="app_name">Balaji SO SFA Direct Sales</string>-->
     <!-- <string name="app_name">Balaji SO SFA Direct Sales Stagging</string>-->
     <!--<string name="app_name">Balaji SO SFA Direct Sales Test</string>-->
-   <string name="app_name">Balaji SO SFA Direct Sales Dev</string>
+    <string name="app_name">Balaji SO SFA Direct Sales Dev</string>
+
+
+    <string name="StockRequest">Stock Request</string>
+    <string name="StockinVan">Stk in Van</string>
+    <string name="ReqStock">Req Stk</string>
+    <string name="fnlStk">Fnl Stk</string>
+    <string name="uom">UOM</string>
+
+    <string name="AlertDialogRequstionStock">Error while placing stock request!</string>
+    <string name="AlertVANStockForRqstStk">Please Confirm WareHouse Stock first for placing another stock request.</string>
 
 
     <string name="PreOutAmt">Previous Outstanding Amt.</string>
@@ -87,7 +97,6 @@ Click on UPDATE PAYMENT to update Collection amount.</string>
     <string name="DSR_Profile">DSR Profile</string>
     <string name="Contact_No">Contact No</string>
     <string name="DOB">DOB</string>
-
 
 
     <!--Alert Box message-->
@@ -254,7 +263,6 @@ Click on UPDATE PAYMENT to update Collection amount.</string>
     <string name="SubmittingPndngDataMsg">Submitting Pending Data…</string>
 
 
-
     <string name="ValidatingMsg">Validating User</string>
 
     <!--Launcher Activity ends here-->
@@ -403,7 +411,7 @@ Click on UPDATE PAYMENT to update Collection amount.</string>
 
     <!-- Check DatabaseData Activity starts -->
     <string name="txtTodaySubmitData">Today Submit Data</string>
- <string name="txtTodayInvoices">Today Invoices</string>
+    <string name="txtTodayInvoices">Today Invoices</string>
     <!-- Check DatabaseData Activity ends -->
 
     <!-- Notification Activity starts -->

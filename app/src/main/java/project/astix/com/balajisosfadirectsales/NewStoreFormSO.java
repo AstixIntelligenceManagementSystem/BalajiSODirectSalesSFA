@@ -1634,7 +1634,15 @@ public class NewStoreFormSO extends Fragment
 
                 }
 
-                hmapOptionValues.put(questionKeyToShow, helperDb.fnGetOptionMstr(Integer.valueOf(quesId)));
+                if(questionKeyToShow.equals("11^8^11"))
+                {
+                    hmapOptionValues.put(questionKeyToShow, helperDb.fnGetSODSRBeatOptionMstr(Integer.valueOf(quesId)));
+                }
+                else
+                {
+                    hmapOptionValues.put(questionKeyToShow, helperDb.fnGetOptionMstr(Integer.valueOf(quesId)));
+                }
+
                 ArrayList<String> listOptionVal=hmapOptionValues.get(questionKeyToShow);
 
                 if(QuestBundleFlg.equals("1"))

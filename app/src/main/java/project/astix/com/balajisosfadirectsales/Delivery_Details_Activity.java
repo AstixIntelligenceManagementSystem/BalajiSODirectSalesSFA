@@ -14,6 +14,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 
+import com.astix.Common.CommonInfo;
 import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.wdullaer.materialdatetimepicker.time.RadialPickerLayout;
 import com.wdullaer.materialdatetimepicker.time.TimePickerDialog;
@@ -44,6 +45,7 @@ import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class Delivery_Details_Activity extends Activity implements  DatePickerDialog.OnDateSetListener,TimePickerDialog.OnTimeSetListener{
+	public int flgDrctslsIndrctSls=0;
 	TextView PaymentStageTextView,paymentModeTextviewNew,creditdaysTextboxNew,CreditlimitTextboxNew,percentageTextviewNew,paymentstagetextviewNew, CreditDaysTextbox, PaymentModeTextView, Date,SalesQuoteTypeSpinner,ValFrom,ValTo,SalesQuoteType,ValidityFrom,PaymentTerms,headerstring;
 	RelativeLayout DeliveryDetailsHeader,delivey_details_parent,PaymentDetailsHeader, Payment_Details_Parent;
 	CheckBox arrowOfDeleveryInfo, arrowOfPaymentDetails;
@@ -130,7 +132,17 @@ public class Delivery_Details_Activity extends Activity implements  DatePickerDi
 		fillAllDataOfDeliverySectionToView();
 		arrowOfDeleveryInfo.setChecked(true);
 		delivey_details_parent.setVisibility(View.VISIBLE);
-		chkflgInvoiceAlreadyGenerated=helperDb.fnCheckForNewInvoiceOrPreviousValue(storeID,StoreVisitCode);//0=Need to Generate Invoice Number,1=No Need of Generating Invoice Number
+
+		if(CommonInfo.FlgDSRSO==1)
+		{
+			String SOCoverageAreaIDAndType=helperDb.fnGetPersonNodeIDAndPersonNodeTypeForSO();
+			flgDrctslsIndrctSls=helperDb.fnGetflgDrctslsIndrctSls(Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[0]),Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[1]));
+		}
+		else
+		{
+			flgDrctslsIndrctSls=helperDb.fnGetflgDrctslsIndrctSls(CommonInfo.CoverageAreaNodeID,CommonInfo.CoverageAreaNodeType);
+		}
+		chkflgInvoiceAlreadyGenerated=helperDb.fnCheckForNewInvoiceOrPreviousValue(storeID,StoreVisitCode,flgDrctslsIndrctSls);//0=Need to Generate Invoice Number,1=No Need of Generating Invoice Number
 		if(chkflgInvoiceAlreadyGenerated==1)
 		{
 			strGlobalInvoiceNumber=helperDb.fnGetExistingInvoiceNumber(storeID);

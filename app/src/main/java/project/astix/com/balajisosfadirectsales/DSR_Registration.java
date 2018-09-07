@@ -430,11 +430,13 @@ public class DSR_Registration extends AppCompatActivity implements DatePickerDia
                 i.putExtra("IntentFrom", 0);
                 startActivity(i);
                 finish();*/
-
+/*
                 Intent i=new Intent(DSR_Registration.this,AllButtonActivity.class);
                 startActivity(i);
+                finish();*/
+                Intent intent=new Intent(DSR_Registration.this,DayStartActivity.class);
+                startActivity(intent);
                 finish();
-
 
                 /*Intent i=new Intent(DSR_Registration.this,WarehouseCheckInFirstActivity.class);
                 i.putExtra("imei", imei);
@@ -891,8 +893,11 @@ public class DSR_Registration extends AppCompatActivity implements DatePickerDia
                 i.putExtra("fDate", fDate);
                 startActivity(i);
                 finish();*/
-                Intent i=new Intent(DSR_Registration.this,AllButtonActivity.class);
+               /* Intent i=new Intent(DSR_Registration.this,AllButtonActivity.class);
                 startActivity(i);
+                finish();*/
+                Intent intent=new Intent(DSR_Registration.this,DayStartActivity.class);
+                startActivity(intent);
                 finish();
 
             }
@@ -2117,8 +2122,11 @@ public class DSR_Registration extends AppCompatActivity implements DatePickerDia
            i.putExtra("fDate", fDate);
            startActivity(i);
            finish();*/
-           Intent i=new Intent(DSR_Registration.this,AllButtonActivity.class);
+         /*  Intent i=new Intent(DSR_Registration.this,AllButtonActivity.class);
            startActivity(i);
+           finish();*/
+           Intent intent=new Intent(DSR_Registration.this,DayStartActivity.class);
+           startActivity(intent);
            finish();
        }
 
@@ -2234,8 +2242,11 @@ public class DSR_Registration extends AppCompatActivity implements DatePickerDia
                             i.putExtra("fDate", fDate);
                             startActivity(i);
                             finish();*/
-                            Intent i=new Intent(DSR_Registration.this,AllButtonActivity.class);
+                           /* Intent i=new Intent(DSR_Registration.this,AllButtonActivity.class);
                             startActivity(i);
+                            finish();*/
+                            Intent intent=new Intent(DSR_Registration.this,DayStartActivity.class);
+                            startActivity(intent);
                             finish();
 
                         }

@@ -86,6 +86,7 @@ import com.astix.Common.CommonInfo;
 @SuppressWarnings("deprecation")
 public class ReturnActivity extends BaseActivity implements OnItemSelectedListener, OnClickListener, DeletePic,OnFocusChangeListener
 {
+	public int flgDrctslsIndrctSls=0;
 	public String StoreVisitCode="NA";
 	public  Dialog dialog=null;
 	private Camera mCamera;
@@ -489,11 +490,8 @@ public class ReturnActivity extends BaseActivity implements OnItemSelectedListen
 
 		getDataFromIntent();
 		StoreVisitCode=dbengine.fnGetStoreVisitCode(storeID);
-		chkflgInvoiceAlreadyGenerated=dbengine.fnCheckForNewInvoiceOrPreviousValue(storeID,StoreVisitCode);//0=Need to Generate Invoice Number,1=No Need of Generating Invoice Number
-		if(chkflgInvoiceAlreadyGenerated==1)
-		{
-			strGlobalInvoiceNumber=dbengine.fnGetExistingInvoiceNumber(storeID);
-		}
+
+
 		new GetData().execute();
 	}
 
@@ -517,7 +515,21 @@ public class ReturnActivity extends BaseActivity implements OnItemSelectedListen
 		protected Void doInBackground(Void... params)
 		{
 			//hmapProductRelatedSchemesList=dbengine.fnProductRelatedSchemesList();
-			CheckIfStoreExistInStoreProdcutPurchaseDetails=dbengine.fnCheckIfStoreExistInStoreProdcutPurchaseDetails(storeID,strGlobalInvoiceNumber);
+			if(CommonInfo.FlgDSRSO==1)
+			{
+				String SOCoverageAreaIDAndType=dbengine.fnGetPersonNodeIDAndPersonNodeTypeForSO();
+				flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[0]),Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[1]));
+			}
+			else
+			{
+				flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(CommonInfo.CoverageAreaNodeID,CommonInfo.CoverageAreaNodeType);
+			}
+            chkflgInvoiceAlreadyGenerated=dbengine.fnCheckForNewInvoiceOrPreviousValue(storeID,StoreVisitCode,flgDrctslsIndrctSls);//0=Need to Generate Invoice Number,1=No Need of Generating Invoice Number
+            if(chkflgInvoiceAlreadyGenerated==1)
+            {
+                strGlobalInvoiceNumber=dbengine.fnGetExistingInvoiceNumber(storeID);
+            }
+			CheckIfStoreExistInStoreProdcutPurchaseDetails=dbengine.fnCheckIfStoreExistInStoreProdcutPurchaseDetails(storeID,strGlobalInvoiceNumber,flgDrctslsIndrctSls,chkflgInvoiceAlreadyGenerated);
 			getCategoryDetail();
 
 			getProductData();

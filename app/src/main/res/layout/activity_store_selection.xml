@@ -300,7 +300,7 @@
 			android:paddingBottom="10dp"
 			android:paddingTop="10dp"
           android:text="@string/txtAddStore"
-			android:visibility="gone"
+			android:visibility="visible"
 			android:textColor="#ffffff" />
 
 		<Button

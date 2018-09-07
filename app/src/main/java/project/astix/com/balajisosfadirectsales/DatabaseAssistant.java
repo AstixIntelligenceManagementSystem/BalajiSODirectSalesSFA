@@ -326,7 +326,7 @@ public class DatabaseAssistant
 		LinkedHashMap<String,String> hmapInvoiceCaptionPrefixAndSuffix=fetch_InvoiceCaptionPrefixAndSuffix();
 		xmlBuilder.openTable(tableName);
 		//String sql = "select * from " + tableName;			
-		String sql = "select StoreID,StoreVisitCode,'"+hmapInvoiceCaptionPrefixAndSuffix.get("INVPrefix")+"-'||InvoiceNumber||'/"+hmapInvoiceCaptionPrefixAndSuffix.get("INVSuffix")+"' AS InvoiceNumber,InvoiceDate,TotalBeforeTaxDis,TaxAmt,TotalDis,InvoiceVal,FreeTotal,InvAfterDis,AddDis,NoCoupon,TotalCoupunAmount,TransDate,FlgInvoiceType,flgWholeSellApplicable,CycleID from " + tableName + " where Sstat = 3";		// chk for flag - DB adapter
+		String sql = "select StoreID,StoreVisitCode,'"+hmapInvoiceCaptionPrefixAndSuffix.get("INVPrefix")+"-'||InvoiceNumber||'/"+hmapInvoiceCaptionPrefixAndSuffix.get("INVSuffix")+"' AS InvoiceNumber,InvoiceDate,TotalBeforeTaxDis,TaxAmt,TotalDis,InvoiceVal,FreeTotal,InvAfterDis,AddDis,NoCoupon,TotalCoupunAmount,TransDate,FlgInvoiceType,flgWholeSellApplicable,CycleID,TmpInvoiceCodePDA,flgDrctslsIndrctSls from " + tableName + " where Sstat = 3";		// chk for flag - DB adapter
 		Cursor c = db.rawQuery(sql, new String[0]);
 		if (c.moveToFirst()) {
 			int cols = c.getColumnCount();
@@ -422,7 +422,7 @@ public class DatabaseAssistant
 		LinkedHashMap<String,String> hmapInvoiceCaptionPrefixAndSuffix=fetch_InvoiceCaptionPrefixAndSuffix();
 		xmlBuilder.openTable(tableName);
 		//String sql = "select * from " + tableName;			
-		String sql = "select '"+hmapInvoiceCaptionPrefixAndSuffix.get("INVPrefix")+"-'||InvoiceNumber||'/"+hmapInvoiceCaptionPrefixAndSuffix.get("INVSuffix")+"' AS InvoiceNumber,CatID,ProdID,ProductPrice,TaxRate,flgRuleTaxVal,OrderQty,UOMId,LineValBfrTxAftrDscnt,LineValAftrTxAftrDscnt,FreeQty,DisVal,SampleQuantity,ProductShortName,TaxValue,flgIsQuoteRateApplied,ServingDBRId,flgWholeSellApplicable,ProductExtraOrder from " + tableName + " where Sstat = 3";		// chk for flag - DB adapter
+		String sql = "select '"+hmapInvoiceCaptionPrefixAndSuffix.get("INVPrefix")+"-'||InvoiceNumber||'/"+hmapInvoiceCaptionPrefixAndSuffix.get("INVSuffix")+"' AS InvoiceNumber,CatID,ProdID,ProductPrice,TaxRate,flgRuleTaxVal,OrderQty,UOMId,LineValBfrTxAftrDscnt,LineValAftrTxAftrDscnt,FreeQty,DisVal,SampleQuantity,ProductShortName,TaxValue,flgIsQuoteRateApplied,ServingDBRId,flgWholeSellApplicable,ProductExtraOrder,TmpInvoiceCodePDA,flgDrctslsIndrctSls from " + tableName + " where Sstat = 3";		// chk for flag - DB adapter
 		Cursor c = db.rawQuery(sql, new String[0]);
 		if (c.moveToFirst()) {
 			int cols = c.getColumnCount();

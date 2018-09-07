@@ -1744,7 +1744,7 @@ private void marketVisitGetRoutesClick(){
                 }
                 if (mm == 7) {
                     newservice = newservice.fnGetVanStockData(getApplicationContext(), CommonInfo.imei);
-                    if (newservice.flagExecutedServiceSuccesfully != 39) {
+                    if (!newservice.director.toString().trim().equals("1")) {
                         serviceException = true;
                     }
 

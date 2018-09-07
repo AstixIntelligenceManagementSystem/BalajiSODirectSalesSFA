@@ -5,6 +5,18 @@
     <!--<string name="app_name">Balaji SO SFA Direct Sales  Test</string>-->
    <!-- <string name="app_name">Balaji SO SFA Direct Sales</string>-->
 
+
+    <string name="StockRequest">स्टॉक अनुरोध</string>
+
+    <string name="StockinVan">वैन में स्टॉक</string>
+    <string name="ReqStock">आवश्यक स्टॉक</string>
+    <string name="fnlStk">अंतिम स्टॉक</string>
+    <string name="uom">UOM</string>
+    <string name="AlertVANStockForRqstStk">कृपया एक और स्टॉक अनुरोध रखने के लिए पहले वेयरहाउस स्टॉक की पुष्टि करें।</string>
+    <string name="AlertDialogRequstionStock">स्टॉक अनुरोध रखने में त्रुटि!</string>
+
+
+
     <string name="PrintSubmit">प्रिंट करें &amp; जमा करें</string>
 
     <string name="PreOutAmt">पिछली बकाया राशि.</string>

@@ -91,8 +91,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
-                    android:visibility="gone"
-                    android:background="#BDBDBD" />
+                    android:background="#BDBDBD"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:id="@+id/ll_execution"
@@ -128,8 +128,6 @@
                 </LinearLayout>
 
 
-
-
             </LinearLayout>
 
             <LinearLayout
@@ -151,7 +149,8 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     android:layout_weight="1"
-                    android:background="#BDBDBD" />
+                    android:background="#BDBDBD"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
@@ -168,10 +167,9 @@
                     android:layout_width="2dp"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="8dp"
-                    android:visibility="gone"
                     android:layout_marginTop="8dp"
-                    android:background="#BDBDBD" />
-
+                    android:background="#BDBDBD"
+                    android:visibility="gone" />
 
 
                 <LinearLayout
@@ -184,7 +182,8 @@
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <ImageView
                         android:layout_width="56dp"
@@ -318,10 +317,9 @@
                     android:layout_height="match_parent"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
-                    android:visibility="gone"
+                    android:background="#BDBDBD"
 
-                    android:background="#BDBDBD" />
-
+                    android:visibility="gone" />
 
 
                 <LinearLayout
@@ -362,8 +360,92 @@
                     android:layout_height="match_parent"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
-                    android:visibility="gone"
+                    android:background="#E0E0E0"
+                    android:visibility="gone" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:background="#BDBDBD" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_weight="1"
+                    android:background="#BDBDBD" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#BDBDBD"
+
+                    android:visibility="gone" />
+
+
+                <View
+                    android:layout_width="2dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
                     android:background="#E0E0E0" />
+
+                <LinearLayout
+
+
+                    android:id="@+id/ll_StkRqst"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <ImageView
+
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/rqst_stk" />
+
+                    <TextView
+                        android:id="@+id/stckRqst"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:paddingTop="5dp"
+                        android:text="@string/StockRequest"
+                        android:textColor="#000000"
+                        android:textSize="16sp"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                </LinearLayout>
 
 
             </LinearLayout>
@@ -417,7 +499,7 @@
                         android:layout_width="56dp"
                         android:layout_height="56dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/backgrnd_distributionstock"/>
+                        android:background="@drawable/backgrnd_distributionstock" />
 
                     <TextView
                         android:id="@+id/Warehouse"
@@ -435,18 +517,14 @@
                 </LinearLayout>
 
 
-
                 <View
                     android:layout_width="2dp"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
-                    android:visibility="gone"
+                    android:background="#BDBDBD"
 
-                    android:background="#BDBDBD" />
-
-
-
+                    android:visibility="gone" />
 
 
                 <View
@@ -458,6 +536,7 @@
 
 
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -526,18 +605,14 @@
                 </LinearLayout>
 
 
-
                 <View
                     android:layout_width="2dp"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
-                    android:visibility="gone"
+                    android:background="#BDBDBD"
 
-                    android:background="#BDBDBD" />
-
-
-
+                    android:visibility="gone" />
 
 
                 <View
@@ -617,8 +692,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
-                    android:visibility="gone"
-                    android:background="#BDBDBD" />
+                    android:background="#BDBDBD"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:id="@+id/ll_distrbtnMap"
@@ -664,8 +739,8 @@
                     android:layout_marginTop="30dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:visibility="gone"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                     <ImageView
                         android:id="@+id/imageView"
@@ -695,8 +770,7 @@
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
                     android:background="#BDBDBD"
-                    android:visibility="gone"
-                    />
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:id="@+id/ll_DayEnd"

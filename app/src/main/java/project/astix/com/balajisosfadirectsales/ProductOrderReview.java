@@ -765,7 +765,7 @@ public void loadPurchaseProductDefault()
 		        	
 		        	ll_prdct_detal.removeAllViews();
 
-			       hmapFilterProductList=dbengine.getFileredOrderReviewProductListMap(storeID,TmpInvoiceCodePDA);
+			       hmapFilterProductList=dbengine.getFileredOrderReviewProductListMap(storeID,TmpInvoiceCodePDA,flgDrctslsIndrctSls,chkflgInvoiceAlreadyGenerated);
 			       System.out.println("hmapFilterProductListCount :-"+ hmapFilterProductList.size());
 		       
 		       			Iterator it11new = hmapPrdctIdPrdctName.entrySet().iterator();
@@ -1668,16 +1668,47 @@ public void loadPurchaseProductDefault()
 			  hmapProductRelatedSchemesList=dbengine.fnProductRelatedSchemesList();
 			  //hmapPrdtAppliedSchIdsAppliedSlabIdsDefination=dbengine.fnProductWiseAppliedScehmeSlabDetails(StoreID);
 
-			chkflgInvoiceAlreadyGenerated=dbengine.fnCheckForNewInvoiceOrPreviousValue(storeID,StoreVisitCode);//0=Need to Generate Invoice Number,1=No Need of Generating Invoice Number
-			if(chkflgInvoiceAlreadyGenerated==1)
+			//0=Need to Generate Invoice Number,1=No Need of Generating Invoice Number
+			/*if(chkflgInvoiceAlreadyGenerated==1)
 			{
 				TmpInvoiceCodePDA=dbengine.fnGetInvoiceCodePDA(storeID,StoreVisitCode);
 			}
 			else
 			{
 				TmpInvoiceCodePDA=genTempInvoiceCodePDA();//dbengine.fnGettblInvoiceCaption(storeID);
+			}*/
+
+
+			if(CommonInfo.FlgDSRSO==1)
+			{
+				String SOCoverageAreaIDAndType=dbengine.fnGetPersonNodeIDAndPersonNodeTypeForSO();
+				flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[0]),Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[1]));
 			}
-			CheckIfStoreExistInStoreProdcutPurchaseDetails=dbengine.fnCheckIfStoreExistInStoreProdcutPurchaseDetails(storeID,TmpInvoiceCodePDA);
+			else
+			{
+				flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(CommonInfo.CoverageAreaNodeID,CommonInfo.CoverageAreaNodeType);
+			}
+			if(flgDrctslsIndrctSls==0)
+			{
+				chkflgInvoiceAlreadyGenerated=dbengine.fnCheckForNewInvoiceOrPreviousValue(storeID,StoreVisitCode,flgDrctslsIndrctSls);
+				if(chkflgInvoiceAlreadyGenerated==1)
+				{
+					TmpInvoiceCodePDA=dbengine.fnGetInvoiceCodePDA(storeID,StoreVisitCode);
+
+				}
+				if(dbengine.fnCheckForNewInvoiceOrPreviousValueFromPermanentTable(storeID,StoreVisitCode)==1)
+				{
+					TmpInvoiceCodePDA=dbengine.fnGetInvoiceCodePDAFromPermanentTable(storeID,StoreVisitCode);
+				}
+			}
+			else {
+				chkflgInvoiceAlreadyGenerated=dbengine.fnCheckForNewInvoiceOrPreviousValue(storeID,StoreVisitCode,flgDrctslsIndrctSls);
+				if (chkflgInvoiceAlreadyGenerated == 1) {
+					TmpInvoiceCodePDA = dbengine.fnGetInvoiceCodePDA(storeID, StoreVisitCode);
+
+				}
+			}
+			CheckIfStoreExistInStoreProdcutPurchaseDetails=dbengine.fnCheckIfStoreExistInStoreProdcutPurchaseDetails(storeID,TmpInvoiceCodePDA,flgDrctslsIndrctSls,chkflgInvoiceAlreadyGenerated);
 			CheckIfStoreExistInStoreProdcutInvoiceDetails=dbengine.fnCheckIfStoreExistInStoreProdcutInvoiceDetails(storeID,TmpInvoiceCodePDA);
 			strGlobalOrderID=TmpInvoiceCodePDA;
 			/*if(CheckIfStoreExistInStoreProdcutPurchaseDetails==1 || CheckIfStoreExistInStoreProdcutInvoiceDetails==1)
@@ -3462,7 +3493,7 @@ public void loadPurchaseProductDefault()
 	           String[] arrStorePurcaseProducts=null;//=dbengine.fnGetProductPurchaseList(StoreID);
 	           if(CheckIfStoreExistInStoreProdcutPurchaseDetails==1)
 	           {
-	            arrStorePurcaseProducts=dbengine.fnGetProductPurchaseList(storeID,strGlobalOrderID,TmpInvoiceCodePDA);
+	            arrStorePurcaseProducts=dbengine.fnGetProductPurchaseList(storeID,strGlobalOrderID,TmpInvoiceCodePDA,flgDrctslsIndrctSls,chkflgInvoiceAlreadyGenerated);
 	            System.out.println("Abhinav Nitish Ankit New Val :"+arrStorePurcaseProducts.length);
 	            
 	            LayoutInflater inflater=(LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -7884,7 +7915,7 @@ public void loadPurchaseProductDefault()
 
 						dbengine.deleteOldStoreInvoice(storeID,strGlobalOrderID,TmpInvoiceCodePDA);
 						dbengine.deleteStoreRecordFromtblStorePurchaseDetailsFromProductTrsaction(storeID,strGlobalOrderID,TmpInvoiceCodePDA);*/
-						dbengine.fnTransferDataFromTempToPermanent(storeID,StoreVisitCode,TmpInvoiceCodePDA);
+						dbengine.fnTransferDataFromTempToPermanent(storeID,StoreVisitCode,TmpInvoiceCodePDA,flgDrctslsIndrctSls);
 
 						int chkflgTransferStatus=dbengine.fnCheckflgTransferStatus(storeID,StoreVisitCode,TmpInvoiceCodePDA);
 						if(chkflgTransferStatus==2)
@@ -8065,16 +8096,53 @@ public void loadPurchaseProductDefault()
 
 
 
-			  chkflgInvoiceAlreadyGenerated=dbengine.fnCheckForNewInvoiceOrPreviousValue(storeID,StoreVisitCode);//0=Need to Generate Invoice Number,1=No Need of Generating Invoice Number
-			  if(chkflgInvoiceAlreadyGenerated==1)
+			  //0=Need to Generate Invoice Number,1=No Need of Generating Invoice Number
+			 /* if(chkflgInvoiceAlreadyGenerated==1)
 			  {
 				  TmpInvoiceCodePDA=dbengine.fnGetInvoiceCodePDA(storeID,StoreVisitCode);
 			  }
 			  else
 			  {
 				  TmpInvoiceCodePDA=genTempInvoiceCodePDA();
+			  }*/
+			  if(CommonInfo.FlgDSRSO==1)
+			  {
+				  String SOCoverageAreaIDAndType=dbengine.fnGetPersonNodeIDAndPersonNodeTypeForSO();
+				  flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[0]),Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[1]));
 			  }
-			  CheckIfStoreExistInStoreProdcutPurchaseDetails=dbengine.fnCheckIfStoreExistInStoreProdcutPurchaseDetails(storeID,TmpInvoiceCodePDA);
+			  else
+			  {
+				  flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(CommonInfo.CoverageAreaNodeID,CommonInfo.CoverageAreaNodeType);
+			  }
+			  if(flgDrctslsIndrctSls==0)
+			  {
+				  chkflgInvoiceAlreadyGenerated=dbengine.fnCheckForNewInvoiceOrPreviousValue(storeID,StoreVisitCode,flgDrctslsIndrctSls);
+				  if(chkflgInvoiceAlreadyGenerated==1)
+				  {
+					  TmpInvoiceCodePDA=dbengine.fnGetInvoiceCodePDA(storeID,StoreVisitCode);
+
+				  }
+				   if(dbengine.fnCheckForNewInvoiceOrPreviousValueFromPermanentTable(storeID,StoreVisitCode)==1)
+				  {
+					  TmpInvoiceCodePDA=dbengine.fnGetInvoiceCodePDAFromPermanentTable(storeID,StoreVisitCode);
+				  }
+				  else
+				  {
+					  TmpInvoiceCodePDA = genTempInvoiceCodePDA();
+				  }
+			  }
+			  else {
+				  chkflgInvoiceAlreadyGenerated=dbengine.fnCheckForNewInvoiceOrPreviousValue(storeID,StoreVisitCode,flgDrctslsIndrctSls);
+				  if (chkflgInvoiceAlreadyGenerated == 1) {
+					  TmpInvoiceCodePDA = dbengine.fnGetInvoiceCodePDA(storeID, StoreVisitCode);
+
+				  } else {
+
+
+					  TmpInvoiceCodePDA = genTempInvoiceCodePDA();//dbengine.fnGettblInvoiceCaption(storeID);
+				  }
+			  }
+			  CheckIfStoreExistInStoreProdcutPurchaseDetails=dbengine.fnCheckIfStoreExistInStoreProdcutPurchaseDetails(storeID,TmpInvoiceCodePDA,flgDrctslsIndrctSls,chkflgInvoiceAlreadyGenerated);
 			  CheckIfStoreExistInStoreProdcutInvoiceDetails=dbengine.fnCheckIfStoreExistInStoreProdcutInvoiceDetails(storeID,TmpInvoiceCodePDA);
 			  strGlobalOrderID=TmpInvoiceCodePDA;
 			 /* if(CheckIfStoreExistInStoreProdcutPurchaseDetails==1 || CheckIfStoreExistInStoreProdcutInvoiceDetails==1)
@@ -8096,15 +8164,7 @@ public void loadPurchaseProductDefault()
 			  dbengine.close();
 
 
-			  if( CommonInfo.FlgDSRSO==2)
-			  {
-				  flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(CommonInfo.CoverageAreaNodeID,CommonInfo.CoverageAreaNodeType);
-			  }
-			  else
-			  {
-				  String SOCoverageAreaIDAndType=dbengine.fnGetPersonNodeIDAndPersonNodeTypeForSO();
-				  flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[0]),Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[1]));
-			  }
+
 			  if(hmapFetchPDASavedData!=null && hmapFetchPDASavedData.size()>0)
 			  {
 
@@ -8112,7 +8172,7 @@ public void loadPurchaseProductDefault()
 
 			  }
 			  distID=dbengine.getDisId(storeID);
-			  hmapDistPrdctStockCount=dbengine.fnGetFinalInvoiceQtyProductWise();
+			  hmapDistPrdctStockCount=dbengine.fnGetFinalInvoiceQtyProductWise(flgDrctslsIndrctSls);
 			  hmapPerUnitName=dbengine.getPerUnitName();
 			  hmapPerBaseQty=dbengine.getPerBaseQty();
 		   return null;

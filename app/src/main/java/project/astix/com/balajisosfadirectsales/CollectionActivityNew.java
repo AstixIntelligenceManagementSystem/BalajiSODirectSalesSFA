@@ -93,7 +93,7 @@ public class CollectionActivityNew extends BaseActivity  implements DatePickerDi
 {
     /* For Location Srvices Start*/
 
-
+    public int flgDrctslsIndrctSls=1;
     public Double overallOutStand=0.0,curntCol=0.0;
     private CoundownClass countDownTimer;
     //protected static final String TAG = "TAG";
@@ -282,14 +282,43 @@ public class CollectionActivityNew extends BaseActivity  implements DatePickerDi
         ButtonInialization();
 
 
-        chkflgInvoiceAlreadyGenerated=dbengine.fnCheckForNewInvoiceOrPreviousValue(storeID,StoreVisitCode);//0=Need to Generate Invoice Number,1=No Need of Generating Invoice Number
-        if(chkflgInvoiceAlreadyGenerated==1)
+       //0=Need to Generate Invoice Number,1=No Need of Generating Invoice Number
+       /* if(chkflgInvoiceAlreadyGenerated==1)
         {
             TmpInvoiceCodePDA=dbengine.fnGetExistingInvoiceNumber(storeID);
+        }*/
+        if(CommonInfo.FlgDSRSO==1)
+        {
+            String SOCoverageAreaIDAndType=dbengine.fnGetPersonNodeIDAndPersonNodeTypeForSO();
+            flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[0]),Integer.parseInt(SOCoverageAreaIDAndType.split(Pattern.quote("^"))[1]));
+        }
+        else
+        {
+            flgDrctslsIndrctSls=dbengine.fnGetflgDrctslsIndrctSls(CommonInfo.CoverageAreaNodeID,CommonInfo.CoverageAreaNodeType);
+        }
+        if(flgDrctslsIndrctSls==0)
+        {
+            chkflgInvoiceAlreadyGenerated=dbengine.fnCheckForNewInvoiceOrPreviousValue(storeID,StoreVisitCode,flgDrctslsIndrctSls);
+            if(chkflgInvoiceAlreadyGenerated==1)
+            {
+                TmpInvoiceCodePDA=dbengine.fnGetInvoiceCodePDA(storeID,StoreVisitCode);
+
+            }
+            if(dbengine.fnCheckForNewInvoiceOrPreviousValueFromPermanentTable(storeID,StoreVisitCode)==1)
+            {
+                TmpInvoiceCodePDA=dbengine.fnGetInvoiceCodePDAFromPermanentTable(storeID,StoreVisitCode);
+            }
+            btn_print.setVisibility(View.GONE);
+        }
+        else {
+            chkflgInvoiceAlreadyGenerated=dbengine.fnCheckForNewInvoiceOrPreviousValue(storeID,StoreVisitCode,flgDrctslsIndrctSls);
+            if (chkflgInvoiceAlreadyGenerated == 1) {
+                TmpInvoiceCodePDA = dbengine.fnGetInvoiceCodePDA(storeID, StoreVisitCode);
+
+            }
         }
 
-
-        cb_collection=(CheckBox)findViewById(R.id.cb_collection);
+       /* cb_collection=(CheckBox)findViewById(R.id.cb_collection);
         tv_outstandingvalue=(TextView) findViewById(R.id.tv_outstandingvalue);
         Double outstandingvalue=dbengine.fnGetStoretblLastOutstanding(storeID);
         outstandingvalue=Double.parseDouble(new DecimalFormat("##.##").format(outstandingvalue));
@@ -309,7 +338,48 @@ public class CollectionActivityNew extends BaseActivity  implements DatePickerDi
         tv_totOutstandingValue=(TextView) findViewById(R.id.tv_totOutstandingValue);
         Double totOutstandingValue=outstandingvalue+cntInvoceValue;
         totOutstandingValue=Double.parseDouble(new DecimalFormat("##.##").format(totOutstandingValue));
+        tv_totOutstandingValue.setText(" : "+String.format("%.2f", totOutstandingValue));*/
+
+
+
+        cb_collection=(CheckBox)findViewById(R.id.cb_collection);
+        tv_outstandingvalue=(TextView) findViewById(R.id.tv_outstandingvalue);
+        Double outstandingvalue=dbengine.fnGetStoretblLastOutstanding(storeID);
+        outstandingvalue=Double.parseDouble(new DecimalFormat("##.##").format(outstandingvalue));
+        //String.format("%.2f", outstandingvalue)
+        tv_outstandingvalue.setText(" : "+String.format("%.2f", outstandingvalue));
+
+        tv_MinCollectionvalue=(TextView) findViewById(R.id.tv_MinCollectionvalue);
+        Double MinCollectionvalue=dbengine.fnGetStoretblLastOutstanding(storeID);
+        MinCollectionvalue=Double.parseDouble(new DecimalFormat("##.##").format(MinCollectionvalue));
+        tv_MinCollectionvalue.setText(""+String.format("%.2f", MinCollectionvalue));
+
+        tv_cntInvoceValue=(TextView) findViewById(R.id.tv_cntInvoceValue);
+        Double cntInvoceValue=dbengine.fetch_Store_InvValAmount(storeID,TmpInvoiceCodePDA);
+        cntInvoceValue=Double.parseDouble(new DecimalFormat("##.##").format(cntInvoceValue));
+        tv_cntInvoceValue.setText(" : "+String.format("%.2f", cntInvoceValue));
+
+
+        Double cntAllOustandings=dbengine.fetch_Store_AllOustandings(storeID);
+        cntAllOustandings=Double.parseDouble(new DecimalFormat("##.##").format(cntAllOustandings));
+
+
+        Double cntTotCollectionAmtAgainstStoreIrespectiveOfVisit=dbengine.fnTotCollectionAmtAgainstStoreIrespectiveOfVisit(storeID);
+        cntTotCollectionAmtAgainstStoreIrespectiveOfVisit=Double.parseDouble(new DecimalFormat("##.##").format(cntTotCollectionAmtAgainstStoreIrespectiveOfVisit));
+
+
+
+
+        Double cntTotInvoicesAmtAgainstStoreIrespectiveOfVisit=dbengine.fnTotInvoicesAmtAgainstStoreIrespectiveOfVisit(storeID);
+        cntTotInvoicesAmtAgainstStoreIrespectiveOfVisit=Double.parseDouble(new DecimalFormat("##.##").format(cntTotInvoicesAmtAgainstStoreIrespectiveOfVisit));
+
+
+        tv_totOutstandingValue=(TextView) findViewById(R.id.tv_totOutstandingValue);
+        Double totOutstandingValue=cntAllOustandings+cntInvoceValue+cntTotInvoicesAmtAgainstStoreIrespectiveOfVisit-cntTotCollectionAmtAgainstStoreIrespectiveOfVisit;
+        //Double totOutstandingValue=cntAllOustandings+cntInvoceValue-cntTotCollectionAmtAgainstStoreIrespectiveOfVisit;
+        totOutstandingValue=Double.parseDouble(new DecimalFormat("##.##").format(totOutstandingValue));
         tv_totOutstandingValue.setText(" : "+String.format("%.2f", totOutstandingValue));
+
 
         linkedHmapPaymentModeID=	dbengine.fnGetPaymentMode();
         linkedHmapBankID=	dbengine.fnGetBankIdData();
@@ -1257,7 +1327,13 @@ public class CollectionActivityNew extends BaseActivity  implements DatePickerDi
                }
                else {*/
 
-                fnCallSaveDataFromTempToPermanetWithoutPrint("Do you want to submit visit data without printing Invoice");
+                if(flgDrctslsIndrctSls==0)
+                {
+                    fnCallSaveDataFromTempToPermanetWithoutPrintIndirectSales("Do you want to submit visit data?");
+                }
+                else {
+                    fnCallSaveDataFromTempToPermanetWithoutPrint("Do you want to submit visit data without printing Invoice?");
+                }
             }
         });
 
@@ -1460,7 +1536,162 @@ public class CollectionActivityNew extends BaseActivity  implements DatePickerDi
 
 
     }
+
     private boolean validateCollectionAmt()
+    {
+        Double  OverAllAmountCollectedLimit=dbengine.fetch_Store_MaxCollectionAmount(storeID,TmpInvoiceCodePDA);
+        OverAllAmountCollectedLimit=Double.parseDouble(new DecimalFormat("##.##").format(OverAllAmountCollectedLimit));
+        OverAllAmountCollected=Double.parseDouble(new DecimalFormat("##.##").format(OverAllAmountCollected));
+
+        Double MinCollectionvalue=dbengine.fnGetStoretblLastOutstanding(storeID);
+        MinCollectionvalue=Double.parseDouble(new DecimalFormat("##.##").format(MinCollectionvalue));
+
+       /* Double cntAllOustandings=dbengine.fetch_Store_AllOustandings(storeID);
+        cntAllOustandings=Double.parseDouble(new DecimalFormat("##.##").format(cntAllOustandings));
+*/
+
+       /* Double cntInvoceValue=dbengine.fetch_Store_InvValAmount(storeID,TmpInvoiceCodePDA);
+        cntInvoceValue=Double.parseDouble(new DecimalFormat("##.##").format(cntInvoceValue));
+
+
+        Double cntAllOustandings=dbengine.fetch_Store_AllOustandings(storeID);
+        cntAllOustandings=Double.parseDouble(new DecimalFormat("##.##").format(cntAllOustandings));
+
+
+        Double cntTotCollectionAmtAgainstStoreIrespectiveOfVisit=dbengine.fnTotCollectionAmtAgainstStoreIrespectiveOfVisit(storeID);
+        cntTotCollectionAmtAgainstStoreIrespectiveOfVisit=Double.parseDouble(new DecimalFormat("##.##").format(cntTotCollectionAmtAgainstStoreIrespectiveOfVisit));
+
+
+
+
+        Double cntTotInvoicesAmtAgainstStoreIrespectiveOfVisit=dbengine.fnTotInvoicesAmtAgainstStoreIrespectiveOfVisit(storeID);
+        cntTotInvoicesAmtAgainstStoreIrespectiveOfVisit=Double.parseDouble(new DecimalFormat("##.##").format(cntTotInvoicesAmtAgainstStoreIrespectiveOfVisit));
+
+
+        Double totOutstandingValue=cntAllOustandings+cntInvoceValue+cntTotInvoicesAmtAgainstStoreIrespectiveOfVisit-cntTotCollectionAmtAgainstStoreIrespectiveOfVisit;
+        totOutstandingValue=Double.parseDouble(new DecimalFormat("##.##").format(totOutstandingValue));
+
+
+        Double valSelfCreditNote=0.0;
+        if(!TextUtils.isEmpty(et_SelfCreditNote.getText().toString()));
+        {
+            valSelfCreditNote=Double.parseDouble(et_SelfCreditNote.getText().toString());
+            valSelfCreditNote=Double.parseDouble(new DecimalFormat("##.##").format(valSelfCreditNote));
+        }
+*/
+
+        if(ll_collectionMandatory.getVisibility()==View.VISIBLE && cb_collection.isChecked()==false && lnCollection.getVisibility()==View.VISIBLE && OverAllAmountCollected==0.0)
+        {
+            showAlertSingleButtonError(CollectionActivityNew.this.getResources().getString(R.string.CollectionAlert1));
+
+            //Collected amount is less than the minimum collection amount , current invoice cannot be made.Click CANCEL & EXIT to close Invoice and exit current visit, Click on UPDATE PAYMENT to update Collection amount
+
+            return false;
+        }
+        else
+        {
+            if(Math.ceil(OverAllAmountCollected) < Math.ceil(MinCollectionvalue))
+            //if(Math.ceil(OverAllAmountCollected) < Math.ceil(totOutstandingValue))
+            {
+                // showAlertSingleButtonError("Collection Amount can not be less then "+MinCollectionvalue);
+                showAlertSingleAfterCostumValidationForAmountCollection(CollectionActivityNew.this.getResources().getString(R.string.CollectionAlert2));
+                return false;
+            }
+            else if(Math.ceil(OverAllAmountCollected)>=Math.ceil(MinCollectionvalue))// && Math.ceil(OverAllAmountCollected)<=Math.ceil(OverAllAmountCollectedLimit))
+            //else if(Math.ceil(OverAllAmountCollected)>=Math.ceil(totOutstandingValue) && Math.ceil(OverAllAmountCollected)<=Math.ceil(OverAllAmountCollectedLimit))
+            //else if(Math.ceil(OverAllAmountCollected)>=Math.ceil(totOutstandingValue) && Math.ceil(OverAllAmountCollected)<=Math.ceil(OverAllAmountCollectedLimit))
+            {
+             /*   if(Math.ceil(valSelfCreditNote)<=Math.ceil(totOutstandingValue))
+                {
+                    return true;
+                }
+                else
+                {*/
+                   /* showAlertSingleButtonError("Self Credit Amt can not be greater then overall Total Outstanding.");
+                    return false;*/
+                // }
+                return true;
+            }
+            else
+            {
+                // showAlertSingleButtonError("Collection Amount can not be greater then "+OverAllAmountCollectedLimit);
+                // showAlertSingleAfterCostumValidationForAmountCollection("Collection amount exceeds then required and current Invoice can not be made, Click Cancel & Exit to close Invoice and Exit current visit, Click on Update Payment to update Collection amount.");
+
+                boolean rst=   showWarningAlertIfCollectionsGraterThenTotalOutStandings(CollectionActivityNew.this.getResources().getString(R.string.CollectionAlert3));
+                return rst;
+                //Collected amount is less than the minimum collection amount , current invoice cannot be made.Click CANCEL & EXIT to close Invoice and exit current visit, Click on UPDATE PAYMENT to update Collection amount
+
+                //return false;
+            }
+
+        }
+
+
+
+    }
+
+    public boolean showWarningAlertIfCollectionsGraterThenTotalOutStandings(String msg)
+    {
+        rstl=false;
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(CollectionActivityNew.this);
+        alertDialog.setTitle("Validation");
+        alertDialog.setIcon(R.drawable.error_ico);
+        alertDialog.setCancelable(false);
+        alertDialog.setMessage(msg);
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog,int which) {
+                dialog.dismiss();
+                rstl= true;
+
+            }
+        });
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog,int which) {
+                dialog.dismiss();
+                rstl=false;
+                /*Intent ide=new Intent(CollectionActivityNew.this,ProductOrderReview.class);
+                ide.putExtra("SN", SN);
+                ide.putExtra("storeID", storeID);
+                ide.putExtra("imei", imei);
+                ide.putExtra("userdate", date);
+                ide.putExtra("pickerDate", pickerDate);
+                ide.putExtra("flgOrderType", flgOrderType);
+                ide.putExtra("OrderPDAID", strGlobalOrderID);
+
+                startActivity(ide);
+                finish();*/
+
+                /*if(flgFromPlace==2) {
+                    Intent ide = new Intent(CollectionActivityNew.this, ProductOrderReview.class);
+                    ide.putExtra("SN", SN);
+                    ide.putExtra("storeID", storeID);
+                    ide.putExtra("imei", imei);
+                    ide.putExtra("userdate", date);
+                    ide.putExtra("pickerDate", pickerDate);
+                    ide.putExtra("flgOrderType", flgOrderType);
+                    ide.putExtra("OrderPDAID", strGlobalOrderID);
+                    startActivity(ide);
+                    finish();
+                }
+                if(flgFromPlace==1) {
+                    Intent ide = new Intent(CollectionActivityNew.this, ProductInvoiceReview.class);
+                    ide.putExtra("SN", SN);
+                    ide.putExtra("storeID", storeID);
+                    ide.putExtra("imei", imei);
+                    ide.putExtra("userdate", date);
+                    ide.putExtra("pickerDate", pickerDate);
+                    ide.putExtra("flgOrderType", flgOrderType);
+                    ide.putExtra("OrderPDAID", strGlobalOrderID);
+                    startActivity(ide);
+                    finish();
+                }*/
+            }
+        });
+
+        alertDialog.show();
+        return rstl;
+    }
+/*    private boolean validateCollectionAmt()
     {
         Double  OverAllAmountCollectedLimit=dbengine.fetch_Store_MaxCollectionAmount(storeID,TmpInvoiceCodePDA);
         OverAllAmountCollectedLimit=Double.parseDouble(new DecimalFormat("##.##").format(OverAllAmountCollectedLimit));
@@ -1504,7 +1735,7 @@ public class CollectionActivityNew extends BaseActivity  implements DatePickerDi
 
 
 
-    }
+    }*/
     private boolean validate()
     {
 
@@ -1909,7 +2140,7 @@ public class CollectionActivityNew extends BaseActivity  implements DatePickerDi
                     if(strFinalAllotedInvoiceIds.equals("NA"))
                     {
 
-                        dbengine.fnTransferDataFromTempToPermanent(storeID,StoreVisitCode,TmpInvoiceCodePDA);
+                        dbengine.fnTransferDataFromTempToPermanent(storeID,StoreVisitCode,TmpInvoiceCodePDA,flgDrctslsIndrctSls);
 
                         int chkflgTransferStatus=dbengine.fnCheckflgTransferStatus(storeID,StoreVisitCode,TmpInvoiceCodePDA);
                         if(chkflgTransferStatus==2)
@@ -2817,6 +3048,95 @@ public class CollectionActivityNew extends BaseActivity  implements DatePickerDi
 
         }
     }
+    public void fnCallSaveDataFromTempToPermanetWithoutPrintIndirectSales(String msgForAlert)
+    {
+
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(
+                    CollectionActivityNew.this);
+            alertDialog.setTitle("Information");
+
+            alertDialog.setCancelable(false);
+            alertDialog.setMessage(msgForAlert);
+            alertDialog.setPositiveButton("Yes",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int which) {
+                            dialog.dismiss();
+
+                            saveDataToDatabase();
+                                      /* FullSyncDataNow task = new FullSyncDataNow(CollectionActivityNew.this);
+                                       task.execute();*/
+
+
+                            butClickForGPS=3;
+                            dbengine.open();
+                            if ((dbengine.PrevLocChk(storeID.trim(),StoreVisitCode)) )
+                            {
+                                dbengine.close();
+
+                                FullSyncDataNow task = new FullSyncDataNow(CollectionActivityNew.this);
+                                task.execute();
+                            }
+                            else
+                            {
+                                dbengine.close();
+                                appLocationService=new AppLocationService();
+
+								/* pm = (PowerManager) getSystemService(POWER_SERVICE);
+								   wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK
+							                | PowerManager.ACQUIRE_CAUSES_WAKEUP
+							                | PowerManager.ON_AFTER_RELEASE, "INFO");
+							        wl.acquire();*/
+
+
+                                pDialog2STANDBY=ProgressDialog.show(CollectionActivityNew.this,getText(R.string.genTermPleaseWaitNew) ,getText(R.string.genTermRetrivingLocation), true);
+                                pDialog2STANDBY.setIndeterminate(true);
+
+                                pDialog2STANDBY.setCancelable(false);
+                                pDialog2STANDBY.show();
+
+                                if(isGooglePlayServicesAvailable()) {
+                                    createLocationRequest();
+
+                                    mGoogleApiClient = new GoogleApiClient.Builder(CollectionActivityNew.this)
+                                            .addApi(LocationServices.API)
+                                            .addConnectionCallbacks(CollectionActivityNew.this)
+                                            .addOnConnectionFailedListener(CollectionActivityNew.this)
+                                            .build();
+                                    mGoogleApiClient.connect();
+                                }
+                                //startService(new Intent(DynamicActivity.this, AppLocationService.class));
+                                startService(new Intent(CollectionActivityNew.this, AppLocationService.class));
+                                Location nwLocation=appLocationService.getLocation(locationManager,LocationManager.GPS_PROVIDER,location);
+                                Location gpsLocation=appLocationService.getLocation(locationManager,LocationManager.NETWORK_PROVIDER,location);
+                                countDownTimer2 = new CoundownClass2(startTime, interval);
+                                countDownTimer2.start();
+
+
+                                // LocationRetreivingGlobal llaaa=new LocationRetreivingGlobal();
+                                // llaaa.locationRetrievingAndDistanceCalculating(CollectionActivityNew.this,false,20);
+
+
+                            }
+
+
+
+                        }
+                    });
+            alertDialog.setNegativeButton("No",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog,
+                                            int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+            // Showing Alert Message
+            alertDialog.show();
+
+
+
+    }
     public void fnCallSaveDataFromTempToPermanetWithoutPrint(String msgForAlert)
     {
         if (validate() && validateCollectionAmt()) {
@@ -3099,12 +3419,34 @@ public class CollectionActivityNew extends BaseActivity  implements DatePickerDi
 
         //ware house details starts
         ArrayList<String> arrListWarehouse=  hmapWareHouseDetails.get("WarehouseDetails");
+        String INVOICE_HEADER="";
 
         String shopName=arrListWarehouse.get(0);
         String shopAddress=arrListWarehouse.get(2);//",GT ROAD, NEAR STATE BANK, GOPIGANJ BHADOHI"
         String placeOfSuppllyAddress=arrListWarehouse.get(3)+", "+arrListWarehouse.get(1)+", "+arrListWarehouse.get(4);//"BHADOHI, UTTARPRADESH,221409 ";
         String phoneNumber=arrListWarehouse.get(5);//"9716082084";
+        if(phoneNumber.equals("0")){
+            phoneNumber="";
+        }
         String gstNumber=arrListWarehouse.get(6);//"1231222ASSSMM99";
+        if(shopAddress.length()>50){
+            shopAddress=  insertPeriodically(shopAddress,"^$",50);
+            String[] shopAddress50Digit=shopAddress.split(Pattern.quote("^$"));
+            StringBuilder stringBuilder=new StringBuilder();
+
+            for(int j=0;j<shopAddress50Digit.length;j++){
+                String addersss=  shopAddress50Digit[j];
+                stringBuilder.append(addersss);
+
+                if((j+1)==shopAddress50Digit.length){
+                    //means in last line dont add \n beacause it will create more space
+                }
+                else{
+                    stringBuilder.append("\n");
+                }
+            }
+            shopAddress=stringBuilder.toString();
+        }
         //ware house details ends
 
         //Store details starts
@@ -3133,6 +3475,7 @@ public class CollectionActivityNew extends BaseActivity  implements DatePickerDi
         String delNo=dbengine.fnGetExistingInvoiceNumberAgainstInvoiceNumebr(storeID,StoreVisitCode);//dbengine.fnGettblDeliveryNoteNumber();
         //delNo=delNo+1;
         String deliveryNumber=""+delNo;//"12345678900";
+        String gstNumberCustomer=arrListStoreData.get(6);
 
         long  syncTIMESTAMP = System.currentTimeMillis();
         Date dateobj = new Date(syncTIMESTAMP);
@@ -3140,6 +3483,12 @@ public class CollectionActivityNew extends BaseActivity  implements DatePickerDi
         String currentDateTime = df.format(dateobj);
         String date=currentDateTime;//"09-Aug-2018-10:45:17 AM";
         String compositeScheme=arrListWarehouse.get(7);//"No";//or yes
+        if(compositeScheme.equals("No")){
+            INVOICE_HEADER="TAX INVOICE";
+        }
+        if(compositeScheme.equals("Yes")){
+            INVOICE_HEADER="BILL OF SUPPLY";
+        }
         //Store details ends
 
         String data="";
@@ -3192,28 +3541,28 @@ public class CollectionActivityNew extends BaseActivity  implements DatePickerDi
             if(!arrProductInvoiceDetailsForPrint.get(5).toString().trim().equals("")){
                 ValueText=Double.parseDouble(arrProductInvoiceDetailsForPrint.get(5).toString().trim());//""+"500.0"+i;
             }
-            if(itemDscr.length()>21){
-                itemDscr=  insertPeriodically(itemDscr,"^$",21);
+            if(itemDscr.length()>19){
+                itemDscr=  insertPeriodically(itemDscr,"^$",19);
                 if(itemDscr.contains("^$")){
                     String[] itemDesc21Digit=itemDscr.split(Pattern.quote("^$"));
                     for(int j=0;j<itemDesc21Digit.length;j++){
                         String itemDscr2=  itemDesc21Digit[j];
                         if(j==0){
-                            data = data + "\n" + String.format("%1$-11s %2$-21s %3$9s %4$5s %5$5s %6$9s", sr+HSNCode,itemDscr2,String.format("%.2f", rate), taxRate, Qty,String.format("%.2f", ValueText));
+                            data = data + "\n" + String.format("%1$-11s %2$-19s %3$9s %4$5s %5$5s %6$9s", sr+HSNCode,itemDscr2,String.format("%.2f", rate), taxRate, Qty,String.format("%.2f", ValueText));
                         }
                         else{
-                            data = data + "\n" + String.format("%1$-11s %2$-21s %3$9s %4$5s %5$5s %6$9s", "",itemDscr2, "", "", "","");
+                            data = data + "\n" + String.format("%1$-11s %2$-19s %3$9s %4$5s %5$5s %6$9s", "",itemDscr2, "", "", "","");
                         }
 
                     }
                 }
                 else{
-                    data = data + "\n" + String.format("%1$-11s %2$-21s %3$9s %4$5s %5$5s %6$9s", sr+HSNCode,itemDscr, String.format("%.2f", rate), taxRate, Qty,String.format("%.2f", ValueText));
+                    data = data + "\n" + String.format("%1$-11s %2$-19s %3$9s %4$5s %5$5s %6$9s", sr+HSNCode,itemDscr, String.format("%.2f", rate), taxRate, Qty,String.format("%.2f", ValueText));
                 }
 
             }
             else{
-                data = data + "\n" + String.format("%1$-11s %2$-21s %3$9s %4$5s %5$5s %6$9s", sr+HSNCode,itemDscr, String.format("%.2f", rate), taxRate, Qty,String.format("%.2f", ValueText));
+                data = data + "\n" + String.format("%1$-11s %2$-19s %3$9s %4$5s %5$5s %6$9s", sr+HSNCode,itemDscr, String.format("%.2f", rate), taxRate, Qty,String.format("%.2f", ValueText));
             }
 
 
@@ -3225,11 +3574,19 @@ public class CollectionActivityNew extends BaseActivity  implements DatePickerDi
         ArrayList<String> arrTaxWisePrdctDtlt=  hmapTotalBfrAftrTaxVal.get("TotalInvoiceBeforeAfterTax");
         double valueBeforeTax=0.0;
         double valueAfterTax=0.0;
+        double roundingOff=0.0;
+        double netValue=0.0;
         if(!arrTaxWisePrdctDtlt.get(0).equals("")){
             valueBeforeTax=Double.parseDouble(arrTaxWisePrdctDtlt.get(0));//"1000.00";
         }
         if(!arrTaxWisePrdctDtlt.get(1).equals("")){
             valueAfterTax=Double.parseDouble(arrTaxWisePrdctDtlt.get(1));//"1040.00";
+        }
+        if(!arrTaxWisePrdctDtlt.get(2).equals("")){
+            roundingOff=Double.parseDouble(arrTaxWisePrdctDtlt.get(2));//"1040.00";
+        }
+        if(!arrTaxWisePrdctDtlt.get(3).equals("")){
+            netValue=Double.parseDouble(arrTaxWisePrdctDtlt.get(3));//"1040.00";
         }
 
 
@@ -3245,10 +3602,10 @@ public class CollectionActivityNew extends BaseActivity  implements DatePickerDi
             double taxAmount=Double.parseDouble(arrTaxValue.get(0));//"20.00";
             totalTaxValue=totalTaxValue+taxAmount;
             if(hmapTaxWisePrdctDtlt.size()>1){
-                taxData = taxData +"\n"+ String.format("%1$-11s %2$-21s %3$9s %4$3s %5$13s %6$3s",  "", tax, "","",String.format("%.2f", taxAmount), "");
+                taxData = taxData +"\n"+ String.format("%1$-11s %2$-19s %3$9s %4$3s %5$13s %6$3s",  "", tax, "","",String.format("%.2f", taxAmount), "");
             }
             else{
-                taxData = taxData +"\n"+  String.format("%1$-11s %2$-21s %3$9s %4$3s %5$3s %6$13s",  "", tax, "","","", String.format("%.2f", taxAmount));
+                taxData = taxData +"\n"+  String.format("%1$-11s %2$-19s %3$9s %4$3s %5$3s %6$13s",  "", tax, "","","", String.format("%.2f", taxAmount));
             }
 
 
@@ -3257,7 +3614,7 @@ public class CollectionActivityNew extends BaseActivity  implements DatePickerDi
 
         String totalTax=""+String.format("%.2f", totalTaxValue);//"40.00";
         if(hmapTaxWisePrdctDtlt.size()>1){
-            taxData = taxData +"\n"+ String.format("%1$-11s %2$-21s %3$9s %4$3s %5$13s %6$3s",  "", "Tax Value", "","",totalTax, "");
+            taxData = taxData +"\n"+ String.format("%1$-11s %2$-19s %3$9s %4$3s %5$13s %6$3s",  "", "Tax Value", "","",totalTax, "");
         }
         //Tax details Ends
         //loop for tax end
@@ -3269,41 +3626,60 @@ public class CollectionActivityNew extends BaseActivity  implements DatePickerDi
         String collection=arrCollectionDetailsForPrint.get(2);//"500.00";
         String currentOutStanding=arrCollectionDetailsForPrint.get(3);//"750.00";
         //OutStandingsDetails Ends here
+        //SalesMan Details
+        String salesman_mob_no="";
+        String salesman_name="";
+        String PersonNameAndFlgRegistered="0";
+        PersonNameAndFlgRegistered=  dbengine.fnGetPersonNameAndFlgRegistered();
+        if(!PersonNameAndFlgRegistered.equals("0")){
+            salesman_name=PersonNameAndFlgRegistered.split(Pattern.quote("^"))[0];
+            salesman_mob_no=PersonNameAndFlgRegistered.split(Pattern.quote("^"))[2];
+            if(salesman_mob_no.equals("0")){
+                salesman_mob_no="";
+            }
+
+        }
+
+        //End here
 
         String BILL = "";
-        BILL = BILL + "\n"+
-                "-----------------------------------------------------------------\n" +
-                "                          "+shopName+"                           \n" +
-                ""+shopAddress+"      \n" +
-                ""+ placeOfSuppllyAddress+" \n";
+        BILL = BILL
+                + "---------------------------------------------------------------\n";
+        BILL = BILL
+                + INVOICE_HEADER+"\n";
+        BILL = BILL
+                +"---------------------------------------------------------------\n" +
+                ""+shopName+"\n" +
+                ""+shopAddress+"\n";
+        // ""+ placeOfSuppllyAddress+" \n";
         BILL = BILL
                 + "Phone: "+ phoneNumber+ "  GSTIN. No.:"+ gstNumber+" \n";
         BILL = BILL
-                + "-----------------------------------------------------------------\n";
+                + "---------------------------------------------------------------\n";
 
         BILL = BILL
-                + "                          "+custName+"                            \n";
+                + ""+custName+"\n";
         BILL = BILL
                 + ""+custAddress+"\n";
+        // BILL = BILL + ""+custStateCityPin+"\n";
         BILL = BILL
-                + ""+custStateCityPin+"\n";
+                + "INVOICE  NO: "+ deliveryNumber+ "\n";
         BILL = BILL
-                + "DELIVERY  NO: "+ deliveryNumber+ "\n";
+                + "GST  NO: "+ gstNumberCustomer+ "\n";
         BILL = BILL
-                + "DATE:  "+ date+ "\n";
+                + "INVOICE DATE & Time:  "+ date+ "\n";
 
-        BILL = BILL + "Register under composite scheme? "+ compositeScheme+"\n";
+        // BILL = BILL + "Register under composite scheme? "+ compositeScheme+"\n";
 
         BILL = BILL
-                + "-----------------------------------------------------------------\n";
+                + "---------------------------------------------------------------\n";
 
 
-        BILL = BILL + String.format("%1$-11s %2$-21s %3$9s %4$5s %5$5s %6$9s", "Sr HSNCode","Item Descr", "Rate ", "TaxRt", "Qty","Value");
+        BILL = BILL + String.format("%1$-11s %2$-19s %3$9s %4$5s %5$5s %6$9s", "Sr HSNCode","Item Descr", "Rate ", "TaxRt", "Qty","Value");
         BILL = BILL + "\n";
         BILL = BILL
-                + "-----------------------------------------------------------------";
+                + "---------------------------------------------------------------";
    /* BILL = BILL + "\n" + String.format("%1$-12s %2$-25s %3$6s %4$5s %5$4s %6$7s", "01 111111","item-111111", "\u20B9"+"50", "6%", "10","200.00");
-
     BILL = BILL + "\n" + String.format("%1$-12s %2$-25s %3$6s %4$5s %5$4s %6$5s", "01 111111","item-11", "\u20B9"+"50", "6%", "10","₹200.00");
     BILL = BILL + "\n" + String.format("%1$-12s %2$-25s %3$6s %4$5s %5$4s %6$5s", "01 111111","item-111111333", "\u20B9"+"50", "6%", "10","200.00");
     BILL = BILL + "\n" + String.format("%1$-12s %2$-25s %3$6s %4$5s %5$4s %6$5s", "01 111111","item-111455555555", "\u20B9"+"50", "6%", "10","200.00");
@@ -3312,41 +3688,48 @@ public class CollectionActivityNew extends BaseActivity  implements DatePickerDi
 
         BILL = BILL + "\n";
         BILL = BILL
-                + "-----------------------------------------------------------------\n";
-        BILL = BILL + String.format("%1$-11s %2$-21s %3$9s %4$5s %5$5s %6$9s", "","Total               ", "", "", TotalQty,TotalValue);
+                + "---------------------------------------------------------------\n";
+        BILL = BILL + String.format("%1$-11s %2$-19s %3$9s %4$5s %5$5s %6$9s", "","Total               ", "", "", TotalQty,TotalValue);
         BILL = BILL + "\n";
         BILL = BILL
-                + "-----------------------------------------------------------------\n";
+                + "---------------------------------------------------------------\n";
         BILL = BILL
                 + "                           Tax Details                            \n";
 
         BILL = BILL
-                + "-----------------------------------------------------------------\n";
-        BILL = BILL  + String.format("%1$-11s %2$-21s %3$9s %4$3s %5$3s %6$13s",  "", "Value Before Tax", "","","",String.format("%.2f", valueBeforeTax) );
+                + "---------------------------------------------------------------\n";
+        BILL = BILL  + String.format("%1$-11s %2$-19s %3$9s %4$3s %5$3s %6$13s",  "", "Value Before Tax", "","","",String.format("%.2f", valueBeforeTax) );
 
         BILL=BILL+taxData;
         BILL = BILL + "\n";
-        BILL = BILL  + String.format("%1$-11s %2$-21s %3$9s %4$3s %5$3s %6$13s",  "", "Value After Tax", "","","",String.format("%.2f", valueAfterTax) );
+        BILL = BILL  + String.format("%1$-11s %2$-19s %3$9s %4$3s %5$3s %6$13s",  "", "Value After Tax", "","","",String.format("%.2f", valueAfterTax) );
         BILL = BILL + "\n";
-        BILL = BILL
-                + "-----------------------------------------------------------------\n";
+        BILL = BILL  + String.format("%1$-11s %2$-19s %3$9s %4$3s %5$3s %6$13s",  "", "Rounding Off", "","","",String.format("%.2f", roundingOff) );
+        BILL = BILL + "\n";
+        BILL = BILL  + String.format("%1$-11s %2$-19s %3$9s %4$3s %5$3s %6$13s",  "", "Net Value", "","","",String.format("%.2f", netValue) );
+        BILL = BILL + "\n";
+      /*  BILL = BILL
+                + "---------------------------------------------------------------\n";
         BILL = BILL
                 + "                       OutStanding(s) Details                    \n";
         BILL = BILL
-                + "-----------------------------------------------------------------\n";
-
+                + "---------------------------------------------------------------\n";
         BILL = BILL +"\n" + String.format("%1$-8s %2$-24s %3$9s %4$3s %5$3s %6$13s",  "", "Previous OutStanding(s)", "","","", PreviousOutStandings);
         BILL = BILL +"\n" + String.format("%1$-8s %2$-24s %3$9s %4$3s %5$3s %6$13s",  "", "Current Invoice", "","","", currentInvoice);
         BILL = BILL +"\n" + String.format("%1$-8s %2$-24s %3$9s %4$3s %5$3s %6$13s",  "", "Collection", "","","", collection);
         BILL = BILL +"\n" + String.format("%1$-8s %2$-24s %3$9s %4$3s %5$3s %6$13s",  "", "Current OutStanding(s)", "","","", currentOutStanding);
-        BILL = BILL + "\n";
+        BILL = BILL + "\n";*/
         BILL = BILL
-                + "-----------------------------------------------------------------\n";
+                + "---------------------------------------------------------------\n";
+        BILL = BILL
+                + "SALESMAN NAME:"+ salesman_name+ "\n";
+        BILL = BILL
+                + "SALESMAN MOBILE NO:"+ salesman_mob_no+ " SALESMAN SIGN:______\n";
 
         BILL = BILL
-                + "                           *Thank You*                            \n";
+                + "*Thank You*\n";
         BILL = BILL
-                + "-----------------------------------------------------------------\n";
+                + "---------------------------------------------------------------\n";
         BILL = BILL + "";
         System.out.println("SHIVAMJAYSAWAL"+BILL);
         return BILL;

@@ -306,6 +306,8 @@ public class LastVisitDetails extends BaseActivity
 	public String  getStoreVisitCode()
 	{
 		int flgDrctslsIndrctSls=1;
+		int ISNewStore =dbengine.fncheckStoreIsNewOrOld(storeID);
+
 		if(CommonInfo.FlgDSRSO==1)
 		{
 			String SOCoverageAreaIDAndType=dbengine.fnGetPersonNodeIDAndPersonNodeTypeForSO();
@@ -327,7 +329,7 @@ public class LastVisitDetails extends BaseActivity
 			}
 			else
 			{
-				StoreVisitCode=dbengine.fnGetStoreVisitCode(storeID);
+				StoreVisitCode=dbengine.fnGetStoreVisitCodeInCaseOfIndrectSales(storeID);
 			}
 		}
 		else

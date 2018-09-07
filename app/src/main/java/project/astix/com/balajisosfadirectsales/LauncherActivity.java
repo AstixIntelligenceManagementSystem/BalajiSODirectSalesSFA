@@ -726,12 +726,12 @@ private void downloadapk()
 					System.out.println("bywww");
 					
 					
-				        newservice = newservice.getallStores(getApplicationContext(), fDate, imei, rID,RouteType,1);
+				       /* newservice = newservice.getallStores(getApplicationContext(), fDate, imei, rID,RouteType,1);
 						if(newservice.flagExecutedServiceSuccesfully!=1)
 						{
 							serviceException=true;
 							break;
-						}
+						}*/
 					}
 				if(mm==2)
 					{  

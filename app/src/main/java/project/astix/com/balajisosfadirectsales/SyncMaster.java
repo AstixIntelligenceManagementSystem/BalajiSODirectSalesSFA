@@ -2610,10 +2610,13 @@ if(NoOfOutletID.length>0)
 				}
 				else if(whereTo.contentEquals("DayStart"))
 				{
-					Intent intent=new Intent(SyncMaster.this,DSR_Registration.class);
+					/*Intent intent=new Intent(SyncMaster.this,DSR_Registration.class);
 					intent.putExtra("IntentFrom", "SPLASH");
 					startActivity(intent);
-					finish();;
+					finish();;*/
+					Intent i=new Intent(SyncMaster.this,AllButtonActivity.class);
+					startActivity(i);
+					finish();
 
 				}
 				else
